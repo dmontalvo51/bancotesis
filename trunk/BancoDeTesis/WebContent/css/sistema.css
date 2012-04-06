@@ -1,0 +1,19 @@
+@CHARSET "ISO-8859-1";
+
+/*Plantilla Principal*/
+
+.cabecera{height: 15%;}
+.cuerpo{height: 75%;}
+.pie{ height: 8%; padding-top: 1em;}
+.pie span{float:right;}
+
+
+/*Login*/
+.panelInicioSesion{
+	width: 25%;
+	margin: 0 38% 0 38% ;
+}
+
+.panelInicioSesion button{
+	margin-left: 35%;
+}

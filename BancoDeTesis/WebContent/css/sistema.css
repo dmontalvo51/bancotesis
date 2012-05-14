@@ -1,0 +1,43 @@
+@CHARSET "ISO-8859-1";
+
+/*Plantilla Principal*/
+
+.cabecera{height: 10%;}
+
+
+.cuerpo {
+	display: block; /* set up as a block */
+	height: 83%; /* set height to full page */
+	max-height: 83%;
+	overflow: auto; /* add scroll bars as required */
+	position: relative;
+	/* set up relative positioning so that z-index will work */
+	z-index: 3; /* allocate a suitable z-index */
+}
+.pie{ height: 7%;}
+
+
+/*Login*/
+.panelInicioSesion{
+	width: 20%;
+	margin: 0 38% 0 38% ;
+	margin-top: 10em;
+}
+
+.panelInicioSesion button{
+	margin-left: 35%;
+}
+
+/*Menu*/
+
+.cuerpoSuperior {height: 3em; width: 100%; }
+.cuerpoSuperior table{width: 100%;}
+.cuerpoSuperior .barraMenu{width: 60%; }
+.cuerpoSuperior .cuentaUsuario{height: 2.5em; width: 20%; text-align: right;}
+.cuerpoSuperior .rolUsuario{height: 2.5em; width: 20%; text-align: right;}
+
+
+.formularioRegistro{width:100%;}
+
+
+

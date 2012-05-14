@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<title>
+	<ui:insert name="title">Sustentación de TESIS</ui:insert>
+	</title>
+	<h:outputStylesheet name="default.css" library="css"/>
+	<h:outputStylesheet name="sistema.css" library="css"/>
+
+	<!--
+	<link type="text/css" rel="stylesheet" href="../css/default.css" />
+	<link type="text/css" rel="stylesheet" href="../css/sistema.css" />
+	-->
+</h:head>
+<body>
+
+	<div class="cabecera ui-widget-content">
+		<span>#{msg.tituloSistema}</span>
+	</div>
+	<div class="cuerpo">
+		<ui:insert name="cuerpo"></ui:insert>
+	</div>
+	<div class="pie ui-widget-content">
+		<span> #{msg.piePagina} | #{msg.copyright}</span>
+	</div>
+
+</body>
+</html>

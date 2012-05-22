@@ -4,7 +4,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.prime.com.tr/ui"
 	template="/pages/common/plantillaPrincipal.xhtml">
-	<ui:define name="title">#{msg.tituloSistema} .::. #{msg.RegistroActaConformidadTitulo}</ui:define>
+	<ui:define name="title">#{msg.tituloSistema} .::. #{msg.titulo}</ui:define>
 	<ui:define name="cuerpo">
 		<ui:include src="/pages/common/menu.xhtml"></ui:include>
 
@@ -12,7 +12,7 @@
 
 		<p:panel>
 		<f:facet name="header">
-			<h:outputLabel styleClass="mititulo" >#{msg.RegistroActaConformidadTitulo}</h:outputLabel>
+			<h:outputLabel styleClass="mititulo" >#{msg.titulo}</h:outputLabel>
 		</f:facet>
 			<h:panelGrid columns="2">
 				<h:outputLabel value="Fecha Inicio" />

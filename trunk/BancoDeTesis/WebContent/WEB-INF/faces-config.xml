@@ -8,25 +8,14 @@
 		from bean class name. Bean scope is request by default. Results pages automatically 
 		derived from return value of action controller. From JSF 2.0 tutorial at 
 		http://www.coreservlets.com/JSF-Tutorial/jsf2/ -->
-	<application>
 
-		<!-- <el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver> -->
-	
+	<application>
+		<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
+		
 		<resource-bundle>
 			<base-name>recursos.mensajes</base-name>
 			<var>msg</var>
 		</resource-bundle>
-	
 	</application>
 
-
-	<navigation-rule>
-		<from-view-id>loginController</from-view-id>
-		<navigation-case>
-			<from-outcome>inicio</from-outcome>
-			<to-view-id>inicio.xhtml</to-view-id>
-		</navigation-case>
-
-	</navigation-rule>
-	
 </faces-config>

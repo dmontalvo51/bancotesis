@@ -30,14 +30,14 @@
 
 /*Menu*/
 
-.cuerpoSuperior {height: 3em; width: 100%; }
-.cuerpoSuperior table{width: 100%;}
-.cuerpoSuperior .barraMenu{width: 60%; }
-.cuerpoSuperior .cuentaUsuario{height: 2.5em; width: 20%; text-align: right;}
-.cuerpoSuperior .rolUsuario{height: 2.5em; width: 20%; text-align: right;}
-
+.cuerpoSuperior {height: 2em; width: 100%; position: relative;}
+.cuerpoSuperior table{width: 100%; }
+.seccionUsuario{width: 13%;text-align: left;}
+.seccionPerfil{width: 13%;text-align: left;}
+.seccionCerrarSesion{width: 13%; text-align: left;}
 
 .formularioRegistro{width:100%;}
+
 
 
 

@@ -4,33 +4,34 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.prime.com.tr/ui">
 
-	<div class="cuerpoPrincipal">	
 	<h:form>
-		<p:menubar effect="slide" effectDuration="0" 
-		autoSubmenuDisplay="FALSE" showDelay="100">
-			<p:submenu label="Trámites">
-				<p:menuitem value="Crear ficha" />
-				<p:menuitem value="Aprobar ficha (VºBº)" />
-				<p:menuitem value="Informe de asesor" />
-			</p:submenu>
-			<p:submenu label="Consulta">
-
-			</p:submenu>
-			<p:submenu label="Pendientes">
-			
-
-			</p:submenu>
-			<p:submenu label="Mantenimiento">
-
-			</p:submenu>
-			<p:menuitem value="Salir" action="#">
-			
-			</p:menuitem>
-		</p:menubar>
-	</h:form>
-	</div>			
+			<h:panelGrid columns="4"
+				columnClasses="barraMenu,seccionUsuario,seccionPerfil,seccionCerrarSesion"
+					styleClass="cuerpoSuperior" >
 
 
-	
+				<p:menubar effect="slide" effectDuration="0"
+					autoSubmenuDisplay="FALSE" showDelay="50" styleClass="barraMenu">
+
+					<p:submenu label="Trámites">
+						<p:menuitem value="Crear ficha" />
+						<p:menuitem value="Aprobar ficha (VºBº)" />
+						<p:menuitem value="Informe de asesor" />
+					</p:submenu>
+
+					<p:submenu label="Consulta" />
+
+					<p:submenu label="Pendientes" />
+
+					<p:submenu label="Mantenimiento" />
+
+				</p:menubar>
+
+				<h:outputText value="usuario" />
+				<h:outputText value="perfil" />
+				<p:commandLink value="Cerrar Sesion"/>
+
+			</h:panelGrid>
+		</h:form>
 
 </ui:composition>

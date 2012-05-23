@@ -5,12 +5,11 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
-	<title>
-	<ui:insert name="title">Sustentación de TESIS</ui:insert>
+	<title><ui:insert name="title">#{msg.tituloSistema}</ui:insert>
 	</title>
-	<h:outputStylesheet name="default.css" library="css"/>
-	<h:outputStylesheet name="sistema.css" library="css"/>
-	<h:outputStylesheet name="estilos.css" library="css"/>
+	<h:outputStylesheet name="default.css" library="css" />
+	<h:outputStylesheet name="sistema.css" library="css" />
+	<h:outputStylesheet name="estilos.css" library="css" />
 
 	<!--
 	<link type="text/css" rel="stylesheet" href="../css/default.css" />
@@ -23,6 +22,7 @@
 		<span>#{msg.tituloSistema}</span>
 	</div>
 	<div class="cuerpo">
+		<ui:include src="/pages/common/menu.xhtml" />
 		<ui:insert name="cuerpo"></ui:insert>
 	</div>
 	<div class="pie ui-widget-content">

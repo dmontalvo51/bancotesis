@@ -11,11 +11,12 @@
 
 	<application>
 		<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
-		
+
 		<resource-bundle>
 			<base-name>recursos.mensajes</base-name>
 			<var>msg</var>
 		</resource-bundle>
+
 	</application>
 
 </faces-config>

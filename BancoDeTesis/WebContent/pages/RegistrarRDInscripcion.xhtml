@@ -1,0 +1,60 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="/pages/common/plantillaPrincipal.xhtml">
+	<ui:define name="title">#{msg.tituloSistema} .::. Ingresar Ficha de Tesis</ui:define>
+	<ui:define name="cuerpo">
+		<ui:include src="/pages/common/menu.xhtml"></ui:include>
+		<!-- Empezar a programar desde aqui -->
+		<div class="cuerpoPrincipal">
+			<h:form id="RegistrarRDInscripcionForm">
+
+				<h:panelGrid columns="3">
+					<p:editor id="editorRDInscripcon" value="#{editorBean.value}"
+						width="700" />
+					<p:menuButton value="Lineas de investigacion" effect="slide" 
+						effectDuration="5000" styleClass="comboLineasInvestigacion" zindex="2">
+						<p:menuitem value="Sistemas Inteligentes" icon="ui-icon-disk" />
+						<p:menuitem value="Sistemas Distribuidos" icon="ui-icon-arrowrefresh-1-w" />
+						<p:menuitem value="Redes" icon="ui-icon-close"	/> 
+						<p:menuitem value="Sistemas Expertos"	/>
+					</p:menuButton>
+					<p:panel header="HOLA" footer="chau">
+
+						<h:panelGrid columns="2">
+							<h:outputText value="Esta es mi interface."></h:outputText>
+							<h:outputText value="Yo me llamo Jorge"></h:outputText>
+						</h:panelGrid>
+					</p:panel>
+
+				</h:panelGrid>
+
+
+				<br />
+
+
+
+
+
+				<!-- 					-->
+				<!-- 					<p:separator /> -->
+				<!-- 					<p:menuitem value="Homepage" url="http://www.primefaces.org" -->
+				<!-- 						icon="ui-icon-extlink" /> -->
+
+				<!-- 					<p:growl id="messages"/>   -->
+
+
+
+
+
+			</h:form>
+
+
+
+		</div>
+		<!-- Terminar de programar desde aqui -->
+
+	</ui:define>
+</ui:composition>

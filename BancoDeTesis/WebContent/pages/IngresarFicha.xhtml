@@ -1,33 +1,36 @@
-<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
-				xmlns:ui="http://java.sun.com/jsf/facelets"
-				xmlns:h="http://java.sun.com/jsf/html"
-				xmlns:f="http://java.sun.com/jsf/core"
-				xmlns:p="http://primefaces.prime.com.tr/ui"
-				template="/pages/common/plantillaPrincipal.xhtml"
-				>
-<ui:define name="title">#{msg.tituloSistema} .::. Ingresar Ficha de Tesis</ui:define>
-<ui:define name="cuerpo" >
-<ui:include src="/pages/common/menu.xhtml"></ui:include>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="/pages/common/plantillaPrincipal.xhtml">
+	<ui:define name="title">#{msg.tituloSistema} .::. Ingresar Ficha de Tesis</ui:define>
+	<ui:define name="cuerpo">
+		<ui:include src="/pages/common/menu.xhtml"></ui:include>
 
-<div class="cuerpoPrincipal">
+		<!-- Empezar a programar desde aqui -->
+		<div class="cuerpoPrincipal">
 
-<h:panelGrid columns="4" styleClass="formularioRegistro">  
-    <f:facet name="header">  
+			<h:panelGrid columns="4" styleClass="formularioRegistro">
+				<f:facet name="header">  
         Basic PanelGrid  
-    </f:facet>  
-  
-    <h:outputLabel for="firstname" value="Firstname: *" />  
-    <p:inputText id="firstname" value="" label="Firstname" />  
-  
-    <h:outputLabel for="surname" value="Surname: *" />  
-    <p:inputText id="surname" value="" required="true" label="Surname"/>  
-  
-    <f:facet name="footer">  
-        <p:commandButton type="button" value="Save" icon="ui-icon-check" style="margin:0"/>  
-    </f:facet>  
-    
-</h:panelGrid>  
+    </f:facet>
 
-</div>
-</ui:define>
+				<h:outputLabel for="firstname" value="Firstname: *" />
+				<p:inputText id="firstname" value="" label="Firstname" />
+
+				<h:outputLabel for="surname" value="Surname: *" />
+				<p:inputText id="surname" value="" required="true" label="Surname" />
+
+				<f:facet name="footer">
+					<p:commandButton type="button" value="Save" icon="ui-icon-check"
+						style="margin:0" action="" />
+				</f:facet>
+
+			</h:panelGrid>
+
+		</div>
+
+		<!-- Terminar de programar desde aqui -->s
+	</ui:define>
 </ui:composition>

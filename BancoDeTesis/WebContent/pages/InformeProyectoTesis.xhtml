@@ -1,23 +1,25 @@
-<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
-				xmlns:ui="http://java.sun.com/jsf/facelets"
-				xmlns:h="http://java.sun.com/jsf/html"
-				xmlns:f="http://java.sun.com/jsf/core"
-				xmlns:p="http://primefaces.prime.com.tr/ui"
-				template="/pages/common/plantillaPrincipal.xhtml"
-				>
-<ui:define name="title">#{msg.tituloSistema} .::. Ingresar Ficha de Tesis</ui:define>
-<ui:define name="cuerpo" >
-<ui:include src="/pages/common/menu.xhtml"></ui:include>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="/pages/common/plantillaPrincipal.xhtml">
+	<ui:define name="title">#{msg.tituloSistema} .::. Ingresar Ficha de Tesis</ui:define>
+	<ui:define name="cuerpo">
+		<ui:include src="/pages/common/menu.xhtml"></ui:include>
 
-<div class="cuerpoPrincipal">
+		<!-- Empezar a programar desde aqui -->
+		<div class="cuerpoPrincipal">
 
-<p:panel menuTitle="Hola">
-<h:panelGrid columns="1">
-<span>Esta es mi interface.</span> 
-<span>Yo me llamo Jorge</span>
-</h:panelGrid>
-</p:panel>
+			<p:panel menuTitle="Hola">
+				<h:panelGrid columns="1">
+					<span>Esta es mi interface.</span>
+					<span>Yo me llamo Jorge</span>
+				</h:panelGrid>
+			</p:panel>
+		</div>
+		<!-- Terminar de programar desde aqui -->
 
-</div>
-</ui:define>
+
+	</ui:define>
 </ui:composition>

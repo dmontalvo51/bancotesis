@@ -8,19 +8,22 @@
 	<ui:define name="cuerpo">
 		<ui:include src="/pages/common/menu.xhtml"></ui:include>
 
+		<!-- Empezar a programar desde aqui -->
 		<div class="cuerpoPrincipal">
 
-		<p:panel>
-		<f:facet name="header">
-			<h:outputLabel styleClass="mititulo" >#{msg.titulo}</h:outputLabel>
-		</f:facet>
-			<h:panelGrid columns="2">
-				<h:outputLabel value="Fecha Inicio" />
-				<p:calendar autocomplete="true" effect="slide"></p:calendar>
-				<h:outputLabel value="Fecha Fin" />
-				<p:calendar autocomplete="true" effect="explode"></p:calendar>
-			</h:panelGrid>
-		</p:panel>
+			<p:panel>
+				<f:facet name="header">
+					<h:outputLabel styleClass="mititulo">#{msg.titulo}</h:outputLabel>
+				</f:facet>
+				<h:panelGrid columns="2">
+					<h:outputLabel value="Fecha Inicio" />
+					<p:calendar autocomplete="true" effect="slide"></p:calendar>
+					<h:outputLabel value="Fecha Fin" />
+					<p:calendar autocomplete="true" effect="explode"></p:calendar>
+				</h:panelGrid>
+			</p:panel>
 		</div>
+
+		<!-- Terminar de programar desde aqui -->
 	</ui:define>
 </ui:composition>

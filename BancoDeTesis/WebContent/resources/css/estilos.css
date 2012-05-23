@@ -1,12 +1,11 @@
 @CHARSET "ISO-8859-1";
 
-.mititulo{text-decoration: underline;}
+
+.barraMenu{width: 61%;}
 
 /*Registrar Ficha*/
 
-
 /*Evaluar Tesis*/
-
 
 /*Inscribir Tesis*/
 .comboLineasInvestigacion {top: auto;position: inherit;}

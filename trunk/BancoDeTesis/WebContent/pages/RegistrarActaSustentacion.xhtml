@@ -6,11 +6,11 @@
 	template="/pages/common/plantillaPrincipal.xhtml">
 	<ui:define name="title">#{msg.tituloSistema} .::. #{msg.ActaSustentacionTitulo}</ui:define>
 	<ui:define name="cuerpo">
-	
+
 
 		<!-- Empezar a programar desde aqui -->
 
-
+		<h:form>
 			<p:panel>
 				<f:facet name="header">
 					<h:outputLabel styleClass="mititulo">#{msg.ActaSustentacionTitulo}</h:outputLabel>
@@ -20,9 +20,15 @@
 					<p:calendar autocomplete="true" effect="slide"></p:calendar>
 					<h:outputLabel value="Fecha Fin" />
 					<p:calendar autocomplete="true" effect="explode"></p:calendar>
+
+
 				</h:panelGrid>
+
+				<p:commandButton value="#{msg.botonRegistrar}"
+					actionListener="#{registrarActaSustentacion.cargarListaActas}"
+					ajax="true" />
 			</p:panel>
-		
+		</h:form>
 
 		<!-- Terminar de programar desde aqui -->
 	</ui:define>

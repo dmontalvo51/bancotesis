@@ -1,4 +1,5 @@
-          <ui:composition xmlns="http://www.w3.org/1999/xhtml"
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
@@ -6,23 +7,61 @@
 	template="/pages/common/plantillaPrincipal.xhtml">
 	<ui:define name="title">#{msg.tituloSistema} .::. #{msg.RegistroActaConformidadTitulo}</ui:define>
 	<ui:define name="cuerpo">
-	
+
 
 		<!-- Empezar a programar desde aqui -->
-	
 
-			<p:panel>
-				<f:facet name="header">
-					<h:outputLabel styleClass="mititulo">#{msg.RegistroActaConformidadTitulo}</h:outputLabel>
-				</f:facet>
-				<h:panelGrid columns="2">
-					<h:outputLabel value="Fecha Inicio" />
-					<p:calendar autocomplete="true" effect="slide"></p:calendar>
-					<h:outputLabel value="Fecha Fin" />
-					<p:calendar autocomplete="true" effect="explode"></p:calendar>
-				</h:panelGrid>
-			</p:panel>
+		<!-- aca va el encabezado-->
 
+		<h:panelGrid columns="1" styleClass="formularioRegistro">
+			<f:facet name="header">  
+              ACTA DE CONFORMIDAD
+    </f:facet>
+			<h:outputLabel for="NTramite" value="Numero Tramite: " />
+			<p:inputText id="Ntramite" value="" label="" />
+
+		</h:panelGrid>
+
+		<!-- aca va el elcuepo-->
+		<h:panelGrid columns="4" styleClass="formularioRegistro">
+
+			<h:outputLabel for="Codigo" value="Codigo: " />
+			<p:inputText id="Codigo" value="" label="Codigo" />
+			<h:outputLabel for="Alumno" value="Alumno: " />
+			<p:inputText id="Alumno" value="" label="Alumno" />
+			<h:outputLabel for="Linea de Investigacion"
+				value="Linea de Investigacion: " />
+			<p:inputText id="LineadeInvestigacion" value=""
+				label="Linea de Investigacion" />
+			<h:outputLabel for="Asesor" value="Asesor: " />
+			<p:inputText id="Asesor" value="" label="Asesor" />
+			<h:outputLabel for="Titulo" value="Titulo: " />
+			<p:inputText id="Titulo" value="" label="Titulo" />
+		</h:panelGrid>
+		
+		<!-- aca va el radiobuton-->
+		
+		<h:panelGrid columns="1" styleClass="formularioRegistro">
+			<f:facet name="header">  
+              Aca va un hipervinculo al bosquejo/resumen de la tesis
+    </f:facet>
+			<h:outputLabel for="Desarrollo de la Tesis" value="Desarrollo de la Tesis:  " />
+			
+	  <h:panelGrid columns="1" style="margin-bottom:1px" cellpadding="1">  
+  
+      
+        <p:selectOneRadio id="options" value="">  
+            <f:selectItem itemLabel="Conforme" itemValue="1" />  
+            
+            <f:selectItem itemLabel="No conforme" itemValue="2" />  
+
+        </p:selectOneRadio>  
+  
+    </h:panelGrid>  
+  
+   
+
+		</h:panelGrid>
 
 		<!-- Terminar de programar desde aqui -->
 	</ui:define>

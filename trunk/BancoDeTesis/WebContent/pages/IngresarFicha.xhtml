@@ -12,15 +12,22 @@
 
 
 		<h:panelGrid columns="2" styleClass="formularioRegistro">
-			<f:facet name="header">
-
-			</f:facet>
-
+			<f:facet name="header">  
+        INSCRIPCION DE FICHA DE TESIS
+    </f:facet>
 			<h:outputLabel for="Codigo" value="Codigo: " />
 			<p:inputText id="Codigo" value="" label="Codigo" />
 
+		</h:panelGrid>
+
+
+
+		<!-- nuevo Panel grid para los combobox-->
+
+		<h:panelGrid columns="8" styleClass="formularioRegistro">
+
 			<!--creacion de combobox Asesores-->
-			
+
 			<h:outputLabel for="Asesor" value="Asesor: " />
 			<h:selectOneMenu id="Asesor" value="#{pprBean.Asesor}"
 				required="true">
@@ -30,13 +37,32 @@
 			<p:message for="Asesor" />
 			<h:outputText value="#{pprBean.Asesor}" />
 
+			<!--creacion de combobox LineaInvestigacion-->
+
+			<h:outputLabel for="LineaInvestigacion"
+				value="Linea de Investigacion: " />
+			<h:selectOneMenu id="LineaInvestigacion"
+				value="#{pprBean.LineaInvestigacion}" required="true">
+				<f:selectItem itemLabel="Select One" itemValue="" />
+				<f:selectItems value="#{pprBean.LineaInvestigaciones}" />
+			</h:selectOneMenu>
+			<p:message for="LineaInvestigacion" />
+			<h:outputText value="#{pprBean.LineaInvestigacion}" />
 
 
+		</h:panelGrid>
+
+		<!-- label para el titulo -->
+		<h:panelGrid columns="2" styleClass="formularioRegistro">
+
+			<h:outputLabel for="Titulo" value="Titulo: " />
+			<p:inputText id="Titulo" value="" label="Titulo" />
+
+			<!-- boton Guardar -->
 			<f:facet name="footer">
-				<p:commandButton type="button" value="Save" icon="ui-icon-check"
+				<p:commandButton type="button" value="Guardar" icon="ui-icon-check"
 					style="margin:0" action="#" />
 			</f:facet>
-
 		</h:panelGrid>
 
 

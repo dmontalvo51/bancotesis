@@ -7,9 +7,9 @@
 
 	<ui:define name="title">Sistema de Ventas TABO ..:::.. Inicio de Sesión</ui:define>
 	<ui:define name="cuerpo">
+		<h:form>
+			<p:panel header="Inicio de sesión" styleClass="panelInicioSesion">
 
-		<p:panel header="Inicio de sesión" styleClass="panelInicioSesion">
-			<h:form >
 				<h:panelGrid columns="2">
 					<h:outputText value="Usuario: " />
 					<h:inputText value="#{loginController.cuenta}" />
@@ -18,15 +18,13 @@
 					<h:inputSecret value="#{loginController.password}" />
 				</h:panelGrid>
 
-				<p:messages id="mensaje" showDetail="false" />
-
 				<p:commandButton value="Ingresar" id="BtnIngresar"
 					action="#{loginController.iniciarSesion}" ajax="false"
 					update="mensaje" />
 
-			</h:form>
-		</p:panel>
 
+			</p:panel>
+		</h:form>
 
 	</ui:define>
 </ui:composition>

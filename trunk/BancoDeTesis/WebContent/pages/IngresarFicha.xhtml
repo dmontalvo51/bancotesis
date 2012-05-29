@@ -11,7 +11,7 @@
 		<!-- Empezar a programar desde aqui -->
 
 
-		<h:panelGrid columns="4" styleClass="formularioRegistro">
+		<h:panelGrid columns="2" styleClass="formularioRegistro">
 			<f:facet name="header">
 
 			</f:facet>
@@ -19,6 +19,8 @@
 			<h:outputLabel for="Codigo" value="Codigo: " />
 			<p:inputText id="Codigo" value="" label="Codigo" />
 
+			<!--creacion de combobox Asesores-->
+			
 			<h:outputLabel for="Asesor" value="Asesor: " />
 			<h:selectOneMenu id="Asesor" value="#{pprBean.Asesor}"
 				required="true">

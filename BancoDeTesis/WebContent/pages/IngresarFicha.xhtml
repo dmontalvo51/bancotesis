@@ -6,29 +6,38 @@
 	template="/pages/common/plantillaPrincipal.xhtml">
 	<ui:define name="title">#{msg.tituloSistema} .::. Ingresar Ficha de Tesis</ui:define>
 	<ui:define name="cuerpo">
-	
+
 
 		<!-- Empezar a programar desde aqui -->
-		
 
-			<h:panelGrid columns="4" styleClass="formularioRegistro">
-				<f:facet name="header">  
-     
-    </f:facet>
 
-				<h:outputLabel for="Codigo" value="Codigo: *" />
-				<p:inputText id="Codigo" value="" label="Codigo" />
+		<h:panelGrid columns="4" styleClass="formularioRegistro">
+			<f:facet name="header">
 
-			
+			</f:facet>
 
-				<f:facet name="footer">
-					<p:commandButton type="button" value="Save" icon="ui-icon-check"
-						style="margin:0" action="#" />
-				</f:facet>
+			<h:outputLabel for="Codigo" value="Codigo: " />
+			<p:inputText id="Codigo" value="" label="Codigo" />
 
-			</h:panelGrid>
+			<h:outputLabel for="Asesor" value="Asesor: " />
+			<h:selectOneMenu id="Asesor" value="#{pprBean.Asesor}"
+				required="true">
+				<f:selectItem itemLabel="Select One" itemValue="" />
+				<f:selectItems value="#{pprBean.Asesores}" />
+			</h:selectOneMenu>
+			<p:message for="Asesor" />
+			<h:outputText value="#{pprBean.Asesor}" />
 
-		
+
+
+			<f:facet name="footer">
+				<p:commandButton type="button" value="Save" icon="ui-icon-check"
+					style="margin:0" action="#" />
+			</f:facet>
+
+		</h:panelGrid>
+
+
 
 		<!-- Terminar de programar desde aqui -->
 	</ui:define>

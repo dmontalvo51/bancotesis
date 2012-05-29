@@ -3,6 +3,7 @@
 
 <mapper namespace="pe.edu.unmsm.integracion.TramitesMapper">
 
+
 	<resultMap type="pe.edu.unmsm.modelo.Tramite" id="Tramite">
 		<result property="id" column="tra_iCodigo"/>		
 		<result property="codigo" column="tra_vccodigo"/>
@@ -13,5 +14,11 @@
 	<select id="cargarTramites" resultMap="Tramite">
 		select * from tesis.tramite
 	</select>
+	
+	
+	<insert id="insertarTramite">
+	
+	
+	</insert>
 
 </mapper>

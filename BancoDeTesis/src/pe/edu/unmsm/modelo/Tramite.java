@@ -39,8 +39,6 @@ public class Tramite {
 	public void setEstado(int estado) {
 		this.estado = estado;
 	}
-	
-	
-	
+
 
 }

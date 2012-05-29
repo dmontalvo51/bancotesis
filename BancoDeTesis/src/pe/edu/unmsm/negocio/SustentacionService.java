@@ -1,8 +1,8 @@
-package negocio;
+package pe.edu.unmsm.negocio;
 
 import java.util.List;
 
-import modelo.ActaSustentacion;
+import pe.edu.unmsm.modelo.ActaSustentacion;
 
 public interface SustentacionService {
 	

@@ -17,8 +17,8 @@
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>	
 	
-	<bean id="actaSustentacionMapperImpl" class="org.mybatis.spring.mapper.MapperFactoryBean" parent="mapaBase">
-		<property name="mapperInterface" value="integracion.maps.ActaSustentacionMapper" />
+	<bean id="actaSustentacionMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" parent="mapaBase">
+		<property name="mapperInterface" value="pe.edu.unmsm.integracion.maps.ActaSustentacionMapper" />
 	</bean>
 
 

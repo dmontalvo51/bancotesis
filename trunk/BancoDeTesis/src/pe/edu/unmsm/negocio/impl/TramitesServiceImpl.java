@@ -17,6 +17,7 @@ public class TramitesServiceImpl implements TramitesService {
 	private TramitesMapper tramitesMapper;
 
 	public List<Tramite> cargarTramites() {
+		
 		return tramitesMapper.cargarTramites();
 	}
 	

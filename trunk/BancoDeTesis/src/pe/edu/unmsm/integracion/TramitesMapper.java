@@ -7,5 +7,7 @@ import pe.edu.unmsm.modelo.Tramite;
 public interface TramitesMapper {
 	
 	public List<Tramite> cargarTramites();
+	
+	public int insertarTramite(Tramite tramite);
 
 }

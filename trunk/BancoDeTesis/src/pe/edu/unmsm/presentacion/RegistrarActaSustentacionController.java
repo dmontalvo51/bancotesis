@@ -15,7 +15,7 @@ import pe.edu.unmsm.util.TesisUtil;
 
 @RequestScoped
 @ManagedBean(name="registrarActaSustentacion")
-public class IngresarActaSustentacionController {
+public class RegistrarActaSustentacionController {
 	
 	
 	@ManagedProperty(value="#{sustentacionService}")

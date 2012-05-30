@@ -42,22 +42,24 @@
 		<!-- aca va el radiobuton-->
 
 		<h:panelGrid columns="1" styleClass="formularioRegistro">
-			<f:facet name="header">  
-              Aca va un hipervinculo al bosquejo/resumen de la tesis
-    </f:facet>
-			<h:outputLabel for="Desarrollo de la Tesis"
-				value="Desarrollo de la Tesis:  " />
+			<f:facet name="header">
+			</f:facet>
+	
+		
+		
+		<h:outputLabel for="Desarrollo de la Tesis"
+			value="Desarrollo de la Tesis:  " />
 
-			<h:panelGrid columns="1" style="margin-bottom:1px" cellpadding="1">
+		<h:panelGrid columns="1" style="margin-bottom:1px" cellpadding="1">
 
 
-				<p:selectOneRadio id="options" value="">
-					<f:selectItem itemLabel="Conforme" itemValue="1" />
+			<p:selectOneRadio id="options" value="">
+				<f:selectItem itemLabel="Conforme" itemValue="1" />
 
-					<f:selectItem itemLabel="No conforme" itemValue="2" />
+				<f:selectItem itemLabel="No conforme" itemValue="2" />
 
-				</p:selectOneRadio>
-			</h:panelGrid>
+			</p:selectOneRadio>
+		</h:panelGrid>
 
 		</h:panelGrid>
 
@@ -86,8 +88,8 @@
 			</h:form>
 
 		</h:panelGrid>
-		
-		
+
+
 
 		<!-- Terminar de programar desde aqui -->
 	</ui:define>

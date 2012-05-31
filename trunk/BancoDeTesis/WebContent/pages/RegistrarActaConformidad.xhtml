@@ -12,66 +12,64 @@
 		<!-- Empezar a programar desde aqui -->
 
 		<!-- aca va el encabezado-->
+		<h:form id="form">
+			<h:panelGrid columns="1" styleClass="formularioRegistro">
+				<f:facet name="header">Acta de Conformidad</f:facet>
+				<h:outputLabel for="NTramite" value="Numero Tramite: " />
+				<p:inputText id="Ntramite" value="" label="" />
 
-		<h:panelGrid columns="1" styleClass="formularioRegistro">
-			<f:facet name="header">  
-              ACTA DE CONFORMIDAD
-    </f:facet>
-			<h:outputLabel for="NTramite" value="Numero Tramite: " />
-			<p:inputText id="Ntramite" value="" label="" />
+			</h:panelGrid>
 
-		</h:panelGrid>
+			<!-- aca va el elcuepo-->
+			<h:panelGrid columns="4" styleClass="formularioRegistro">
 
-		<!-- aca va el elcuepo-->
-		<h:panelGrid columns="4" styleClass="formularioRegistro">
+				<h:outputLabel for="Codigo" value="Codigo: " />
+				<p:inputText id="Codigo" value="" label="Codigo" />
+				<h:outputLabel for="Alumno" value="Alumno: " />
+				<p:inputText id="Alumno" value="" label="Alumno" />
+				<h:outputLabel for="Linea de Investigacion"
+					value="Linea de Investigacion: " />
+				<p:inputText id="LineadeInvestigacion" value=""
+					label="Linea de Investigacion" />
+				<h:outputLabel for="Asesor" value="Asesor: " />
+				<p:inputText id="Asesor" value="" label="Asesor" />
+				<h:outputLabel for="Titulo" value="Titulo: " />
+				<p:inputText id="Titulo" value="" label="Titulo" />
+			</h:panelGrid>
 
-			<h:outputLabel for="Codigo" value="Codigo: " />
-			<p:inputText id="Codigo" value="" label="Codigo" />
-			<h:outputLabel for="Alumno" value="Alumno: " />
-			<p:inputText id="Alumno" value="" label="Alumno" />
-			<h:outputLabel for="Linea de Investigacion"
-				value="Linea de Investigacion: " />
-			<p:inputText id="LineadeInvestigacion" value=""
-				label="Linea de Investigacion" />
-			<h:outputLabel for="Asesor" value="Asesor: " />
-			<p:inputText id="Asesor" value="" label="Asesor" />
-			<h:outputLabel for="Titulo" value="Titulo: " />
-			<p:inputText id="Titulo" value="" label="Titulo" />
-		</h:panelGrid>
+			<!-- aca va el radiobuton-->
 
-		<!-- aca va el radiobuton-->
+			<h:panelGrid columns="1" styleClass="formularioRegistro">
+				<f:facet name="header">
+				</f:facet>
 
-		<h:panelGrid columns="1" styleClass="formularioRegistro">
-			<f:facet name="header">
-			</f:facet>
-	
-		
-		
-		<h:outputLabel for="Desarrollo de la Tesis"
-			value="Desarrollo de la Tesis:  " />
+				<p:commandLink id="linkVerResumen" onclick="resumenTesis.show()"
+					value="Ver resumen de tesis" />
 
-		<h:panelGrid columns="1" style="margin-bottom:1px" cellpadding="1">
+				<h:outputLabel for="Desarrollo de la Tesis"
+					value="Desarrollo de la Tesis:  " />
+
+				<h:panelGrid columns="1" style="margin-bottom:1px" cellpadding="1">
 
 
-			<p:selectOneRadio id="options" value="">
-				<f:selectItem itemLabel="Conforme" itemValue="1" />
+					<p:selectOneRadio id="options" value="">
+						<f:selectItem itemLabel="Conforme" itemValue="1" />
 
-				<f:selectItem itemLabel="No conforme" itemValue="2" />
+						<f:selectItem itemLabel="No conforme" itemValue="2" />
 
-			</p:selectOneRadio>
-		</h:panelGrid>
+					</p:selectOneRadio>
+				</h:panelGrid>
 
-		</h:panelGrid>
+			</h:panelGrid>
 
-		<h:panelGrid columns="1" styleClass="formularioRegistro">
+			<h:panelGrid columns="1" styleClass="formularioRegistro">
 
-			<h:outputLabel for="Observaciones del Asesor"
-				value="Observaciondel Asesor " />
+				<h:outputLabel value="Observaciones del Asesor " />
 
-			<h:form id="form">
 
-				<p:editor id="EditorObservaciones" value="#{editorBean.value}"
-					width="600" />
+
+				<p:editor id="EditorObservaciones"
+					value="#{actaConformidad.observaciones}" width="600" />
 
 				<h:panelGrid columns="2" style="margin-top:10px">
 
@@ -79,18 +77,18 @@
 						onclick="editor.clear()" icon="ui-icon-close" />
 				</h:panelGrid>
 
-				<p:dialog header="Content" widgetVar="dlg" showEffect="fade"
-					hideEffect="fade" modal="true">
-					<h:outputText id="display" value="#{editorBean.value}"
-						escape="false" />
-				</p:dialog>
 
-			</h:form>
+			</h:panelGrid>
 
-		</h:panelGrid>
-
-
+		</h:form>
 
 		<!-- Terminar de programar desde aqui -->
 	</ui:define>
+
+	<p:dialog header="Resumen de Tesis" id="dialogResumenTesis"
+		widgetVar="resumenTesis" showEffect="slide" hideEffect="explode"
+		modal="false" resizable="true">
+		<h:outputText value="#{actaConformidad.resumen}" />
+	</p:dialog>
+
 </ui:composition>

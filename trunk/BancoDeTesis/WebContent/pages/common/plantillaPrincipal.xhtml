@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
 
 <h:head>
 	<title><ui:insert name="title">#{msg.tituloSistema}</ui:insert>
@@ -25,6 +26,9 @@
 		<ui:include src="/pages/common/menu.xhtml" />
 		<ui:insert name="cuerpo"></ui:insert>
 	</div>
+
+
+
 	<div class="pie ui-widget-content">
 		<span> #{msg.piePagina} | #{msg.copyright}</span>
 	</div>

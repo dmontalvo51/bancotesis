@@ -1,0 +1,34 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="/pages/common/plantillaPrincipal.xhtml">
+
+	<ui:define name="title">Sistema de Ventas TABO ..:::.. Inicio de Sesion</ui:define>
+	<ui:define name="cuerpo">
+		<div class="cuerpo">
+			<!-- Empezar a programar desde aqui -->
+
+
+			<h:form>
+				<p:panel header="Inicio de sesion" styleClass="panelInicioSesion">
+
+					<h:panelGrid columns="2">
+						<h:outputText value="Usuario: " />
+						<h:inputText value="#{loginController.cuenta}" />
+
+						<h:outputText value="Contraseña: " />
+						<h:inputSecret value="#{loginController.password}" />
+					</h:panelGrid>
+
+					<p:commandButton value="Ingresar" id="BtnIngresar"
+						action="#{login.iniciarSesion}" ajax="false" update="mensaje" />
+
+
+				</p:panel>
+			</h:form>
+			<!-- Terminar de programar desde aqui -->
+		</div>
+	</ui:define>
+</ui:composition>

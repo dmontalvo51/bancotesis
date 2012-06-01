@@ -6,30 +6,31 @@
 	template="/pages/common/plantillaPrincipal.xhtml">
 	<ui:define name="title">#{msg.tituloSistema} .::. #{msg.ActaSustentacionTitulo}</ui:define>
 	<ui:define name="cuerpo">
+		<div class="cuerpo">
+
+			<!-- Empezar a programar desde aqui -->
+
+			<h:form>
+				<p:panel>
+					<f:facet name="header">
+						<h:outputLabel styleClass="mititulo">#{msg.ActaSustentacionTitulo}</h:outputLabel>
+					</f:facet>
+					<h:panelGrid columns="2">
+						<h:outputLabel value="Fecha Inicio" />
+						<p:calendar autocomplete="true" effect="slide"></p:calendar>
+						<h:outputLabel value="Fecha Fin" />
+						<p:calendar autocomplete="true" effect="explode"></p:calendar>
 
 
-		<!-- Empezar a programar desde aqui -->
+					</h:panelGrid>
 
-		<h:form>
-			<p:panel>
-				<f:facet name="header">
-					<h:outputLabel styleClass="mititulo">#{msg.ActaSustentacionTitulo}</h:outputLabel>
-				</f:facet>
-				<h:panelGrid columns="2">
-					<h:outputLabel value="Fecha Inicio" />
-					<p:calendar autocomplete="true" effect="slide"></p:calendar>
-					<h:outputLabel value="Fecha Fin" />
-					<p:calendar autocomplete="true" effect="explode"></p:calendar>
+					<p:commandButton value="#{msg.botonRegistrar}"
+						actionListener="#{registrarActaSustentacion.cargarListaActas}"
+						ajax="true" />
+				</p:panel>
+			</h:form>
 
-
-				</h:panelGrid>
-
-				<p:commandButton value="#{msg.botonRegistrar}"
-					actionListener="#{registrarActaSustentacion.cargarListaActas}"
-					ajax="true" />
-			</p:panel>
-		</h:form>
-
-		<!-- Terminar de programar desde aqui -->
+			<!-- Terminar de programar desde aqui -->
+		</div>
 	</ui:define>
 </ui:composition>

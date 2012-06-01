@@ -6,93 +6,94 @@
 	template="/pages/common/plantillaPrincipal.xhtml">
 	<ui:define name="title">#{msg.tituloSistema} .::. Ingresar Ficha de Tesis</ui:define>
 	<ui:define name="cuerpo">
+		<div class="cuerpo">
+
+			<!-- Empezar a programar desde aqui -->
 
 
-		<!-- Empezar a programar desde aqui -->
-
-
-		<h:panelGrid columns="2" styleClass="formularioRegistro">
-			<f:facet name="header">  
+			<h:panelGrid columns="2" styleClass="formularioRegistro">
+				<f:facet name="header">  
         INSCRIPCION DE FICHA DE TESIS
     </f:facet>
-			<h:outputLabel for="Codigo" value="Codigo: " />
-			<p:inputText id="Codigo" value="" label="Codigo" />
+				<h:outputLabel for="Codigo" value="Codigo: " />
+				<p:inputText id="Codigo" value="" label="Codigo" />
 
-		</h:panelGrid>
-
-
-
-		<!-- nuevo Panel grid para los combobox-->
-
-		<h:panelGrid columns="8" styleClass="formularioRegistro">
-
-			<!--creacion de combobox Asesores-->
-
-			<h:outputLabel for="Asesor" value="Asesor: " />
-			<h:selectOneMenu id="Asesor" value="#{pprBean.Asesor}"
-				required="true">
-				<f:selectItem itemLabel="Select One" itemValue="" />
-				<f:selectItems value="#{pprBean.Asesores}" />
-			</h:selectOneMenu>
-			<p:message for="Asesor" />
-			<h:outputText value="#{pprBean.Asesor}" />
-
-			<!--creacion de combobox LineaInvestigacion-->
-
-			<h:outputLabel for="LineaInvestigacion"
-				value="Linea de Investigacion: " />
-			<h:selectOneMenu id="LineaInvestigacion"
-				value="#{pprBean.LineaInvestigacion}" required="true">
-				<f:selectItem itemLabel="Select One" itemValue="" />
-				<f:selectItems value="#{pprBean.LineaInvestigaciones}" />
-			</h:selectOneMenu>
-			<p:message for="LineaInvestigacion" />
-			<h:outputText value="#{pprBean.LineaInvestigacion}" />
+			</h:panelGrid>
 
 
-		</h:panelGrid>
 
-		<!-- label para el titulo -->
-		<h:panelGrid columns="2" styleClass="formularioRegistro">
+			<!-- nuevo Panel grid para los combobox-->
 
-			<h:outputLabel for="Titulo" value="Titulo: " />
-			<p:inputText id="Titulo" value="" label="Titulo" />
+			<h:panelGrid columns="8" styleClass="formularioRegistro">
 
-		</h:panelGrid>
+				<!--creacion de combobox Asesores-->
 
-		<!-- Panel grid para el editor de texto-->
-		<h:panelGrid columns="1" styleClass="formularioRegistro">
+				<h:outputLabel for="Asesor" value="Asesor: " />
+				<h:selectOneMenu id="Asesor" value="#{pprBean.Asesor}"
+					required="true">
+					<f:selectItem itemLabel="Select One" itemValue="" />
+					<f:selectItems value="#{pprBean.Asesores}" />
+				</h:selectOneMenu>
+				<p:message for="Asesor" />
+				<h:outputText value="#{pprBean.Asesor}" />
 
-			<h:outputLabel for="Resumen" value="Resumen: " />
-			
-			<h:form id="form">
+				<!--creacion de combobox LineaInvestigacion-->
 
-				<p:editor id="Editor" value="#{editorBean.value}" width="600" />
-
-				<h:panelGrid columns="2" style="margin-top:10px">
-					<p:commandButton id="submitButton" value="Submit" update="display"
-						oncomplete="dlg.show()" icon="ui-icon-disk" />
-					<p:commandButton id="clearButton" type="button" value="Clear"
-						onclick="editor.clear()" icon="ui-icon-close" />
-				</h:panelGrid>
-
-				<p:dialog header="Content" widgetVar="dlg" showEffect="fade"
-					hideEffect="fade" modal="true">
-					<h:outputText id="display" value="#{editorBean.value}"
-						escape="false" />
-				</p:dialog>
-
-			</h:form>
-			<!-- aca termina el editor de texto-->
-			
-			<!-- boton Guardar -->
-			<f:facet name="footer">
-				<p:commandButton type="button" value="Registrar Ficha" icon="ui-icon-check"
-					style="margin:0" action="#" />
-			</f:facet>
-		</h:panelGrid>
+				<h:outputLabel for="LineaInvestigacion"
+					value="Linea de Investigacion: " />
+				<h:selectOneMenu id="LineaInvestigacion"
+					value="#{pprBean.LineaInvestigacion}" required="true">
+					<f:selectItem itemLabel="Select One" itemValue="" />
+					<f:selectItems value="#{pprBean.LineaInvestigaciones}" />
+				</h:selectOneMenu>
+				<p:message for="LineaInvestigacion" />
+				<h:outputText value="#{pprBean.LineaInvestigacion}" />
 
 
-		<!-- Terminar de programar desde aqui -->
+			</h:panelGrid>
+
+			<!-- label para el titulo -->
+			<h:panelGrid columns="2" styleClass="formularioRegistro">
+
+				<h:outputLabel for="Titulo" value="Titulo: " />
+				<p:inputText id="Titulo" value="" label="Titulo" />
+
+			</h:panelGrid>
+
+			<!-- Panel grid para el editor de texto-->
+			<h:panelGrid columns="1" styleClass="formularioRegistro">
+
+				<h:outputLabel for="Resumen" value="Resumen: " />
+
+				<h:form id="form">
+
+					<p:editor id="Editor" value="#{editorBean.value}" width="600" />
+
+					<h:panelGrid columns="2" style="margin-top:10px">
+						<p:commandButton id="submitButton" value="Submit" update="display"
+							oncomplete="dlg.show()" icon="ui-icon-disk" />
+						<p:commandButton id="clearButton" type="button" value="Clear"
+							onclick="editor.clear()" icon="ui-icon-close" />
+					</h:panelGrid>
+
+					<p:dialog header="Content" widgetVar="dlg" showEffect="fade"
+						hideEffect="fade" modal="true">
+						<h:outputText id="display" value="#{editorBean.value}"
+							escape="false" />
+					</p:dialog>
+
+				</h:form>
+				<!-- aca termina el editor de texto-->
+
+				<!-- boton Guardar -->
+				<f:facet name="footer">
+					<p:commandButton type="button" value="Registrar Ficha"
+						icon="ui-icon-check" style="margin:0" action="#" />
+				</f:facet>
+			</h:panelGrid>
+
+
+			<!-- Terminar de programar desde aqui -->
+		</div>
 	</ui:define>
 </ui:composition>

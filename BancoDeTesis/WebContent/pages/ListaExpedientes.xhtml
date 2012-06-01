@@ -1,0 +1,57 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="/pages/common/plantillaPrincipal.xhtml">
+	<ui:define name="title">#{msg.tituloSistema}</ui:define>
+	<ui:define name="cuerpo">
+		<div class="cuerpo">
+			<!-- Empezar a programar desde aqui -->
+			
+			<h:form>
+				<h:panelGrid columns="1" width="100%">
+				
+					<p:dataTable id="listaExpedientes" var="expediente" value="#{listaExpedientes.listaExpedientes}">
+						
+						<p:column>
+							<f:facet name="header">#{msg.codigo}</f:facet>
+							<h:outputText value="#{expediente.codigo}"/>
+						</p:column>
+						
+						<p:column >
+							<f:facet name="header">#{msg.fechaInicio}</f:facet>
+							<h:outputText value="#{expediente.fechaInicio}"/>
+						</p:column>
+						
+						<p:column >
+							<f:facet name="header">#{msg.codigoBachiller}</f:facet>
+							<h:outputText value="#{expediente.codigoBachiller}"/>
+						</p:column>
+						
+						<p:column >
+							<f:facet name="header">#{msg.nombres}</f:facet>
+							<h:outputText value="#{expediente.nombres}"/>
+						</p:column>
+						
+						<p:column >
+							<f:facet name="header">#{msg.apellidos}</f:facet>
+							<h:outputText value="#{expediente.apellidos}"/>
+						</p:column>
+						
+						<p:column >
+							<f:facet name="header">#{msg.estado}</f:facet>
+							<h:outputText value="#{expediente.estado}"/>
+						</p:column>
+					
+					</p:dataTable>
+					
+				</h:panelGrid>
+			</h:form>			
+			
+
+
+			<!-- Terminar de programar desde aqui -->
+		</div>
+	</ui:define>
+</ui:composition>

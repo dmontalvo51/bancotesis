@@ -4,7 +4,7 @@
 <mapper namespace="pe.edu.unmsm.integracion.TramitesMapper">
 
 
-	<resultMap type="pe.edu.unmsm.modelo.Tramite" id="Tramite">
+	<resultMap type="pe.edu.unmsm.modelo.Expediente" id="Expediente">
 		<result property="id" column="tra_iCodigo"/>		
 		<result property="codigo" column="tra_vccodigo"/>
 		<result property="estado" column="est_iCodigo"/>

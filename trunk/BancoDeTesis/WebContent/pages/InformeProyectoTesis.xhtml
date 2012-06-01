@@ -9,12 +9,74 @@
 		<div class="cuerpo">
 			<!-- Empezar a programar desde aqui -->
 
+				<h:form id="form">
+				<h:panelGrid columns="1" styleClass="formularioRegistro">
+					<f:facet name="header">Informe de Proyecto de Tesis</f:facet>
+					<h:outputLabel for="NTramite" value="Numero Tramite: " />
+					<p:inputText id="Ntramite" value="" label="" />
 
-			<p:panel menuTitle="Hola">
-				<h:panelGrid columns="2">
-					<span>Preparar informe de Proyecto de Tesis</span>
 				</h:panelGrid>
-			</p:panel>
+
+				<!-- aca va el elcuepo-->
+				<h:panelGrid columns="4" styleClass="formularioRegistro">
+
+					<h:outputLabel for="Codigo" value="Codigo: " />
+					<p:inputText id="Codigo" value="" label="Codigo" />
+					<h:outputLabel for="Alumno" value="Alumno: " />
+					<p:inputText id="Alumno" value="" label="Alumno" />
+					<h:outputLabel for="Linea de Investigacion"
+						value="Linea de Investigacion: " />
+					<p:inputText id="LineadeInvestigacion" value=""
+						label="Linea de Investigacion" />
+					<h:outputLabel for="Asesor" value="Asesor: " />
+					<p:inputText id="Asesor" value="" label="Asesor" />
+					<h:outputLabel for="Titulo" value="Titulo: " />
+					<p:inputText id="Titulo" value="" label="Titulo" />
+				</h:panelGrid>
+					<!-- aca va el radiobuton-->
+
+				<h:panelGrid columns="1" styleClass="formularioRegistro">
+					<f:facet name="header">
+					</f:facet>
+
+					<p:commandLink id="linkLeerBosquejo" onclick="LeerBosquejo.show()"
+						value="Leer Bosquejo de tesis" />
+
+					<h:outputLabel for="Se encuentra"
+						value="El bachiller debe de tomar la siguiente accion:  " />
+
+					<h:panelGrid columns="3" style="margin-bottom:1px" cellpadding="1">
+   						 <p:selectOneRadio id="OptionsRadio" value="">  
+        					<f:selectItem itemLabel="Apto para el desarrollo del Proyecto de Tesis" itemValue="1" />  
+      						<f:selectItem itemLabel="Debe mejorar el bosquejo del Proyecto de Tesis" itemValue="2" />  
+     					    <f:selectItem itemLabel="Debe cambiar el tema del Proyecto de Tesis" itemValue="3" />  
+    					</p:selectOneRadio>
+    				 </h:panelGrid>
+    				 
+				</h:panelGrid>
+
+			<h:panelGrid columns="1" styleClass="formularioRegistro">
+
+					<h:outputLabel value="Se observa que el tema de Tesis: " />
+					<p:inputTextarea rows="10" cols="100" />
+					<h:outputLabel value="Se recomienda: " />
+					<p:inputTextarea rows="10" cols="100" />
+					
+					
+					<h:panelGrid columns="3" style="margin-top:10px">
+
+						<p:commandButton id="CancelarEvaluacion" type="button" value="Cancelar" />
+						<p:commandButton id="LimpiarEvaluacion" type="button" value="Limpiar Campos" />
+						<p:commandButton id="Registrarevaluacion" type="button" value="Registrar evaluacion"  />
+					</h:panelGrid>
+
+
+				</h:panelGrid>
+			
+
+				
+
+			</h:form>
 
 			<!-- Terminar de programar desde aqui -->
 

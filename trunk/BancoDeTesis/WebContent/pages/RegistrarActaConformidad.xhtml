@@ -7,82 +7,83 @@
 	template="/pages/common/plantillaPrincipal.xhtml">
 	<ui:define name="title">#{msg.tituloSistema} .::. #{msg.RegistroActaConformidadTitulo}</ui:define>
 	<ui:define name="cuerpo">
+		<div class="cuerpo">
 
+			<!-- Empezar a programar desde aqui -->
 
-		<!-- Empezar a programar desde aqui -->
+			<!-- aca va el encabezado-->
+			<h:form id="form">
+				<h:panelGrid columns="1" styleClass="formularioRegistro">
+					<f:facet name="header">Acta de Conformidad</f:facet>
+					<h:outputLabel for="NTramite" value="Numero Tramite: " />
+					<p:inputText id="Ntramite" value="" label="" />
 
-		<!-- aca va el encabezado-->
-		<h:form id="form">
-			<h:panelGrid columns="1" styleClass="formularioRegistro">
-				<f:facet name="header">Acta de Conformidad</f:facet>
-				<h:outputLabel for="NTramite" value="Numero Tramite: " />
-				<p:inputText id="Ntramite" value="" label="" />
-
-			</h:panelGrid>
-
-			<!-- aca va el elcuepo-->
-			<h:panelGrid columns="4" styleClass="formularioRegistro">
-
-				<h:outputLabel for="Codigo" value="Codigo: " />
-				<p:inputText id="Codigo" value="" label="Codigo" />
-				<h:outputLabel for="Alumno" value="Alumno: " />
-				<p:inputText id="Alumno" value="" label="Alumno" />
-				<h:outputLabel for="Linea de Investigacion"
-					value="Linea de Investigacion: " />
-				<p:inputText id="LineadeInvestigacion" value=""
-					label="Linea de Investigacion" />
-				<h:outputLabel for="Asesor" value="Asesor: " />
-				<p:inputText id="Asesor" value="" label="Asesor" />
-				<h:outputLabel for="Titulo" value="Titulo: " />
-				<p:inputText id="Titulo" value="" label="Titulo" />
-			</h:panelGrid>
-
-			<!-- aca va el radiobuton-->
-
-			<h:panelGrid columns="1" styleClass="formularioRegistro">
-				<f:facet name="header">
-				</f:facet>
-
-				<p:commandLink id="linkVerResumen" onclick="resumenTesis.show()"
-					value="Ver resumen de tesis" />
-
-				<h:outputLabel for="Desarrollo de la Tesis"
-					value="Desarrollo de la Tesis:  "/>
-
-				<h:panelGrid columns="1" style="margin-bottom:1px" cellpadding="1">
-
-
-					<p:selectOneRadio id="options" value="">
-						<f:selectItem itemLabel="Conforme" itemValue="1" />
-
-						<f:selectItem itemLabel="No conforme" itemValue="2" />
-
-					</p:selectOneRadio>
 				</h:panelGrid>
 
-			</h:panelGrid>
+				<!-- aca va el elcuepo-->
+				<h:panelGrid columns="4" styleClass="formularioRegistro">
 
-			<h:panelGrid columns="1" styleClass="formularioRegistro">
-
-				<h:outputLabel value="Observaciones del Asesor " />
-
-
-
-				<p:editor id="EditorObservaciones"
-					value="#{actaConformidad.observaciones}" width="600" />
-
-				<h:panelGrid columns="2" style="margin-top:10px">
-
-					<p:commandButton id="Limpiar" type="button" value="Limpiar"
-						onclick="editor.clear()" icon="ui-icon-close" />
+					<h:outputLabel for="Codigo" value="Codigo: " />
+					<p:inputText id="Codigo" value="" label="Codigo" />
+					<h:outputLabel for="Alumno" value="Alumno: " />
+					<p:inputText id="Alumno" value="" label="Alumno" />
+					<h:outputLabel for="Linea de Investigacion"
+						value="Linea de Investigacion: " />
+					<p:inputText id="LineadeInvestigacion" value=""
+						label="Linea de Investigacion" />
+					<h:outputLabel for="Asesor" value="Asesor: " />
+					<p:inputText id="Asesor" value="" label="Asesor" />
+					<h:outputLabel for="Titulo" value="Titulo: " />
+					<p:inputText id="Titulo" value="" label="Titulo" />
 				</h:panelGrid>
 
+				<!-- aca va el radiobuton-->
 
-			</h:panelGrid>
+				<h:panelGrid columns="1" styleClass="formularioRegistro">
+					<f:facet name="header">
+					</f:facet>
 
-		</h:form>
+					<p:commandLink id="linkVerResumen" onclick="resumenTesis.show()"
+						value="Ver resumen de tesis" />
 
-		<!-- Terminar de programar desde aqui -->
+					<h:outputLabel for="Desarrollo de la Tesis"
+						value="Desarrollo de la Tesis:  " />
+
+					<h:panelGrid columns="1" style="margin-bottom:1px" cellpadding="1">
+
+
+						<p:selectOneRadio id="options" value="">
+							<f:selectItem itemLabel="Conforme" itemValue="1" />
+
+							<f:selectItem itemLabel="No conforme" itemValue="2" />
+
+						</p:selectOneRadio>
+					</h:panelGrid>
+
+				</h:panelGrid>
+
+				<h:panelGrid columns="1" styleClass="formularioRegistro">
+
+					<h:outputLabel value="Observaciones del Asesor " />
+
+
+
+					<p:editor id="EditorObservaciones"
+						value="#{actaConformidad.observaciones}" width="600" />
+
+					<h:panelGrid columns="2" style="margin-top:10px">
+
+						<p:commandButton id="Limpiar" type="button" value="Limpiar"
+							onclick="editor.clear()" icon="ui-icon-close" />
+					</h:panelGrid>
+
+
+				</h:panelGrid>
+
+			</h:form>
+
+			<!-- Terminar de programar desde aqui -->
+		</div>
 	</ui:define>
 
 	<p:dialog header="Resumen de Tesis" id="dialogResumenTesis"

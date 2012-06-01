@@ -4,12 +4,20 @@
 
 .cabecera{height: 10%;}
 
-.menu
+.menu{
+	display: block; /* set up as a block */
+	height: 10%; /* set height to full page */
+	max-height: 10%;
+	overflow: auto; /* add scroll bars as required */
+	position: relative;
+	/* set up relative positioning so that z-index will work */
+	z-index: 3; /* allocate a suitable z-index */
+}
 
 .cuerpo {
 	display: block; /* set up as a block */
-	height: 83%; /* set height to full page */
-	max-height: 83%;
+	height: 73%; /* set height to full page */
+	max-height: 73%;
 	overflow: auto; /* add scroll bars as required */
 	position: relative;
 	/* set up relative positioning so that z-index will work */

@@ -8,6 +8,7 @@
 	<context-param>
 		<param-name>primefaces.THEME</param-name>
 		<param-value>eggplant</param-value>
+
 	</context-param>
 
 
@@ -24,22 +25,27 @@
 		<param-name>javax.faces.PROJECT_STAGE</param-name>
 		<param-value>Development</param-value>
 	</context-param>
+	<context-param>
+		<param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name>
+		<param-value>true</param-value>
+	</context-param>
 
 	<!-- Configuracion Spring 3 -->
- 	
+
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 	<listener>
 		<listener-class>
-			org.springframework.web.context.request.RequestContextListener</listener-class>
+			org.springframework.web.context.request.RequestContextListener
+		</listener-class>
 	</listener>
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
  	     /WEB-INF/application-context*.xml
      </param-value>
-	</context-param> 
+	</context-param>
 
 
 	<!-- Configuracion Prime Faces -->

@@ -5,33 +5,23 @@
 	xmlns:p="http://primefaces.prime.com.tr/ui">
 
 	<h:form>
-			<h:panelGrid columns="4"
-				columnClasses="barraMenu,seccionUsuario,seccionPerfil,seccionCerrarSesion"
-					styleClass="cuerpoSuperior" >
+		<h:panelGrid columns="4"
+			columnClasses="barraMenu,seccionUsuario,seccionPerfil,seccionCerrarSesion"
+			styleClass="cuerpoSuperior">
 
+			<p:menubar effect="slide" effectDuration="0"
+				autoSubmenuDisplay="FALSE" showDelay="50" styleClass="barraMenu">
 
-				<p:menubar effect="slide" effectDuration="0"
-					autoSubmenuDisplay="FALSE" showDelay="50" styleClass="barraMenu">
+				<p:menuitem value="#{msg.menuMiPerfil}" url="#" />
+				<p:menuitem value="#{msg.menuMisTramites}" url="#" />
 
-					<p:submenu label="Trámites">
-						<p:menuitem value="Crear ficha" />
-						<p:menuitem value="Aprobar ficha (VºBº)" />
-						<p:menuitem value="Informe de asesor" />
-					</p:submenu>
+			</p:menubar>
 
-					<p:submenu label="Consulta" />
+			<h:outputText value="usuario" />
+			<h:outputText value="perfil" />
+			<p:commandLink value="Cerrar Sesion" />
 
-					<p:submenu label="Pendientes" />
-
-					<p:submenu label="Mantenimiento" />
-
-				</p:menubar>
-
-				<h:outputText value="usuario" />
-				<h:outputText value="perfil" />
-				<p:commandLink value="Cerrar Sesion"/>
-
-			</h:panelGrid>
-		</h:form>
+		</h:panelGrid>
+	</h:form>
 
 </ui:composition>

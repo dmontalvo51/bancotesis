@@ -22,10 +22,15 @@
 	<div class="cabecera ui-widget-content">
 		<span>#{msg.tituloSistema}</span>
 	</div>
-	<div class="menu">
-		<ui:include src="/pages/common/menu.xhtml" />
-	</div>
-	<ui:insert name="cuerpo"/>
+
+	<ui:insert name="menu">
+		<div class="menu">
+			<ui:include src="/pages/common/menu.xhtml" />
+		</div>
+	</ui:insert>
+
+	<ui:insert name="cuerpo" />
+
 	<div class="pie ui-widget-content">
 		<span> #{msg.piePagina} | #{msg.copyright}</span>
 	</div>

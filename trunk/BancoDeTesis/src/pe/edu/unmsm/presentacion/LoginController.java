@@ -7,30 +7,33 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import pe.edu.unmsm.modelo.Usuario;
 import pe.edu.unmsm.negocio.LoginService;
+import pe.edu.unmsm.util.TesisUtil;
 
 @ManagedBean(name="login")
-@RequestScoped
+@SessionScoped
 public class LoginController {
 	
 	private String cuenta;
 	private String password;
+	private Usuario usuario;
+	
 	
 	@ManagedProperty(value="#{loginService}")
 	private LoginService loginService;
 	
 	
 	public String iniciarSesion(){
-		Map<String,String> usuario=new HashMap<String,String >();
-		usuario.put("usuario",getCuenta());
-		usuario.put("pass",getPassword());
+		Map<String,String> usu=new HashMap<String,String >();
+		usu.put("usuario",getCuenta());
+		usu.put("pass",getPassword());
 		
-		Usuario u=new Usuario();
-		u=loginService.iniciarSesion(usuario);
-		if(u!=null)					
+		usuario=loginService.iniciarSesion(usu);
+		if(usuario!=null)					
 			return "Inicio";
 		else{
 			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error", "Error al iniciar sesión"));
@@ -38,6 +41,11 @@ public class LoginController {
 		}
 	}
 	
+	public String cerrarSesion(){
+		TesisUtil.escribir("Cerrando sesion");
+		return "Login";
+		
+	}
 	
 	public String getCuenta() {
 		return cuenta;
@@ -59,6 +67,15 @@ public class LoginController {
 
 	public void setLoginService(LoginService loginService) {
 		this.loginService = loginService;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 

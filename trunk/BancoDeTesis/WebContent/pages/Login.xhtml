@@ -12,7 +12,7 @@
 			<!-- Empezar a programar desde aqui -->
 
 			<h:form>
-				<p:panel header="#{msg.inicioSesion}" styleClass="panelInicioSesion">
+				<p:panel header="Inicio de sesion" styleClass="panelInicioSesion">
 
 					<h:panelGrid columns="2">
 						<h:outputText value="#{msg.cuenta}" />
@@ -22,9 +22,11 @@
 						<h:inputSecret value="#{login.password}" />
 
 					</h:panelGrid>
-					<p:messages id="mensaje" showDetail="true" autoUpdate="true" />
-					<p:commandButton value="#{msg.botonIngresar}" id="BtnIngresar"
-						action="#{login.iniciarSesion}" ajax="false"/>
+
+
+					<p:commandButton value="Ingresar" id="BtnIngresar"
+						action="#{login.iniciarSesion}" ajax="false" update="mensaje" />
+
 
 				</p:panel>
 			</h:form>

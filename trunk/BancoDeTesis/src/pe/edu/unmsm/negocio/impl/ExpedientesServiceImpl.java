@@ -19,7 +19,7 @@ public class ExpedientesServiceImpl implements ExpedientesService {
 	private ExpedientesMapper expedientesMapper;
 
 	public List<Expediente> cargarTramites() {
-		List<Expediente> listaExpedientes=new ArrayList<Expediente>();
+		List<Expediente> listaExpedientes=new ArrayList<Expediente>();		
 		listaExpedientes=expedientesMapper.cargarExpedientes();
 		
 		return listaExpedientes;

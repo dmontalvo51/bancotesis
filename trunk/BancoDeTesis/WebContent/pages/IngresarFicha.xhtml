@@ -16,7 +16,7 @@
         INSCRIPCION DE FICHA DE TESIS
     </f:facet>
 				<h:outputLabel for="Codigo" value="Codigo: " />
-				<p:inputText id="Codigo" value="" label="Codigo" />
+				<p:inputText id="Codigo" value="#{RegistrarFicha.Codigo}" label="Codigo" />
 
 			</h:panelGrid>
 
@@ -29,25 +29,25 @@
 				<!--creacion de combobox Asesores-->
 
 				<h:outputLabel for="Asesor" value="Asesor: " />
-				<h:selectOneMenu id="Asesor" value="#{pprBean.Asesor}"
+				<h:selectOneMenu id="Asesor" value="#{registrarFicha.asesor}"
 					required="true">
 					<f:selectItem itemLabel="Select One" itemValue="" />
-					<f:selectItems value="#{pprBean.Asesores}" />
+					<f:selectItems value="#{registrarFicha.asesores}" />
 				</h:selectOneMenu>
 				<p:message for="Asesor" />
-				<h:outputText value="#{pprBean.Asesor}" />
+				<h:outputText value="#{registrarFicha.asesor}" />
 
 				<!--creacion de combobox LineaInvestigacion-->
 
 				<h:outputLabel for="LineaInvestigacion"
 					value="Linea de Investigacion: " />
 				<h:selectOneMenu id="LineaInvestigacion"
-					value="#{pprBean.LineaInvestigacion}" required="true">
+					value="#{registrarFicha.lineaInvestigacion}" required="true">
 					<f:selectItem itemLabel="Select One" itemValue="" />
-					<f:selectItems value="#{pprBean.LineaInvestigaciones}" />
+					<f:selectItems value="#{registrarFicha.lineaInvestigaciones}" />
 				</h:selectOneMenu>
 				<p:message for="LineaInvestigacion" />
-				<h:outputText value="#{pprBean.LineaInvestigacion}" />
+				<h:outputText value="#{registrarFicha.lineaInvestigacion}" />
 
 
 			</h:panelGrid>
@@ -56,7 +56,7 @@
 			<h:panelGrid columns="2" styleClass="formularioRegistro">
 
 				<h:outputLabel for="Titulo" value="Titulo: " />
-				<p:inputText id="Titulo" value="" label="Titulo" />
+				<p:inputText id="Titulo" value="#{registrarFicha.titulo}" label="Titulo" />
 
 			</h:panelGrid>
 
@@ -67,7 +67,7 @@
 
 				<h:form id="form">
 
-					<p:editor id="Editor" value="#{editorBean.value}" width="600" />
+					<p:editor id="Editor" value="#{registrarFicha.resumen}" width="600" />
 
 					<h:panelGrid columns="2" style="margin-top:10px">
 						<p:commandButton id="submitButton" value="Submit" update="display"
@@ -78,7 +78,7 @@
 
 					<p:dialog header="Content" widgetVar="dlg" showEffect="fade"
 						hideEffect="fade" modal="true">
-						<h:outputText id="display" value="#{editorBean.value}"
+						<h:outputText id="display" value="#{registrarFicha.resumen}"
 							escape="false" />
 					</p:dialog>
 

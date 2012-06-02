@@ -8,7 +8,14 @@ public class Usuario {
 	private String aPaterno;
 	private String aMaterno;
 	private String codigo;
+	private String perfil;
 	
+	public String getPerfil() {
+		return perfil;
+	}
+	public void setPerfil(String perfil) {
+		this.perfil = perfil;
+	}
 	public int getId() {
 		return id;
 	}

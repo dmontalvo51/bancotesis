@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="pe.edu.unmsm.integracion.LoginMapper">
+
+	<resultMap type="pe.edu.unmsm.modelo.Usuario" id="Usuario">
+		<result property="id" column="usu_iCodigo"/>
+		<result property="cuenta" column="usu_vcAlias"/>
+		<result property="nombres" column="usu_vcNombre"/>
+		<result property="aPaterno" column="usu_vcPaterno"/>
+		<result property="aMaterno" column="usu_vcMaterno" />
+		<result property="perfil" column="perusu_vcPerfil"/>
+	</resultMap>
+	
+	<select id="iniciarSesion" resultMap="Usuario" parameterType="java.util.Map">
+		select usu.*,perfil.perusu_vcPerfil from usuario as usu,perfilusuario as perfil
+		where 	usu.usu_vcAlias = #{usuario} and usu.usu_vcContrasena = #{pass}
+		and perfil.perusu_iCodigo=usu.perusu_iCodigo
+	</select>
+
+</mapper>

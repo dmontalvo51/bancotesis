@@ -6,25 +6,25 @@
 	template="/pages/common/plantillaPrincipal.xhtml">
 
 	<ui:define name="title">Sistema de Ventas TABO ..:::.. Inicio de Sesion</ui:define>
-	<ui:define name="menu"/>
+	<ui:define name="menu" />
 	<ui:define name="cuerpo">
-		<div class="cuerpo" style="height:83%">
+		<div class="cuerpo" style="height: 83%">
 			<!-- Empezar a programar desde aqui -->
 
 			<h:form>
-				<p:panel header="Inicio de sesion" styleClass="panelInicioSesion">
+				<p:panel header="#{msg.inicioSesion}" styleClass="panelInicioSesion">
 
 					<h:panelGrid columns="2">
-						<h:outputText value="Usuario: " />
-						<h:inputText value="#{loginController.cuenta}" />
+						<h:outputText value="#{msg.cuenta}" />
+						<h:inputText value="#{login.cuenta}" />
 
-						<h:outputText value="Contraseña: " />
-						<h:inputSecret value="#{loginController.password}" />
+						<h:outputText value="{msg.password} " />
+						<h:inputSecret value="#{login.password}" />
+
 					</h:panelGrid>
-
-					<p:commandButton value="Ingresar" id="BtnIngresar"
-						action="#{login.iniciarSesion}" ajax="false" update="mensaje" />
-
+					<p:messages id="mensaje" showDetail="true" autoUpdate="true" />
+					<p:commandButton value="#{msg.botonIngresar}" id="BtnIngresar"
+						action="#{login.iniciarSesion}" ajax="false"/>
 
 				</p:panel>
 			</h:form>

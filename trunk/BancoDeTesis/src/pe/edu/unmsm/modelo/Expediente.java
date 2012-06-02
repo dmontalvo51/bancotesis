@@ -14,6 +14,11 @@ public class Expediente {
 	
 	
 	
+	public Expediente() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public Expediente(int id, String codigo, String estado,
 			String codigoBachiller, String nombres, String apellidos,
 			Date fechaInicio) {

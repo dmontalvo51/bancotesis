@@ -1,24 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="pe.edu.unmsm.integracion.TramitesMapper">
+<mapper namespace="pe.edu.unmsm.integracion.ExpedientesMapper">
 
 
 	<resultMap type="pe.edu.unmsm.modelo.Expediente" id="Expediente">
-		<result property="id" column="tra_iCodigo"/>		
-		<result property="codigo" column="tra_vccodigo"/>
-		<result property="estado" column="est_iCodigo"/>
+		<result property="id" column="exp_iCodigo" />
+		<result property="codigo" column="exp_vcCodigo" />
+		<result property="estado" column="est_vcEstado" />
+		<result property="codigoBachiller" column="exp_vcCodigoBachiller" />
+		<result property="fechaInicio" column="exp_dtFechaInicio"
+			javaType="java.util.Date" />
+
 	</resultMap>
 
 
-	<select id="cargarTramites" resultMap="Tramite">
-		select * from tesis.tramite
+	<select id="cargarExpedientes" resultMap="Expediente">
+		select
+		EX.exp_iCodigo,EX.exp_vcCodigo,EX.exp_vcCodigoBachiller,EX.exp_dtFechaInicio,ES.est_vcEstado
+		from
+		bancotesis.expediente as EX,
+		bancotesis.estado as ES
+		where
+		EX.est_iCodigo=ES.est_iCodigo
 	</select>
-	
-	
+
+
 	<insert id="insertarTramite">
-	
-	
+
+
 	</insert>
 
 </mapper>

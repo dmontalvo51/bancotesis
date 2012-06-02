@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 public interface SustentacionMapper{
 
 
-	List<ActaSustentacion> selecActaSustentacion();
+	List<ActaSustentacion> selectActaSustentacion();
 	
 	void insertarActaSustentacion(ActaSustentacion actaSustentacion);
 	

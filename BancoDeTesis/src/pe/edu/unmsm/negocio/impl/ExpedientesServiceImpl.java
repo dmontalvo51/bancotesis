@@ -20,10 +20,7 @@ public class ExpedientesServiceImpl implements ExpedientesService {
 
 	public List<Expediente> cargarTramites() {
 		List<Expediente> listaExpedientes=new ArrayList<Expediente>();
-		
-		listaExpedientes.add(new Expediente(1, "0001-FISI-2012","Nuevo", "07200024","Diego Ignacio", "Montalvo Molina",new Date(23,5,2012)));
-		listaExpedientes.add(new Expediente(2, "0002-FISI-2012","Nuevo", "08200111","Salomon Rodrigo", "Mendoza Cardenas",new Date(23,5,2012)));
-		listaExpedientes.add(new Expediente(3, "0003-FISI-2012","Nuevo", "08200190","Jaime Alonso", "Medina Zacarias",new Date(23,5,2012)));
+		listaExpedientes=expedientesMapper.cargarExpedientes();
 		
 		return listaExpedientes;
 	}

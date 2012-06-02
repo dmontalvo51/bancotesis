@@ -84,12 +84,16 @@
 
 			<!-- Terminar de programar desde aqui -->
 		</div>
+
+		<p:dialog header="Resumen de Tesis" id="dialogResumenTesis"
+			widgetVar="resumenTesis" showEffect="slide" hideEffect="explode"
+			modal="false" resizable="true">
+			<h:outputText value="#{actaConformidad.resumen}" />
+		</p:dialog>
+
+
 	</ui:define>
 
-	<p:dialog header="Resumen de Tesis" id="dialogResumenTesis"
-		widgetVar="resumenTesis" showEffect="slide" hideEffect="explode"
-		modal="false" resizable="true">
-		<h:outputText value="#{actaConformidad.resumen}" />
-	</p:dialog>
+
 
 </ui:composition>

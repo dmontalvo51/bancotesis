@@ -24,7 +24,7 @@ public class SustentacionServiceImpl implements SustentacionService {
 	public List<ActaSustentacion> getListaActaSustentacion() {
 		TesisUtil.escribir("Entro al servicio");
 		try {
-			return actaSustentacionMapper.selecActaSustentacion();
+			return actaSustentacionMapper.selectActaSustentacion();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new ArrayList();

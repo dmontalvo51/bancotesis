@@ -7,30 +7,38 @@ public class Expediente {
 	private int id;
 	private String codigo;
 	private String estado;
-	private String codigoBachiller;
+	private String usuario;
 	private String nombres;
 	private String apellidos;
 	private Date fechaInicio;
 	
 	
 	
+	public Expediente(int id, String codigo, String estado, String usuario,
+			String nombres, String apellidos, Date fechaInicio) {
+		super();
+		this.id = id;
+		this.codigo = codigo;
+		this.estado = estado;
+		this.usuario = usuario;
+		this.nombres = nombres;
+		this.apellidos = apellidos;
+		this.fechaInicio = fechaInicio;
+	}
+
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
 	public Expediente() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Expediente(int id, String codigo, String estado,
-			String codigoBachiller, String nombres, String apellidos,
-			Date fechaInicio) {
-		super();
-		this.id = id;
-		this.codigo = codigo;
-		this.estado = estado;
-		this.codigoBachiller = codigoBachiller;
-		this.nombres = nombres;
-		this.apellidos = apellidos;
-		this.fechaInicio = fechaInicio;
-	}
 	
 	public int getId() {
 		return id;
@@ -49,12 +57,6 @@ public class Expediente {
 	}
 	public void setEstado(String estado) {
 		this.estado = estado;
-	}
-	public String getCodigoBachiller() {
-		return codigoBachiller;
-	}
-	public void setCodigoBachiller(String codigoBachiller) {
-		this.codigoBachiller = codigoBachiller;
 	}
 	public String getNombres() {
 		return nombres;

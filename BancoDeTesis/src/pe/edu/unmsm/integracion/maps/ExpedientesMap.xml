@@ -8,21 +8,25 @@
 		<result property="id" column="exp_iCodigo" />
 		<result property="codigo" column="exp_vcCodigo" />
 		<result property="estado" column="est_vcEstado" />
-		<result property="codigoBachiller" column="exp_vcCodigoBachiller" />
+		<result property="usuario" column="usu_vcAlias" />
 		<result property="fechaInicio" column="exp_dtFechaInicio"
 			javaType="java.util.Date" />
+		
 
 	</resultMap>
 
 
 	<select id="cargarExpedientes" resultMap="Expediente">
 		select
-		EX.exp_iCodigo,EX.exp_vcCodigo,EX.exp_vcCodigoBachiller,EX.exp_dtFechaInicio,ES.est_vcEstado
+		EX.exp_iCodigo,EX.exp_vcCodigo,EX.exp_dtFechaInicio,
+		ES.est_vcEstado,USU.usu_vcAlias
 		from
 		bancotesis.expediente as EX,
-		bancotesis.estado as ES
+		bancotesis.estado as ES,
+		bancotesis.usuario as USU
 		where
-		EX.est_iCodigo=ES.est_iCodigo
+		EX.est_iCodigo=ES.est_iCodigo and
+		EX.usu_iCodigo=USU.usu_iCodigo;
 	</select>
 
 

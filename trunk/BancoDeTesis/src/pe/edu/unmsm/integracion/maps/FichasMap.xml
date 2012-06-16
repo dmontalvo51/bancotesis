@@ -10,5 +10,15 @@
 		<result property="estado" column="est_iCodigo"/>
 	</resultMap>
 
+
+	<select id="cargarTramites" resultMap="Ficha">
+		select * from tesis.tramite
+	</select>
 	
+	
+	<insert id="insertarTramite">
+	
+	
+	</insert>
+
 </mapper>

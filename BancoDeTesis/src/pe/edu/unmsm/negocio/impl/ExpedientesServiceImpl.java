@@ -24,7 +24,13 @@ public class ExpedientesServiceImpl implements ExpedientesService {
 		
 		return listaExpedientes;
 	}
+	
 
+	public Expediente ingresarExpediente(Expediente exp) {
+		return expedientesMapper.ingresarExpediente(exp);
+	}
+
+	
 	public ExpedientesMapper getExpedientesMapper() {
 		return expedientesMapper;
 	}
@@ -33,5 +39,7 @@ public class ExpedientesServiceImpl implements ExpedientesService {
 		this.expedientesMapper = expedientesMapper;
 	}
 
+
+	
 	
 }

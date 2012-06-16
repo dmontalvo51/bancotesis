@@ -19,13 +19,13 @@
 					<h:panelGroup>
 						<h:outputLabel value="#{msg.cuenta}" />
 						<span/>
-						<p:commandButton value="#{login.usuario.cuenta}" type="button" />
+						<p:commandButton value="#{menu.usuario.cuenta}" type="button" />
 					</h:panelGroup>
 					<h:panelGroup>
 						<h:outputLabel value="#{msg.perfil}" /><span/>
-						<p:commandButton value="#{login.usuario.perfil}" type="button" />
+						<p:commandButton value="#{menu.usuario.perfil}" type="button" />
 					</h:panelGroup>
-					<p:commandLink value="Cerrar Sesion" actionListener="#{login.cerrarSesion}" ajax="false" />
+					<p:commandLink value="Cerrar Sesion" action="#{login.cerrarSesion}" ajax="false" />
 				</h:panelGrid>
 
 			</p:toolbarGroup>

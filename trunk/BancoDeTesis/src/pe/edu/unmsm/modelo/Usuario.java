@@ -10,6 +10,7 @@ public class Usuario {
 	private String codigo;
 	private String perfil;
 	
+	
 	public String getPerfil() {
 		return perfil;
 	}

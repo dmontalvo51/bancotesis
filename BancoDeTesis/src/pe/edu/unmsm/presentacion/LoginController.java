@@ -33,7 +33,7 @@ public class LoginController implements Serializable{
 	public String iniciarSesion(){
 		
 		Map<String,String> usu=new HashMap<String,String >();
-		usu.put("usuario",getCuenta());
+		usu.put("cuenta",getCuenta());
 		usu.put("pass",getPassword());
 		
 		usuario=loginService.iniciarSesion(usu);

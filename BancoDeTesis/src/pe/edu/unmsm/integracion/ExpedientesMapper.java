@@ -8,6 +8,6 @@ public interface ExpedientesMapper {
 	
 	public List<Expediente> cargarExpedientes();
 	
-	public int insertarTramite(Expediente tramite);
+	public Expediente ingresarExpediente(Expediente exp);
 
 }

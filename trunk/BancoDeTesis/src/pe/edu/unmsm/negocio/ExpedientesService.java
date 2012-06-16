@@ -7,5 +7,7 @@ import pe.edu.unmsm.modelo.Expediente;
 public interface ExpedientesService {
 	
 	public List<Expediente> cargarTramites();
+	
+	public Expediente ingresarExpediente(Expediente exp);
 
 }

@@ -1,5 +1,6 @@
 package pe.edu.unmsm.presentacion;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,10 +15,12 @@ import pe.edu.unmsm.modelo.Usuario;
 import pe.edu.unmsm.negocio.LoginService;
 import pe.edu.unmsm.util.TesisUtil;
 
+
+@RequestScoped
 @ManagedBean(name="login")
-@SessionScoped
-public class LoginController {
+public class LoginController implements Serializable{
 	
+	private static final long serialVersionUID = 730531515518687976L;
 	private String cuenta;
 	private String password;
 	private Usuario usuario;
@@ -28,13 +31,17 @@ public class LoginController {
 	
 	
 	public String iniciarSesion(){
+		
 		Map<String,String> usu=new HashMap<String,String >();
 		usu.put("usuario",getCuenta());
 		usu.put("pass",getPassword());
 		
 		usuario=loginService.iniciarSesion(usu);
-		if(usuario!=null)					
+		
+		if(usuario!=null){
+			TesisUtil.subirASesion("usuario", usuario);
 			return "Inicio";
+		}
 		else{
 			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error", "Error al iniciar sesión"));
 			 return null;
@@ -42,7 +49,8 @@ public class LoginController {
 	}
 	
 	public String cerrarSesion(){
-		TesisUtil.escribir("Cerrando sesion");
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        //return "home.xhtml?faces-redirect=true";
 		return "Login";
 		
 	}

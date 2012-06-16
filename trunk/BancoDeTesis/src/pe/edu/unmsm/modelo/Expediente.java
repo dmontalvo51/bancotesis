@@ -12,8 +12,7 @@ public class Expediente {
 	private String apellidos;
 	private Date fechaInicio;
 	
-	
-	
+
 	public Expediente(int id, String codigo, String estado, String usuario,
 			String nombres, String apellidos, Date fechaInicio) {
 		super();
@@ -25,7 +24,8 @@ public class Expediente {
 		this.apellidos = apellidos;
 		this.fechaInicio = fechaInicio;
 	}
-
+	
+	
 	public String getUsuario() {
 		return usuario;
 	}
@@ -79,5 +79,5 @@ public class Expediente {
 	
 	
 	
-	
 }
+	

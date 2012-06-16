@@ -3,11 +3,17 @@ package pe.edu.unmsm.presentacion;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
 import pe.edu.unmsm.modelo.ActaSustentacion;
 import pe.edu.unmsm.modelo.Asesor;
+import pe.edu.unmsm.modelo.Expediente;
 import pe.edu.unmsm.modelo.LineaInvestigacion;
+import pe.edu.unmsm.modelo.Usuario;
+import pe.edu.unmsm.negocio.ExpedientesService;
+import pe.edu.unmsm.util.TesisUtil;
 
 @RequestScoped
 @ManagedBean(name="registrarFicha")
@@ -20,7 +26,26 @@ public class RegistrarFichaController {
 	private LineaInvestigacion lineaInvestigacion;
 	private List<Asesor> asesores;
 	private List<LineaInvestigacion> lineaInvestigaciones;
-	 
+	
+	@ManagedProperty(value="#{expedientesService}")
+	private ExpedientesService expedientesService;
+	
+	
+	public String iniciarExpediente(){
+		
+		Expediente exp=new Expediente();
+		exp.setCodigoUsuario(((Usuario)TesisUtil.obtenerDeSesion("usuario")).getId());
+		exp.setEstado(1);
+		exp.setFechaInicio(TesisUtil.fechaActual());
+		exp.setCodigo("001TESIS2012");
+		
+		exp=expedientesService.ingresarExpediente(exp);
+		
+		return "IngresarFicha";
+	}
+	
+	
+	
 	public String getCodigo() {
 		return codigo;
 	}
@@ -64,7 +89,5 @@ public class RegistrarFichaController {
 		this.lineaInvestigaciones = lineaInvestigaciones;
 	}
 
-	
-
-	
+		
 }

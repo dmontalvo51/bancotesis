@@ -33,13 +33,6 @@ public class RegistrarFichaController {
 	
 	public String iniciarExpediente(){
 		
-		Expediente exp=new Expediente();
-		exp.setCodigoUsuario(((Usuario)TesisUtil.obtenerDeSesion("usuario")).getId());
-		exp.setEstado(1);
-		exp.setFechaInicio(TesisUtil.fechaActual());
-		exp.setCodigo("001TESIS2012");
-		
-		exp=expedientesService.ingresarExpediente(exp);
 		
 		return "IngresarFicha";
 	}

@@ -4,18 +4,18 @@
 <mapper namespace="pe.edu.unmsm.integracion.LoginMapper">
 
 	<resultMap type="pe.edu.unmsm.modelo.Usuario" id="Usuario">
-		<result property="id" column="usu_iCodigo"/>
-		<result property="cuenta" column="usu_vcAlias"/>
-		<result property="nombres" column="usu_vcNombre"/>
-		<result property="aPaterno" column="usu_vcPaterno"/>
-		<result property="aMaterno" column="usu_vcMaterno" />
-		<result property="perfil" column="perusu_vcPerfil"/>
+		<result property="id" column="USU_ID"/>
+		<result property="tipo" column="TUSU_ID"/>
+		<result property="cuenta" column="USU_CODIGO"/>
+		<result property="contrasena" column="USU_PASSWORD"/>
+		<result property="fecha" column="USU_FECHAREGISTRO" />
+		
 	</resultMap>
 	
-	<select id="iniciarSesion" resultMap="Usuario" parameterType="java.util.Map">
-		select usu.*,perfil.perusu_vcPerfil from usuario as usu,perfilusuario as perfil
-		where 	usu.usu_vcAlias = #{usuario} and usu.usu_vcContrasena = #{pass}
-		and perfil.perusu_iCodigo=usu.perusu_iCodigo
+	
+	<select id="iniciarSesion"  resultMap="Usuario" parameterType="java.util.Map">
+		select USU_ID, TUSU_ID, USU_CODIGO, USU_PASSWORD, USU_FECHAREGISTRO  from usuario
+        where usu_codigo=#{cuenta} and USU_PASSWORD=#{pass}
 	</select>
 
 </mapper>

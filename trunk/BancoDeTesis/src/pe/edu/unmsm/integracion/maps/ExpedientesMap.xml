@@ -3,30 +3,33 @@
 
 <mapper namespace="pe.edu.unmsm.integracion.ExpedientesMapper">
 
-
 	<resultMap type="pe.edu.unmsm.modelo.Expediente" id="Expediente">
 		<result property="id" column="exp_iCodigo" />
 		<result property="codigo" column="exp_vcCodigo" />
 		<result property="estado" column="est_vcEstado" />
-		<result property="usuario" column="usu_vcAlias" />
+		<result property="codigoBachiller" column="exp_vcCodigoBachiller" />
 		<result property="fechaInicio" column="exp_dtFechaInicio"
 			javaType="java.util.Date" />
+			
+	</resultMap>
 		
 
-	</resultMap>
+	<insert id="ingresarExpediente" parameterType="pe.edu.unmsm.modelo.Expediente"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into expediente
+		(exp_vcCodigo,usu_iCodigo,est_iCodigo,exp_dtFechaInicio) values
+		(#{codigo},#{codigoUsuario},#{estado},#{fechaInicio})
+	</insert>
 
 
 	<select id="cargarExpedientes" resultMap="Expediente">
 		select
-		EX.exp_iCodigo,EX.exp_vcCodigo,EX.exp_dtFechaInicio,
-		ES.est_vcEstado,USU.usu_vcAlias
+		EX.exp_iCodigo,EX.exp_vcCodigo,EX.exp_vcCodigoBachiller,EX.exp_dtFechaInicio,ES.est_vcEstado
 		from
 		bancotesis.expediente as EX,
-		bancotesis.estado as ES,
-		bancotesis.usuario as USU
+		bancotesis.estado as ES
 		where
-		EX.est_iCodigo=ES.est_iCodigo and
-		EX.usu_iCodigo=USU.usu_iCodigo;
+		EX.est_iCodigo=ES.est_iCodigo
 	</select>
 
 

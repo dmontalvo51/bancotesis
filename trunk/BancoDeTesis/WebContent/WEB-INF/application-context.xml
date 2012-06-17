@@ -31,16 +31,24 @@
 		<property name="username" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
 	</bean>
-	
-	<!-- Crea el SqlSessionFactory con el origen de datos y la ubicacion de los mapas de Mybatis-->
+
+	<!-- Crea el SqlSessionFactory con el origen de datos y la ubicacion de 
+		los mapas de Mybatis -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="mapperLocations" value="classpath*:pe/edu/unmsm/integracion/maps/*.xml" />
-	</bean>
-	
-	<!-- Escanea el paquete de las interfaces y crea un bean de spring para cada interfaz -->
-	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="pe.edu.unmsm.integracion" />
+		<property name="mapperLocations"
+			value="classpath*:pe/edu/unmsm/integracion/maps/*.xml" />
 	</bean>
 
+	<!-- Escanea el paquete de las interfaces y crea un bean de spring para 
+		cada interfaz -->
+	<!-- <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"> -->
+	<!-- <property name="basePackage" value="pe.edu.unmsm.integracion" /> -->
+	<!-- </bean> -->
+
+	<bean id="loginMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="pe.edu.unmsm.integracion.LoginMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
 </beans>

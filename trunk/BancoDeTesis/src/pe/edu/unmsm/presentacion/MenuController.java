@@ -7,9 +7,8 @@ import javax.faces.bean.SessionScoped;
 import pe.edu.unmsm.modelo.Usuario;
 import pe.edu.unmsm.util.TesisUtil;
 
-
-@ManagedBean(name="menu")
 @SessionScoped
+@ManagedBean(name="menu")
 public class MenuController {
 	
 	Usuario usuario;

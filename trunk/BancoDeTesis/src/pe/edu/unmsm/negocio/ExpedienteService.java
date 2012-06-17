@@ -1,4 +1,4 @@
-package pe.edu.unmsm.negocio.impl;
+package pe.edu.unmsm.negocio;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -10,10 +10,8 @@ import org.springframework.stereotype.Service;
 
 import pe.edu.unmsm.integracion.ExpedientesMapper;
 import pe.edu.unmsm.modelo.Expediente;
-import pe.edu.unmsm.negocio.ExpedientesService;
 
-@Service("expedientesService")
-public class ExpedientesServiceImpl implements ExpedientesService {
+public class ExpedienteService {
 	
 	@Resource
 	private ExpedientesMapper expedientesMapper;

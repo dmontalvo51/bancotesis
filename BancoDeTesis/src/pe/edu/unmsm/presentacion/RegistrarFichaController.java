@@ -12,7 +12,7 @@ import pe.edu.unmsm.modelo.Asesor;
 import pe.edu.unmsm.modelo.Expediente;
 import pe.edu.unmsm.modelo.LineaInvestigacion;
 import pe.edu.unmsm.modelo.Usuario;
-import pe.edu.unmsm.negocio.ExpedientesService;
+
 import pe.edu.unmsm.util.TesisUtil;
 
 @RequestScoped
@@ -27,10 +27,7 @@ public class RegistrarFichaController {
 	private List<Asesor> asesores;
 	private List<LineaInvestigacion> lineaInvestigaciones;
 	
-	@ManagedProperty(value="#{expedientesService}")
-	private ExpedientesService expedientesService;
-	
-	
+		
 	public String iniciarExpediente(){
 		
 		

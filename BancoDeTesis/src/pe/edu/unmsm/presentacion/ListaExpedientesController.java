@@ -10,15 +10,15 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 
 import pe.edu.unmsm.modelo.Expediente;
-import pe.edu.unmsm.negocio.ExpedientesService;
+import pe.edu.unmsm.negocio.ExpedienteService;
+
 
 @RequestScoped
 @ManagedBean(name="listaExpedientes")
 public class ListaExpedientesController{
 	
 	/*Atributos*/
-	@ManagedProperty(value="#{expedientesService}")
-	private ExpedientesService expedientesService;
+
 	private List<Expediente> listaExpedientes;
 	
 
@@ -33,15 +33,9 @@ public class ListaExpedientesController{
 	
 	
 	/*Encampsulamientos*/
-	public ExpedientesService getExpedientesService() {
-		return expedientesService;
-	}
 	
-	public void setExpedientesService(ExpedientesService expedientesService) {
-		this.expedientesService = expedientesService;
-	}
-
 	public List<Expediente> getListaExpedientes() {
+		ExpedienteService expedientesService=new ExpedienteService();
 		return expedientesService.cargarTramites();
 		//return listaExpedientes;
 	}

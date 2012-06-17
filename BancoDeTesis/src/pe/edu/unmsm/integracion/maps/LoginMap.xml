@@ -7,14 +7,13 @@
 		<result property="id" column="USU_ID"/>
 		<result property="tipo" column="TUSU_ID"/>
 		<result property="cuenta" column="USU_CODIGO"/>
-		<result property="contrasena" column="USU_PASSWORD"/>
 		<result property="fecha" column="USU_FECHAREGISTRO" />
 		
 	</resultMap>
 	
 	
 	<select id="iniciarSesion"  resultMap="Usuario" parameterType="java.util.Map">
-		select USU_ID, TUSU_ID, USU_CODIGO, USU_PASSWORD, USU_FECHAREGISTRO  from usuario
+		select USU_ID, TUSU_ID, USU_CODIGO, USU_FECHAREGISTRO  from usuario
         where usu_codigo=#{cuenta} and USU_PASSWORD=#{pass}
 	</select>
 

@@ -4,17 +4,22 @@
 <mapper namespace="pe.edu.unmsm.integracion.LoginMapper">
 
 	<resultMap type="pe.edu.unmsm.modelo.Usuario" id="Usuario">
-		<result property="id" column="USU_ID"/>
-		<result property="tipo" column="TUSU_ID"/>
-		<result property="cuenta" column="USU_CODIGO"/>
+		<result property="tipo" column="TUSU_ID" />
+		<result property="cuenta" column="USU_CUENTA" />
 		<result property="fecha" column="USU_FECHAREGISTRO" />
+		<result property="correo" column="USU_CORREO" />
+		<result property="nombres" column="USU_NOMBRES" />
+		<result property="apellidos" column="USU_APELLIDOS" />
+		<result property="perfil" column="PER_DESCRIPCION" />
 		
+
 	</resultMap>
-	
-	
-	<select id="iniciarSesion"  resultMap="Usuario" parameterType="java.util.Map">
-		select USU_ID, TUSU_ID, USU_CODIGO, USU_FECHAREGISTRO  from usuario
-        where usu_codigo=#{cuenta} and USU_PASSWORD=#{pass}
+
+
+	<select id="iniciarSesion" resultMap="Usuario" parameterType="java.util.Map">
+		select usu.TUSU_ID, usu.USU_CUENTA, usu.USU_FECHAREGISTRO, usu.USU_NOMBRES
+		from TESIS.USUARIO usu
+		WHERE usu.usu_cuenta=#{cuenta} and usu.USU_PASSWORD=#{pass}
 	</select>
 
 </mapper>

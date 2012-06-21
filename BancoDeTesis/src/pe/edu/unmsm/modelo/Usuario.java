@@ -1,18 +1,19 @@
 package pe.edu.unmsm.modelo;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Usuario {
+public class Usuario implements Serializable{
 	
-	private int id;
+	private static final long serialVersionUID = 5735379635324594498L;
+	
 	private String cuenta;
 	private String nombres;
-	private String aPaterno;
-	private String aMaterno;
-	private String codigo;
+	private String apellidos;
 	private String perfil;
 	private int tipo;
 	private Date fecha;
+	private String correo;
 	
 	
 	public Date getFecha() {
@@ -33,12 +34,7 @@ public class Usuario {
 	public void setPerfil(String perfil) {
 		this.perfil = perfil;
 	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+	
 	public String getCuenta() {
 		return cuenta;
 	}
@@ -52,22 +48,17 @@ public class Usuario {
 		this.nombres = nombres;
 	}
 	public String getaPaterno() {
-		return aPaterno;
+		return apellidos;
 	}
 	public void setaPaterno(String aPaterno) {
-		this.aPaterno = aPaterno;
+		this.apellidos = aPaterno;
 	}
-	public String getaMaterno() {
-		return aMaterno;
+
+	public String getCorreo() {
+		return correo;
 	}
-	public void setaMaterno(String aMaterno) {
-		this.aMaterno = aMaterno;
-	}
-	public String getCodigo() {
-		return codigo;
-	}
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
+	public void setCorreo(String correo) {
+		this.correo = correo;
 	}
 	
 	

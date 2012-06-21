@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="pe.edu.unmsm.integracion.Mapper">
+<mapper namespace="pe.edu.unmsm.integracion.LineaInvestigacionMapper">
 
 	<resultMap type="pe.edu.unmsm.modelo.LineaInvestigacion" id="LineaInvestigacion">
 		<result property="linea_linea_id" column="linea_id" />
@@ -9,24 +9,25 @@
 
 
 	</resultMap>
-	<insert id="IngresarLineaInvestigacion" parameterType="pe.edu.unmsm.modelo.LineaInvestigacion"
-		useGeneratedKeys="true" keyProperty="id">
-		insert into LineaInvestigacion
-		(linea_id,linea_descripcion) values
-		(#{linea_id},#{linea_descripcion})
-	</insert>
+	
+<!-- 	<insert id="IngresarLineaInvestigacion" parameterType="pe.edu.unmsm.modelo.LineaInvestigacion" -->
+<!-- 		useGeneratedKeys="true" keyProperty="id"> -->
+<!-- 		insert into LineaInvestigacion -->
+<!-- 		(linea_id,linea_descripcion) values -->
+<!-- 		(#{linea_id},#{linea_descripcion}) -->
+<!-- 	</insert> -->
 
-	<select id="IngresarLineaInvestigacion" resultMap="LineaInvestigacion">
-		select
-		linea_id,linea_descripcion
-		from tesis.Linea_investigacion
-	</select>
+<!-- 	<select id="IngresarLineaInvestigacion" resultMap="LineaInvestigacion"> -->
+<!-- 		select -->
+<!-- 		linea_id,linea_descripcion -->
+<!-- 		from tesis.Linea_investigacion -->
+<!-- 	</select> -->
 
-	<update id="IngresarLineaInvestigacion" parameterType="pe.edu.unmsm.modelo.LineaInvestigacion">
-		update tesis.linea_investigacion set
-		linea_id = #{linea_id},
-		linea_descripcion = #{linea_descripcion}
-		where linea_id=#{linea_id}
-	</update>
+<!-- 	<update id="IngresarLineaInvestigacion" parameterType="pe.edu.unmsm.modelo.LineaInvestigacion"> -->
+<!-- 		update tesis.linea_investigacion set -->
+<!-- 		linea_id = #{linea_id}, -->
+<!-- 		linea_descripcion = #{linea_descripcion} -->
+<!-- 		where linea_id=#{linea_id} -->
+<!-- 	</update> -->
 </mapper>
 	

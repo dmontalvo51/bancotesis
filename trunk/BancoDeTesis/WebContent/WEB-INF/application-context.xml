@@ -41,14 +41,14 @@
 	</bean>
 
 	<!-- Escanea el paquete de las interfaces y crea un bean de spring para 
-		cada interfaz -->
-	<!-- <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"> -->
-	<!-- <property name="basePackage" value="pe.edu.unmsm.integracion" /> -->
-	<!-- </bean> -->
-
-	<bean id="loginMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-		<property name="mapperInterface" value="pe.edu.unmsm.integracion.LoginMapper" />
-		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+		cada interfaz -->	
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+	<property name="basePackage" value="pe.edu.unmsm.integracion" />
 	</bean>
+
+<!-- 	<bean id="loginMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"> -->
+<!-- 		<property name="mapperInterface" value="pe.edu.unmsm.integracion.LoginMapper" /> -->
+<!-- 		<property name="sqlSessionFactory" ref="sqlSessionFactory" /> -->
+<!-- 	</bean> -->
 	
 </beans>

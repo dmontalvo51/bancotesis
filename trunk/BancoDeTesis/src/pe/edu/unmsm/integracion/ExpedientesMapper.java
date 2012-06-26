@@ -10,4 +10,10 @@ public interface ExpedientesMapper {
 	
 	public Expediente ingresarExpediente(Expediente exp);
 
+	public String crearExpediente();
+	
+	public String cargarUltimoCodigoExp();
+	
+
+
 }

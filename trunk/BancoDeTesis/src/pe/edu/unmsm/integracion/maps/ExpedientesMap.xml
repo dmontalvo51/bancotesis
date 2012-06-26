@@ -10,9 +10,9 @@
 		<result property="codigoBachiller" column="exp_vcCodigoBachiller" />
 		<result property="fechaInicio" column="exp_dtFechaInicio"
 			javaType="java.util.Date" />
-			
+
 	</resultMap>
-		
+
 
 	<insert id="ingresarExpediente" parameterType="pe.edu.unmsm.modelo.Expediente"
 		useGeneratedKeys="true" keyProperty="id">
@@ -32,7 +32,11 @@
 		EX.est_iCodigo=ES.est_iCodigo
 	</select>
 
-
+	<select id="cargarUltimoCodigoExp" resultType="String">
+		select TES.tes_codigo from TESIS.TESIS TES
+		order by TES.tes_fechainscripcion DESC LIMIT 1
+	</select>
+	
 	<insert id="insertarTramite">
 
 

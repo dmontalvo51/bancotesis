@@ -5,6 +5,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import pe.edu.unmsm.modelo.ActaSustentacion;
@@ -12,10 +13,11 @@ import pe.edu.unmsm.modelo.Asesor;
 import pe.edu.unmsm.modelo.Expediente;
 import pe.edu.unmsm.modelo.LineaInvestigacion;
 import pe.edu.unmsm.modelo.Usuario;
+import pe.edu.unmsm.negocio.ExpedienteService;
 
 import pe.edu.unmsm.util.TesisUtil;
 
-@RequestScoped
+@ViewScoped
 @ManagedBean(name="registrarFicha")
 public class RegistrarFichaController {
 	private String codigo;
@@ -27,15 +29,8 @@ public class RegistrarFichaController {
 	private List<Asesor> asesores;
 	private List<LineaInvestigacion> lineaInvestigaciones;
 	
-		
-	public String iniciarExpediente(){
-		
-		
-		return "IngresarFicha";
-	}
 	
-	
-	
+		
 	public String getCodigo() {
 		return codigo;
 	}

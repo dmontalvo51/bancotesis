@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import pe.edu.unmsm.integracion.ExpedientesMapper;
 import pe.edu.unmsm.modelo.Expediente;
+import pe.edu.unmsm.modelo.Respuesta;
 
 public class ExpedienteService {
 	
@@ -21,6 +22,12 @@ public class ExpedienteService {
 		listaExpedientes=expedientesMapper.cargarExpedientes();
 		
 		return listaExpedientes;
+	}
+	
+	public Respuesta crearExpediente(){
+		String codigo=expedientesMapper.cargarUltimoCodigoExp();
+
+		return null;
 	}
 	
 

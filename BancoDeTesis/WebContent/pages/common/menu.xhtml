@@ -10,7 +10,11 @@
 				<p:commandButton type="button" value="#{msg.botonPerfil}" />
 				<p:commandButton type="button" value="#{msg.botonMisExpedientes}"
 					icon="ui-icon-folder-collapsed" />
-
+				<p:menuButton value="Mantenimiento">
+					<p:menuitem value="Documentos"/>
+					<p:menuitem value="Estados"/>
+					<p:menuitem value="Perfiles"/>
+				</p:menuButton>
 			</p:toolbarGroup>
 
 
@@ -18,8 +22,8 @@
 				<h:panelGrid columns="3" width="500">
 					<h:panelGroup>
 						<h:outputLabel value="#{msg.cuenta}" />
-						<span/>
 						<p:commandButton value="#{menu.usuario.cuenta}" type="button" />
+						<h:outputLabel value="#{menu.usuario.apellidos}, #{menu.usuario.nombres}" />
 					</h:panelGroup>
 					<h:panelGroup>
 						<h:outputLabel value="#{msg.perfil}" /><span/>

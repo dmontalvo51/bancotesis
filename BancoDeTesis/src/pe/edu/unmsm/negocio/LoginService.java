@@ -30,8 +30,7 @@ public class LoginService {
 	}
 
 	public Usuario iniciarSesion(Map usuario) {
-		TesisUtil.escribir("HOLA");
-
+		
 		Usuario usu = loginMapper.iniciarSesion(usuario);
 		if (usu != null)
 			return usu;

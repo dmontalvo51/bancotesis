@@ -9,6 +9,12 @@ public class Usuario implements Serializable{
 	
 	private String cuenta;
 	private String nombres;
+	public String getApellidos() {
+		return apellidos;
+	}
+	public void setApellidos(String apellidos) {
+		this.apellidos = apellidos;
+	}
 	private String apellidos;
 	private String perfil;
 	private int tipo;

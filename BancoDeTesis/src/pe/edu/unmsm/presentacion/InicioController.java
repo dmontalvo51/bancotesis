@@ -8,14 +8,12 @@ import javax.faces.bean.ViewScoped;
 
 import pe.edu.unmsm.modelo.Respuesta;
 import pe.edu.unmsm.negocio.ExpedienteService;
+import pe.edu.unmsm.util.TesisUtil;
 
 @ViewScoped
 @ManagedBean(name = "inicio")
 public class InicioController implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -9091669945071307902L;
 
 	@ManagedProperty("#{expedienteService}")
@@ -25,6 +23,8 @@ public class InicioController implements Serializable {
 	public String crearExpediente() {
 
 		Respuesta respuesta = expedienteService.crearExpediente();
+		
+		TesisUtil.escribir(respuesta.getMensaje());
 
 		if (respuesta.getEstado() == Respuesta.OK)
 			return "IngresarFicha";
@@ -33,5 +33,13 @@ public class InicioController implements Serializable {
 			return null;
 		}
 
+	}
+
+	public ExpedienteService getExpedienteService() {
+		return expedienteService;
+	}
+
+	public void setExpedienteService(ExpedienteService expedienteService) {
+		this.expedienteService = expedienteService;
 	}
 }

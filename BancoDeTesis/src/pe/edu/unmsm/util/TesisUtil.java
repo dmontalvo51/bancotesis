@@ -1,5 +1,6 @@
 package pe.edu.unmsm.util;
 
+import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -23,8 +24,14 @@ public class TesisUtil {
 	}
 	
 	public static String fechaActual(){
-		Calendar calendar=new GregorianCalendar();
-		return "2012-06-02";
+		Calendar calendar=Calendar.getInstance();
+		return calendar.get(Calendar.DAY_OF_MONTH)+"/"+
+				calendar.get(Calendar.MONTH)+"/"+
+		calendar.get(Calendar.YEAR);
+	}
+
+	public static int getAñoActual() {
+		return Calendar.getInstance().get(Calendar.YEAR);
 	}
 
 

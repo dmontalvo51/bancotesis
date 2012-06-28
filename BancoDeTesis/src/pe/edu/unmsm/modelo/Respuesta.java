@@ -1,7 +1,6 @@
 package pe.edu.unmsm.modelo;
 
 public class Respuesta {
-	
 	public static int OK=1;
 	public static int ERROR=2;
 	

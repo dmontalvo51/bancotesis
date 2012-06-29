@@ -4,7 +4,6 @@ import java.util.Date;
 
 public class Expediente {
 	
-	private int id;
 	private String codigo;
 	private String estado;
 	private String usuario;
@@ -12,11 +11,12 @@ public class Expediente {
 	private String apellidos;
 	private Date fechaInicio;
 	
+	
 
-	public Expediente(int id, String codigo, String estado, String usuario,
+	public Expediente(String codigo, String estado, String usuario,
 			String nombres, String apellidos, Date fechaInicio) {
 		super();
-		this.id = id;
+		
 		this.codigo = codigo;
 		this.estado = estado;
 		this.usuario = usuario;
@@ -39,13 +39,6 @@ public class Expediente {
 		// TODO Auto-generated constructor stub
 	}
 
-	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
 	public String getCodigo() {
 		return codigo;
 	}

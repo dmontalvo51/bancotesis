@@ -13,7 +13,7 @@ import pe.edu.unmsm.modelo.Expediente;
 import pe.edu.unmsm.negocio.ExpedienteService;
 
 
-@RequestScoped
+@ViewScoped
 @ManagedBean(name="listaExpedientes")
 public class ListaExpedientesController{
 	
@@ -26,7 +26,8 @@ public class ListaExpedientesController{
 	public ListaExpedientesController() {
 		listaExpedientes=new ArrayList<Expediente>();
 	}
-
+	
+	
 	
 	/*Metodos*/
 	
@@ -35,9 +36,9 @@ public class ListaExpedientesController{
 	/*Encampsulamientos*/
 	
 	public List<Expediente> getListaExpedientes() {
-		ExpedienteService expedientesService=new ExpedienteService();
-		return expedientesService.cargarTramites();
-		//return listaExpedientes;
+//		ExpedienteService expedientesService=new ExpedienteService();
+//		return expedientesService.cargarTramites();
+		return listaExpedientes;
 	}
 
 	public void setListaExpedientes(List<Expediente> listaExpedientes) {

@@ -9,6 +9,7 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.swing.text.NumberFormatter;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import pe.edu.unmsm.integracion.ExpedientesMapper;
@@ -20,7 +21,7 @@ import pe.edu.unmsm.util.TesisUtil;
 @Service(value="expedienteService")
 public class ExpedienteService {
 
-	@Resource
+	@Autowired
 	private ExpedientesMapper expedientesMapper;
 
 	public List<Expediente> cargarTramites() {

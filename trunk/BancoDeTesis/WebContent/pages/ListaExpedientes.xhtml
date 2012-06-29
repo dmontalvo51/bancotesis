@@ -8,44 +8,45 @@
 	<ui:define name="cuerpo">
 		<div class="cuerpo">
 			<!-- Empezar a programar desde aqui -->
-			
+			<h:outputLabel value="HOLAAAAAAAAAa"></h:outputLabel>
 			<h:form>
-				<h:panelGrid columns="1" width="80%" >
-				
-					<p:dataTable id="listaExpedientes"  var="expediente" value="#{listaExpedientes.listaExpedientes}">
-						
+				<h:panelGrid columns="1" width="80%">
+
+					<p:dataTable id="listaExpedientes" var="expediente"
+						value="#{listaExpedientes.listaExpedientes}">
+
 						<p:column>
 							<f:facet name="header">#{msg.codigo}</f:facet>
-							<h:outputText value="#{expediente.codigo}"/>
+							<h:outputText value="#{expediente.codigo}" />
 						</p:column>
-						
-						<p:column >
+
+						<p:column>
 							<f:facet name="header">#{msg.fechaInicio}</f:facet>
-							<h:outputText value="#{expediente.fechaInicio}"/>
+							<h:outputText value="#{expediente.fechaInicio}" />
 						</p:column>
-						
-						<p:column >
+
+						<p:column>
 							<f:facet name="header">#{msg.usuario}</f:facet>
-							<h:outputText value="#{expediente.usuario}"/>
+							<h:outputText value="#{expediente.usuario}" />
 						</p:column>
-						
-						<p:column >
+
+						<p:column>
 							<f:facet name="header">#{msg.nombres}</f:facet>
-							<h:outputText value="#{expediente.nombres}"/>
+							<h:outputText value="#{expediente.nombres}" />
 						</p:column>
-						
-						<p:column >
+
+						<p:column>
 							<f:facet name="header">#{msg.apellidos}</f:facet>
-							<h:outputText value="#{expediente.apellidos}"/>
+							<h:outputText value="#{expediente.apellidos}" />
 						</p:column>
-						
-						<p:column >
+
+						<p:column>
 							<f:facet name="header">#{msg.estado}</f:facet>
-							<h:outputText value="#{expediente.estado}"/>
+							<h:outputText value="#{expediente.estado}" />
 						</p:column>
-					
+
 					</p:dataTable>
-					
+
 				</h:panelGrid>
 			</h:form>			
 			

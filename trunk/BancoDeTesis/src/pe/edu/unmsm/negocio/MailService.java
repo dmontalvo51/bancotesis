@@ -44,7 +44,7 @@ public class MailService {
 			sesion.setDebug(true);
 			// Construimos el mensaje
 			MimeMessage message = new MimeMessage(sesion);
-			message.setFrom(new InternetAddress("dmontalvo.m@gmail.com"));
+			message.setFrom(new InternetAddress("07200024@unmsm.edu.pe"));
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(
 					"dmontalvo.m@gmail.com"));
 			message.setSubject("Pruebita");
@@ -56,8 +56,7 @@ public class MailService {
 			t.sendMessage(message, message.getAllRecipients());
 		//	t.send(message);
 			
-			//TesisUtil.escribir(spassencryptor.encrypt("12-Dic-2007"));
-			
+		
 			// Cierre.
 			t.close();
 

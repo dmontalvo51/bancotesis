@@ -4,36 +4,107 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.prime.com.tr/ui"
 	template="/pages/common/plantillaPrincipal.xhtml">
-	<ui:define name="title">#{msg.tituloSistema}</ui:define>
+	<ui:define name="title">#{msg.tituloSistema} .::. DETALLE EXPEDIENTE</ui:define>
 	<ui:define name="cuerpo">
 		<div class="cuerpo">
+
 			<!-- Empezar a programar desde aqui -->
-		<p:panelGrid columns="2">
-    <f:facet name="header">
-        DETALLE DE TESIS
+
+
+			<h:panelGrid columns="4" styleClass="DetalleTesis">
+				<f:facet name="header">  
+        DETALLE EXPEDIENTE
     </f:facet>
+				<h:outputLabel for="CodigoTesis" value="Codigo de Tesis: " />
+				<p:inputText id="CodigoTesis" value="#{DetalleTesis.codigoTesis}" label="CodigoTesis" />
 
-    <h:outputLabel for="CodigoTesis" value="Codigo de Tesis: *" />
-   
 
-    <h:outputLabel for="Titulo" value="Titulo: *" />
-  
-
-    <f:facet name="footer">
-        <p:commandButton type="button" value="Borrador" icon="ui-icon-check" style="margin:0"/>
-        <p:commandButton type="button" value="Ver Historial" icon="ui-icon-check" style="margin:0"/>
-    </f:facet>
-</p:panelGrid>
-
+                  <h:outputLabel for="TituloTesis" value="Titulo de la Tesis: " />
+				<p:inputText id="TituloTesis" value="#{DetalleTesis.tituloTesis}" label="TituloTesis" />
 		
+                  <h:outputLabel for="VerResumen" value="Ver Resumen: " />
+				
+				
+				
+				 <h:outputLabel for="ListaDocumentos" value="Lista De Documentos: " />
+				  
+				     
+  </h:panelGrid>
+  
+				     
+				<h:form id="form">  
+  
+    <p:dataTable id="CodigoDocumento" var="Codigo Documento" value="#{DetalleTesis.codigoDocumento}" rowKey="#{Documento.codigo}"  
+                 selection="#{tableBean.selectedCars}" selectionMode="multiple">  
+  
+        <f:facet name="header">  
+     Lista de Documentos
+        </f:facet>  
+  
+        <p:column headerText="Codigo de documento">  
+            #{car.model}  
+        </p:column>  
+  
+        <p:column headerText="Codigo de Tesis">  
+            #{car.year}  
+        </p:column>  
+        
+         <p:column headerText="Codigo de Investigacion">  
+            #{car.year}  
+        </p:column>  
+         <p:column headerText="Linea de Investigacion">  
+            #{car.year}  
+        </p:column>  
+         <p:column headerText="ID de Documento">  
+            #{car.year}  
+        </p:column>  
+         <p:column headerText="Ruta de Documento">  
+            #{car.year}  
+        </p:column>  
+        
+  
+        <p:column headerText="Fecha Registro" >  
+            #{car.manufacturer}  
+        </p:column>  
+  
+        <p:column headerText="Hora Registro">  
+            #{car.color}  
+        </p:column>  
+  
+        <f:facet name="footer">  
+            <p:commandButton value="View" icon="ui-icon-search"  
+                        update=":form:display" oncomplete="carDialog.show()"/>  
+        </f:facet>  
+    </p:dataTable>  
+  
+    <p:dialog header="Car Detail" widgetVar="carDialog"  
+              width="250" showEffect="explode" hideEffect="explode">  
+  
+        <p:dataList id="display"  
+            value="#{tableBean.selectedCars}"  
+            var="selectedCar" type="definition">  
+  
+            Model: #{selectedCar.model}, Year: #{selectedCar.year}  
+            <f:facet name="description">  
+                <p:graphicImage value="/images/cars/#{selectedCar.manufacturer}.jpg"/>  
+            </f:facet>  
+        </p:dataList>  
+  
+    </p:dialog>  
+  
+</h:form>  
+		
+			
 
-			<!-- Terminar de programar desde aqui -->
+
+
+			
 		</div>
+		<p:dialog header="Resumen de Tesis" id="dialogResumenTesis"
+			widgetVar="resumenTesis" showEffect="slide" hideEffect="explode"
+			modal="false" resizable="true">
+			<h:outputText value="#{actaConformidad.resumen}" />
+		</p:dialog>
+		
 	</ui:define>
 </ui:composition>
-
-
-
-
-
-

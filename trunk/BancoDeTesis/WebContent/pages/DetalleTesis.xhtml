@@ -11,25 +11,30 @@
 			<!-- Empezar a programar desde aqui -->
 
 
-			<h:panelGrid columns="4" styleClass="DetalleTesis">
+			<h:panelGrid columns="10" styleClass="DetalleTesis">
 				<f:facet name="header">  
-        DETALLE EXPEDIENTE
+        										DETALLE EXPEDIENTE
     </f:facet>
-				<h:outputLabel for="CodigoTesis" value="Codigo de Tesis: " />
+				<h:outputLabel for="tes_codigo" value="Codigo de Tesis: " />
 				<p:inputText id="CodigoTesis" value="#{DetalleTesis.codigoTesis}" label="CodigoTesis" />
 
 
-                  <h:outputLabel for="TituloTesis" value="Titulo de la Tesis: " />
+                  <h:outputLabel for="tes_titulo" value="Titulo de la Tesis: " />
 				<p:inputText id="TituloTesis" value="#{DetalleTesis.tituloTesis}" label="TituloTesis" />
 				
-					<h:outputLabel for="LineaInvestigacion" value="linea de Investigacion: " />
+					<h:outputLabel for="Linea_Id" value="linea de Investigacion: " />
 				<p:inputText id="LineaInvestigacion" value="#{DetalleTesis.lineaInvestigacion}" label="LineaInvestigacion" />
+				
+				<h:outputLabel for="usu_asesor" value="Nombre del Asesor: " />
+				<p:inputText id="NombreAsesor" value="#{DetalleTesis.nombreAsesor}" label="nombreAsesor" />
+				
+				<h:outputLabel for="usu_bachiller" value="Nombre Bachiller: " />
+				<p:inputText id="NombreBachiller" value="#{DetalleTesis.NombreBachiller}" label="nombreBachiller" />
+				
 				
 		
                   <h:outputLabel for="VerResumen" value="Ver Resumen: " />
-				
-				
-				
+		
 				 <h:outputLabel for="ListaDocumentos" value="Lista De Documentos: " />
 				  
 				     

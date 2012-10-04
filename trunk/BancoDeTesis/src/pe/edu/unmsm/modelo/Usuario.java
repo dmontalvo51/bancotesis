@@ -2,6 +2,7 @@ package pe.edu.unmsm.modelo;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 public class Usuario implements Serializable{
 	
@@ -15,6 +16,15 @@ public class Usuario implements Serializable{
 	private Date fecha;
 	private String correo;
 	
+	private List<OpcionMenu> opcionesMenu;
+	
+	
+	public List<OpcionMenu> getOpcionesMenu() {
+		return opcionesMenu;
+	}
+	public void setOpcionesMenu(List<OpcionMenu> opcionesMenu) {
+		this.opcionesMenu = opcionesMenu;
+	}
 	public String getApellidos() {
 		return apellidos;
 	}

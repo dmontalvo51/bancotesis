@@ -14,8 +14,8 @@ public class TesisUtil {
 		System.out.println(texto);
 	}
 	
-	public static void subirASesion(String clave, Object objeto){
-		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put(clave, objeto);
+	public static Object subirASesion(String clave, Object objeto){
+		return FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put(clave, objeto);
 
 	}
 	

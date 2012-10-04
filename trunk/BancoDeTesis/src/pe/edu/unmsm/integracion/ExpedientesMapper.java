@@ -1,8 +1,10 @@
 package pe.edu.unmsm.integracion;
 
 import java.util.List;
+import java.util.Map;
 
 import pe.edu.unmsm.modelo.Expediente;
+import pe.edu.unmsm.modelo.Tesis;
 
 public interface ExpedientesMapper {
 	
@@ -10,10 +12,10 @@ public interface ExpedientesMapper {
 	
 	public Expediente ingresarExpediente(Expediente exp);
 
-	public String crearExpediente();
+	public String crearExpediente(Map datos);
 	
 	public String cargarUltimoCodigoExp();
-	
 
+	public Tesis cargarTesisPorCodigo(String codigo);
 
 }

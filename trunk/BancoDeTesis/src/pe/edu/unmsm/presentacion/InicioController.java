@@ -2,10 +2,13 @@ package pe.edu.unmsm.presentacion;
 
 import java.io.Serializable;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
+import pe.edu.unmsm.modelo.Expediente;
 import pe.edu.unmsm.modelo.Respuesta;
 import pe.edu.unmsm.negocio.ExpedienteService;
 import pe.edu.unmsm.util.TesisUtil;
@@ -18,17 +21,17 @@ public class InicioController implements Serializable {
 
 	@ManagedProperty("#{expedienteService}")
 	private ExpedienteService expedienteService;
-	private String codigoExpediente;
+
 
 	public String crearExpediente() {
 
 		Respuesta respuesta = expedienteService.crearExpediente();
 		
-		TesisUtil.escribir(respuesta.getMensaje());
-
-		if (respuesta.getEstado() == Respuesta.OK)
+		if (respuesta.getEstado()==Respuesta.OK){
+			if(respuesta.getMensaje()!=null)
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Crear expediente",respuesta.getMensaje()));  
 			return "IngresarFicha";
-		else{
+		}else{
 			
 			return null;
 		}

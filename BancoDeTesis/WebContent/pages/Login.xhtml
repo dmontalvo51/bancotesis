@@ -5,14 +5,14 @@
 	xmlns:p="http://primefaces.prime.com.tr/ui"
 	template="/pages/common/plantillaPrincipal.xhtml">
 
-	<ui:define name="title">Sistema de Ventas TABO ..:::.. Inicio de Sesion</ui:define>
+	<ui:define name="title">#{msg.tituloSistema}</ui:define>
 	<ui:define name="menu" />
 	<ui:define name="cuerpo">
 		<div class="cuerpo" style="height: 83%">
 			<!-- Empezar a programar desde aqui -->
 
 			<h:form>
-				<p:panel header="Inicio de sesion" styleClass="panelInicioSesion">
+				<p:panel header="#{msg.lblInicioDeSesion}" styleClass="panelInicioSesion">
 
 					<h:panelGrid columns="2">
 						<h:outputText value="#{msg.cuenta}" />

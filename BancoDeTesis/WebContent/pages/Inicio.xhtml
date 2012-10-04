@@ -15,7 +15,7 @@
 
 					<h:outputLabel value="#{msg.iniciarExpediente}" />
 					<p:commandButton value="#{msg.botonIniciarExpediente}" ajax="false"
-						action="#{inicio.crearExpediente}" />
+						action="#{inicio.crearExpediente}" update="growl" />
 					<p:commandButton value="#{msg.enviarCorreo}" ajax="true"
 						action="#{comun.enviarCorreo}" />
 
@@ -26,6 +26,7 @@
 			<!-- Terminar de programar desde aqui -->
 		</div>
 		
+		<p:growl id="growl" showDetail="false" />  
 			<!-- Poner aqui Dialogs -->
 	</ui:define>
 </ui:composition>

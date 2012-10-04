@@ -4,7 +4,9 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Formatter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.swing.text.NumberFormatter;
@@ -15,10 +17,11 @@ import org.springframework.stereotype.Service;
 import pe.edu.unmsm.integracion.ExpedientesMapper;
 import pe.edu.unmsm.modelo.Expediente;
 import pe.edu.unmsm.modelo.Respuesta;
+import pe.edu.unmsm.modelo.Tesis;
 import pe.edu.unmsm.modelo.Usuario;
 import pe.edu.unmsm.util.TesisUtil;
 
-@Service(value="expedienteService")
+@Service(value = "expedienteService")
 public class ExpedienteService {
 
 	@Autowired
@@ -32,23 +35,27 @@ public class ExpedienteService {
 	}
 
 	public Respuesta crearExpediente() {
-		String codigo = expedientesMapper.cargarUltimoCodigoExp();
-				
-		if (codigo != null) {
-			/*Generando el codigo*/
-			String serie = codigo.substring(0,3);
-			serie = Integer.toString(Integer.valueOf(serie) + 1);
-			codigo=String.format("%3s",serie).replace(' ','0')+"-FISI-"+TesisUtil.getAñoActual();
-					
-			Usuario usu = (Usuario) TesisUtil.obtenerDeSesion("usuario");
+		Respuesta r = new Respuesta();
+		Map datos = new HashMap<String, String>();
+		datos.put("codigo",
+				((Usuario) TesisUtil.obtenerDeSesion("usuario")).getCuenta());
+		datos.put("codigExp", "");
 
+		String codigo = expedientesMapper.crearExpediente(datos);
+
+		if (codigo != null) {
+			TesisUtil.escribir((String)datos.get("codigoExp"));
+
+			Tesis tesis = new Tesis();
+			tesis = expedientesMapper.cargarTesisPorCodigo(codigo);
+			TesisUtil.subirASesion("tesis", tesis);
+
+			r.setEstado(Respuesta.OK);
+			r.setMensaje("Expediente " + codigo + " creado correctamente.");
 		} else {
-			/* Primer Expediente */
-			codigo = "001-FISI-" + TesisUtil.getAñoActual();
+			r.setEstado(Respuesta.ERROR);
 		}
-		
-		Respuesta r=new Respuesta();
-		r.setMensaje(codigo);
+
 		return r;
 	}
 

@@ -1,5 +1,6 @@
 package pe.edu.unmsm.modelo;
 
+
 public class Respuesta {
 	public static int OK=1;
 	public static int ERROR=2;
@@ -9,6 +10,13 @@ public class Respuesta {
 	private String mensaje2;
 	private Object dato;
 	
+	
+	public Object getDato() {
+		return dato;
+	}
+	public void setDato(Object dato) {
+		this.dato = dato;
+	}
 	
 	public int getEstado() {
 		return estado;
@@ -27,12 +35,6 @@ public class Respuesta {
 	}
 	public void setMensaje2(String mensaje2) {
 		this.mensaje2 = mensaje2;
-	}
-	public Object getDato() {
-		return dato;
-	}
-	public void setDato(Object dato) {
-		this.dato = dato;
 	}
 	
 	

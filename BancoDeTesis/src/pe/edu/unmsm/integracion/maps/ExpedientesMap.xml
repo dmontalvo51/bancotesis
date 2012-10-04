@@ -13,6 +13,20 @@
 
 	</resultMap>
 
+	<resultMap type="pe.edu.unmsm.modelo.Tesis" id="Tesis">
+		<result property="codigo" column="tes_codigo" />
+		<result property="estado" column="est_estado" />
+		<result property="bachiller" column="usu_bachiller" />
+		<result property="nombres" column="usu_nombres" />
+		<result property="apellidos" column="usu_apellidos" />
+		<result property="fechaInicio" column="tes_fecharegistro"
+			javaType="java.util.Date" />
+		<result property="resumen" column="tes_resumen" />
+		<result property="linea" column="linea_descripcion" />
+
+
+	</resultMap>
+
 
 	<insert id="ingresarExpediente" parameterType="pe.edu.unmsm.modelo.Expediente"
 		useGeneratedKeys="true" keyProperty="id">
@@ -33,10 +47,30 @@
 	</select>
 
 	<select id="cargarUltimoCodigoExp" resultType="String">
-		select TES.tes_codigo from TESIS.TESIS TES
-		order by TES.tes_fechainscripcion DESC LIMIT 1
+		select
+		TES.tes_codigo from TESIS.TESIS TES
+		order by TES.tes_fechainscripcion
+		DESC LIMIT 1
 	</select>
-	
+
+	<select id="cargarTesisPorCodigo" parameterType="java.lang.String"
+		resultMap="Tesis">
+		select *
+		from tesis.tesis tes, tesis.linea_investigacion linv,tesis.usuario usu
+		where
+		tes.tes_codigo=#{codigo}
+		and tes.linea_id=linv.linea_id
+		and usu.usu_cuenta=tes.usu_bachiller
+	</select>
+
+	<select id="crearExpediente" parameterType="java.util.Map"
+		statementType="CALLABLE">
+		{ CALL tesis.pa_crearExpediente(
+		#{codigo, mode=IN, jdbcType=VARCHAR},
+		#{codigoexp, mode=OUT, jdbcType=VARCHAR})}
+	</select>
+
+
 	<insert id="insertarTramite">
 
 

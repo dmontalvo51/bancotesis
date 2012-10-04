@@ -31,7 +31,14 @@ public class LoginService {
 
 	public Usuario iniciarSesion(Map usuario) {
 		
-		Usuario usu = loginMapper.iniciarSesion(usuario);
+		Usuario usu;
+		//usu= loginMapper.iniciarSesion(usuario);
+		
+		if(usuario.get("cuenta").equals(usuario.get("pass")))
+			usu=new Usuario();
+		else
+			usu=null;
+		
 		if (usu != null)
 			return usu;
 		else

@@ -13,7 +13,6 @@ import pe.edu.unmsm.modelo.Asesor;
 import pe.edu.unmsm.modelo.Expediente;
 import pe.edu.unmsm.modelo.LineaInvestigacion;
 import pe.edu.unmsm.modelo.Usuario;
-import pe.edu.unmsm.negocio.ExpedienteService;
 
 import pe.edu.unmsm.util.TesisUtil;
 

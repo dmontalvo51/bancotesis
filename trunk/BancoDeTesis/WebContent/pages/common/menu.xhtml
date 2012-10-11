@@ -6,28 +6,28 @@
 
 	<h:form>
 
-		<h:panelGrid columns="2" >
-			<p:menubar model="#{menu.modeloMenu}" styleClass="seccionMenu" />
+		
+			<p:menubar model="#{menu.modeloMenu}"  />
 
-			<p:toolbar styleClass="seccionDatosUsuario">
-				<p:toolbarGroup align="right">
-					<h:panelGrid columns="3" width="500">
-						<h:panelGroup>
-							<h:outputLabel value="#{msg.cuenta}" />
-							<p:commandButton value="#{menu.usuario.cuenta}" type="button" />
-							<h:outputLabel
-								value="#{menu.usuario.apellidos}, #{menu.usuario.nombres}" />
-						</h:panelGroup>
-						<p:commandLink value="Cerrar Sesion"
-							action="#{login.cerrarSesion}" ajax="false" />
-					</h:panelGrid>
+<!-- 			<p:toolbar styleClass="seccionDatosUsuario"> -->
+<!-- 				<p:toolbarGroup align="right"> -->
+<!-- 					<h:panelGrid columns="3" width="500"> -->
+<!-- 						<h:panelGroup> -->
+<!-- 							<h:outputLabel value="#{msg.cuenta}" /> -->
+<!-- 							<p:commandButton value="#{menu.usuario.cuenta}" type="button" /> -->
+<!-- 							<h:outputLabel -->
+<!-- 								value="#{menu.usuario.apellidos}, #{menu.usuario.nombres}" /> -->
+<!-- 						</h:panelGroup> -->
+<!-- 						<p:commandLink value="Cerrar Sesion" -->
+<!-- 							action="#{login.cerrarSesion}" ajax="false" /> -->
+<!-- 					</h:panelGrid> -->
 
-				</p:toolbarGroup>
+<!-- 				</p:toolbarGroup> -->
 
-			</p:toolbar>
+<!-- 			</p:toolbar> -->
 
 
-		</h:panelGrid>
+		
 
 
 

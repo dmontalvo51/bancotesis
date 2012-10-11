@@ -12,7 +12,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import pe.edu.unmsm.modelo.Usuario;
-import pe.edu.unmsm.negocio.LoginService;
+import pe.edu.unmsm.negocio.SeguridadService;
 import pe.edu.unmsm.util.TesisUtil;
 
 @RequestScoped
@@ -24,8 +24,8 @@ public class LoginController implements Serializable {
 	private String password;
 	private Usuario usuario;
 
-	@ManagedProperty("#{loginService}")
-	LoginService loginService;
+	@ManagedProperty("#{seguridadService}")
+	SeguridadService seguridadService;
 
 	public String iniciarSesion() {
 
@@ -33,11 +33,11 @@ public class LoginController implements Serializable {
 		usu.put("cuenta", getCuenta());
 		usu.put("pass", getPassword());
 
-		usuario = loginService.iniciarSesion(usu);
+		usuario = seguridadService.iniciarSesion(usu);
 
 		if (usuario != null) {
 			TesisUtil.subirASesion("usuario", usuario);
-			return "Inicio";
+			return "Inicio.xhtml?faces-redirect=true";
 		} else {
 			FacesContext.getCurrentInstance().addMessage(
 					null,
@@ -50,9 +50,8 @@ public class LoginController implements Serializable {
 	public String cerrarSesion() {
 		FacesContext.getCurrentInstance().getExternalContext()
 				.invalidateSession();
-		// return "home.xhtml?faces-redirect=true";
-		return "Login";
-
+		return "Login.xhtml?faces-redirect=true";
+		
 	}
 
 	public String getCuenta() {
@@ -78,13 +77,15 @@ public class LoginController implements Serializable {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	
-	public LoginService getLoginService() {
-		return loginService;
+
+	public SeguridadService getSeguridadService() {
+		return seguridadService;
 	}
 
-	public void setLoginService(LoginService loginService) {
-		this.loginService = loginService;
+	public void setSeguridadService(SeguridadService seguridadService) {
+		this.seguridadService = seguridadService;
 	}
+	
+	
 
 }

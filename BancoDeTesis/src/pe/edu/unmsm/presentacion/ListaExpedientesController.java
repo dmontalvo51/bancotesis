@@ -10,7 +10,7 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 
 import pe.edu.unmsm.modelo.Expediente;
-import pe.edu.unmsm.negocio.ExpedienteService;
+
 
 
 @ViewScoped

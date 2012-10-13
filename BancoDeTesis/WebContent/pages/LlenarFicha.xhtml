@@ -11,44 +11,34 @@
 			<!-- Empezar a programar desde aqui -->
 
 
-			<h:panelGrid columns="2" styleClass="formularioRegistro">
-				<f:facet name="header">  
-        INSCRIPCION DE FICHA DE TESIS
-    </f:facet>
-				<h:outputLabel for="Codigo" value="Codigo: " />
-				<p:inputText id="Codigo" value="#{registrarFicha.codigo}" label="Codigo" />
-
-			</h:panelGrid>
-
-
-
 			<!-- nuevo Panel grid para los combobox-->
 
 			<h:panelGrid columns="8" styleClass="formularioRegistro">
-
-				<!--creacion de combobox Asesores-->
-
-				<h:outputLabel for="Asesor" value="Asesor: " />
-				<h:selectOneMenu id="Asesor" value="#{registrarFicha.asesor}"
-					required="true">
-					<f:selectItem itemLabel="Select One" itemValue="" />
-					<f:selectItems value="#{registrarFicha.asesores}" />
-				</h:selectOneMenu>
-				<p:message for="Asesor" />
-				<h:outputText value="#{registrarFicha.asesor}" />
-
+				<f:facet name="header">  
+				#{msg.lblRegistroProyectoTesis}
+      			 </f:facet>
+				
 				<!--creacion de combobox LineaInvestigacion-->
 
 				<h:outputLabel for="LineaInvestigacion"
 					value="Linea de Investigacion: " />
 				<h:selectOneMenu id="LineaInvestigacion"
-					value="#{registrarFicha.lineaInvestigacion}" required="true">
+					value="#{llenarFicha.listaLineasInvestigacion}" required="true"  >
 					<f:selectItem itemLabel="Select One" itemValue="" />
-					<f:selectItems value="#{registrarFicha.lineaInvestigaciones}" />
+					<f:selectItems value="#{llenarFicha.lineaInvestigacion}" var="linea" itemValue="#{linea.id}" itemDescription="#{linea.lineaInvestigacion}" />
 				</h:selectOneMenu>
 				<p:message for="LineaInvestigacion" />
-				<h:outputText value="#{registrarFicha.lineaInvestigacion}" />
+			
+				<!--creacion de combobox Asesores-->
 
+				<h:outputLabel for="Asesor" value="Asesor: " />
+				<h:selectOneMenu id="Asesor" value="#{llenarFicha.asesor}"
+					required="true">
+					<f:selectItem itemLabel="Select One" itemValue="" />
+					<f:selectItems value="#{llenarFicha.listaAsesores}" />
+				</h:selectOneMenu>
+				<p:message for="Asesor" />
+				<h:outputText value="#{llenarFicha.asesor}" />
 
 			</h:panelGrid>
 
@@ -56,7 +46,8 @@
 			<h:panelGrid columns="2" styleClass="formularioRegistro">
 
 				<h:outputLabel for="Titulo" value="Titulo: " />
-				<p:inputText id="Titulo" value="#{registrarFicha.titulo}" label="Titulo" />
+				<p:inputText id="Titulo" value="#{llenarFicha.titulo}"
+					label="Titulo" />
 
 			</h:panelGrid>
 
@@ -67,7 +58,7 @@
 
 				<h:form id="form">
 
-					<p:editor id="Editor" value="#{registrarFicha.resumen}" width="600" />
+					<p:editor id="Editor" value="#{llenarFicha.resumen}" width="600" />
 
 					<h:panelGrid columns="2" style="margin-top:10px">
 						<p:commandButton id="submitButton" value="Submit" update="display"
@@ -78,7 +69,7 @@
 
 					<p:dialog header="Content" widgetVar="dlg" showEffect="fade"
 						hideEffect="fade" modal="true">
-						<h:outputText id="display" value="#{registrarFicha.resumen}"
+						<h:outputText id="display" value="#{llenarFicha.resumen}"
 							escape="false" />
 					</p:dialog>
 

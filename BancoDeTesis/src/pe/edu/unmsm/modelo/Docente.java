@@ -1,6 +1,7 @@
 package pe.edu.unmsm.modelo;
 
-public class Asesor {
+public class Docente {
+	
 	private String codigo;
 	private String nombre;
 	public String getCodigo() {

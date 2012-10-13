@@ -37,12 +37,19 @@ public class SeguridadService {
 			// usu.setOpcionesMenu(loginMapper.cargarOpcionesMenu(usuario));
 
 			List<OpcionMenu> opcionesMenu = new ArrayList<OpcionMenu>();
-			opcionesMenu.add(new OpcionMenu("/pages/DetalleTesis.jsf",
-					"DetalleTesis", ""));
+			opcionesMenu.add(new OpcionMenu("/pages/DatosBachiller.jsf",
+					"Mis datos", ""));
 			opcionesMenu.add(new OpcionMenu("/pages/InformeProyectoTesis.jsf",
 					"Informe Proyecto Tesis", ""));
-			opcionesMenu.add(new OpcionMenu("/pages/IngresarFicha.jsf",
-					"Ingresar Ficha", ""));
+			opcionesMenu.add(new OpcionMenu("/pages/LlenarFicha.jsf",
+					"Llenar Ficha", ""));
+			opcionesMenu.add(new OpcionMenu("/pages/RegistrarActaConformidad.jsf",
+					"Registrar Acta de Conformidad", ""));
+			opcionesMenu.add(new OpcionMenu("/pages/RegistrarActaSustentacion.jsf",
+					"Registrar Acta de sustentación", ""));
+			opcionesMenu.add(new OpcionMenu("/pages/RegistrarRDInscripcion.jsf",
+					"Registrar RD Inscripcion", ""));
+
 
 			usu.setOpcionesMenu(opcionesMenu);
 

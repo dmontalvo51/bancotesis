@@ -1,0 +1,83 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="/pages/common/plantillaPrincipal.xhtml">
+	<ui:define name="title">#{msg.tituloSistema} .::. Revisar ficha de Tesis</ui:define>
+	<ui:define name="cuerpo">
+		<div class="cuerpo">
+			<!-- Empezar a programar desde aqui -->
+
+			<h:form id="form">
+
+				<p:dataTable id="lptesiss" var="lptesis" value="#{listaProyectoTesis.listProyectoTesis}"
+					rowKey="#{lptesis.model}" selection="#{listaProyectoTesis.selectedProyectoTesis}"
+					selectionMode="single" >
+
+					<f:facet name="header">  
+        			</f:facet>
+            			
+
+					<p:column headerText="Nro de Expediente">  
+						<h:outputText value="#{lptesis.nroExpediente}" />
+       				 </p:column>
+
+					<p:column headerText="Titulo">  
+            			<h:outputText value="#{lptesis.titulo}" /> 
+        			</p:column>
+
+					<p:column headerText="Linea de Investigacion">  
+            			<h:outputText value="#{lptesis.lineaInvestigacion}" />  
+        			</p:column>
+
+					<p:column headerText="Bachiller">  
+           				 <h:outputText value="#{lptesis.nomBachiller}" /> 
+        			</p:column>
+        			
+        			<p:column headerText="Estado">  
+           				 <h:outputText value="#{lptesis.estado}" /> 
+        			</p:column>
+
+					<f:facet name="footer">
+						<p:commandButton id="viewButton" value="Revisar"
+							icon="ui-icon-search" update=":form:display"
+							oncomplete="carDialog.show()" />
+					</f:facet>
+
+				</p:dataTable>
+
+	        <p:dialog id="dialog" header="Car Detail" widgetVar="carDialog"
+					resizable="false" width="200" showEffect="clip" hideEffect="fold">
+
+					<h:panelGrid id="display" columns="2" cellpadding="4">
+
+					<!--<f:facet name="header">
+							<p:graphicImage
+								value="/images/cars/#{.selectedCar.manufacturer}.jpg" />
+						</f:facet> -->
+
+						<h:outputText value="Expediente:" />
+						<h:outputText value="#{listaProyectoTesis.selectedProyectoTesis.NroTramite}" />
+
+						<h:outputText value="Titulo:" />
+						<h:outputText value="#{listaProyectoTesis.selectedProyectoTesis.titulo}" />
+
+						<h:outputText value="Linea:" />
+						<h:outputText value="#{listaProyectoTesis.selectedProyectoTesis.lineaInvestigacion}" />
+
+						<h:outputText value="Bachillerr:" />
+						<h:outputText value="#{listaProyectoTesis.selectedProyectoTesis.nomBachiller}" />
+						
+						<h:outputText value="Estado:" />
+						<h:outputText value="#{listaProyectoTesis.selectedProyectoTesis.estado}" />
+						
+					</h:panelGrid>
+				</p:dialog>    
+
+			</h:form>
+			<!-- Terminar de programar desde aqui -->
+
+		</div>
+	</ui:define>
+</ui:composition>

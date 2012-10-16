@@ -50,7 +50,8 @@ public class SeguridadService {
 			opcionesMenu.add(new OpcionMenu("/pages/RegistrarRDInscripcion.jsf",
 					"Registrar RD Inscripcion", ""));
 
-
+			opcionesMenu.add(new OpcionMenu("/pages/RevisarFichaTesis.jsf",
+					"Revisar ficha de Tesis", ""));
 			usu.setOpcionesMenu(opcionesMenu);
 
 			return usu;

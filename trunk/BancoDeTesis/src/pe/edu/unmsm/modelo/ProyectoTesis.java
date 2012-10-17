@@ -1,23 +1,28 @@
 package pe.edu.unmsm.modelo;
 
 public class ProyectoTesis {
-	private String NroExpediente;
+	
+	private String nroExpediente;
+	private String codigoFicha;
 	private String titulo;
 	private String lineaInvestigacion;
 	private String nomBachiller;
 	private String estado;
+	private String asesor;
+	private String resumen;
 	
 	
-
-	
-	public ProyectoTesis(String nroExpediente, String titulo,String lineaInvestigacion, String nomBachiller,String estado) {
+		
+	public ProyectoTesis(String nroExpediente, String codigoFicha,
+			String titulo, String lineaInvestigacion, String nomBachiller,
+			String estado) {
 		super();
-		NroExpediente = nroExpediente;
+		this.nroExpediente = nroExpediente;
+		this.codigoFicha = codigoFicha;
 		this.titulo = titulo;
 		this.lineaInvestigacion = lineaInvestigacion;
 		this.nomBachiller = nomBachiller;
 		this.estado = estado;
-		
 	}
 	public String getLineaInvestigacion() {
 		return lineaInvestigacion;
@@ -26,10 +31,10 @@ public class ProyectoTesis {
 		this.lineaInvestigacion = lineaInvestigacion;
 	}
 	public String getNroExpediente() {
-		return NroExpediente;
+		return nroExpediente;
 	}
 	public void setNroExpedientee(String nroExpediente) {
-		NroExpediente = nroExpediente;
+		this.nroExpediente = nroExpediente;
 	}
 	public String getTitulo() {
 		return titulo;

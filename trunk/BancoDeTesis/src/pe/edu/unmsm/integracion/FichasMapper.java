@@ -6,5 +6,6 @@ import pe.edu.unmsm.modelo.Ficha;
 public interface FichasMapper {
 	
 public List<Ficha> RegistrarFichas();
+public List<Ficha> cargarListaFichasInscritas();
 	
 }

@@ -4,15 +4,15 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.prime.com.tr/ui"
 	template="/pages/common/plantillaPrincipal.xhtml">
-	<ui:define name="title">#{msg.tituloSistema} .::. Revisar ficha de Tesis</ui:define>
+	<ui:define name="title">#{msg.tituloSistema} .::. Listar Fichas de Tesis</ui:define>
 	<ui:define name="cuerpo">
 		<div class="cuerpo">
 			<!-- Empezar a programar desde aqui -->
 
 			<h:form id="form">
 
-				<p:dataTable id="lptesiss" var="lptesis" value="#{listaProyectoTesis.listProyectoTesis}"
-					rowKey="#{lptesis.model}" selection="#{listaProyectoTesis.selectedProyectoTesis}"
+				<p:dataTable id="lptesiss" var="lptesis" value="#{listarFichasTesis.listFicha}"
+					rowKey="#{lptesis.model}" selection="#{listarFichasTesis.selectedFicha}"
 					selectionMode="single" >
 
 					<f:facet name="header">  
@@ -21,6 +21,10 @@
 
 					<p:column headerText="Nro de Expediente">  
 						<h:outputText value="#{lptesis.nroExpediente}" />
+       				 </p:column>
+       				 
+       				 <p:column headerText="Codigo">  
+						<h:outputText value="#{lptesis.codigo}" />
        				 </p:column>
 
 					<p:column headerText="Titulo">  
@@ -40,9 +44,11 @@
         			</p:column>
 
 					<f:facet name="footer">
-						<p:commandButton id="viewButton" value="Revisar"
+						
+									
+						<p:commandButton  id="viewButton" action="#{listarFichasTesis.revisarProyectoTesis}"
 							icon="ui-icon-search" update=":form:display"
-							oncomplete="carDialog.show()" />
+							oncomplete="carDialog.show()" ajax="false" />
 					</f:facet>
 
 				</p:dataTable>
@@ -58,19 +64,19 @@
 						</f:facet> -->
 
 						<h:outputText value="Expediente:" />
-						<h:outputText value="#{listaProyectoTesis.selectedProyectoTesis.NroTramite}" />
+						<h:outputText value="#{listarFichasTesis.selectedFicha.nroExpediente}" />
 
 						<h:outputText value="Titulo:" />
-						<h:outputText value="#{listaProyectoTesis.selectedProyectoTesis.titulo}" />
+						<h:outputText value="#{listarFichasTesis.selectedFicha.titulo}" />
 
 						<h:outputText value="Linea:" />
-						<h:outputText value="#{listaProyectoTesis.selectedProyectoTesis.lineaInvestigacion}" />
+						<h:outputText value="#{listarFichasTesis.selectedFicha.lineaInvestigacion}" />
 
 						<h:outputText value="Bachillerr:" />
-						<h:outputText value="#{listaProyectoTesis.selectedProyectoTesis.nomBachiller}" />
+						<h:outputText value="#{listarFichasTesis.selectedFicha.nomBachiller}" />
 						
 						<h:outputText value="Estado:" />
-						<h:outputText value="#{listaProyectoTesis.selectedProyectoTesis.estado}" />
+						<h:outputText value="#{listarFichasTesis.selectedFicha.estado}" />
 						
 					</h:panelGrid>
 				</p:dialog>    

@@ -3,7 +3,7 @@ package pe.edu.unmsm.modelo;
 public class InformeProyectoTesis {
 	
 	private String codigo;
-	private String Bosquejo;
+	private String resumen;
 	private String titulo;
 	private int codigoEstado;
 	private String observaciones;
@@ -19,10 +19,10 @@ public class InformeProyectoTesis {
 		this.codigo = codigo;
 	}
 	public String getResumen() {
-		return Bosquejo;
+		return resumen;
 	}
 	public void setResumen(String resumen) {
-		this.Bosquejo = resumen;
+		this.resumen = resumen;
 	}
 	public String getTitulo() {
 		return titulo;

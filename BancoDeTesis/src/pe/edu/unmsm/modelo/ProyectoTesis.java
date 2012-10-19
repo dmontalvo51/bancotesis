@@ -15,6 +15,19 @@ public class ProyectoTesis {
 		
 	public ProyectoTesis(String nroExpediente, String codigoFicha,
 			String titulo, String lineaInvestigacion, String nomBachiller,
+			String estado, String asesor, String resumen) {
+		super();
+		this.nroExpediente = nroExpediente;
+		this.codigoFicha = codigoFicha;
+		this.titulo = titulo;
+		this.lineaInvestigacion = lineaInvestigacion;
+		this.nomBachiller = nomBachiller;
+		this.estado = estado;
+		this.asesor = asesor;
+		this.resumen = resumen;
+	}
+	public ProyectoTesis(String nroExpediente, String codigoFicha,
+			String titulo, String lineaInvestigacion, String nomBachiller,
 			String estado) {
 		super();
 		this.nroExpediente = nroExpediente;

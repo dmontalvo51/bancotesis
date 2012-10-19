@@ -11,75 +11,80 @@
 
 			<h:form id="form">
 
-				<p:dataTable id="lptesiss" var="lptesis" value="#{listarFichasTesis.listFicha}"
-					rowKey="#{lptesis.model}" selection="#{listarFichasTesis.selectedFicha}"
-					selectionMode="single" >
+				<p:dataTable id="lptesiss" var="lptesis"
+					value="#{listarFichasTesis.listFicha}" rowKey="#{lptesis.model}"
+					selection="#{listarFichasTesis.selectedFicha}"
+					selectionMode="single">
 
-					<f:facet name="header">  
-        			</f:facet>
-            			
+					<f:facet name="header">
+					</f:facet>
 
-					<p:column headerText="Nro de Expediente">  
+					
+					<p:column headerText="Nro de Expediente">
 						<h:outputText value="#{lptesis.nroExpediente}" />
-       				 </p:column>
-       				 
-       				 <p:column headerText="Codigo">  
+					</p:column>
+
+					<p:column headerText="Codigo">
 						<h:outputText value="#{lptesis.codigo}" />
-       				 </p:column>
+					</p:column>
 
-					<p:column headerText="Titulo">  
-            			<h:outputText value="#{lptesis.titulo}" /> 
-        			</p:column>
+					<p:column headerText="Titulo">
+						<h:outputText value="#{lptesis.titulo}" />
+					</p:column>
 
-					<p:column headerText="Linea de Investigacion">  
-            			<h:outputText value="#{lptesis.lineaInvestigacion}" />  
-        			</p:column>
+					<p:column headerText="Linea de Investigacion">
+						<h:outputText value="#{lptesis.lineaInvestigacion}" />
+					</p:column>
 
-					<p:column headerText="Bachiller">  
-           				 <h:outputText value="#{lptesis.nomBachiller}" /> 
-        			</p:column>
-        			
-        			<p:column headerText="Estado">  
-           				 <h:outputText value="#{lptesis.estado}" /> 
-        			</p:column>
+					<p:column headerText="Bachiller">
+						<h:outputText value="#{lptesis.nomBachiller}" />
+					</p:column>
+
+					<p:column headerText="Estado">
+						<h:outputText value="#{lptesis.estado}" />
+					</p:column>
 
 					<f:facet name="footer">
-						
-									
-						<p:commandButton  id="viewButton" action="#{listarFichasTesis.revisarProyectoTesis}"
-							icon="ui-icon-search" update=":form:display"
-							oncomplete="carDialog.show()" ajax="false" />
+
+
+						<p:commandButton id="btnRevisar"
+							action="#{listarFichasTesis.revisarProyectoTesis}"
+							icon="ui-icon-verarchivo" update=":form:display"
+							oncomplete="carDialog.show()" ajax="false" value="Revisar" />
 					</f:facet>
 
 				</p:dataTable>
 
-	        <p:dialog id="dialog" header="Car Detail" widgetVar="carDialog"
+				<p:dialog id="dialog" header="Car Detail" widgetVar="carDialog"
 					resizable="false" width="200" showEffect="clip" hideEffect="fold">
 
 					<h:panelGrid id="display" columns="2" cellpadding="4">
 
-					<!--<f:facet name="header">
+						<f:facet name="header">
 							<p:graphicImage
-								value="/images/cars/#{.selectedCar.manufacturer}.jpg" />
-						</f:facet> -->
+								value="/img/verarchivo.jng" />
+						</f:facet> 
 
 						<h:outputText value="Expediente:" />
-						<h:outputText value="#{listarFichasTesis.selectedFicha.nroExpediente}" />
+						<h:outputText
+							value="#{listarFichasTesis.selectedFicha.nroExpediente}" />
 
 						<h:outputText value="Titulo:" />
 						<h:outputText value="#{listarFichasTesis.selectedFicha.titulo}" />
 
 						<h:outputText value="Linea:" />
-						<h:outputText value="#{listarFichasTesis.selectedFicha.lineaInvestigacion}" />
+						<h:outputText
+							value="#{listarFichasTesis.selectedFicha.lineaInvestigacion}" />
 
 						<h:outputText value="Bachillerr:" />
-						<h:outputText value="#{listarFichasTesis.selectedFicha.nomBachiller}" />
-						
+						<h:outputText
+							value="#{listarFichasTesis.selectedFicha.nomBachiller}" />
+
 						<h:outputText value="Estado:" />
 						<h:outputText value="#{listarFichasTesis.selectedFicha.estado}" />
-						
+
 					</h:panelGrid>
-				</p:dialog>    
+				</p:dialog>
 
 			</h:form>
 			<!-- Terminar de programar desde aqui -->

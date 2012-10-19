@@ -14,10 +14,13 @@ public class Ficha {
 	private String asesor;
 	
 	
-	public Ficha(String codigo, String titulo, String resumen,
-			String lineaInvestigacion, String nomBachiller, String estado,
-			String asesor) {
+	
+	
+	public Ficha(String nroExpediente, String codigo, String titulo,
+			String resumen, String lineaInvestigacion, String nomBachiller,
+			String estado, String asesor) {
 		super();
+		this.nroExpediente = nroExpediente;
 		this.codigo = codigo;
 		this.titulo = titulo;
 		this.resumen = resumen;
@@ -26,7 +29,6 @@ public class Ficha {
 		this.estado = estado;
 		this.asesor = asesor;
 	}
-	
 	public String getTitulo() {
 		return titulo;
 	}

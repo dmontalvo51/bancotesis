@@ -8,9 +8,15 @@ import org.springframework.stereotype.Service;
 
 import pe.edu.unmsm.integracion.FichasMapper;
 import pe.edu.unmsm.integracion.ProyectoTesisMapper;
+import pe.edu.unmsm.integracion.InformeProyectoTesisMapper;
 import pe.edu.unmsm.modelo.Ficha;
+import pe.edu.unmsm.modelo.InformeProyectoTesis;
 import pe.edu.unmsm.modelo.LineaInvestigacion;
 import pe.edu.unmsm.modelo.ProyectoTesis;
+
+import javax.faces.application.FacesMessage;  
+import javax.faces.context.FacesContext;  
+import javax.faces.event.ActionEvent; 
 
 @Service(value="registroProyectoTesisService")
 public class RegistroProyectoTesisService {
@@ -22,6 +28,8 @@ public class RegistroProyectoTesisService {
 	@Autowired
 	private FichasMapper fichasMapper;
 	
+	@Autowired
+	private InformeProyectoTesisMapper informeProyectoTesisMapper;
 	//Servicios
 	
 	public List<LineaInvestigacion> cargarLineasInvestigacion() {
@@ -42,18 +50,24 @@ public class RegistroProyectoTesisService {
 		
 		//lista=fichasMapper.cargarListaFichasInscritas();
 		
-		lista.add(new Ficha("026-FISI-2012","titulo1","resumen de la ficha","linea1","Jorge",null,null));
-		lista.add(new Ficha("027-FISI-2012","titulo2","resumen de la ficha","linea2","Diego",null,null));
-		lista.add(new Ficha("028-FISI-2012","titulo3","resumen de la ficha","linea3","Karina",null,null));
-		lista.add(new Ficha("029-FISI-2012","titulo4","resumen de la ficha","linea4","Johnny",null,null));
+		lista.add(new Ficha("026-FISI-2012","F001","titulo1","resumen de la ficha","linea1","Jorge","sin revisar","Bustamante"));
+		lista.add(new Ficha("027-FISI-2012","F002","titulo2","resumen de la ficha","linea2","Diego","revisado","Piedra"));
+		lista.add(new Ficha("028-FISI-2012","F003","titulo3","resumen de la ficha","linea3","Karina","revisado","Mauricio"));
+		lista.add(new Ficha("029-FISI-2012","F004","titulo4","resumen de la ficha","linea4","Johnny","sin revisado","Luza"));
 		
 		return lista;
 		
 	}
 	
-	
-	
-	
+	public List<InformeProyectoTesis> cargarInformeProyetoTesis() {
+		
+		List<InformeProyectoTesis> lista=new ArrayList<InformeProyectoTesis>();
+		
+		//lista=InformeProyectoTesisMapper.cargarInformeProyectoTesis();
+		
+		return lista;
+		
+	}
 	
 	//Metodos de encapsulamiento
 
@@ -74,5 +88,19 @@ public class RegistroProyectoTesisService {
 	}
 
 
+	public InformeProyectoTesisMapper getInformeProyectoTesisMapper() {
+		return informeProyectoTesisMapper;
+	}
+
+	public void setInformeProyectoTesisMapper(
+			InformeProyectoTesisMapper informeProyectoTesisMapper) {
+		this.informeProyectoTesisMapper = informeProyectoTesisMapper;
+	}
+
+	public void destruir(ActionEvent actionEvent){  
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "System Error",  "Please try again later.");  
+          
+        FacesContext.getCurrentInstance().addMessage(null, message);  
+    }
 
 }

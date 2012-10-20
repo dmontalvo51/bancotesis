@@ -1,7 +1,13 @@
 package pe.edu.unmsm.modelo;
 
-public class OpcionMenu {
+import java.io.Serializable;
+
+public class OpcionMenu implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String url;
 	private String descripcion;
 	private String icono;

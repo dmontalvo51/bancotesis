@@ -1,14 +1,20 @@
 package pe.edu.unmsm.util;
 
-import java.text.DateFormat;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 
 import javax.faces.context.FacesContext;
+import javax.faces.context.Flash;
 
 public class TesisUtil {
 	
+	
+	/*public static void subirFlash(String clave, Object objeto){
+		FacesContext.getCurrentInstance().getExternalContext().getFlash().put(clave, objeto);
+	}*/
+	
+	public static Flash flashScope(String clave, Object objeto){
+		return (FacesContext.getCurrentInstance().getExternalContext().getFlash());
+	}
 	
 	public static void escribir(String texto) {
 		System.out.println(texto);

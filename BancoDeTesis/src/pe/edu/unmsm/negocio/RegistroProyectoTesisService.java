@@ -3,20 +3,20 @@ package pe.edu.unmsm.negocio;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import pe.edu.unmsm.integracion.FichasMapper;
-import pe.edu.unmsm.integracion.ProyectoTesisMapper;
 import pe.edu.unmsm.integracion.InformeProyectoTesisMapper;
+import pe.edu.unmsm.integracion.ProyectoTesisMapper;
 import pe.edu.unmsm.modelo.Ficha;
 import pe.edu.unmsm.modelo.InformeProyectoTesis;
 import pe.edu.unmsm.modelo.LineaInvestigacion;
-import pe.edu.unmsm.modelo.ProyectoTesis;
-
-import javax.faces.application.FacesMessage;  
-import javax.faces.context.FacesContext;  
-import javax.faces.event.ActionEvent; 
+import pe.edu.unmsm.modelo.Tesis;
 
 @Service(value="registroProyectoTesisService")
 public class RegistroProyectoTesisService {
@@ -44,6 +44,7 @@ public class RegistroProyectoTesisService {
 						
 	}
 
+	
 	public List<Ficha> cargarListaFichasInscritas() {
 		
 		List<Ficha> lista=new ArrayList<Ficha>();

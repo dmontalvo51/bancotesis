@@ -10,7 +10,7 @@ public class Tesis {
 	private String bachiller;
 	private String nombres;
 	private String apellidos;
-	private Date fechaRegistro;
+	private String fechaRegistro;
 	private String resumen;
 	private String linea;
 	
@@ -19,7 +19,22 @@ public class Tesis {
 		// TODO Auto-generated constructor stub
 	}
 	
-	
+	public Tesis(String codigoExp, String estado, String usuario,
+			String bachiller, String nombres, String apellidos,
+			String fechaRegistro, String resumen, String linea) {
+		super();
+		this.codigoExp = codigoExp;
+		this.estado = estado;
+		this.usuario = usuario;
+		this.bachiller = bachiller;
+		this.nombres = nombres;
+		this.apellidos = apellidos;
+		this.fechaRegistro = fechaRegistro;
+		this.resumen = resumen;
+		this.linea = linea;
+	}
+
+
 	public String getResumen() {
 		return resumen;
 	}
@@ -74,11 +89,11 @@ public class Tesis {
 		this.apellidos = apellidos;
 	}
 
-	public Date getFechaRegistro() {
+	public String getFechaRegistro() {
 		return fechaRegistro;
 	}
 
-	public void setFechaRegistro(Date fechaRegistro) {
+	public void setFechaRegistro(String fechaRegistro) {
 		this.fechaRegistro = fechaRegistro;
 	}
 

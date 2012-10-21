@@ -3,7 +3,6 @@ package pe.edu.unmsm.util;
 import java.util.Calendar;
 
 import javax.faces.context.FacesContext;
-import javax.faces.context.Flash;
 
 public class TesisUtil {
 	
@@ -12,8 +11,8 @@ public class TesisUtil {
 		FacesContext.getCurrentInstance().getExternalContext().getFlash().put(clave, objeto);
 	}*/
 	
-	public static Flash flashScope(String clave, Object objeto){
-		return (FacesContext.getCurrentInstance().getExternalContext().getFlash());
+	public static void flashScope(String clave, Object objeto){
+		FacesContext.getCurrentInstance().getExternalContext().getFlash().put(clave, objeto);
 	}
 	
 	public static void escribir(String texto) {

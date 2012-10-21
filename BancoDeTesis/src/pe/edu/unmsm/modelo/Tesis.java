@@ -1,6 +1,5 @@
 package pe.edu.unmsm.modelo;
 
-import java.util.Date;
 
 public class Tesis {
 	

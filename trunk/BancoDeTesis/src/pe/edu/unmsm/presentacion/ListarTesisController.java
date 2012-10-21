@@ -43,8 +43,8 @@ public class ListarTesisController implements Serializable {
 	
 	
 	public String nextPage(){
-		   TesisUtil.flashScope("tesis", selectedTesis); 
-		   return "CargarBorrador?faces-redirect=true";
+	    TesisUtil.flashScope("tesis", selectedTesis);
+		return "CargarBorrador?faces-redirect=true";
 	}
 	
 	private List<Tesis> llenarTabla() {

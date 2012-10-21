@@ -16,10 +16,10 @@ public class RevisionBorradorTesisService {
 		
 		//lista=TesisMapper.cargarListaTesisInscritas();
 		
-		lista.add(new Tesis("123","0","abc","Jorge","perez","Bustamante","11/11/2012","resumen1","linea1"));
-		lista.add(new Tesis("123","0","abc","Diego","perez","Piedra","11/11/2012","resumen2","linea2"));
-		lista.add(new Tesis("123","1","abc","Karina","perez","Mauricio","11/11/2012","resumen3","linea3"));
-		lista.add(new Tesis("123","0","abc","Johnny","perez","Luza","11/11/2012","resumen4","linea4"));
+		lista.add(new Tesis("1234","Sin Revisar","Luis Alarcón","Bustamante","Jorge","Caceres","11/11/2012","resumen1","linea1"));
+		lista.add(new Tesis("1235","Sin Revisar","Luis Alarcón","Piedra","Diego","Montalvo","11/11/2012","resumen2","linea2"));
+		lista.add(new Tesis("1236","Revisado","Luis Alarcón","Mauricio","Karina","Aranguren","11/11/2012","resumen3","linea3"));
+		lista.add(new Tesis("1237","Sin Revisar","Luis Alarcón","Luza","Johnny","Apolinario","11/11/2012","resumen4","linea4"));
 		
 		return lista;
 		

@@ -11,8 +11,8 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
-import pe.edu.unmsm.negocio.SeguridadService;
 import pe.edu.unmsm.negocio.modelo.Usuario;
+import pe.edu.unmsm.negocio.servicio.SeguridadService;
 import pe.edu.unmsm.util.TesisUtil;
 
 @RequestScoped

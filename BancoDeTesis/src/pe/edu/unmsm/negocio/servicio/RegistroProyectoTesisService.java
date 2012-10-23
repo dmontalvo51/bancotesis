@@ -1,4 +1,4 @@
-package pe.edu.unmsm.negocio;
+package pe.edu.unmsm.negocio.servicio;
 
 import java.util.ArrayList;
 import java.util.List;

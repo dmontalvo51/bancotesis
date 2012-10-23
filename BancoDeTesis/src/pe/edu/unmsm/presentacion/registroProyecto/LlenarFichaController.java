@@ -12,13 +12,13 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
-import pe.edu.unmsm.negocio.RegistroProyectoTesisService;
-import pe.edu.unmsm.negocio.SeguridadService;
 import pe.edu.unmsm.negocio.modelo.ActaSustentacion;
 import pe.edu.unmsm.negocio.modelo.Docente;
 import pe.edu.unmsm.negocio.modelo.Expediente;
 import pe.edu.unmsm.negocio.modelo.LineaInvestigacion;
 import pe.edu.unmsm.negocio.modelo.Usuario;
+import pe.edu.unmsm.negocio.servicio.RegistroProyectoTesisService;
+import pe.edu.unmsm.negocio.servicio.SeguridadService;
 
 import pe.edu.unmsm.util.TesisUtil;
 

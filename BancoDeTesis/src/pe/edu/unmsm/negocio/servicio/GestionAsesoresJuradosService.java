@@ -1,4 +1,4 @@
-package pe.edu.unmsm.negocio;
+package pe.edu.unmsm.negocio.servicio;
 
 import org.springframework.stereotype.Service;
 

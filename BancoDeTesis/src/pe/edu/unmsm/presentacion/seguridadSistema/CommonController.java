@@ -7,7 +7,7 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 
-import pe.edu.unmsm.negocio.MailService;
+import pe.edu.unmsm.negocio.servicio.MailService;
 import pe.edu.unmsm.util.TesisUtil;
 
 

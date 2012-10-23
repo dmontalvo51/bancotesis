@@ -9,8 +9,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 
-import pe.edu.unmsm.negocio.RevisionBorradorTesisService;
 import pe.edu.unmsm.negocio.modelo.Tesis;
+import pe.edu.unmsm.negocio.servicio.RevisionBorradorTesisService;
 import pe.edu.unmsm.util.TesisUtil;
 
 @ViewScoped

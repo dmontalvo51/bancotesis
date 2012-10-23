@@ -12,9 +12,9 @@ import javax.faces.bean.ViewScoped;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import pe.edu.unmsm.negocio.RegistroProyectoTesisService;
 import pe.edu.unmsm.negocio.modelo.Ficha;
 import pe.edu.unmsm.negocio.modelo.ProyectoTesis;
+import pe.edu.unmsm.negocio.servicio.RegistroProyectoTesisService;
 import pe.edu.unmsm.util.TesisUtil;
 
 @ViewScoped

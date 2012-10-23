@@ -7,9 +7,9 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import pe.edu.unmsm.integracion.LoginMapper;
-import pe.edu.unmsm.modelo.OpcionMenu;
-import pe.edu.unmsm.modelo.Usuario;
+import pe.edu.unmsm.integracion.dao.LoginMapper;
+import pe.edu.unmsm.negocio.modelo.OpcionMenu;
+import pe.edu.unmsm.negocio.modelo.Usuario;
 
 @Service(value = "seguridadService")
 public class SeguridadService {

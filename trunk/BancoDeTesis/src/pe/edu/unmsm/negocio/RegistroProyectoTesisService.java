@@ -10,13 +10,13 @@ import javax.faces.event.ActionEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import pe.edu.unmsm.integracion.FichasMapper;
-import pe.edu.unmsm.integracion.InformeProyectoTesisMapper;
-import pe.edu.unmsm.integracion.ProyectoTesisMapper;
-import pe.edu.unmsm.modelo.Ficha;
-import pe.edu.unmsm.modelo.InformeProyectoTesis;
-import pe.edu.unmsm.modelo.LineaInvestigacion;
-import pe.edu.unmsm.modelo.Tesis;
+import pe.edu.unmsm.integracion.dao.FichasMapper;
+import pe.edu.unmsm.integracion.dao.InformeProyectoTesisMapper;
+import pe.edu.unmsm.integracion.dao.ProyectoTesisMapper;
+import pe.edu.unmsm.negocio.modelo.Ficha;
+import pe.edu.unmsm.negocio.modelo.InformeProyectoTesis;
+import pe.edu.unmsm.negocio.modelo.LineaInvestigacion;
+import pe.edu.unmsm.negocio.modelo.Tesis;
 
 @Service(value="registroProyectoTesisService")
 public class RegistroProyectoTesisService {

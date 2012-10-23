@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import pe.edu.unmsm.modelo.Tesis;
+import pe.edu.unmsm.negocio.modelo.Tesis;
 
 @Service(value="revisionBorradorTesisService")
 public class RevisionBorradorTesisService {

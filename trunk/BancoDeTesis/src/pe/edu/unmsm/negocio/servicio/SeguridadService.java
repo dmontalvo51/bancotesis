@@ -24,14 +24,7 @@ public class SeguridadService {
 	public Usuario iniciarSesion(Map usuario) {
 
 		Usuario usu;
-		// usu= loginMapper.iniciarSesion(usuario);
-
-		// borrar cuando haya base de datos
-		if (usuario.get("cuenta").equals(usuario.get("pass")))
-			usu = new Usuario();
-		else
-			usu = null;
-		// borrar cuando haya base de datos
+		usu= loginMapper.iniciarSesion(usuario);
 
 		if (usu != null) {
 			// usu.setOpcionesMenu(loginMapper.cargarOpcionesMenu(usuario));

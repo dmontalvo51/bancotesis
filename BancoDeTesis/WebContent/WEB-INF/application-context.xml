@@ -43,7 +43,7 @@
 	<!-- Escanea el paquete de las interfaces y crea un bean de spring para 
 		cada interfaz -->	
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-	<property name="basePackage" value="pe.edu.unmsm.integracion" />
+	<property name="basePackage" value="pe.edu.unmsm.integracion.dao" />
 	</bean>
 
 <!-- 	<bean id="loginMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"> -->

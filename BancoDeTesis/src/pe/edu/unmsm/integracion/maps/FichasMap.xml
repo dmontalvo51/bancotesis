@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="pe.edu.unmsm.integracion.FichasMapper">
+<mapper namespace="pe.edu.unmsm.integracion.dao.FichasMapper">
 
 
-	<resultMap type="pe.edu.unmsm.modelo.Ficha" id="Ficha">
+	<resultMap type="pe.edu.unmsm.negocio.modelo.Ficha" id="Ficha">
 		<result property="id" column="tra_iCodigo"/>		
 		<result property="codigo" column="tra_vccodigo"/>
 		<result property="estado" column="est_iCodigo"/>

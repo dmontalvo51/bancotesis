@@ -49,11 +49,13 @@
 
 						<p:commandButton id="btnRevisar"
 							action="#{listarFichasTesis.revisarProyectoTesis}"
-							icon="ui-icon-verarchivo" update=":form:display"
-							oncomplete="carDialog.show()" ajax="false" value="Revisar" />
+							 update=":form:display"
+							oncomplete="carDialog.show()" ajax="false" value="Revisar" icon="/resources/img/verarchivo.png"/>
 					</f:facet>
-
 				</p:dataTable>
+				
+				<p:graphicImage
+								value="/resources/img/verarchivo.png" />
 
 				<p:dialog id="dialog" header="Car Detail" widgetVar="carDialog"
 					resizable="false" width="200" showEffect="clip" hideEffect="fold">
@@ -62,7 +64,7 @@
 
 						<f:facet name="header">
 							<p:graphicImage
-								value="/img/verarchivo.jng" />
+								value="/resources/img/verarchivo.png" />
 						</f:facet> 
 
 						<h:outputText value="Expediente:" />

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="pe.edu.unmsm.integracion.LoginMapper">
+<mapper namespace="pe.edu.unmsm.integracion.dao.LoginMapper">
 
-	<resultMap type="pe.edu.unmsm.modelo.Usuario" id="Usuario">
+	<resultMap type="pe.edu.unmsm.negocio.modelo.Usuario" id="Usuario">
 		<result property="tipo" column="TUSU_ID" />
 		<result property="cuenta" column="USU_CUENTA" />
 		<result property="fecha" column="USU_FECHAREGISTRO" />

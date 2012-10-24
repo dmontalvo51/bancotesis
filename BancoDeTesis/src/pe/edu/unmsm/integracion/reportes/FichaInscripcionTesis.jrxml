@@ -4,11 +4,12 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch">
+		<band height="95" splitType="Stretch">
 			<textField>
 				<reportElement uuid="91787b8d-fe0b-4891-a686-d12c48108d9d" x="88" y="10" width="378" height="23"/>
 				<textElement>
@@ -17,7 +18,7 @@
 				<textFieldExpression><![CDATA[UNIVERSIDAD NACIONAL MAYOR DE SAN MARCOS]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="91787b8d-fe0b-4891-a686-d12c48108d9d" x="140" y="40" width="326" height="23"/>
+				<reportElement uuid="91787b8d-fe0b-4891-a686-d12c48108d9d" x="114" y="40" width="326" height="23"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
@@ -73,7 +74,7 @@
 				<reportElement uuid="b19e8036-3f97-4919-be9a-88637a2e4644" x="0" y="113" width="127" height="32"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="b19e8036-3f97-4919-be9a-88637a2e4644" x="0" y="145" width="127" height="136"/>
+				<reportElement uuid="b19e8036-3f97-4919-be9a-88637a2e4644" x="0" y="145" width="127" height="185"/>
 			</rectangle>
 			<textField>
 				<reportElement uuid="f62d3110-11f0-4941-a98b-873bf5b9acee" x="28" y="116" width="87" height="25"/>
@@ -83,15 +84,8 @@
 				<textFieldExpression><![CDATA[LINEA INVEST.]]></textFieldExpression>
 			</textField>
 			<rectangle>
-				<reportElement uuid="b19e8036-3f97-4919-be9a-88637a2e4644" x="127" y="145" width="428" height="136"/>
+				<reportElement uuid="b19e8036-3f97-4919-be9a-88637a2e4644" x="127" y="145" width="428" height="185"/>
 			</rectangle>
-			<textField>
-				<reportElement uuid="f62d3110-11f0-4941-a98b-873bf5b9acee" x="24" y="174" width="87" height="20"/>
-				<textElement textAlignment="Right">
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression><![CDATA[RESUMEN]]></textFieldExpression>
-			</textField>
 		</band>
 	</detail>
 	<pageFooter>

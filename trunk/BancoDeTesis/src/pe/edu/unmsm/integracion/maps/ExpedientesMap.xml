@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="pe.edu.unmsm.integracion.ExpedientesMapper">
+<mapper namespace="pe.edu.unmsm.integracion.dao.ExpedientesMapper">
 
-	<resultMap type="pe.edu.unmsm.modelo.Expediente" id="Expediente">
+	<resultMap type="pe.edu.unmsm.negocio.modelo.Expediente" id="Expediente">
 		<result property="id" column="exp_iCodigo" />
 		<result property="codigo" column="exp_vcCodigo" />
 		<result property="estado" column="est_vcEstado" />
@@ -13,7 +13,7 @@
 
 	</resultMap>
 
-	<resultMap type="pe.edu.unmsm.modelo.Tesis" id="Tesis">
+	<resultMap type="pe.edu.unmsm.negocio.modelo.Tesis" id="Tesis">
 		<result property="codigo" column="tes_codigo" />
 		<result property="estado" column="est_estado" />
 		<result property="bachiller" column="usu_bachiller" />
@@ -28,7 +28,7 @@
 	</resultMap>
 
 
-	<insert id="ingresarExpediente" parameterType="pe.edu.unmsm.modelo.Expediente"
+	<insert id="ingresarExpediente" parameterType="pe.edu.unmsm.negocio.modelo.Expediente"
 		useGeneratedKeys="true" keyProperty="id">
 		insert into expediente
 		(exp_vcCodigo,usu_iCodigo,est_iCodigo,exp_dtFechaInicio) values

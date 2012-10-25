@@ -48,45 +48,16 @@
 
 
 						<p:commandButton id="btnRevisar"
-							action="#{listarFichasTesis.revisarProyectoTesis}"
-							 update=":form:display"
-							oncomplete="carDialog.show()" ajax="false" value="Revisar" icon="/resources/img/verarchivo.png"/>
+							action="#{listarFichasTesis.nextPage}"
+							update=":form:display"
+							oncomplete="carDialog.show()" ajax="false" 
+							value="Revisar" icon="ui-icon-verarchivo" />
 					</f:facet>
 				</p:dataTable>
 				
 				<p:graphicImage
-								value="/resources/img/verarchivo.png" />
+				value="/resources/img/verarchivo.png" />
 
-				<p:dialog id="dialog" header="Car Detail" widgetVar="carDialog"
-					resizable="false" width="200" showEffect="clip" hideEffect="fold">
-
-					<h:panelGrid id="display" columns="2" cellpadding="4">
-
-						<f:facet name="header">
-							<p:graphicImage
-								value="/resources/img/verarchivo.png" />
-						</f:facet> 
-
-						<h:outputText value="Expediente:" />
-						<h:outputText
-							value="#{listarFichasTesis.selectedFicha.nroExpediente}" />
-
-						<h:outputText value="Titulo:" />
-						<h:outputText value="#{listarFichasTesis.selectedFicha.titulo}" />
-
-						<h:outputText value="Linea:" />
-						<h:outputText
-							value="#{listarFichasTesis.selectedFicha.lineaInvestigacion}" />
-
-						<h:outputText value="Bachillerr:" />
-						<h:outputText
-							value="#{listarFichasTesis.selectedFicha.nomBachiller}" />
-
-						<h:outputText value="Estado:" />
-						<h:outputText value="#{listarFichasTesis.selectedFicha.estado}" />
-
-					</h:panelGrid>
-				</p:dialog>
 
 			</h:form>
 			<!-- Terminar de programar desde aqui -->

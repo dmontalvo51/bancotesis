@@ -2,7 +2,7 @@
 
 /*Plantilla Principal*/
 
-.cabecera{height: 10%;}
+.cabecera{height: 8%;}
 
 .menu{
 	display: block; /* set up as a block */
@@ -23,7 +23,7 @@
 	/* set up relative positioning so that z-index will work */
 	z-index: 3; /* allocate a suitable z-index */
 }
-.pie{ height: 7%;}
+.pie{ height: 8%;}
 
 
 /*Login*/
@@ -49,4 +49,33 @@
 
 
 
+/*para la parte inferior donde esta Fisi*/
+footer { 
+  width: 100%;
+  font-family: 'trebuchet ms', sans-serif;
+  font-size: 90%;
+  height: 15px;
+  padding: 20px 0 5px 0;
+  text-align: center; 
+  border-top: 1px solid #000;
+  background: #545454;
+  color: #A8AA94;
+  margin: 0 0 0 0;
+  text-transform: uppercase;
+}
 
+footer p { 
+  line-height: 1.7em;
+  padding: 0 0 10px 0;
+}
+
+footer a { 
+  color: #A8AA94;
+  text-decoration: none;
+}
+
+#logo #logo_text { 
+  position: absolute; 
+  top: 5px;
+  left: 0;
+}

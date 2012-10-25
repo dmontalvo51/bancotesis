@@ -10,56 +10,55 @@
 			<!-- Empezar a programar desde aqui -->
 
 			<h:form id="form">
-				<h:panelGrid columns="1" styleClass="formularioRegistro">
+				<h:panelGrid columns="4" styleClass="formularioRegistro">
 					<f:facet name="header">Informe de Proyecto de Tesis</f:facet>
-					<h:outputLabel for="NTramite" value="Numero Tramite: " />
-					<p:inputText id="Ntramite" value="" label="" />
 
 				</h:panelGrid>
 
 				<!-- aca va el elcuepo-->
-				<h:panelGrid columns="4" styleClass="formularioRegistro">
+				<h:panelGrid columns="2">
 
-					<h:outputLabel for="Codigo" value="Codigo: " />
-					<p:inputText id="Codigo" value="#{listarFichasTesis.mensaje}" label="Codigo" />
-					<h:outputLabel for="Alumno" value="Alumno: " />
-					<p:inputText id="Alumno" value="" label="Alumno" />
+					<h:outputLabel for="NTramite" value="Numero Tramite: " />
+					<h:outputText id="tramite" value="#{flash.ficha.nroExpediente}"
+						label="tramite" />
+
+					<h:outputLabel for="Titulo" value="Titulo: " />
+					<h:outputText id="titulo" value="#{flash.ficha.titulo}"
+						label="titulo" />
+
 					<h:outputLabel for="Linea de Investigacion"
 						value="Linea de Investigacion: " />
-					<p:inputText id="LineadeInvestigacion" value=""
-						label="Linea de Investigacion" />
-					<h:outputLabel for="Asesor" value="Asesor: " />
-					<p:inputText id="Asesor" value="" label="Asesor" />
-					<h:outputLabel for="Titulo" value="Titulo: " />
-					<p:inputText id="Titulo" value="" label="Titulo" />
-				</h:panelGrid>
-				<!-- aca va el radiobuton-->
-
-				<h:panelGrid columns="1" styleClass="formularioRegistro">
-					<f:facet name="header">
-					</f:facet>
-
+					<h:outputText id="lineainvestigacion"
+						value="#{flash.ficha.lineaInvestigacion}"
+						label="lineainvestigacion" />
 
 					<p:commandLink id="ajax" update="panel,display"
-						actionListener="#{listarFichasTesis.selectedFicha.nroExpediente}"
+						actionListener="#{flash.ficha.resumen}"
 						onclick="confirmation.show()" style="margin-right:20px;"
 						type="bottun">
 						<h:outputText value="Ver Resumen de tesis" />
 					</p:commandLink>
+
 					<p:confirmDialog id="confirmDialog" message="Resumen de la tesis"
-						header="Resumen" severity="alert" widgetVar="confirmation" 
-	
+						header="Resumen" severity="alert" widgetVar="confirmation"
 						style="margin-center:20px">
 
 						<p:commandButton id="decline" value="Resumen"
 							onclick="confirmation.hide()" type="button" />
 
 					</p:confirmDialog>
-					<h:outputLabel for="Se encuentra"
-						value="El bachiller debe de tomar la siguiente accion:  " />
+				</h:panelGrid>
 
-					<h:panelGrid columns="3" style="margin-bottom:1px" cellpadding="1">
-						<p:selectOneRadio id="OptionsRadio" value="">
+				<!-- aca va el radiobuton-->
+
+				<h:panelGrid columns="1">
+					<f:facet name="header">
+					</f:facet>
+
+					<h:outputLabel for="Se encuentra" value="Se encuentra:" />
+
+					<h:panelGrid columns="1" cellpadding="1">
+						<p:selectOneRadio id="OptionsRadio" value="informeProyectoTesis.ipt_opinion" layout="pageDirection">
 							<f:selectItem
 								itemLabel="Apto para el desarrollo del Proyecto de Tesis"
 								itemValue="1" />
@@ -71,34 +70,38 @@
 								itemValue="3" />
 						</p:selectOneRadio>
 					</h:panelGrid>
+
 				</h:panelGrid>
 
-
-
-				<h:panelGrid columns="1" styleClass="formularioRegistro">
+				<h:panelGrid columns="1" align="center">
 
 					<h:outputLabel value="Se observa que el tema de Tesis: " />
-					<p:inputTextarea rows="10" cols="100" />
+					<h:form id="formObs">
+
+						<p:editor id="Editor"
+							value="#{informeProyectoTesis.ipt_observaciones}" width="600" />
+
+					</h:form>
 					<h:outputLabel value="Se recomienda: " />
-					<p:inputTextarea rows="10" cols="100" />
+
+					<h:form id="formSug">
+
+						<p:editor id="Editor2"
+							value="#{informeProyectoTesis.ipt_sugerencias}" width="600" />
+
+					</h:form>
 
 
-					<h:panelGrid columns="3" style="margin-top:10px">
+					<h:panelGrid columns="10" style="margin-top:10px">
 
-						<p:commandButton id="CancelarEvaluacion" type="button"
+						<p:commandButton id="revisar" type="button" value="Revisar" />
+
+						<p:commandButton id="cancelarRevision" type="button"
 							value="Cancelar" />
-						<p:commandButton id="LimpiarEvaluacion" type="button"
-							value="Limpiar Campos" />
-						<p:commandButton id="Registrarevaluacion" type="button"
-							value="Registrar evaluacion" />
 					</h:panelGrid>
 
 
 				</h:panelGrid>
-
-
-
-
 			</h:form>
 
 			<!-- Terminar de programar desde aqui -->

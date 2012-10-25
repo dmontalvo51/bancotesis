@@ -11,8 +11,8 @@
 	</resultMap>
 
 
-	<select id="cargarTramites" resultMap="Ficha">
-		select * from tesis.tramite
+	<select id="cargarListaFichasInscritas" resultMap="Ficha">
+		select * from TESIS.FICHA_TESIS
 	</select>
 	
 	

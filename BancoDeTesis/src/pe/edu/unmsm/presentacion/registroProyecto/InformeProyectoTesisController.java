@@ -19,7 +19,34 @@ import pe.edu.unmsm.util.TesisUtil;
 
 @ViewScoped
 @ManagedBean(name = "informeProyectoTesis")
-public class InformeProyectoTesis implements Serializable {
+public class InformeProyectoTesisController implements Serializable {
+	private String ipt_observaciones;
+	private String ipt_sugerencias;
+	private int ipt_opinion;
+	
+	public int getIpt_opinion() {
+		return ipt_opinion;
+	}
+
+	public void setIpt_opinion(int ipt_opinion) {
+		this.ipt_opinion = ipt_opinion;
+	}
+
+	public String getIpt_observaciones() {
+		return ipt_observaciones;
+	}
+
+	public void setIpt_observaciones(String ipt_observaciones) {
+		this.ipt_observaciones = ipt_observaciones;
+	}
+
+	public String getIpt_sugerencias() {
+		return ipt_sugerencias;
+	}
+
+	public void setIpt_sugerencias(String ipt_sugerencias) {
+		this.ipt_sugerencias = ipt_sugerencias;
+	}
 
 	/**
 	 * 
@@ -31,7 +58,7 @@ public class InformeProyectoTesis implements Serializable {
 	private RegistroProyectoTesisService registroProyectoTesisService;
 	
 	
-	public InformeProyectoTesis() {
+	public InformeProyectoTesisController() {
 		
 	}
 	
@@ -41,7 +68,7 @@ public class InformeProyectoTesis implements Serializable {
 	}
 	
 	
-	
+
 	
 	public RegistroProyectoTesisService getRegistroProyectoTesisService() {
 		return registroProyectoTesisService;

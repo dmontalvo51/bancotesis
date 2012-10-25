@@ -14,7 +14,19 @@ public class Ficha {
 	private String asesor;
 	
 	
-	
+	private String ft_codigo;
+	private String ae_codigo;
+	private String exp_codigo;
+	private int linea_id;
+	private String tes_codigo;
+	private String estf_id;
+	private String rdr_codigo;
+	private String usu_codigo;
+	private String ft_titulo;
+	private String ft_resumen;
+	private String ft_fecha;
+	private String ft_hora;
+	private String ft_ruta;
 	
 	public Ficha(String nroExpediente, String codigo, String titulo,
 			String resumen, String lineaInvestigacion, String nomBachiller,

@@ -52,6 +52,9 @@ public class SeguridadService {
 			opcionesMenu.add(new OpcionMenu("/pages/ListarTesis.jsf",
 					"Listar Tesis", ""));
 			
+			opcionesMenu.add(new OpcionMenu("/pages/ListarProyectoTesisRegistrado.jsf",
+					"Asignar Jurado Evaluar", ""));
+			
 			usu.setOpcionesMenu(opcionesMenu);
 
 			return usu;

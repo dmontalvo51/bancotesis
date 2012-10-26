@@ -62,7 +62,15 @@ public class ListarFichasTesisController implements Serializable {
 		return "InformeProyectoTesis";
 	}
 	
+	public String cancelarRD(){
+		return "ListarProyectosTesis?faces-redirect=true";
+	}
 	
+	
+	public String cancelarInformePT(){
+		return "ListarFichasProyectoDeTesis?faces-redirect=true";
+	}
+
 	public RegistroProyectoTesisService getRegistroProyectoTesisService() {
 		return registroProyectoTesisService;
 	}

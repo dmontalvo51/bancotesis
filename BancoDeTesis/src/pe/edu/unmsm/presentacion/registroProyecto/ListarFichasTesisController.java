@@ -93,4 +93,9 @@ public class ListarFichasTesisController implements Serializable {
 		return "InformeProyectoTesis?faces-redirect=true";
 	}
 	
+	public String nextpaginaGenerarRDInscripcion(){
+	    TesisUtil.flashScope("ficha", selectedFicha);
+		return "GenerarRDInscripcion?faces-redirect=true";
+	}
+	
 }

@@ -79,3 +79,15 @@ footer a {
   top: 5px;
   left: 0;
 }
+
+.formColumnaIzquierda{
+	width: 30%;
+	padding: 10 10 10 10;
+}
+
+.formColumnaDerecha{
+	width: 70%;
+	padding: 10 10 10 10;
+
+  }
+	

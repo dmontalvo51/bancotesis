@@ -74,7 +74,7 @@
 
 						<h:panelGrid columns="2" style="margin-top:10px">
 							<p:commandButton id="submitButton" value="Submit"
-								update="display" oncomplete="dlg.show()" icon="ui-icon-disk" />
+								oncomplete="dlg.show()" icon="ui-icon-disk" />
 							<p:commandButton id="clearButton" type="button" value="Clear"
 								onclick="editor.clear()" icon="ui-icon-close" />
 						</h:panelGrid>
@@ -84,8 +84,8 @@
 
 					<!-- boton Guardar -->
 					<f:facet name="footer">
-						<p:commandButton type="button" value="Registrar Ficha"
-							icon="ui-icon-check" style="margin:0" action="#" />
+						<p:commandButton type="button" value="#{msg.botonRegistrar}"
+							icon="ui-icon-check" style="margin:0"/>
 					</f:facet>
 				</h:panelGrid>
 				

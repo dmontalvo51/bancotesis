@@ -46,6 +46,9 @@ public class SeguridadService {
 			opcionesMenu.add(new OpcionMenu("/pages/ListarFichasProyectoDeTesis.jsf",
 					"Revisar ficha de Tesis", ""));
 			
+			opcionesMenu.add(new OpcionMenu("/pages/ListarProyectosTesis.jsf",
+					"Solicitud de registro de proyecto de tesis", ""));
+			
 			opcionesMenu.add(new OpcionMenu("/pages/ListarTesis.jsf",
 					"Listar Tesis", ""));
 			

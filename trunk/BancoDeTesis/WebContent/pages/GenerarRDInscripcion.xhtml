@@ -51,54 +51,15 @@
 
 					<!-- aca va el radiobuton-->
 
-					<h:outputLabel for="Se observa"
-						value="Se observa que el tema de Tesis: " />
-					<h:panelGroup>
-
-						<p:selectOneRadio id="OptionsRadio"
-							value="informeProyectoTesis.ipt_opinion" layout="pageDirection">
-							<f:selectItem
-								itemLabel="Apto para el desarrollo del Proyecto de Tesis"
-								itemValue="1" />
-							<f:selectItem
-								itemLabel="Debe mejorar el bosquejo del Proyecto de Tesis"
-								itemValue="2" />
-							<f:selectItem
-								itemLabel="Debe cambiar el tema del Proyecto de Tesis"
-								itemValue="3" />
-						</p:selectOneRadio>
-					</h:panelGroup>
-
-
-					<h:outputLabel value="Se observa:" />
-					<h:panelGroup columns="1" align="center">
-
-						<p:inputTextarea rows="10" cols="50"
-							value="#{informeProyectoTesis.ipt_observaciones}"
-							queryDelay="750" minQueryLength="4" />
-
-					</h:panelGroup>
-
-					<h:outputLabel value="Se recomienda: " />
-					<h:panelGrid columns="1" align="center">
-
-						<p:inputTextarea rows="10" cols="50"
-							value="#{informeProyectoTesis.ipt_sugerencias}" queryDelay="750"
-							minQueryLength="4" />
-
-					</h:panelGrid>
-
-
-
 				</h:panelGrid>
 
 			</p:panel>
 
 			<h:panelGrid columns="2" style="margin-top:10px">
 
-				<p:commandButton id="revisar" type="button" value="Revisar" />
+				<p:commandButton id="generar" type="button" value="Generar RD" style="width:90"/>
 
-				<p:commandButton id="cancelarRevision" type="button"
+				<p:commandButton id="cancelarGenerar" type="button"
 					value="Cancelar" />
 			</h:panelGrid>
 

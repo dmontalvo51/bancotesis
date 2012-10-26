@@ -10,21 +10,21 @@
 		<div class="cuerpo" align="center">
 			<!-- Empezar a programar desde aqui -->
 
-			<p:panel header="#{msg.lblRegistroProyectoTesis}" style="width:90%">
+			<p:panel header="#{msg.lblInformeProyectoTesis}" style="width:90%">
 
 				<h:panelGrid columns="2"
 					columnClasses="formColumnaIzquierda,formColumnaDerecha"
 					width="100%">
 
 					<!-- aca va el elcuepo-->
-					<h:outputLabel for="NTramite" value="Numero Tramite: " />
+					<h:outputLabel for="NTramite" value="#{msg.lblNroExpediente}" />
 					<h:panelGroup>
 
 						<h:outputText id="tramite" value="#{flash.ficha.nroExpediente}"
 							label="tramite" />
 					</h:panelGroup>
 
-					<h:outputLabel for="Titulo" value="Titulo: " />
+					<h:outputLabel for="Titulo" value="#{msg.lblTitulo}"/>
 					<h:panelGroup>
 
 						<h:outputText id="titulo" value="#{flash.ficha.titulo}"
@@ -32,7 +32,7 @@
 					</h:panelGroup>
 
 					<h:outputLabel for="Linea de Investigacion"
-						value="Linea de Investigacion: " />
+						value="#{msg.lblLineaInvestigacion}"/>
 					<h:panelGroup>
 
 						<h:outputText id="lineainvestigacion"
@@ -99,7 +99,8 @@
 				<p:commandButton id="revisar" type="button" value="Revisar" />
 
 				<p:commandButton id="cancelarRevision" type="button"
-					value="Cancelar" />
+					action="#{listarFichasTesis.cancelarInformePT}" 
+					value="Cancelar" icon="ui-icon-close"/>
 			</h:panelGrid>
 
 			<!-- Terminar de programar desde aqui -->

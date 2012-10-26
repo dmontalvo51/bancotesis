@@ -67,7 +67,9 @@ public class InformeProyectoTesisController implements Serializable {
 	
 	}
 	
-	
+	public String cancelarInformePT(){
+		return "ListarFichasProyectoDeTesis?faces-redirect=true";
+	}
 
 	
 	public RegistroProyectoTesisService getRegistroProyectoTesisService() {

@@ -47,6 +47,11 @@ public class ListarTesisController implements Serializable {
 		return "CargarBorrador?faces-redirect=true";
 	}
 	
+	public String oficiarJE(){
+	    TesisUtil.flashScope("tesis", selectedTesis);
+		return "OficiarJuradoEvaluador?faces-redirect=true";
+	}
+	
 	private List<Tesis> llenarTabla() {
 			return revisionBorradorTesisService.cargarListaTesisInscritas();
 	}

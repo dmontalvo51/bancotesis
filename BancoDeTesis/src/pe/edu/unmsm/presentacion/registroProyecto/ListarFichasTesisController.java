@@ -9,6 +9,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -41,8 +42,15 @@ public class ListarFichasTesisController implements Serializable {
 	
 	@PostConstruct
 	public void cargarDatos(){
-		TesisUtil.escribir("Cargar Datos");
-		setListFicha(llenarTabla());
+		String origen=FacesContext.getCurrentInstance().getExternalContext().getRequestServletPath();
+		origen=origen.substring(7,origen.length()-4);
+		TesisUtil.escribir(origen);	
+		if(origen.equals("ListarFichasProyectoDeTesis"))
+			setListFicha(llenarTabla());
+		else if (origen.equals("ListarProyectosTesis"))
+			setListFicha(llenarTabla());
+		else if(origen.equals("ListarProyectosPorAprobar"))
+			setListFicha(llenarTabla());
 	}
 	
 	

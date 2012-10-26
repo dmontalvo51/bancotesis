@@ -1,6 +1,9 @@
 package pe.edu.unmsm.negocio.modelo;
 
-public class LineaInvestigacion {
+import java.io.Serializable;
+
+
+public class LineaInvestigacion implements Serializable{
 	
 	private int id;
 	private String lineaInvestigacion;

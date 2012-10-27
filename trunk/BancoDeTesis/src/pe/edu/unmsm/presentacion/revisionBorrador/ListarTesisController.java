@@ -52,6 +52,10 @@ public class ListarTesisController implements Serializable {
 		return "OficiarJuradoEvaluador?faces-redirect=true";
 	}
 	
+	public String cancelarJE(){
+		return "ListarProyectoTesisRegistrado?faces-redirect=true";
+	}
+	
 	private List<Tesis> llenarTabla() {
 			return revisionBorradorTesisService.cargarListaTesisInscritas();
 	}

@@ -6,7 +6,7 @@
 	template="/pages/common/plantillaPrincipal.xhtml">
 	<ui:define name="title">#{msg.tituloSistema} .::. Ingresar Ficha de Tesis</ui:define>
 	<ui:define name="cuerpo">
-		
+
 		<div class="cuerpo" align="center">
 			<!-- Empezar a programar desde aqui -->
 
@@ -18,13 +18,13 @@
 
 					<!-- aca va el elcuepo-->
 					<h:outputLabel for="NTramite" value="#{msg.lblNroExpediente}" />
-					<h:panelGroup>
+					<h:panelGroup style="margin-right:600px">
 
 						<h:outputText id="tramite" value="#{flash.ficha.nroExpediente}"
 							label="tramite" />
 					</h:panelGroup>
 
-					<h:outputLabel for="Titulo" value="#{msg.lblTitulo}"/>
+					<h:outputLabel for="Titulo" value="#{msg.lblTitulo}" />
 					<h:panelGroup>
 
 						<h:outputText id="titulo" value="#{flash.ficha.titulo}"
@@ -32,7 +32,7 @@
 					</h:panelGroup>
 
 					<h:outputLabel for="Linea de Investigacion"
-						value="#{msg.lblLineaInvestigacion}"/>
+						value="#{msg.lblLineaInvestigacion}" />
 					<h:panelGroup>
 
 						<h:outputText id="lineainvestigacion"
@@ -52,7 +52,7 @@
 					<!-- aca va el radiobuton-->
 
 					<h:outputLabel for="Se observa"
-						value="Se observa que el tema de Tesis: " />
+						value="{msg.lblObs}:" />
 					<h:panelGroup>
 
 						<p:selectOneRadio id="OptionsRadio"
@@ -70,38 +70,45 @@
 					</h:panelGroup>
 
 
-					<h:outputLabel value="Se observa:" />
+					<h:outputLabel value="#{msg.lblObservaciones}:" />
 					<h:panelGroup columns="1" align="center">
 
-						<p:inputTextarea rows="10" cols="50"
+						<p:inputTextarea rows="10" cols="100"
 							value="#{informeProyectoTesis.ipt_observaciones}"
 							queryDelay="750" minQueryLength="4" />
 
 					</h:panelGroup>
 
-					<h:outputLabel value="Se recomienda: " />
+					<h:outputLabel value="#{msg.lblSugerencias}" />
 					<h:panelGrid columns="1" align="center">
 
-						<p:inputTextarea rows="10" cols="50"
+						<p:inputTextarea rows="10" cols="100"
 							value="#{informeProyectoTesis.ipt_sugerencias}" queryDelay="750"
 							minQueryLength="4" />
 
 					</h:panelGrid>
 
+					<h:form id="formBotones">
 
+						<h:panelGrid columns="2" style="margin-top:10px">
+							<p:commandButton id="revisar" type="button" value="Revisar"
+								icon="ui-icon-check" />
+
+							<p:commandButton id="cancelarRevision" 
+								action="#{listarFichasTesis.cancelarInformePT}" 
+								ajax="false"
+								value="Cancelar"
+								icon="ui-icon-close" />
+						</h:panelGrid>
+					</h:form>
 
 				</h:panelGrid>
 
+
 			</p:panel>
 
-			<h:panelGrid columns="2" style="margin-top:10px">
 
-				<p:commandButton id="revisar" type="button" value="Revisar" />
 
-				<p:commandButton id="cancelarRevision" type="button"
-					action="#{listarFichasTesis.cancelarInformePT}" 
-					value="Cancelar" icon="ui-icon-close"/>
-			</h:panelGrid>
 
 			<!-- Terminar de programar desde aqui -->
 		</div>

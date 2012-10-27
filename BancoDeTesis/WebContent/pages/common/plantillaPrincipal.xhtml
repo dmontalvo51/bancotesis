@@ -10,7 +10,6 @@
 	</title>
 	<h:outputStylesheet name="default.css" library="css" />
 	<h:outputStylesheet name="sistema.css" library="css" />
-	<h:outputStylesheet name="estilos.css" library="css" />
 
 	<!--
 	<link type="text/css" rel="stylesheet" href="../css/default.css" />
@@ -20,7 +19,7 @@
 <body>
 
 	<div class="cabecera ui-widget-header" style="text-align: center">
-		<span>#{msg.tituloSistema}</span>
+		<p>#{msg.tituloSistema}</p>
 	</div>
 
 	<ui:insert name="menu">
@@ -32,7 +31,7 @@
 	<ui:insert name="cuerpo" />
 
 	<div class="pie ui-widget-header" style="text-align: center">
-		<span> #{msg.piePagina} | #{msg.copyright}</span>
+		<p> #{msg.piePagina} | #{msg.copyright}</p>
 	</div>
 
 </body>

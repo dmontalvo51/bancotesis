@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="pe.edu.unmsm.integracion.dao.LineaInvestigacionMapper">
+
+	<resultMap type="pe.edu.unmsm.negocio.modelo.LineaInvestigacion" id="lineaInvestigacion" >
+		<result property="id" column="LINEA_ID" />
+		<result property="lineaInvestigacion" column="LINEA_DESCRIPCION" />
+	</resultMap>
+
+	
+	<select id="cargarLineasInvestigacion" resultMap="lineaInvestigacion">
+		SELECT * FROM tesis.linea_investigacion as li WHERE li.lin_linea_id is null order by li.linea_id
+	</select>
+	
+	<select id="cargarSubLineasInvestigacion" resultMap="lineaInvestigacion" parameterType="int">
+		SELECT * FROM tesis.linea_investigacion as li WHERE li.lin_linea_id=#{idLinea} order by li.linea_id
+	</select>
+	
+
+</mapper>

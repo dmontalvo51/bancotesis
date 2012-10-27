@@ -4,6 +4,8 @@ public class Docente {
 	
 	private String codigo;
 	private String nombre;
+	
+	
 	public String getCodigo() {
 		return codigo;
 	}

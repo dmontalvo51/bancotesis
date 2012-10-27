@@ -11,10 +11,12 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 
 import pe.edu.unmsm.negocio.modelo.ActaSustentacion;
 import pe.edu.unmsm.negocio.modelo.Docente;
 import pe.edu.unmsm.negocio.modelo.Expediente;
+import pe.edu.unmsm.negocio.modelo.Ficha;
 import pe.edu.unmsm.negocio.modelo.LineaInvestigacion;
 import pe.edu.unmsm.negocio.modelo.Usuario;
 import pe.edu.unmsm.negocio.servicio.RegistroProyectoTesisService;
@@ -22,56 +24,60 @@ import pe.edu.unmsm.negocio.servicio.SeguridadService;
 
 import pe.edu.unmsm.util.TesisUtil;
 
-@ManagedBean(name="llenarFicha")
 @ViewScoped
+@ManagedBean(name="llenarFicha")
 public class LlenarFichaController implements Serializable {
 	
-	private static final long serialVersionUID = 1248413041290513025L;
+	private static final long serialVersionUID = 1L;
 	
 	//Datos maestros
-	private List<LineaInvestigacion> listaLineasInvestigacion;
+	private List<LineaInvestigacion> listaLineasInvestigacion=new ArrayList<LineaInvestigacion>();
 	private List<LineaInvestigacion> listaSubLineasInvestigacion=new ArrayList<LineaInvestigacion>();
 	private List<Docente> listaAsesores=new ArrayList<Docente>();
 	
 	//Datos Ficha de inscripción
-	private String titulo;
-	private String resumen;
-	private Docente asesor;
-	private LineaInvestigacion lineaInvestigacion;
-	private LineaInvestigacion subLineaInvestigacion;
+	
+	private Ficha ficha=new Ficha();
+	
+	private String codigoAsesor;
+	private int codigoLinea;
+	private int codigoSubLinea;
 	
 	//Services
 	@ManagedProperty("#{registroProyectoTesisService}")
 	RegistroProyectoTesisService registroProyectoTesisService;	
 	
-	@PostConstruct
-	public void init(){
-		listaLineasInvestigacion=registroProyectoTesisService.cargarLineasInvestigacion();	
-	}
-	
-	
 	public LlenarFichaController() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public String getTitulo() {
-		return titulo;
+	
+	@PostConstruct
+	public void init(){
+		listaLineasInvestigacion=registroProyectoTesisService.cargarLineasInvestigacion();
+		listaSubLineasInvestigacion=registroProyectoTesisService.cargarSubLineasInvestigacion(1);
+		listaAsesores=registroProyectoTesisService.cargarListaDocentesPorLinea(1);
 	}
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
+	
+	public void seleccionaLinea(){
+		TesisUtil.escribir("HOLA");
+		TesisUtil.escribir(codigoLinea+"");
+		listaSubLineasInvestigacion=registroProyectoTesisService.cargarSubLineasInvestigacion(codigoLinea);
 	}
-	public String getResumen() {
-		return resumen;
+	
+	public void seleccionaSubLinea(){
+		listaAsesores=registroProyectoTesisService.cargarListaDocentesPorLinea(codigoSubLinea);
 	}
-	public void setResumen(String resumen) {
-		this.resumen = resumen;
+	
+	public void registrarFicha(){
+		if(codigoLinea!=-1 && codigoSubLinea!=-1){
+			ficha.setCodigoLineaInvestigacion(codigoSubLinea);
+		}
+		TesisUtil.escribir("HOLA");		
 	}
-	public Docente getAsesor() {
-		return asesor;
-	}
-	public void setAsesor(Docente asesor) {
-		this.asesor = asesor;
-	}
+	
+
+	
 	
 	public List<LineaInvestigacion> getListaLineasInvestigacion() {
 		return listaLineasInvestigacion;
@@ -93,12 +99,7 @@ public class LlenarFichaController implements Serializable {
 	public void setListaAsesores(List<Docente> listaAsesores) {
 		this.listaAsesores = listaAsesores;
 	}
-	public LineaInvestigacion getSubLineaInvestigacion() {
-		return subLineaInvestigacion;
-	}
-	public void setSubLineaInvestigacion(LineaInvestigacion subLineaInvestigacion) {
-		this.subLineaInvestigacion = subLineaInvestigacion;
-	}
+	
 	public RegistroProyectoTesisService getRegistroProyectoTesisService() {
 		return registroProyectoTesisService;
 	}
@@ -106,14 +107,39 @@ public class LlenarFichaController implements Serializable {
 			RegistroProyectoTesisService registroProyectoTesisService) {
 		this.registroProyectoTesisService = registroProyectoTesisService;
 	}
-
-
-	public LineaInvestigacion getLineaInvestigacion() {
-		return lineaInvestigacion;
+	
+	public Ficha getFicha() {
+		return ficha;
 	}
 
+	public void setFicha(Ficha ficha) {
+		this.ficha = ficha;
+	}
 
-	public void setLineaInvestigacion(LineaInvestigacion lineaInvestigacion) {
-		this.lineaInvestigacion = lineaInvestigacion;
+	public String getCodigoAsesor() {
+		return codigoAsesor;
+	}
+
+	public void setCodigoAsesor(String codigoAsesor) {
+		this.codigoAsesor = codigoAsesor;
+	}
+
+	
+	public int getCodigoSubLinea() {
+		return codigoSubLinea;
+	}
+
+	public void setCodigoSubLinea(int codigoSubLinea) {
+		this.codigoSubLinea = codigoSubLinea;
+	}
+
+	public int getCodigoLinea() {
+		return codigoLinea;
+	}
+
+	public void setCodigoLinea(int codigoLinea) {
+		this.codigoLinea = codigoLinea;
 	}	
+	
+	
 }

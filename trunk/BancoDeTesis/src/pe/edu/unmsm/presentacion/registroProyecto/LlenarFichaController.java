@@ -71,9 +71,18 @@ public class LlenarFichaController implements Serializable {
 	
 	public void registrarFicha(){
 		if(codigoLinea!=-1 && codigoSubLinea!=-1){
+			
+			TesisUtil.escribir("HOLA LA FICHA ESTA BIEN");
+			Usuario usuario=(Usuario)TesisUtil.obtenerDeSesion("usuario");
+			
 			ficha.setCodigoLineaInvestigacion(codigoSubLinea);
+			ficha.setCodigoBachiller(usuario.getCuenta());
+			
+			registroProyectoTesisService.insertarFichaProyectoTesis(ficha);
+			
+			TesisUtil.escribir(ficha.getCodigo());
 		}
-		TesisUtil.escribir("HOLA");		
+				
 	}
 	
 

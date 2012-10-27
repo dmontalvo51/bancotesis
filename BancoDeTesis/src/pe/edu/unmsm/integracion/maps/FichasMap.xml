@@ -5,24 +5,17 @@
 
 
 	<resultMap type="pe.edu.unmsm.negocio.modelo.Ficha" id="Ficha">
-		<result property="id" column="tra_iCodigo"/>		
-		<result property="codigo" column="tra_vccodigo"/>
-		<result property="estado" column="est_iCodigo"/>
+		<result property="id" column="tra_iCodigo" />
+		<result property="codigo" column="tra_vccodigo" />
+		<result property="estado" column="est_iCodigo" />
 	</resultMap>
-	
-	<parameterMap type="pe.edu.unmsm.negocio.modelo.Ficha" id="FichaTesis"/>
+
+	<parameterMap type="pe.edu.unmsm.negocio.modelo.Ficha" id="FichaTesis" />
 
 
 	<select id="cargarListaFichasInscritas" resultMap="Ficha">
-		select * from TESIS.FICHA_TESIS
+		select * from
+		TESIS.FICHA_TESIS
 	</select>
-	
-	
-	
-	<insert id="insertarFichaProyectoTesis" parameterMap="FichaTesis">
-	
-	
-	
-	</insert>
 
 </mapper>

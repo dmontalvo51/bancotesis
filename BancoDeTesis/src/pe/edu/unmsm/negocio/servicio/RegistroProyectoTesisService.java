@@ -22,6 +22,7 @@ import pe.edu.unmsm.negocio.modelo.Ficha;
 import pe.edu.unmsm.negocio.modelo.InformeProyectoTesis;
 import pe.edu.unmsm.negocio.modelo.LineaInvestigacion;
 import pe.edu.unmsm.negocio.modelo.Tesis;
+import pe.edu.unmsm.util.TesisUtil;
 
 @Service(value = "registroProyectoTesisService")
 public class RegistroProyectoTesisService implements Serializable {
@@ -88,6 +89,16 @@ public class RegistroProyectoTesisService implements Serializable {
 
 		return lista;
 
+	}
+	
+	public void insertarFichaProyectoTesis(Ficha ficha){
+		try {
+			fichasMapper.insertarFichaProyectoTesis(ficha);
+		} catch (Exception e) {
+			TesisUtil.escribir("ERROR AL INSERTAR!");
+			e.printStackTrace();
+		}
+		
 	}
 
 	// Metodos de encapsulamiento

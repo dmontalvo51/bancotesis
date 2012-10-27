@@ -12,95 +12,98 @@
 			<!-- Empezar a programar desde aqui -->
 
 			<!-- nuevo Panel grid para los combobox-->
-
-			<p:panel header="#{msg.lblRegistroProyectoTesis}" style="width:90%">
-
-
-				<h:panelGrid columns="2" columnClasses="formColumnaIzquierda,formColumnaDerecha" width="100%">
-
-					<!-- label para el titulo -->
-
-					<h:outputLabel for="Titulo" value="#{msg.lblTitulo} : " />
-					<h:panelGroup>
-						<p:inputText id="Titulo" value="#{llenarFicha.titulo}" />
-						<p:message for="Titulo" />
-					</h:panelGroup>
-
-					<!--creacion de combobox LineaInvestigacion-->
-
-					<h:outputLabel for="LineaInvestigacion"
-						value="#{msg.lblLineaInvestigacion} : " />
-					<h:panelGroup>
-						<h:selectOneMenu id="LineaInvestigacion"
-							value="#{llenarFicha.listaLineasInvestigacion}" required="true">
-							<f:selectItem itemLabel="#{msg.lblSeleccioneLineaInvestigacion}" />
-							<f:selectItems value="#{llenarFicha.lineaInvestigacion}"
-								var="linea" itemValue="#{linea.id}"
-								itemDescription="#{linea.lineaInvestigacion}" />
-						</h:selectOneMenu>
-						<p:message for="LineaInvestigacion" />
-					</h:panelGroup>
+			<h:form id="formLlenarFicha">
+				<p:panel id="panelFicha" header="#{msg.lblRegistroProyectoTesis}"
+					style="width:90%;">
 
 
-					<h:outputLabel for="SubLineaInvestigacion"
-						value="#{msg.lblSubLineaInvestigacion} :" />
-					<h:panelGroup>
-						<h:selectOneMenu id="SubLineaInvestigacion"
-							value="#{llenarFicha.subLineaInvestigacion}" required="true">
-							<f:selectItem
-								itemLabel="#{msg.lblSeleccioneSubLineaInvestigacion}"
-								itemValue="null" />
-							<f:selectItems value="#{llenarFicha.listaSubLineasInvestigacion}" />
-						</h:selectOneMenu>
-						<p:message for="SubLineaInvestigacion" />
-					</h:panelGroup>
 
-					<h:outputText for="Asesor" value="#{msg.lblAsesor} :" />
-					<h:panelGroup>
-						<h:selectOneMenu id="Asesor" value="#{llenarFicha.asesor}"
-							required="true">
-							<f:selectItem itemLabel="#{msg.lblSeleccioneAsesor}"
-								itemValue="null" />
-							<f:selectItems value="#{llenarFicha.listaAsesores}" />
-						</h:selectOneMenu>
-						<p:message for="Asesor" />
-					</h:panelGroup>
+					<h:panelGrid columns="2"
+						columnClasses="formColumnaIzquierda,formColumnaDerecha"
+						width="100%">
 
-					<!-- Panel grid para el editor de texto-->
+						<!-- label para el titulo -->
 
-					<h:outputLabel for="Resumen" value="Resumen: " />
-					<h:form id="form">
-						<p:editor id="Editor" value="#{llenarFicha.resumen}" width="600"/>
+						<h:outputLabel for="Titulo" value="#{msg.lblTitulo} : " />
+						<h:panelGroup>
+							<p:inputTextarea id="Titulo" value="#{llenarFicha.ficha.titulo}"  cols="300"  />
+							<p:message for="Titulo" />
+						</h:panelGroup>
 
-						<h:panelGrid columns="2" style="margin-top:10px">
-							<p:commandButton id="submitButton" value="Submit"
-								oncomplete="dlg.show()" icon="ui-icon-disk" />
-							<p:commandButton id="clearButton" type="button" value="Clear"
-								onclick="editor.clear()" icon="ui-icon-close" />
-						</h:panelGrid>
+						<!--creacion de combobox LineaInvestigacion-->
 
-					</h:form>
-					<!-- aca termina el editor de texto-->
+						<h:outputLabel for="LineaInvestigacion"
+							value="#{msg.lblLineaInvestigacion} : " />
+						<h:panelGroup>
+							<p:selectOneMenu id="LineaInvestigacion"
+								value="#{llenarFicha.codigoLinea}"
+								effect="fade" required="true">
+								<f:selectItem itemLabel="#{msg.lblSeleccioneLineaInvestigacion}"
+									itemValue="-1" />
+								<f:selectItems value="#{llenarFicha.listaLineasInvestigacion}"
+									var="linea" itemValue="#{linea.id}"
+									itemLabel="#{linea.lineaInvestigacion}" />
+								<p:ajax update="SubLineaInvestigacion"
+									listener="#{llenarFicha.seleccionaLinea}" />
+							</p:selectOneMenu>
+							<p:commandButton actionListener="#{llenarFicha.seleccionaLinea}" value="Cargar" update="SubLineaInvestigacion"></p:commandButton>
+							<p:message for="LineaInvestigacion" />
+						</h:panelGroup>
 
-					<!-- boton Guardar -->
-					<f:facet name="footer">
-						<p:commandButton type="button" value="#{msg.botonRegistrar}"
-							icon="ui-icon-check" style="margin:0"/>
-					</f:facet>
-				</h:panelGrid>
-				
-				
-				
-				<p:dialog header="Content" widgetVar="dlg" showEffect="fade"
-					hideEffect="fade" modal="true">
-					<h:outputText id="display" value="#{llenarFicha.resumen}"
-						escape="false" />
-				</p:dialog>
 
-			</p:panel>
+						<h:outputLabel for="SubLineaInvestigacion"
+							value="#{msg.lblSubLineaInvestigacion} :" />
+						<h:panelGroup>
+							<p:selectOneMenu id="SubLineaInvestigacion"
+								value="#{llenarFicha.codigoSubLinea}" required="true">
+								<f:selectItem
+									itemLabel="#{msg.lblSeleccioneSubLineaInvestigacion}"
+									itemValue="" />
+								<f:selectItems
+									value="#{llenarFicha.listaSubLineasInvestigacion}"
+									var="linea" itemValue="#{linea.id}"
+									itemLabel="#{linea.lineaInvestigacion}" />
+							</p:selectOneMenu>
+							<p:message for="SubLineaInvestigacion" />
+						</h:panelGroup>
 
+						<h:outputText for="Asesor" value="#{msg.lblAsesor} :" />
+						<h:panelGroup>
+							<p:selectOneMenu id="Asesor" value="#{llenarFicha.ficha.codigoAsesor}"
+								required="true">
+								<f:selectItem itemLabel="#{msg.lblSeleccioneAsesor}"
+									itemValue="null" />
+								<f:selectItems value="#{llenarFicha.listaAsesores}" var="docente" itemValue="#{docente.codigo}"
+									itemLabel="#{docente.nombre}" />
+							</p:selectOneMenu>
+							<p:message for="Asesor" />
+						</h:panelGroup>
+
+						<!-- Panel grid para el editor de texto-->
+
+						<h:outputLabel for="Resumen" value="Resumen: " />
+
+						<p:editor id="Resumen" value="#{llenarFicha.ficha.resumen}" width="600" />
+		
+						<!-- aca termina el editor de texto-->
+
+						<!-- boton Guardar -->
+						<f:facet name="footer">
+							<p:commandButton actionListener="#{llenarFicha.registrarFicha}" value="#{msg.botonRegistrar}"
+								icon="ui-icon-check" style="margin:0"  ajax="true" update="panelFicha"   />
+						</f:facet>
+					</h:panelGrid>
+
+				</p:panel>
+			</h:form>
 
 			<!-- Terminar de programar desde aqui -->
 		</div>
+
+		<h:form>
+			<p:dialog header="Confirm" widgetVar="dlg" showEffect="fade">
+				
+			</p:dialog>
+		</h:form>
 	</ui:define>
 </ui:composition>

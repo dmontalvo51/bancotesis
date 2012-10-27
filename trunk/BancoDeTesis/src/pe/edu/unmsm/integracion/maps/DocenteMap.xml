@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="pe.edu.unmsm.integracion.dao.DocenteMapper">
+
+	<resultMap type="pe.edu.unmsm.negocio.modelo.Docente" id="Docente">
+		<result property="codigo" column="USU_CODIGO"/>
+		<result property="nombre" column="NOMBRE_COMPLETO"/>
+	</resultMap>
+
+
+	<select id="cargarListaDocentesPorLinea" resultMap="Docente"
+		parameterType="int">
+		select u.usu_codigo, concat(u.usu_apellidos,',
+		',u.usu_nombres) as nombre_completo from tesis.usuario u inner join tesis.docente d on
+		d.docen_codigo=u.usu_codigo
+		WHERE 1=1
+	</select>
+
+
+</mapper>

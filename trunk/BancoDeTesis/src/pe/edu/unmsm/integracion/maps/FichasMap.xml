@@ -9,6 +9,8 @@
 		<result property="codigo" column="tra_vccodigo"/>
 		<result property="estado" column="est_iCodigo"/>
 	</resultMap>
+	
+	<parameterMap type="pe.edu.unmsm.negocio.modelo.Ficha" id="FichaTesis"/>
 
 
 	<select id="cargarListaFichasInscritas" resultMap="Ficha">
@@ -16,7 +18,9 @@
 	</select>
 	
 	
-	<insert id="insertarTramite">
+	
+	<insert id="insertarFichaProyectoTesis" parameterMap="FichaTesis">
+	
 	
 	
 	</insert>

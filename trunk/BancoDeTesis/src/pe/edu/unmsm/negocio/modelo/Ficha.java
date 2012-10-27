@@ -9,38 +9,41 @@ public class Ficha {
 	private String titulo;
 	private String resumen;
 	private String lineaInvestigacion;
+	private int codigoLineaInvestigacion;
 	private String nomBachiller;
+	private String codigoBachiller;
 	private String estado;
-	private String asesor;
+	private String nombreAsesor;
+	private String codigoAsesor;
+	private String ruta;
 	
 	
-	private String ft_codigo;
-	private String ae_codigo;
-	private String exp_codigo;
-	private int linea_id;
-	private String tes_codigo;
-	private String estf_id;
-	private String rdr_codigo;
-	private String usu_codigo;
-	private String ft_titulo;
-	private String ft_resumen;
-	private String ft_fecha;
-	private String ft_hora;
-	private String ft_ruta;
+	public Ficha() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
 	
 	public Ficha(String nroExpediente, String codigo, String titulo,
-			String resumen, String lineaInvestigacion, String nomBachiller,
-			String estado, String asesor) {
+			String resumen, String lineaInvestigacion,
+			int codigoLineaInvestigacion, String nomBachiller,
+			String codigoBachiller, String estado, String nombreAsesor,
+			String codigoAsesor, String ruta) {
 		super();
 		this.nroExpediente = nroExpediente;
 		this.codigo = codigo;
 		this.titulo = titulo;
 		this.resumen = resumen;
 		this.lineaInvestigacion = lineaInvestigacion;
+		this.codigoLineaInvestigacion = codigoLineaInvestigacion;
 		this.nomBachiller = nomBachiller;
+		this.codigoBachiller = codigoBachiller;
 		this.estado = estado;
-		this.asesor = asesor;
+		this.nombreAsesor = nombreAsesor;
+		this.codigoAsesor = codigoAsesor;
 	}
+
+
 	public String getTitulo() {
 		return titulo;
 	}
@@ -71,12 +74,7 @@ public class Ficha {
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-	public String getAsesor() {
-		return asesor;
-	}
-	public void setAsesor(String asesor) {
-		this.asesor = asesor;
-	}
+	
 	public String getCodigo() {
 		return codigo;
 	}
@@ -89,9 +87,43 @@ public class Ficha {
 	public void setNroExpediente(String nroExpediente) {
 		this.nroExpediente = nroExpediente;
 	}
+	public String getCodigoBachiller() {
+		return codigoBachiller;
+	}
+	public void setCodigoBachiller(String codigoBachiller) {
+		this.codigoBachiller = codigoBachiller;
+	}
+	public String getNombreAsesor() {
+		return nombreAsesor;
+	}
+	public void setNombreAsesor(String nombreAsesor) {
+		this.nombreAsesor = nombreAsesor;
+	}
+	public String getCodigoAsesor() {
+		return codigoAsesor;
+	}
+	public void setCodigoAsesor(String codigoAsesor) {
+		this.codigoAsesor = codigoAsesor;
+	}
+	public int getCodigoLineaInvestigacion() {
+		return codigoLineaInvestigacion;
+	}
+	public void setCodigoLineaInvestigacion(int codigoLineaInvestigacion) {
+		this.codigoLineaInvestigacion = codigoLineaInvestigacion;
+	}
+
+
+	public String getRuta() {
+		return ruta;
+	}
+
+
+	public void setRuta(String ruta) {
+		this.ruta = ruta;
+	}
+
 	
 
-//metodos set y get
 
 	
 }

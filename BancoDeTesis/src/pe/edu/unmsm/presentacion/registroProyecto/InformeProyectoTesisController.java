@@ -82,4 +82,9 @@ public class InformeProyectoTesisController implements Serializable {
 	}
 
 	
+	public String atrasPage(){
+		//TesisUtil.flashScope("ficha", selectedFicha);
+		return "ListarFichasProyectoDeTesis";
+	}
+	
 }

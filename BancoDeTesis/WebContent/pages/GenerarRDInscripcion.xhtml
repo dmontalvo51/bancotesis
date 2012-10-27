@@ -14,32 +14,32 @@
 
 				<h:panelGrid columns="2"
 					columnClasses="formColumnaIzquierda,formColumnaDerecha"
-					width="100%">
+					width="100%" >
 
 					<!-- aca va el elcuepo-->
-					<h:outputLabel for="NTramite" value="Numero Tramite: " />
-					<h:panelGroup>
+					<h:outputLabel for="NTramite" value="#{msg.lblNroExpediente}:" />
+					<h:panelGroup style="margin-right:600px">
 
 						<h:outputText id="tramite" value="#{flash.ficha.nroExpediente}"
 							label="tramite" />
 					</h:panelGroup>
 
-					<h:outputLabel for="Titulo" value="Titulo: " />
+					<h:outputLabel for="Titulo" value="#{msg.lblTitulo}:" />
 					<h:panelGroup>
 
 						<h:outputText id="titulo" value="#{flash.ficha.titulo}"
 							label="titulo" />
 					</h:panelGroup>
 
-					<h:outputLabel for="Bachiller:" value="Bachiller" />
+					<h:outputLabel for="Bachiller:" value="#{msg.lblBachiller}:" />
 					<h:panelGroup>
 
 						<h:outputText id="bachiller" value="#{flash.ficha.nomBachiller}"
 							label="bachiller" />
 					</h:panelGroup>
-
 					<h:outputLabel for="Linea de Investigacion"
-						value="Linea de Investigacion: " />
+						value="#{msg.lblLineaInvestigacion}:" />
+
 					<h:panelGroup>
 
 						<h:outputText id="lineainvestigacion"
@@ -47,7 +47,7 @@
 							label="lineainvestigacion" />
 					</h:panelGroup>
 
-					<h:outputLabel for="asesor" value="Asesor: " />
+					<h:outputLabel for="asesor" value="#{msg.lblAsesor}:" />
 					<h:panelGroup>
 
 						<h:outputText id="asesor" value="#{flash.ficha.asesor}"
@@ -60,28 +60,29 @@
 						<h:outputText value="Ver Resumen de tesis" />
 					</p:commandLink>
 					<h:outputLabel for="" value="" />
+
 					<p:commandLink id="ajax1" update=":formDialog:confirmDialog"
 						oncomplete="confirmation.show()" style="margin-right:20px;"
 						type="button">
 						<h:outputText value="Ver Acta de Evaluacion" />
 					</p:commandLink>
+					<h:outputLabel for="" value="" />
 
-					<!-- aca va el radiobuton-->
+					<h:form id="botones">
+
+						<p:commandButton id="generar" type="button" value="Generar RD"
+							style="width:90" icon="ui-icon-check" />
+
+						<p:commandButton id="btnGenerarRD"
+							action="#{listarFichasTesis.cancelarRD}" ajax="false"
+							value="Cancelar" icon="ui-icon-close" />
+					</h:form>
 
 				</h:panelGrid>
 
 			</p:panel>
 
 
-			<h:form id="botones">
-
-				<p:commandButton id="generar" type="button" value="Generar RD"
-					style="width:90" />
-
-				<p:commandButton id="btnGenerarRD"
-					action="#{listarFichasTesis.cancelarRD}" ajax="false"
-					value="Cancelar" icon="ui-icon-close"/>
-			</h:form>
 
 			<!-- Terminar de programar desde aqui -->
 		</div>

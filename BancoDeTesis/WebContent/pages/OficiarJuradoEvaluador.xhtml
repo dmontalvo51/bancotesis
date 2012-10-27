@@ -4,25 +4,89 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	template="/pages/common/plantillaPrincipal.xhtml">
-	<ui:define name="title">#{msg.tituloSistema}</ui:define>
+	<ui:define name="title">#{msg.tituloSistema} .::. Ingresar Ficha de Tesis</ui:define>
 	<ui:define name="cuerpo">
-		<div class="cuerpo">
+
+		<div class="cuerpo" align="center">
 			<!-- Empezar a programar desde aqui -->
 
+			<p:panel header="#{msg.lblInformeProyectoTesis}" style="width:90%">
 
-			<h:form>
-				<h:panelGrid columns="2">
+				<h:panelGrid columns="2"
+					columnClasses="formColumnaIzquierda,formColumnaDerecha"
+					width="100%">
 
-					Hola!. Soy Karina
+					<!-- aca va el elcuepo-->
+					<h:outputLabel for="NTramite" value="#{msg.lblNroExpediente}:" />
+					<h:panelGroup style="margin-right:600px">
+
+						<h:outputText id="tramite" value="#{flash.tesis.codigoExp}"
+							label="tramite" />
+					</h:panelGroup>
+
+					<h:outputLabel for="Titulo" value="#{msg.lblTitulo}:" />
+					<h:panelGroup>
+
+						<h:outputText id="titulo" value="#{flash.ficha.titulo}"
+							label="titulo" />
+					</h:panelGroup>
+
+					<h:outputLabel for="Linea de Investigacion"
+						value="#{msg.lblLineaInvestigacion}:" />
+					<h:panelGroup>
+
+						<h:outputText id="lineainvestigacion"
+							value="#{flash.tesis.linea}"
+							label="lineainvestigacion" />
+					</h:panelGroup>
+
+
+					<p:commandLink id="ajax" update=":formDialog:confirmDialog"
+						oncomplete="confirmation.show()" style="margin-right:20px;"
+						type="button">
+						<h:outputText value="Ver Resumen de tesis" />
+					</p:commandLink>
+
+					<h:outputLabel for="Se observa" value="" />
+
+					<!-- aca va el radiobuton-->
+
+
+					<h:form id="formBotones">
+
+						<h:panelGrid columns="2" style="margin-top:10px">
+							<p:commandButton id="revisar" type="button" value="Revisar"
+								icon="ui-icon-check" />
+
+							<p:commandButton id="cancelarRevision" 
+								action="#{listarTesis.cancelarJE}" 
+								ajax="false"
+								value="Cancelar"
+								icon="ui-icon-close" />
+						</h:panelGrid>
+					</h:form>
 
 				</h:panelGrid>
-			</h:form>
+
+
+			</p:panel>
+
+
 
 
 			<!-- Terminar de programar desde aqui -->
 		</div>
-		
-		<p:growl id="growl" showDetail="false" />  
-			<!-- Poner aqui Dialogs -->
+
+		<h:form id="formDialog">
+
+			<p:confirmDialog id="confirmDialog" message="Resumen de la tesis"
+				header="Resumen" severity="alert" widgetVar="confirmation"
+				style="margin-center:20px">
+
+				<p:commandButton id="decline" value="Resumen"
+					onclick="confirmation.hide()" type="button" />
+
+			</p:confirmDialog>
+		</h:form>
 	</ui:define>
 </ui:composition>

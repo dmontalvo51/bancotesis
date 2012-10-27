@@ -38,7 +38,7 @@ public class ListarFichasTesisController implements Serializable {
 		TesisUtil.escribir("Constructor");
 		
 	}
-	//llama a este metodo despues del constructor
+	//llama a este metodo despues del constructo
 	
 	@PostConstruct
 	public void cargarDatos(){
@@ -101,9 +101,10 @@ public class ListarFichasTesisController implements Serializable {
 		return "InformeProyectoTesis?faces-redirect=true";
 	}
 	
+
 	public String nextpaginaGenerarRDInscripcion(){
 	    TesisUtil.flashScope("ficha", selectedFicha);
 		return "GenerarRDInscripcion?faces-redirect=true";
 	}
-	
+
 }

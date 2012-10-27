@@ -6,49 +6,55 @@
 	template="/pages/common/plantillaPrincipal.xhtml">
 	<ui:define name="title">#{msg.tituloSistema} .::. Listar Fichas de Tesis</ui:define>
 	<ui:define name="cuerpo">
-		<div class="cuerpo">
+		<div class="cuerpo" align="center">
 			<!-- Empezar a programar desde aqui -->
 
-			<h:form id="form">
+			<p:panel header="#{msg.lblListaProyectoTesis}" style="width:90%">
 
-				<p:dataTable id="ltesiss" var="ltesis"
-					value="#{listarTesis.listTesis}" rowKey="#{ltesis.codigoExp}"
-					selection="#{listarTesis.selectedTesis}"
-					selectionMode="single">
+				<h:panelGrid columns="2"
+					columnClasses="formColumnaIzquierda,formColumnaDerecha"
+					width="100%">
+					<h:form id="form">
 
-					<f:facet name="header">
-					</f:facet>
+						<p:dataTable id="ltesiss" var="ltesis"
+							value="#{listarTesis.listTesis}" rowKey="#{ltesis.codigoExp}"
+							selection="#{listarTesis.selectedTesis}" selectionMode="single">
+
+							<f:facet name="header">
+							</f:facet>
 
 
-					<p:column headerText="Nro de Expediente">
-						<h:outputText value="#{ltesis.codigoExp}" />
-					</p:column>
+							<p:column headerText="Nro de Expediente">
+								<h:outputText value="#{ltesis.codigoExp}" />
+							</p:column>
 
-					<p:column headerText="Titulo">
-						<h:outputText value="" />
-					</p:column>
+							<p:column headerText="Titulo">
+								<h:outputText value="" />
+							</p:column>
 
-					<p:column headerText="Linea de Investigacion">
-						<h:outputText value="#{ltesis.linea}" />
-					</p:column>
+							<p:column headerText="Linea de Investigacion">
+								<h:outputText value="#{ltesis.linea}" />
+							</p:column>
 
-					<p:column headerText="Bachiller">
-						<h:outputText value="#{ltesis.bachiller}" />
-					</p:column>
+							<p:column headerText="Bachiller">
+								<h:outputText value="#{ltesis.bachiller}" />
+							</p:column>
 
-					<p:column headerText="Estado">
-						<h:outputText value="#{ltesis.estado}" />
-					</p:column>
+							<p:column headerText="Estado">
+								<h:outputText value="#{ltesis.estado}" />
+							</p:column>
 
-					<f:facet name="footer">
+							<f:facet name="footer">
 
-						<p:commandButton id="btnRevisar"
-							action="#{listarTesis.oficiarJE}" ajax="false"
-							value="Revisar" icon="ui-icon-search" />
-					</f:facet>
-				</p:dataTable>
+								<p:commandButton id="btnRevisar"
+									action="#{listarTesis.oficiarJE}" ajax="false" value="Revisar"
+									icon="ui-icon-search" />
+							</f:facet>
+						</p:dataTable>
 
-			</h:form>
+					</h:form>
+				</h:panelGrid>
+			</p:panel>
 			<!-- Terminar de programar desde aqui -->
 
 		</div>

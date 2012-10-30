@@ -79,3 +79,8 @@ footer a {
   top: 5px;
   left: 0;
 }
+
+.formColumnaIzquierda label{
+	float: right;
+	margin-right: 10px;
+}

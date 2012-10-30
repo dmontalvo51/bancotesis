@@ -1,7 +1,13 @@
 package pe.edu.unmsm.negocio.modelo;
 
-public class Ficha {
+import java.io.Serializable;
+
+public class Ficha implements Serializable{
 	
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 //datos de la tabla
 	
 	private String nroExpediente;
@@ -16,6 +22,8 @@ public class Ficha {
 	private String nombreAsesor;
 	private String codigoAsesor;
 	private String ruta;
+	private String fecha;
+	private String hora;
 	
 	
 	public Ficha() {

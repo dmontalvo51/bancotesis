@@ -16,8 +16,6 @@
 				<p:panel id="panelFicha" header="#{msg.lblRegistroProyectoTesis}"
 					style="width:90%;">
 
-
-
 					<h:panelGrid columns="2"
 						columnClasses="formColumnaIzquierda,formColumnaDerecha"
 						width="100%">
@@ -26,7 +24,9 @@
 
 						<h:outputLabel for="Titulo" value="#{msg.lblTitulo} : " />
 						<h:panelGroup>
-							<p:inputTextarea id="Titulo" value="#{llenarFicha.ficha.titulo}"  cols="300"  />
+							<p:inputTextarea id="Titulo" required="true"
+								requiredMessage="#{msg.errorTituloRequerido}"
+								value="#{llenarFicha.ficha.titulo}" style="width:590px" />
 							<p:message for="Titulo" />
 						</h:panelGroup>
 
@@ -36,10 +36,10 @@
 							value="#{msg.lblLineaInvestigacion} : " />
 						<h:panelGroup>
 							<p:selectOneMenu id="LineaInvestigacion"
-								value="#{llenarFicha.codigoLinea}"
-								effect="fade" required="true">
+								requiredMessage="#{msg.errorLineaRequerida}"
+								value="#{llenarFicha.codigoLinea}" effect="fade" required="true">
 								<f:selectItem itemLabel="#{msg.lblSeleccioneLineaInvestigacion}"
-									itemValue="-1" />
+									itemValue="" />
 								<f:selectItems value="#{llenarFicha.listaLineasInvestigacion}"
 									var="linea" itemValue="#{linea.id}"
 									itemLabel="#{linea.lineaInvestigacion}" />
@@ -54,25 +54,27 @@
 							value="#{msg.lblSubLineaInvestigacion} :" />
 						<h:panelGroup>
 							<p:selectOneMenu id="SubLineaInvestigacion"
+								requiredMessage="#{msg.errorSubLineaRequerida}"
 								value="#{llenarFicha.codigoSubLinea}" required="true">
 								<f:selectItem
 									itemLabel="#{msg.lblSeleccioneSubLineaInvestigacion}"
 									itemValue="" />
 								<f:selectItems
-									value="#{llenarFicha.listaSubLineasInvestigacion}"
-									var="linea" itemValue="#{linea.id}"
-									itemLabel="#{linea.lineaInvestigacion}" />
+									value="#{llenarFicha.listaSubLineasInvestigacion}" var="linea"
+									itemValue="#{linea.id}" itemLabel="#{linea.lineaInvestigacion}" />
 							</p:selectOneMenu>
 							<p:message for="SubLineaInvestigacion" />
 						</h:panelGroup>
 
-						<h:outputText for="Asesor" value="#{msg.lblAsesor} :" />
+						<h:outputLabel for="Asesor" value="#{msg.lblAsesor} :" />
 						<h:panelGroup>
-							<p:selectOneMenu id="Asesor" value="#{llenarFicha.ficha.codigoAsesor}"
-								required="true">
+							<p:selectOneMenu id="Asesor"
+								requiredMessage="#{msg.errorAsesorRequerido}"
+								value="#{llenarFicha.ficha.codigoAsesor}" required="true">
 								<f:selectItem itemLabel="#{msg.lblSeleccioneAsesor}"
-									itemValue="null" />
-								<f:selectItems value="#{llenarFicha.listaAsesores}" var="docente" itemValue="#{docente.codigo}"
+									itemValue="" />
+								<f:selectItems value="#{llenarFicha.listaAsesores}"
+									var="docente" itemValue="#{docente.codigo}"
 									itemLabel="#{docente.nombre}" />
 							</p:selectOneMenu>
 							<p:message for="Asesor" />
@@ -82,15 +84,27 @@
 
 						<h:outputLabel for="Resumen" value="Resumen: " />
 
-						<p:editor id="Resumen" value="#{llenarFicha.ficha.resumen}" width="600" />
-		
+						<h:panelGroup>
+							<p:editor id="Resumen" value="#{llenarFicha.ficha.resumen}"
+								width="600" required="true"
+								requiredMessage="#{msg.errorResumenRequerido}">
+							</p:editor>
+							<p:message for="Resumen" />
+						</h:panelGroup>
 						<!-- aca termina el editor de texto-->
 
 						<!-- boton Guardar -->
 						<f:facet name="footer">
-							<p:commandButton actionListener="#{llenarFicha.registrarFicha}" value="#{msg.botonRegistrar}"
-								icon="ui-icon-check" style="margin:0"  ajax="true" update="panelFicha"   />
+						<div align="center">
+							<p:commandButton actionListener="#{llenarFicha.registrarFicha}"
+								value="#{msg.botonRegistrar}" icon="ui-icon-check"
+								style="margin:0" ajax="true" update="panelFicha" />
+							<p:commandButton value="#{msg.botonLimpiar}" ajax="true" update="panelFicha" process="@this" icon="ui-icon-cancel">
+								<p:resetInput target="panelFicha"/>
+							</p:commandButton>							
+						</div>
 						</f:facet>
+						
 					</h:panelGrid>
 
 				</p:panel>
@@ -99,9 +113,20 @@
 			<!-- Terminar de programar desde aqui -->
 		</div>
 
+		<p:ajaxStatus
+			style="width:60px;height:60px;position:fixed;right:5px;bottom:5px">
+			<f:facet name="start">
+				<p:graphicImage name="loading.gif" library="img" value="loading.gif" />
+			</f:facet>
+
+			<f:facet name="complete">
+				<h:outputText value="" />
+			</f:facet>
+		</p:ajaxStatus>
+
 		<h:form>
 			<p:dialog header="Confirm" widgetVar="dlg" showEffect="fade">
-				
+
 			</p:dialog>
 		</h:form>
 	</ui:define>

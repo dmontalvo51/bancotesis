@@ -19,14 +19,24 @@
 					<p:commandButton value="#" ajax="true"
 						action="#{comun.enviarCorreo}" />
 
+					<p:commandButton value="PDF Ficha Tesis" update="descargarPDF"
+						ajax="true" action="#{inicio.imprimirFichaTesis}" />
+
+					<p:commandButton id="descargarPDF" value="Descargar"
+						icon="ui-icon-arrowthichk-s" ajax="false">
+						<p:fileDownload value="#{inicio.archivo}" />
+					</p:commandButton>
+
+
+
 				</h:panelGrid>
 			</h:form>
 
 
 			<!-- Terminar de programar desde aqui -->
 		</div>
-		
-		<p:growl id="growl" showDetail="false" />  
-			<!-- Poner aqui Dialogs -->
+
+		<p:growl id="growl" showDetail="false" />
+		<!-- Poner aqui Dialogs -->
 	</ui:define>
 </ui:composition>

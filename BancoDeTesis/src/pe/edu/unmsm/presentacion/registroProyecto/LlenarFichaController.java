@@ -60,8 +60,6 @@ public class LlenarFichaController implements Serializable {
 	}
 	
 	public void seleccionaLinea(){
-		TesisUtil.escribir("HOLA");
-		TesisUtil.escribir(codigoLinea+"");
 		listaSubLineasInvestigacion=registroProyectoTesisService.cargarSubLineasInvestigacion(codigoLinea);
 	}
 	
@@ -70,18 +68,16 @@ public class LlenarFichaController implements Serializable {
 	}
 	
 	public void registrarFicha(){
-		if(codigoLinea!=-1 && codigoSubLinea!=-1){
+
+		Usuario usuario=(Usuario)TesisUtil.obtenerDeSesion("usuario");
+		
+		ficha.setCodigoLineaInvestigacion(codigoSubLinea);
+		ficha.setCodigoBachiller(usuario.getCuenta());
 			
-			TesisUtil.escribir("HOLA LA FICHA ESTA BIEN");
-			Usuario usuario=(Usuario)TesisUtil.obtenerDeSesion("usuario");
-			
-			ficha.setCodigoLineaInvestigacion(codigoSubLinea);
-			ficha.setCodigoBachiller(usuario.getCuenta());
-			
-			registroProyectoTesisService.insertarFichaProyectoTesis(ficha);
-			
-			TesisUtil.escribir(ficha.getCodigo());
-		}
+		registroProyectoTesisService.insertarFichaProyectoTesis(ficha);
+		
+		registroProyectoTesisService.generarDocumentoFichaProyectoTesis(ficha);
+		
 				
 	}
 	

@@ -94,6 +94,9 @@ public class RegistroProyectoTesisService implements Serializable {
 	public void insertarFichaProyectoTesis(Ficha ficha){
 		try {
 			fichasMapper.insertarFichaProyectoTesis(ficha);
+			
+			TesisUtil.generarReporte("fichaTesis",null);
+			
 		} catch (Exception e) {
 			TesisUtil.escribir("ERROR AL INSERTAR!");
 			e.printStackTrace();
@@ -150,6 +153,10 @@ public class RegistroProyectoTesisService implements Serializable {
 
 	public void setDocenteMapper(DocenteMapper docenteMapper) {
 		this.docenteMapper = docenteMapper;
+	}
+
+	public void generarDocumentoFichaProyectoTesis(Ficha ficha) {
+		
 	}
 
 }

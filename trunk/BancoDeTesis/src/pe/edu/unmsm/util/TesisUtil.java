@@ -1,6 +1,6 @@
 package pe.edu.unmsm.util;
 
-import java.awt.List;
+import java.util.List;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -19,9 +19,12 @@ import javax.servlet.http.HttpServletResponse;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 
+import pe.edu.unmsm.negocio.modelo.Docente;
+
 import sun.security.jca.GetInstance;
 
 import net.sf.jasperreports.engine.JRDataSource;
+import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -29,6 +32,7 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanArrayDataSource;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.view.JasperViewer;
 
 public class TesisUtil {
 
@@ -77,15 +81,14 @@ public class TesisUtil {
 		escribir(path);
 
 		try {
-			JasperReport report = JasperCompileManager.compileReport(path+nombre+".jrxml");
-
-			JRBeanCollectionDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(
-					new ArrayList<Object>());
-
-			JasperPrint jasperPrint = JasperFillManager.fillReport(report,parametros, beanCollectionDataSource);
-			//JasperPrint jasperPrint = JasperFillManager.fillReport(path+nombre+".jasper",parametros, beanCollectionDataSource);
+		    //JasperReport report = JasperCompileManager.compileReport(path+nombre+".jrxml");
+			//JasperPrint jasperPrint = JasperFillManager.fillReport(report,parametros);
+			@SuppressWarnings("unchecked")
 			
-			JasperExportManager.exportReportToPdfFile(jasperPrint, "E:\\Reporte.pdf");
+			JREmptyDataSource jrEmptyDataSource=new JREmptyDataSource();
+			JasperPrint jasperPrint = JasperFillManager.fillReport(path+nombre+".jasper",parametros,jrEmptyDataSource);
+			
+			JasperExportManager.exportReportToPdfFile(jasperPrint,"E:\\Reporte.pdf");
 			
 			File pdfGenerado;
 			
@@ -93,6 +96,25 @@ public class TesisUtil {
 			//		FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream("E:\\Reporte.pdf");		
 			
 			StreamedContent streamedContent=new DefaultStreamedContent(inputStream,"application/pdf","Ficha.pdf");
+			/*
+			 * Reporte de prueba
+			 * */
+			List<Docente> listaDocentes=new ArrayList<Docente>();
+			listaDocentes.add(new Docente("1","Profesor 1"));
+			listaDocentes.add(new Docente("2","Profesor 2"));
+			listaDocentes.add(new Docente("3","Profesor 3"));
+			listaDocentes.add(new Docente("4","Profesor 4"));
+			listaDocentes.add(new Docente("5","Profesor 5"));
+			listaDocentes.add(new Docente("6","Profesor 6"));
+			listaDocentes.add(new Docente("7","Profesor 7"));
+			
+			JRBeanCollectionDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(listaDocentes);
+			JasperPrint print = JasperFillManager.fillReport(path+"Prueba.jasper",parametros,beanCollectionDataSource);
+			JasperExportManager.exportReportToHtmlFile(print,"E:\\Prueba.html");
+			JasperExportManager.exportReportToPdfFile(print, "E:\\Prueba.pdf");
+			
+			/**/
+			
 			
 			return streamedContent;
 			

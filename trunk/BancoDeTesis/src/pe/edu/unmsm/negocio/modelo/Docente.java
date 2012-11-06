@@ -6,6 +6,13 @@ public class Docente {
 	private String nombre;
 	
 	
+	
+	
+	public Docente(String codigo, String nombre) {
+		super();
+		this.codigo = codigo;
+		this.nombre = nombre;
+	}
 	public String getCodigo() {
 		return codigo;
 	}

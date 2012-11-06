@@ -5,9 +5,10 @@ public class Docente {
 	private String codigo;
 	private String nombre;
 	
-	
-	
-	
+	public Docente() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public Docente(String codigo, String nombre) {
 		super();
 		this.codigo = codigo;

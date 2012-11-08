@@ -9,113 +9,110 @@
 
 		<div class="cuerpo" align="center">
 			<!-- Empezar a programar desde aqui -->
+			<h:form id="formRevisarFicha">
 
-			<p:panel header="#{msg.lblInformeProyectoTesis}" style="width:90%">
+				<p:panel id="panelFicha" header="#{msg.lblInformeProyectoTesis}"
+					style="width:90%">
 
-				<h:panelGrid columns="2"
-					columnClasses="formColumnaIzquierda,formColumnaDerecha"
-					width="100%">
+					<h:panelGrid columns="2"
+						columnClasses="formColumnaIzquierda,formColumnaDerecha"
+						width="100%">
 
-					<!-- aca va el elcuepo-->
-					<h:outputLabel for="NTramite" value="#{msg.lblNroExpediente}" />
-					<h:panelGroup style="margin-right:600px">
+						<!-- aca va el elcuepo-->
+						<h:outputLabel for="NTramite" value="#{msg.lblNroExpediente}:" />
+						<h:panelGroup style="margin-right:600px">
 
-						<h:outputText id="tramite" value="#{flash.ficha.nroExpediente}"
-							label="tramite" />
-					</h:panelGroup>
+							<h:outputText id="tramite" value="#{flash.ficha.nroExpediente}"
+								label="tramite"/>
+						</h:panelGroup>
 
-					<h:outputLabel for="Titulo" value="#{msg.lblTitulo}" />
-					<h:panelGroup>
+						<h:outputLabel for="Titulo" value="#{msg.lblTitulo}:" />
+						<h:panelGroup>
 
-						<h:outputText id="titulo" value="#{flash.ficha.titulo}"
-							label="titulo" />
-					</h:panelGroup>
+							<h:outputText id="titulo" value="#{flash.ficha.titulo}"
+								label="titulo" />
+						</h:panelGroup>
 
-					<h:outputLabel for="Linea de Investigacion"
-						value="#{msg.lblLineaInvestigacion}" />
-					<h:panelGroup>
+						<h:outputLabel for="Linea de Investigacion"
+							value="#{msg.lblLineaInvestigacion}:" />
+						<h:panelGroup>
 
-						<h:outputText id="lineainvestigacion"
-							value="#{flash.ficha.lineaInvestigacion}"
-							label="lineainvestigacion" />
-					</h:panelGroup>
+							<h:outputText id="lineainvestigacion"
+								value="#{flash.ficha.lineaInvestigacion}"
+								label="lineainvestigacion" />
+						</h:panelGroup>
 
+						<p:commandLink id="ajax" update=":formDialog:confirmDialog"
+							oncomplete="confirmation.show()" style="margin-left:90px;"
+							type="button">
+								<h:outputText value="Ver resumen de Tesis" />	
+						</p:commandLink>
 
-					<p:commandLink id="ajax" update=":formDialog:confirmDialog"
-						oncomplete="confirmation.show()" style="margin-right:20px;"
-						type="button">
-						<h:outputText value="Ver Resumen de tesis" />
-					</p:commandLink>
+						<h:outputLabel for="Se observa" value="" />
+						<!-- aca va el radiobuton-->
 
-					<h:outputLabel for="Se observa" value="" />
+						<h:outputLabel for="Se observa" value="#{msg.lblObs}:" />
+						<h:panelGroup>
 
-					<!-- aca va el radiobuton-->
-
-					<h:outputLabel for="Se observa"
-						value="{msg.lblObs}:" />
-					<h:panelGroup>
-
-						<p:selectOneRadio id="OptionsRadio"
-							value="informeProyectoTesis.ipt_opinion" layout="pageDirection">
-							<f:selectItem
-								itemLabel="Apto para el desarrollo del Proyecto de Tesis"
-								itemValue="1" />
-							<f:selectItem
-								itemLabel="Debe mejorar el bosquejo del Proyecto de Tesis"
-								itemValue="2" />
-							<f:selectItem
-								itemLabel="Debe cambiar el tema del Proyecto de Tesis"
-								itemValue="3" />
-						</p:selectOneRadio>
-					</h:panelGroup>
+							<p:selectOneRadio id="OptionsRadio"
+								value="informeProyectoTesis.ipt_opinion" layout="pageDirection">
+								<f:selectItem
+									itemLabel="Apto para el desarrollo del Proyecto de Tesis"
+									itemValue="1" />
+								<f:selectItem
+									itemLabel="Debe mejorar el bosquejo del Proyecto de Tesis"
+									itemValue="2" />
+								<f:selectItem
+									itemLabel="Debe cambiar el tema del Proyecto de Tesis"
+									itemValue="3" />
+							</p:selectOneRadio>
+						</h:panelGroup>
 
 
-					<h:outputLabel value="#{msg.lblObservaciones}:" />
-					<h:panelGroup columns="1" align="center">
+						<h:outputLabel value="#{msg.lblObservaciones}:" />
+						<h:panelGroup columns="1" align="center">
 
-						<p:inputTextarea rows="10" cols="100"
-							value="#{informeProyectoTesis.ipt_observaciones}"
-							queryDelay="750" minQueryLength="4" />
+							<p:inputTextarea id="asas" rows="10" required="true"
+								value="#{informeProyectoTesis.ipt_observaciones}"
+								style="width:590px" />
 
-					</h:panelGroup>
+						</h:panelGroup>
 
-					<h:outputLabel value="#{msg.lblSugerencias}" />
-					<h:panelGrid columns="1" align="center">
+						<h:outputLabel value="#{msg.lblSugerencias}:" />
+						<h:panelGroup columns="1" align="center">
 
-						<p:inputTextarea rows="10" cols="100"
-							value="#{informeProyectoTesis.ipt_sugerencias}" queryDelay="750"
-							minQueryLength="4" />
+							<p:inputTextarea id="sa" rows="10" required="true"
+							value="#{informeProyectoTesis.ipt_sugerencias}" 
+							style="width:590px" />
+
+						</h:panelGroup>
+
+						<f:facet name="footer">
+							<div align="center">
+								<p:commandButton id="revisar" type="button" value="Revisar"
+									icon="ui-icon-check" style="margin-top:10px" ajax="true"
+									update="panelFicha" />
+
+								<p:commandButton id="cancelarRevision"
+									action="#{listarFichasTesis.cancelarInformePT}" ajax="false"
+									value="Cancelar" icon="ui-icon-close" style="margin-top:10px" />
+							</div>
+					</f:facet>
 
 					</h:panelGrid>
 
-					<h:form id="formBotones">
 
-						<h:panelGrid columns="2" style="margin-top:10px">
-							<p:commandButton id="revisar" type="button" value="Revisar"
-								icon="ui-icon-check" />
-
-							<p:commandButton id="cancelarRevision" 
-								action="#{listarFichasTesis.cancelarInformePT}" 
-								ajax="false"
-								value="Cancelar"
-								icon="ui-icon-close" />
-						</h:panelGrid>
-					</h:form>
-
-				</h:panelGrid>
+				</p:panel>
 
 
-			</p:panel>
-
-
-
+			</h:form>
 
 			<!-- Terminar de programar desde aqui -->
 		</div>
 
 		<h:form id="formDialog">
 
-			<p:confirmDialog id="confirmDialog" message="Resumen de la tesis"
+			<p:confirmDialog id="confirmDialog" message="#{flash.ficha.resumen}"
 				header="Resumen" severity="alert" widgetVar="confirmation"
 				style="margin-center:20px">
 

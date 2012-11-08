@@ -68,16 +68,16 @@ public class RegistroProyectoTesisService implements Serializable {
 
 	public List<Ficha> cargarListaFichasInscritas() {
 
-		List<Ficha> lista = new ArrayList<Ficha>();
+		//List<Ficha> lista = new ArrayList<Ficha>();
 
 		// lista=fichasMapper.cargarListaFichasInscritas();
 		
-		lista.add(new Ficha("026-FISI-2012", "F001", "titulo 1", "resumen ficha 1", "linea 1", 1, "Diego", "revisado", "Piedra",null,null,null));
+		/*lista.add(new Ficha("026-FISI-2012", "F001", "titulo 1", "resumen ficha 1", "linea 1", 1, "Diego", "revisado", "Piedra",null,null,null));
 		lista.add(new Ficha("027-FISI-2012", "F002", "titulo 2", "resumen ficha 2", "linea 2", 1, "Diego", "revisado", "Piedra",null,null,null));
 		lista.add(new Ficha("028-FISI-2012", "F003", "titulo 3", "resumen ficha 3", "linea 3", 1, "Karina", "revisado", "Mauricio",null,null,null));
 		lista.add(new Ficha("029-FISI-2012", "F004", "titulo 4", "resumen ficha 4", "linea 4", 1, "Johnny", "rechazada", "Luza",null,null,null));
-
-		return lista;
+		*/
+		return fichasMapper.cargarListaFichasInscritas();
 
 	}
 

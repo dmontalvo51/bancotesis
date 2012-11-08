@@ -5,17 +5,23 @@
 
 
 	<resultMap type="pe.edu.unmsm.negocio.modelo.Ficha" id="Ficha">
-		<result property="id" column="tra_iCodigo" />
-		<result property="codigo" column="tra_vccodigo" />
-		<result property="estado" column="est_iCodigo" />
+		<result property="nroExpediente" column="EXP_CODIGO" />
+		<result property="codigo" column="FT_CODIGO" />
+		<result property="titulo" column="FT_TITULO" />
+		<result property="lineaInvestigacion" column="LINEA_DESCRIPCION" />
+		<result property="nomBachiller" column="NOMBRE_COMPLETO" />
+		<result property="estado" column="ESTF_ESTADO" />
+		<result property="resumen" column="FT_RESUMEN" />
 	</resultMap>
 
 	<parameterMap type="pe.edu.unmsm.negocio.modelo.Ficha" id="FichaTesis" />
 
 
 	<select id="cargarListaFichasInscritas" resultMap="Ficha">
-		select * from
-		TESIS.FICHA_TESIS
+		select f.exp_codigo,f.ft_codigo,f.ft_titulo,l.linea_descripcion,concat(u.usu_apellidos,',
+		',u.usu_nombres) as nombre_completo,e.estf_estado,f.ft_resumen
+		from tesis.ficha_tesis f,tesis.linea_investigacion l,tesis.usuario u,tesis.estado_ficha e
+		where (f.linea_id=l.linea_id) and (f.bac_codigo=u.usu_codigo) and (f.estf_id=e.estf_id)
 	</select>
 
 </mapper>

@@ -23,10 +23,12 @@
 						<!-- label para el titulo -->
 
 						<h:outputLabel for="Titulo" value="#{msg.lblTitulo} : " />
+
 						<h:panelGroup>
 							<p:inputTextarea id="Titulo" required="true"
 								requiredMessage="#{msg.errorTituloRequerido}"
 								value="#{llenarFicha.ficha.titulo}" style="width:590px" />
+
 							<p:message for="Titulo" />
 						</h:panelGroup>
 
@@ -95,16 +97,16 @@
 
 						<!-- boton Guardar -->
 						<f:facet name="footer">
-						<div align="center">
-							<p:commandButton actionListener="#{llenarFicha.registrarFicha}"
-								value="#{msg.botonRegistrar}" icon="ui-icon-check"
-								style="margin:0" ajax="true" update="panelFicha" />
-							<p:commandButton value="#{msg.botonLimpiar}" ajax="true" update="panelFicha" process="@this" icon="ui-icon-cancel">
-								<p:resetInput target="panelFicha"/>
-							</p:commandButton>							
-						</div>
+							<div align="center">
+								<p:commandButton actionListener="#{llenarFicha.registrarFicha}"
+									value="#{msg.botonRegistrar}" icon="ui-icon-check"
+									style="margin-top:10px" ajax="true" update="panelFicha" />
+								<p:commandButton value="#{msg.btnLimpiar}" ajax="true"
+									update="panelFicha" process="@this" icon="ui-icon-cancel">
+									<p:resetInput target="panelFicha" />
+								</p:commandButton>
+							</div>
 						</f:facet>
-						
 					</h:panelGrid>
 
 				</p:panel>

@@ -1,7 +1,13 @@
 package pe.edu.unmsm.negocio.modelo;
 
-public class Docente {
+import java.io.Serializable;
+
+public class Docente implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String codigo;
 	private String nombre;
 	

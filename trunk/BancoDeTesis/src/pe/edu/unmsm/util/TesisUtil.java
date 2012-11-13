@@ -21,7 +21,6 @@ import org.primefaces.model.StreamedContent;
 
 import pe.edu.unmsm.negocio.modelo.Docente;
 
-import sun.security.jca.GetInstance;
 
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JREmptyDataSource;

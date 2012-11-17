@@ -95,7 +95,7 @@ public class RegistroProyectoTesisService implements Serializable {
 		try {
 			fichasMapper.insertarFichaProyectoTesis(ficha);
 			
-			TesisUtil.generarReporte("fichaTesis",null);
+			//TesisUtil.generarReporte("fichaTesis",null);
 			
 		} catch (Exception e) {
 			TesisUtil.escribir("ERROR AL INSERTAR!");

@@ -8,7 +8,7 @@ public class Ficha implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-//datos de la tabla
+	//datos de la tabla
 	
 	private String nroExpediente;
 	private String codigo;
@@ -128,6 +128,26 @@ public class Ficha implements Serializable{
 
 	public void setRuta(String ruta) {
 		this.ruta = ruta;
+	}
+
+
+	public String getFecha() {
+		return fecha;
+	}
+
+
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
+	}
+
+
+	public String getHora() {
+		return hora;
+	}
+
+
+	public void setHora(String hora) {
+		this.hora = hora;
 	}
 
 	

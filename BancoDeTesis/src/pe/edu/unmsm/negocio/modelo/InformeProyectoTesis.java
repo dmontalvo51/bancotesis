@@ -2,80 +2,115 @@ package pe.edu.unmsm.negocio.modelo;
 
 public class InformeProyectoTesis {
 	
-	private String ipt_codigo;
-	private String ft_codigo;
-	private String usu_codigo;
-	private int ipt_opinion;
-	private String ipt_observaciones;
-	private String ipt_sugerencias;
-	private String ipt_ruta;
-	private String asesor;
-	private String ipt_fecha;
-	private String ipt_hora;
-	public String getIpt_codigo() {
-		return ipt_codigo;
-	}
-	public void setIpt_codigo(String ipt_codigo) {
-		this.ipt_codigo = ipt_codigo;
-	}
-	public String getFt_codigo() {
-		return ft_codigo;
-	}
-	public void setFt_codigo(String ft_codigo) {
-		this.ft_codigo = ft_codigo;
-	}
-	public String getUsu_codigo() {
-		return usu_codigo;
-	}
-	public void setUsu_codigo(String usu_codigo) {
-		this.usu_codigo = usu_codigo;
-	}
-	public int getIpt_opinion() {
-		return ipt_opinion;
-	}
-	public void setIpt_opinion(int ipt_opinion) {
-		this.ipt_opinion = ipt_opinion;
-	}
-	public String getIpt_observaciones() {
-		return ipt_observaciones;
-	}
-	public void setIpt_observaciones(String ipt_observaciones) {
-		this.ipt_observaciones = ipt_observaciones;
-	}
-	public String getIpt_sugerencias() {
-		return ipt_sugerencias;
-	}
-	public void setIpt_sugerencias(String ipt_sugerencias) {
-		this.ipt_sugerencias = ipt_sugerencias;
-	}
-	public String getIpt_ruta() {
-		return ipt_ruta;
-	}
-	public void setIpt_ruta(String ipt_ruta) {
-		this.ipt_ruta = ipt_ruta;
-	}
-	public String getAsesor() {
-		return asesor;
-	}
-	public void setAsesor(String asesor) {
-		this.asesor = asesor;
-	}
-	public String getIpt_fecha() {
-		return ipt_fecha;
-	}
-	public void setIpt_fecha(String ipt_fecha) {
-		this.ipt_fecha = ipt_fecha;
-	}
-	public String getIpt_hora() {
-		return ipt_hora;
-	}
-	public void setIpt_hora(String ipt_hora) {
-		this.ipt_hora = ipt_hora;
-	}
+	private String codigoInformeProyecto;
+	private String codigoFicha;
+	private String codigoDocente;
+	private int opinion;
+	private String observaciones;
+	private String sugerencias;
+	private boolean informeCreado;
+	private boolean actaGenerada;
+	private String nroActaEvaluacion;
+	private String fecha;
+	private String hora;
 	
-	
-	
+	private String nombreProfesor;
+	private String nombreBachiller;
+	private String tituloTesis;
+	private String nroExpediente;
 	
 		
+	public String getCodigoInformeProyecto() {
+		return codigoInformeProyecto;
+	}
+	public void setCodigoInformeProyecto(String codigoInformeProyecto) {
+		this.codigoInformeProyecto = codigoInformeProyecto;
+	}
+	public String getCodigoFicha() {
+		return codigoFicha;
+	}
+	public void setCodigoFicha(String codigoFicha) {
+		this.codigoFicha = codigoFicha;
+	}
+	public String getCodigoDocente() {
+		return codigoDocente;
+	}
+	public void setCodigoDocente(String codigoDocente) {
+		this.codigoDocente = codigoDocente;
+	}
+	public int getOpinion() {
+		return opinion;
+	}
+	public void setOpinion(int opinion) {
+		this.opinion = opinion;
+	}
+	public String getObservaciones() {
+		return observaciones;
+	}
+	public void setObservaciones(String observaciones) {
+		this.observaciones = observaciones;
+	}
+	public String getSugerencias() {
+		return sugerencias;
+	}
+	public void setSugerencias(String sugerencias) {
+		this.sugerencias = sugerencias;
+	}
+	public boolean isInformeCreado() {
+		return informeCreado;
+	}
+	public void setInformeCreado(boolean informeCreado) {
+		this.informeCreado = informeCreado;
+	}
+	public boolean isActaGenerada() {
+		return actaGenerada;
+	}
+	public void setActaGenerada(boolean actaGenerada) {
+		this.actaGenerada = actaGenerada;
+	}
+	public String getNroActaEvaluacion() {
+		return nroActaEvaluacion;
+	}
+	public void setNroActaEvaluacion(String nroActaEvaluacion) {
+		this.nroActaEvaluacion = nroActaEvaluacion;
+	}
+	public String getFecha() {
+		return fecha;
+	}
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
+	}
+	public String getHora() {
+		return hora;
+	}
+	public void setHora(String hora) {
+		this.hora = hora;
+	}
+	public String getNombreProfesor() {
+		return nombreProfesor;
+	}
+	public void setNombreProfesor(String nombreProfesor) {
+		this.nombreProfesor = nombreProfesor;
+	}
+	public String getNombreBachiller() {
+		return nombreBachiller;
+	}
+	public void setNombreBachiller(String nombreBachiller) {
+		this.nombreBachiller = nombreBachiller;
+	}
+	public String getTituloTesis() {
+		return tituloTesis;
+	}
+	public void setTituloTesis(String tituloTesis) {
+		this.tituloTesis = tituloTesis;
+	}
+	public String getNroExpediente() {
+		return nroExpediente;
+	}
+	public void setNroExpediente(String nroExpediente) {
+		this.nroExpediente = nroExpediente;
+	}
+	
+	
 
 }

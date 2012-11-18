@@ -99,9 +99,9 @@
 						<!-- boton Guardar -->
 						<f:facet name="footer">
 							<div align="center">
-								<p:commandButton actionListener="#{llenarFicha.registrarFicha}"
+								<p:commandButton action="#{llenarFicha.registrarFicha}"
 									value="#{msg.botonRegistrar}" icon="ui-icon-check"
-									style="margin-top:10px" ajax="true" update="panelFicha" />
+									style="margin-top:10px" update="panelFicha,growl" />
 								<p:commandButton value="#{msg.btnLimpiar}" ajax="true"
 									update="panelFicha" process="@this" icon="ui-icon-cancel">
 									<p:resetInput target="panelFicha" />
@@ -112,7 +112,8 @@
 
 				</p:panel>
 				
-		
+				<p:growl id="growl" showDetail="true" sticky="true" life="2500" />
+			
 			</h:form>
 
 			<!-- Terminar de programar desde aqui -->

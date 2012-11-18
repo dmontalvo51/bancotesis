@@ -22,6 +22,7 @@
 		',u.usu_nombres) as nombre_completo,e.estf_estado,f.ft_resumen
 		from tesis.ficha_tesis f,tesis.linea_investigacion l,tesis.usuario u,tesis.estado_ficha e
 		where (f.linea_id=l.linea_id) and (f.bac_codigo=u.usu_codigo) and (f.estf_id=e.estf_id)
+		ORDER BY F.EXP_CODIGO
 	</select>
 
 </mapper>

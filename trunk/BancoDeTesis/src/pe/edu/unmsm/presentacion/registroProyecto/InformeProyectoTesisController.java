@@ -13,16 +13,83 @@ import javax.faces.bean.ViewScoped;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import pe.edu.unmsm.negocio.modelo.Ficha;
+import pe.edu.unmsm.negocio.modelo.InformeProyectoTesis;
 import pe.edu.unmsm.negocio.modelo.ProyectoTesis;
+import pe.edu.unmsm.negocio.modelo.Usuario;
 import pe.edu.unmsm.negocio.servicio.RegistroProyectoTesisService;
 import pe.edu.unmsm.util.TesisUtil;
 
 @ViewScoped
 @ManagedBean(name = "informeProyectoTesis")
 public class InformeProyectoTesisController implements Serializable {
+	
+	private static final long serialVersionUID = 9054693765543258216L;
 	private String ipt_observaciones;
 	private String ipt_sugerencias;
 	private int ipt_opinion;
+	private Ficha ficha;
+		
+	
+	public InformeProyectoTesisController() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@ManagedProperty("#{registroProyectoTesisService}")
+	private RegistroProyectoTesisService registroProyectoTesisService;
+	
+	@PostConstruct
+	public void cargarDatos(){
+		ficha=(Ficha)TesisUtil.obtenerDeSesion("ficha");
+	
+	}
+
+		
+	public void guardarInformeProyecto(){
+		
+		TesisUtil.escribir("EN EL METODO GUARDAR");
+		
+		InformeProyectoTesis ipt=new InformeProyectoTesis();
+		ipt.setCodigoFicha(ficha.getCodigo());
+		ipt.setCodigoDocente(((Usuario)TesisUtil.obtenerDeSesion("usuario")).getCuenta());
+		ipt.setOpinion(ipt_opinion);
+		ipt.setObservaciones(ipt_observaciones);
+		ipt.setSugerencias(ipt_sugerencias);
+		
+		registroProyectoTesisService.insertarInformeProyectoTesis(ipt);
+		
+	}
+	
+	
+	public String atrasPage(){
+		//TesisUtil.flashScope("ficha", selectedFicha);
+		return "ListarFichasProyectoDeTesis";
+	}
+
+	
+	public String cancelarInformePT(){
+		return "ListarFichasProyectoDeTesis?faces-redirect=true";
+	}
+
+	
+	public RegistroProyectoTesisService getRegistroProyectoTesisService() {
+		return registroProyectoTesisService;
+	}
+
+	public void setRegistroProyectoTesisService(
+			RegistroProyectoTesisService registroProyectoTesisService) {
+		this.registroProyectoTesisService = registroProyectoTesisService;
+	}
+
+	
+
+	public Ficha getFicha() {
+		return ficha;
+	}
+
+	public void setFicha(Ficha ficha) {
+		this.ficha = ficha;
+	}
 	
 	public int getIpt_opinion() {
 		return ipt_opinion;
@@ -48,43 +115,5 @@ public class InformeProyectoTesisController implements Serializable {
 		this.ipt_sugerencias = ipt_sugerencias;
 	}
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 9054693765543258216L;
-	
-	
-	@ManagedProperty("#{registroProyectoTesisService}")
-	private RegistroProyectoTesisService registroProyectoTesisService;
-	
-	
-	public InformeProyectoTesisController() {
-		
-	}
-	
-	@PostConstruct
-	public void cargarDatos(){
-	
-	}
-	
-	public String cancelarInformePT(){
-		return "ListarFichasProyectoDeTesis?faces-redirect=true";
-	}
-
-	
-	public RegistroProyectoTesisService getRegistroProyectoTesisService() {
-		return registroProyectoTesisService;
-	}
-
-	public void setRegistroProyectoTesisService(
-			RegistroProyectoTesisService registroProyectoTesisService) {
-		this.registroProyectoTesisService = registroProyectoTesisService;
-	}
-
-	
-	public String atrasPage(){
-		//TesisUtil.flashScope("ficha", selectedFicha);
-		return "ListarFichasProyectoDeTesis";
-	}
 	
 }

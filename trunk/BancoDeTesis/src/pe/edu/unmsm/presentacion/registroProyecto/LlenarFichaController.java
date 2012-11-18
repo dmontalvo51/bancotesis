@@ -74,7 +74,7 @@ public class LlenarFichaController implements Serializable {
 				.cargarListaDocentesPorLinea(codigoSubLinea);
 	}
 
-	public void registrarFicha(ActionEvent event) {
+	public String registrarFicha() {
 
 		Usuario usuario = (Usuario) TesisUtil.obtenerDeSesion("usuario");
 
@@ -83,19 +83,22 @@ public class LlenarFichaController implements Serializable {
 
 		registroProyectoTesisService.insertarFichaProyectoTesis(ficha);
 
-		// registroProyectoTesisService.generarDocumentoFichaProyectoTesis(ficha);
+		FacesContext.getCurrentInstance().getExternalContext().getFlash()
+				.setKeepMessages(true);
 
-		
-		//event.processListener();
-		FacesContext.getCurrentInstance().addMessage(
-				"Ficha creada",
-				new FacesMessage("Successful",
-						"Se creo la ficha de inscripción nro. "
-								+ ficha.getCodigo()));		
-		
-		FacesContext.getCurrentInstance().getApplication().getNavigationHandler().handleNavigation(FacesContext.getCurrentInstance(), null, "Inicio.xhtml?faces-redirect=true");
+		if (ficha != null) {
+			FacesContext.getCurrentInstance().addMessage(
+					"Ficha creada",
+					new FacesMessage("Ficha creada",
+							"Se creo la ficha de inscripción nro. "
+									+ ficha.getCodigo()));
+			return "Inicio.xhtml?faces-redirect=true";
+		} else {
+			FacesContext.getCurrentInstance().addMessage("Ficha creada",
+					new FacesMessage("Error al crear la ficha"));
+			return null;
+		}
 
-		
 	}
 
 	public List<LineaInvestigacion> getListaLineasInvestigacion() {

@@ -19,107 +19,97 @@
 						width="100%">
 
 						<!-- aca va el elcuepo-->
-						<h:outputLabel for="NTramite" value="#{msg.lblNroExpediente}:" />
-						<h:panelGroup style="margin-right:600px">
+						<h:outputLabel for="tramite" value="#{msg.lblNroExpediente}:" />
+						<h:outputText id="tramite"
+							value="#{informeProyectoTesis.ficha.nroExpediente}"
+							label="tramite" />
 
-							<h:outputText id="tramite" value="#{flash.ficha.nroExpediente}"
-								label="tramite"/>
-						</h:panelGroup>
 
-						<h:outputLabel for="Titulo" value="#{msg.lblTitulo}:" />
-						<h:panelGroup>
+						<h:outputLabel for="titulo" value="#{msg.lblTitulo}:" />
+						<h:outputText id="titulo"
+							value="#{informeProyectoTesis.ficha.titulo}" label="titulo" />
 
-							<h:outputText id="titulo" value="#{flash.ficha.titulo}"
-								label="titulo" />
-						</h:panelGroup>
-
-						<h:outputLabel for="Linea de Investigacion"
+						<h:outputLabel for="lineainvestigacion"
 							value="#{msg.lblLineaInvestigacion}:" />
-						<h:panelGroup>
+						<h:outputText id="lineainvestigacion"
+							value="#{informeProyectoTesis.ficha.lineaInvestigacion}"
+							label="lineainvestigacion" />
 
-							<h:outputText id="lineainvestigacion"
-								value="#{flash.ficha.lineaInvestigacion}"
-								label="lineainvestigacion" />
-						</h:panelGroup>
-
-						<p:commandLink id="ajax" update=":formDialog:confirmDialog"
+						<h:outputLabel for="linkResumen" value="#{msg.lblResumen}:" />
+						<p:commandLink id="linkResumen" update=":formDialog:confirmDialog"
 							oncomplete="confirmation.show()" style="margin-left:90px;"
 							type="button">
-								<h:outputText value="Ver resumen de Tesis" />	
+							<h:outputText value="Ver resumen de Tesis" />
 						</p:commandLink>
 
-						<h:outputLabel for="Se observa" value="" />
-						<!-- aca va el radiobuton-->
-
-						<h:outputLabel for="Se observa" value="#{msg.lblObs}:" />
+						<h:outputLabel for="opcionOpinion" value="#{msg.lblObs}:" />
 						<h:panelGroup>
-
-							<p:selectOneRadio id="OptionsRadio"
+							<p:selectOneRadio id="opcionOpinion"
 								value="informeProyectoTesis.ipt_opinion" layout="pageDirection">
 								<f:selectItem
 									itemLabel="Apto para el desarrollo del Proyecto de Tesis"
-									itemValue="1" />
+									itemValue="0" />
 								<f:selectItem
 									itemLabel="Debe mejorar el bosquejo del Proyecto de Tesis"
-									itemValue="2" />
+									itemValue="1" />
 								<f:selectItem
 									itemLabel="Debe cambiar el tema del Proyecto de Tesis"
-									itemValue="3" />
+									itemValue="2" />
 							</p:selectOneRadio>
 						</h:panelGroup>
 
 
 						<h:outputLabel value="#{msg.lblObservaciones}:" />
-						<h:panelGroup columns="1" align="center">
-
-							<p:inputTextarea id="asas" rows="10" required="true"
-								value="#{informeProyectoTesis.ipt_observaciones}"
-								style="width:590px" />
-
-						</h:panelGroup>
-
-						<h:outputLabel value="#{msg.lblSugerencias}:" />
-						<h:panelGroup columns="1" align="center">
-
-							<p:inputTextarea id="sa" rows="10" required="true"
-							value="#{informeProyectoTesis.ipt_sugerencias}" 
+						<p:inputTextarea id="asas" rows="10" required="true"
+							value="#{informeProyectoTesis.ipt_observaciones}"
 							style="width:590px" />
 
-						</h:panelGroup>
+						<h:outputLabel value="#{msg.lblSugerencias}:" />
+						<p:inputTextarea id="sa" rows="10" required="true"
+							value="#{informeProyectoTesis.ipt_sugerencias}"
+							style="width:590px" />
 
 						<f:facet name="footer">
 							<div align="center">
-								<p:commandButton id="revisar" type="button" value="Revisar"
+								<p:commandButton id="revisar" value="Revisar"
+									action="#{informeProyectoTesis.guardarInformeProyecto}"
 									icon="ui-icon-check" style="margin-top:10px" ajax="true"
-									update="panelFicha" />
+									update="panelFicha,growl" />
 
 								<p:commandButton id="cancelarRevision"
 									action="#{listarFichasTesis.cancelarInformePT}" ajax="false"
 									value="Cancelar" icon="ui-icon-close" style="margin-top:10px" />
 							</div>
-					</f:facet>
+						</f:facet>
 
 					</h:panelGrid>
-
-
 				</p:panel>
-
-
+				
+				<p:growl id="growl" showDetail="true" sticky="false" life="3000"></p:growl>
+				
 			</h:form>
-
+				
 			<!-- Terminar de programar desde aqui -->
 		</div>
 
+		<p:ajaxStatus
+			style="width:60px;height:60px;position:fixed;right:5px;bottom:5px">
+			<f:facet name="start">
+				<p:graphicImage name="loading.gif" library="img" value="loading.gif" />
+			</f:facet>
+
+			<f:facet name="complete">
+				<h:outputText value="" />
+			</f:facet>
+		</p:ajaxStatus>
+		
+
 		<h:form id="formDialog">
-
-			<p:confirmDialog id="confirmDialog" message="#{flash.ficha.resumen}"
-				header="Resumen" severity="alert" widgetVar="confirmation"
-				style="margin-center:20px">
-
-				<p:commandButton id="decline" value="Resumen"
-					onclick="confirmation.hide()" type="button" />
-
-			</p:confirmDialog>
+			<p:dialog id="confirmDialog" modal="true" header="Resumen"
+				severity="alert" widgetVar="confirmation" style="margin-center:20px">
+				<h:outputText id="display"
+					value="#{informeProyectoTesis.ficha.resumen}" escape="false" />
+			</p:dialog>
 		</h:form>
 	</ui:define>
 </ui:composition>

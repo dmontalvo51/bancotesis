@@ -96,8 +96,8 @@ public class ListarFichasTesisController implements Serializable {
 		this.selectedFicha = selectedFicha;
 	}
 
-	public String nextPage(){
-	    TesisUtil.flashScope("ficha", selectedFicha);
+	public String informeProyectoTesis(){
+	    TesisUtil.subirASesion("ficha", selectedFicha);
 		return "InformeProyectoTesis?faces-redirect=true";
 	}
 	

@@ -107,11 +107,10 @@ public class RegistroProyectoTesisService implements Serializable {
 	
 	public void insertarInformeProyectoTesis(InformeProyectoTesis ipt){
 		try {
+			
 			informeProyectoTesisMapper.ingresarInformeProyectoTesis(ipt);
 			
-			TesisUtil.escribir("Se llamo al IPT Mapper");
-			//TesisUtil.generarReporte("fichaTesis",null);
-			
+					
 		} catch (Exception e) {
 			TesisUtil.escribir("ERROR AL INSERTAR INFORME DE PROYECTO DE TESIS!");
 			e.printStackTrace();

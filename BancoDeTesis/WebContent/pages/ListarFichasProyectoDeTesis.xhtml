@@ -15,7 +15,8 @@
 					width="100%">
 					<h:form id="form">
 
-
+						<p:growl id="growl" showDetail="true" life="3000" sticky="false" redisplay="false" />
+						
 						<p:dataTable id="lptesiss" var="lptesis"
 							value="#{listarFichasTesis.listFicha}" rowKey="#{lptesis.codigo}"
 							selection="#{listarFichasTesis.selectedFicha}"

@@ -3,12 +3,15 @@ package pe.edu.unmsm.presentacion.registroProyecto;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -22,56 +25,100 @@ import pe.edu.unmsm.util.TesisUtil;
 @ViewScoped
 @ManagedBean(name = "informeProyectoTesis")
 public class InformeProyectoTesisController implements Serializable {
-	
+
 	private static final long serialVersionUID = 9054693765543258216L;
 	private String ipt_observaciones;
 	private String ipt_sugerencias;
 	private int ipt_opinion;
 	private Ficha ficha;
-		
-	
+	private InformeProyectoTesis ipt;
+	ResourceBundle resourceBundle;
+
 	public InformeProyectoTesisController() {
 		super();
-		// TODO Auto-generated constructor stub
+		ficha = new Ficha();
+		ipt = new InformeProyectoTesis();
 	}
 
 	@ManagedProperty("#{registroProyectoTesisService}")
 	private RegistroProyectoTesisService registroProyectoTesisService;
-	
+
 	@PostConstruct
-	public void cargarDatos(){
-		ficha=(Ficha)TesisUtil.obtenerDeSesion("ficha");
-	
+	public void cargarDatos() {
+		ficha = (Ficha) TesisUtil.obtenerDeSesion("ficha");
+
 	}
 
-		
-	public void guardarInformeProyecto(){
-		
+	public String guardarInformeProyecto() {
+
 		TesisUtil.escribir("EN EL METODO GUARDAR");
-		
-		InformeProyectoTesis ipt=new InformeProyectoTesis();
+
 		ipt.setCodigoFicha(ficha.getCodigo());
-		ipt.setCodigoDocente(((Usuario)TesisUtil.obtenerDeSesion("usuario")).getCuenta());
+		ipt.setCodigoDocente(((Usuario) TesisUtil.obtenerDeSesion("usuario"))
+				.getCuenta());
 		ipt.setOpinion(ipt_opinion);
 		ipt.setObservaciones(ipt_observaciones);
 		ipt.setSugerencias(ipt_sugerencias);
-		
+
 		registroProyectoTesisService.insertarInformeProyectoTesis(ipt);
-		
+
+		FacesContext.getCurrentInstance().getExternalContext().getFlash()
+				.setKeepMessages(true);
+
+		if (ipt != null) {
+			if (ipt.isInformeCreado()) {
+				if (ipt.isActaGenerada()) {
+					FacesContext.getCurrentInstance().addMessage(
+							null,
+							new FacesMessage(escribir("msg","msgInformeCreado"),escribir("msg","msgInformeCreadoDetalle")
+							+ " "+ipt.getCodigoInformeProyecto()));
+										
+					FacesContext.getCurrentInstance().addMessage(
+							null,
+							new FacesMessage(escribir("msg","msgActaCreada"),escribir("msg","msgActaCreadaDetalle")
+									+" "+ ipt.getNroActaEvaluacion()));
+					return "ListarFichasProyectoDeTesis.xhtml?faces-redirect=true";
+				} else {
+					FacesContext.getCurrentInstance().addMessage(
+							null,
+							new FacesMessage(escribir("msg","msgInformeCreado"),escribir("msg","msgInformeCreadoDetalle")
+							+" "+ipt.getCodigoInformeProyecto()));
+					return "ListarFichasProyectoDeTesis.xhtml?faces-redirect=true";
+				}
+			} else {
+				FacesContext.getCurrentInstance().addMessage(
+						null,
+						new FacesMessage(escribir("msg","msgInformeNoCreado"),escribir("msg","msgInformeNoCreadoDetalleMax2")));
+										
+				return "ListarFichasProyectoDeTesis.xhtml?faces-redirect=true";
+			}
+		} else {
+			FacesContext.getCurrentInstance().addMessage(
+					null,
+					new FacesMessage(escribir("msg","msgInformeNoCreado"),escribir("msg","msgInformeNoCreadoDetalleError")));
+									
+			return "ListarFichasProyectoDeTesis.xhtml?faces-redirect=true";
+		}
+
 	}
-	
-	
-	public String atrasPage(){
-		//TesisUtil.flashScope("ficha", selectedFicha);
+
+	public String atrasPage() {
+		// TesisUtil.flashScope("ficha", selectedFicha);
 		return "ListarFichasProyectoDeTesis";
 	}
 
-	
-	public String cancelarInformePT(){
+	public String escribir(String msg, String etiqueta) {
+		return etiqueta;
+		
+		//return FacesContext.getCurrentInstance().getApplication()
+//				.getResourceBundle(FacesContext.getCurrentInstance(),msg)
+	//			.getString(etiqueta);
+	}
+
+	public String cancelarInformePT() {
 		return "ListarFichasProyectoDeTesis?faces-redirect=true";
 	}
 
-	
 	public RegistroProyectoTesisService getRegistroProyectoTesisService() {
 		return registroProyectoTesisService;
 	}
@@ -81,8 +128,6 @@ public class InformeProyectoTesisController implements Serializable {
 		this.registroProyectoTesisService = registroProyectoTesisService;
 	}
 
-	
-
 	public Ficha getFicha() {
 		return ficha;
 	}
@@ -90,7 +135,7 @@ public class InformeProyectoTesisController implements Serializable {
 	public void setFicha(Ficha ficha) {
 		this.ficha = ficha;
 	}
-	
+
 	public int getIpt_opinion() {
 		return ipt_opinion;
 	}
@@ -115,5 +160,12 @@ public class InformeProyectoTesisController implements Serializable {
 		this.ipt_sugerencias = ipt_sugerencias;
 	}
 
-	
+	public InformeProyectoTesis getIpt() {
+		return ipt;
+	}
+
+	public void setIpt(InformeProyectoTesis ipt) {
+		this.ipt = ipt;
+	}
+
 }

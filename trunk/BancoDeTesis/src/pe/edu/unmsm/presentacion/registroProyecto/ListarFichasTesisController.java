@@ -37,6 +37,8 @@ public class ListarFichasTesisController implements Serializable {
 	public ListarFichasTesisController() {
 		TesisUtil.escribir("Constructor");
 		
+
+		
 	}
 	//llama a este metodo despues del constructo
 	
@@ -51,6 +53,9 @@ public class ListarFichasTesisController implements Serializable {
 			setListFicha(llenarTabla());
 		else if(origen.equals("ListarProyectosPorAprobar"))
 			setListFicha(llenarTabla());
+		
+		
+		FacesContext.getCurrentInstance().getExternalContext().getFlash().clear();
 	}
 	
 	

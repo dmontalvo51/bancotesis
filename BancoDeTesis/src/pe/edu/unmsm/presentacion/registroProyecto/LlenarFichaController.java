@@ -27,60 +27,56 @@ import pe.edu.unmsm.negocio.servicio.SeguridadService;
 import pe.edu.unmsm.util.TesisUtil;
 
 @ViewScoped
-@ManagedBean(name = "llenarFicha")
+@ManagedBean(name="llenarFicha")
 public class LlenarFichaController implements Serializable {
-
+	
 	private static final long serialVersionUID = 1L;
-
-	// Datos maestros
-	private List<LineaInvestigacion> listaLineasInvestigacion = new ArrayList<LineaInvestigacion>();
-	private List<LineaInvestigacion> listaSubLineasInvestigacion = new ArrayList<LineaInvestigacion>();
-	private List<Docente> listaAsesores = new ArrayList<Docente>();
-
-	// Datos Ficha de inscripción
-
-	private Ficha ficha = new Ficha();
-
+	
+	//Datos maestros
+	private List<LineaInvestigacion> listaLineasInvestigacion=new ArrayList<LineaInvestigacion>();
+	private List<LineaInvestigacion> listaSubLineasInvestigacion=new ArrayList<LineaInvestigacion>();
+	private List<Docente> listaAsesores=new ArrayList<Docente>();
+	
+	//Datos Ficha de inscripción
+	
+	private Ficha ficha=new Ficha();
+	
 	private String codigoAsesor;
 	private int codigoLinea;
 	private int codigoSubLinea;
-
-	// Services
+	
+	//Services
 	@ManagedProperty("#{registroProyectoTesisService}")
-	RegistroProyectoTesisService registroProyectoTesisService;
-
+	RegistroProyectoTesisService registroProyectoTesisService;	
+	
 	public LlenarFichaController() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+	
 	@PostConstruct
-	public void init() {
-		listaLineasInvestigacion = registroProyectoTesisService
-				.cargarLineasInvestigacion();
-		listaSubLineasInvestigacion = registroProyectoTesisService
-				.cargarSubLineasInvestigacion(1);
-		listaAsesores = registroProyectoTesisService
-				.cargarListaDocentesPorLinea(1);
+	public void init(){
+		listaLineasInvestigacion=registroProyectoTesisService.cargarLineasInvestigacion();
+		listaSubLineasInvestigacion=registroProyectoTesisService.cargarSubLineasInvestigacion(1);
+		listaAsesores=registroProyectoTesisService.cargarListaDocentesPorLinea(1);
 	}
-
-	public void seleccionaLinea() {
-		listaSubLineasInvestigacion = registroProyectoTesisService
-				.cargarSubLineasInvestigacion(codigoLinea);
+	
+	public void seleccionaLinea(){
+		listaSubLineasInvestigacion=registroProyectoTesisService.cargarSubLineasInvestigacion(codigoLinea);
 	}
-
-	public void seleccionaSubLinea() {
-		listaAsesores = registroProyectoTesisService
-				.cargarListaDocentesPorLinea(codigoSubLinea);
+	
+	public void seleccionaSubLinea(){
+		listaAsesores=registroProyectoTesisService.cargarListaDocentesPorLinea(codigoSubLinea);
 	}
-
+	
+	
 	public String registrarFicha() {
 
 		Usuario usuario = (Usuario) TesisUtil.obtenerDeSesion("usuario");
 
 		ficha.setCodigoLineaInvestigacion(codigoSubLinea);
 		ficha.setCodigoBachiller(usuario.getCuenta());
-
+			
 		registroProyectoTesisService.insertarFichaProyectoTesis(ficha);
 
 		FacesContext.getCurrentInstance().getExternalContext().getFlash()
@@ -98,44 +94,54 @@ public class LlenarFichaController implements Serializable {
 					new FacesMessage("Error al crear la ficha"));
 			return null;
 		}
-
+		
 	}
+	
+	public void revisarFicha(){
 
+		Usuario usuario=(Usuario)TesisUtil.obtenerDeSesion("usuario");
+		
+		ficha.setCodigoLineaInvestigacion(codigoSubLinea);
+		ficha.setCodigoBachiller(usuario.getCuenta());
+			
+		//registroProyectoTesisService.insertarInformeProyectoTesis(ficha);
+		
+		registroProyectoTesisService.generarDocumentoInformeProyectoTesis(ficha);
+		
+				
+	}
+	
+	
+	
 	public List<LineaInvestigacion> getListaLineasInvestigacion() {
 		return listaLineasInvestigacion;
 	}
-
 	public void setListaLineasInvestigacion(
 			List<LineaInvestigacion> listaLineasInvestigacion) {
 		this.listaLineasInvestigacion = listaLineasInvestigacion;
 	}
-
 	public List<LineaInvestigacion> getListaSubLineasInvestigacion() {
 		return listaSubLineasInvestigacion;
 	}
-
 	public void setListaSubLineasInvestigacion(
 			List<LineaInvestigacion> listaSubLineasInvestigacion) {
 		this.listaSubLineasInvestigacion = listaSubLineasInvestigacion;
 	}
-
 	public List<Docente> getListaAsesores() {
 		return listaAsesores;
 	}
-
 	public void setListaAsesores(List<Docente> listaAsesores) {
 		this.listaAsesores = listaAsesores;
 	}
-
+	
 	public RegistroProyectoTesisService getRegistroProyectoTesisService() {
 		return registroProyectoTesisService;
 	}
-
 	public void setRegistroProyectoTesisService(
 			RegistroProyectoTesisService registroProyectoTesisService) {
 		this.registroProyectoTesisService = registroProyectoTesisService;
 	}
-
+	
 	public Ficha getFicha() {
 		return ficha;
 	}

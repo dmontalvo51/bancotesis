@@ -4,51 +4,47 @@ package pe.edu.unmsm.negocio.modelo;
 public class Tesis {
 	
 	private String codigoExp;
+	private String codigo;
+	private String titulo;
+	private String lineaInvestigacion;
+	private int codigoLineaInvestigacion;
+	private String nomBachiller;
+	private String codigoBachiller;
 	private String estado;
-	private String usuario;
-	private String bachiller;
-	private String nombres;
-	private String apellidos;
-	private String fechaRegistro;
-	private String resumen;
-	private String linea;
+	private String nombreAsesor;
+	private String codigoAsesor;
+	private String ruta;
+	private String fecha;
+	private String hora;
+	
 	
 	public Tesis() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	public Tesis(String codigoExp, String estado, String usuario,
-			String bachiller, String nombres, String apellidos,
-			String fechaRegistro, String resumen, String linea) {
+
+
+	public Tesis(String codigoExp, String codigo, String titulo,
+			String lineaInvestigacion, int codigoLineaInvestigacion,
+			String nomBachiller, String codigoBachiller, String estado,
+			String nombreAsesor, String codigoAsesor, String ruta,
+			String fecha, String hora) {
 		super();
 		this.codigoExp = codigoExp;
+		this.codigo = codigo;
+		this.titulo = titulo;
+		this.lineaInvestigacion = lineaInvestigacion;
+		this.codigoLineaInvestigacion = codigoLineaInvestigacion;
+		this.nomBachiller = nomBachiller;
+		this.codigoBachiller = codigoBachiller;
 		this.estado = estado;
-		this.usuario = usuario;
-		this.bachiller = bachiller;
-		this.nombres = nombres;
-		this.apellidos = apellidos;
-		this.fechaRegistro = fechaRegistro;
-		this.resumen = resumen;
-		this.linea = linea;
+		this.nombreAsesor = nombreAsesor;
+		this.codigoAsesor = codigoAsesor;
+		this.ruta = ruta;
+		this.fecha = fecha;
+		this.hora = hora;
 	}
 
-
-	public String getResumen() {
-		return resumen;
-	}
-
-	public void setResumen(String resumen) {
-		this.resumen = resumen;
-	}
-
-	public String getLinea() {
-		return linea;
-	}
-
-	public void setLinea(String linea) {
-		this.linea = linea;
-	}
 
 	public String getCodigoExp() {
 		return codigoExp;
@@ -59,52 +55,126 @@ public class Tesis {
 		this.codigoExp = codigoExp;
 	}
 
-	public String getUsuario() {
-		return usuario;
+
+	public String getCodigo() {
+		return codigo;
 	}
 
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 
-	
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+
+	public String getLineaInvestigacion() {
+		return lineaInvestigacion;
+	}
+
+
+	public void setLineaInvestigacion(String lineaInvestigacion) {
+		this.lineaInvestigacion = lineaInvestigacion;
+	}
+
+
+	public int getCodigoLineaInvestigacion() {
+		return codigoLineaInvestigacion;
+	}
+
+
+	public void setCodigoLineaInvestigacion(int codigoLineaInvestigacion) {
+		this.codigoLineaInvestigacion = codigoLineaInvestigacion;
+	}
+
+
+	public String getNomBachiller() {
+		return nomBachiller;
+	}
+
+
+	public void setNomBachiller(String nomBachiller) {
+		this.nomBachiller = nomBachiller;
+	}
+
+
+	public String getCodigoBachiller() {
+		return codigoBachiller;
+	}
+
+
+	public void setCodigoBachiller(String codigoBachiller) {
+		this.codigoBachiller = codigoBachiller;
+	}
+
 
 	public String getEstado() {
 		return estado;
 	}
+
+
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-	public String getNombres() {
-		return nombres;
-	}
-	public void setNombres(String nombres) {
-		this.nombres = nombres;
-	}
-	public String getApellidos() {
-		return apellidos;
-	}
-	public void setApellidos(String apellidos) {
-		this.apellidos = apellidos;
+
+
+	public String getNombreAsesor() {
+		return nombreAsesor;
 	}
 
-	public String getFechaRegistro() {
-		return fechaRegistro;
+
+	public void setNombreAsesor(String nombreAsesor) {
+		this.nombreAsesor = nombreAsesor;
 	}
 
-	public void setFechaRegistro(String fechaRegistro) {
-		this.fechaRegistro = fechaRegistro;
+
+	public String getCodigoAsesor() {
+		return codigoAsesor;
 	}
 
-	public String getBachiller() {
-		return bachiller;
+
+	public void setCodigoAsesor(String codigoAsesor) {
+		this.codigoAsesor = codigoAsesor;
 	}
 
-	public void setBachiller(String bachiller) {
-		this.bachiller = bachiller;
+
+	public String getRuta() {
+		return ruta;
 	}
+
+
+	public void setRuta(String ruta) {
+		this.ruta = ruta;
+	}
+
+
+	public String getFecha() {
+		return fecha;
+	}
+
+
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
+	}
+
+
+	public String getHora() {
+		return hora;
+	}
+
+
+	public void setHora(String hora) {
+		this.hora = hora;
+	}
+
+
 	
-	
-	
-}
-	
+	}

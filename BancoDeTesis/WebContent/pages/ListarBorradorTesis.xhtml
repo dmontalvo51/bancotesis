@@ -28,7 +28,11 @@
 							<p:column headerText="Nro de Expediente">
 								<h:outputText value="#{ltesis.codigoExp}" />
 							</p:column>
-
+							
+							<p:column headerText="Codigo">
+								<h:outputText value="#{ltesis.codigo}" />
+							</p:column>
+							
 							<p:column headerText="Titulo">
 								<h:outputText value="#{ltesis.titulo}" />
 							</p:column>
@@ -49,7 +53,7 @@
 
 
 								<p:commandButton id="btnRevisar"
-									action="#{listarTesis.nextPage}" ajax="false"
+									action="#{listarTesis.generarActaObservacion}" ajax="false"
 									value="Revisar" icon="ui-icon-search" />
 							</f:facet>
 						</p:dataTable>

@@ -7,5 +7,6 @@ public interface TesisMapper {
 	
 public List<Tesis> RegistrarTesis();
 public List<Tesis> cargarListaTesisInscritas();
+public List<Tesis> cargarListaBorradorTesis();
 	
 }

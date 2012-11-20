@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="pe.edu.unmsm.integracion.dao.TesisMapper">
+
+
+	<resultMap type="pe.edu.unmsm.negocio.modelo.Tesis" id="Tesis">
+		<result property="codigoExp" column="EXP_CODIGO" />
+		<result property="codigo" column="TES_CODIGO" />
+		<result property="titulo" column="FT_TITULO" />
+		<result property="lineaInvestigacion" column="LINEA_DESCRIPCION" />
+		<result property="nomBachiller" column="NOMBRE_COMPLETO" />
+		<result property="estado" column="ESTB_ESTADO" />
+	</resultMap>
+
+	<parameterMap type="pe.edu.unmsm.negocio.modelo.Ficha" id="FichaTesis" />
+
+
+	<select id="cargarListaBorradorTesis" resultMap="Tesis">
+		select t.exp_codigo,t.tes_codigo,f.ft_titulo,l.linea_descripcion,concat(u.usu_apellidos,',
+		',u.usu_nombres) as nombre_completo,e.estb_estado
+		from tesis t,ficha_tesis f,linea_investigacion l,estado_tesis e,usuario u
+		where (t.tes_codigo=f.tes_codigo) and (f.linea_id=l.linea_id) and(t.estt_id2=e.estt_id2) and (f.bac_codigo=u.usu_codigo)
+	</select>
+
+</mapper>

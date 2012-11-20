@@ -26,7 +26,7 @@ public class ListarFichasTesisController implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 9054693765543258216L;
-	private List<Ficha> listFicha = new ArrayList<Ficha>();;
+	private List<Ficha> listFicha = new ArrayList<Ficha>();
 	private Ficha selectedFicha;
 	
 	
@@ -36,8 +36,6 @@ public class ListarFichasTesisController implements Serializable {
 	
 	public ListarFichasTesisController() {
 		TesisUtil.escribir("Constructor");
-		
-
 		
 	}
 	//llama a este metodo despues del constructo

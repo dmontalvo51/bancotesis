@@ -8,6 +8,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 import pe.edu.unmsm.negocio.modelo.Tesis;
 import pe.edu.unmsm.negocio.servicio.RevisionBorradorTesisService;
@@ -37,8 +38,18 @@ public class ListarTesisController implements Serializable {
 	
 	@PostConstruct
 	public void cargarDatos(){
-		TesisUtil.escribir("Cargar Datos");
-		setListTesis(llenarTabla());
+		//TesisUtil.escribir("Cargar Datos");
+		//setListTesis(llenarTabla());
+		String origen=FacesContext.getCurrentInstance().getExternalContext().getRequestServletPath();
+		origen=origen.substring(7,origen.length()-4);
+		TesisUtil.escribir(origen);	
+		
+		if(origen.equals("ListarFichasProyectoDeTesis"))
+			setListTesis(llenarTabla());
+		else if (origen.equals("ListarProyectosTesis"))
+			setListTesis(llenarTabla());
+		else if(origen.equals("ListarBorradorTesis"))
+			setListTesis(listarBorradorTesis());
 	}
 	
 	
@@ -47,10 +58,16 @@ public class ListarTesisController implements Serializable {
 		return "CargarBorrador?faces-redirect=true";
 	}
 	
+	public String generarActaObservacion(){
+	    TesisUtil.subirASesion("tesis", selectedTesis);
+		return "GenerarActaObservacion?faces-redirect=true";
+	}
+	
 	public String oficiarJE(){
 	    TesisUtil.flashScope("tesis", selectedTesis);
 		return "OficiarJuradoEvaluador?faces-redirect=true";
 	}
+	
 	
 	public String cancelarJE(){
 		return "ListarProyectoTesisRegistrado?faces-redirect=true";
@@ -58,6 +75,10 @@ public class ListarTesisController implements Serializable {
 	
 	private List<Tesis> llenarTabla() {
 			return revisionBorradorTesisService.cargarListaTesisInscritas();
+	}
+	
+	private List<Tesis> listarBorradorTesis() {
+		return revisionBorradorTesisService.cargarListaBorradorTesis();
 	}
 	
 	public String cargarBorrador(){

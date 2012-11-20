@@ -24,6 +24,7 @@
 							value="#{informeProyectoTesis.ficha.nroExpediente}"
 							label="tramite" />
 
+					
 
 						<h:outputLabel for="titulo" value="#{msg.lblTitulo}:" />
 						<h:outputText id="titulo"
@@ -34,16 +35,18 @@
 						<h:outputText id="lineainvestigacion"
 							value="#{informeProyectoTesis.ficha.lineaInvestigacion}"
 							label="lineainvestigacion" />
-
+						
 						<h:outputLabel for="linkResumen" value="#{msg.lblResumen}:" />
 						<p:commandLink id="linkResumen" update=":formDialog:confirmDialog"
 							oncomplete="confirmation.show()" style="margin-left:90px;"
 							type="button">
-							<h:outputText value="Ver resumen de Tesis" />
+								<h:outputText value="Ver resumen de Tesis" />	
 						</p:commandLink>
+						
 
 						<h:outputLabel for="opcionOpinion" value="#{msg.lblObs}:" />
 						<h:panelGroup>
+
 							<p:selectOneRadio id="opcionOpinion"
 								value="informeProyectoTesis.ipt_opinion" layout="pageDirection">
 								<f:selectItem
@@ -60,35 +63,44 @@
 
 
 						<h:outputLabel value="#{msg.lblObservaciones}:" />
-						<p:inputTextarea id="asas" rows="10" required="true"
-							value="#{informeProyectoTesis.ipt_observaciones}"
-							style="width:590px" />
+						
+
+							<p:inputTextarea id="asas" rows="10" required="true"
+								value="#{informeProyectoTesis.ipt_observaciones}"
+								style="width:590px" />
+
+						
 
 						<h:outputLabel value="#{msg.lblSugerencias}:" />
-						<p:inputTextarea id="sa" rows="10" required="true"
-							value="#{informeProyectoTesis.ipt_sugerencias}"
+						
+
+							<p:inputTextarea id="sa" rows="10" required="true"
+							value="#{informeProyectoTesis.ipt_sugerencias}" 
 							style="width:590px" />
+
+						
 
 						<f:facet name="footer">
 							<div align="center">
 								<p:commandButton id="revisar" value="Revisar"
 									action="#{informeProyectoTesis.guardarInformeProyecto}"
 									icon="ui-icon-check" style="margin-top:10px"
-									update="panelFicha,growl" />
+									update="panelFicha,groml" />
 
 								<p:commandButton id="cancelarRevision"
 									action="#{listarFichasTesis.cancelarInformePT}" ajax="false"
 									value="Cancelar" icon="ui-icon-close" style="margin-top:10px" />
 							</div>
-						</f:facet>
+					</f:facet>
 
 					</h:panelGrid>
+
+
 				</p:panel>
-				
-				<p:growl id="growl" showDetail="true" sticky="false" life="3000"></p:growl>
+
 				
 			</h:form>
-				
+
 			<!-- Terminar de programar desde aqui -->
 		</div>
 
@@ -103,7 +115,6 @@
 			</f:facet>
 		</p:ajaxStatus>
 		
-
 		<h:form id="formDialog">
 			<p:dialog id="confirmDialog" modal="true" header="Resumen"
 				severity="alert" widgetVar="confirmation" style="margin-center:20px">

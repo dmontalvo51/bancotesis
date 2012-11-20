@@ -71,12 +71,19 @@ public class RegistroProyectoTesisService implements Serializable {
 		//List<Ficha> lista = new ArrayList<Ficha>();
 
 		// lista=fichasMapper.cargarListaFichasInscritas();
-		
-		/*lista.add(new Ficha("026-FISI-2012", "F001", "titulo 1", "resumen ficha 1", "linea 1", 1, "Diego", "revisado", "Piedra",null,null,null));
-		lista.add(new Ficha("027-FISI-2012", "F002", "titulo 2", "resumen ficha 2", "linea 2", 1, "Diego", "revisado", "Piedra",null,null,null));
-		lista.add(new Ficha("028-FISI-2012", "F003", "titulo 3", "resumen ficha 3", "linea 3", 1, "Karina", "revisado", "Mauricio",null,null,null));
-		lista.add(new Ficha("029-FISI-2012", "F004", "titulo 4", "resumen ficha 4", "linea 4", 1, "Johnny", "rechazada", "Luza",null,null,null));
-		*/
+
+		/*
+		 * lista.add(new Ficha("026-FISI-2012", "F001", "titulo 1",
+		 * "resumen ficha 1", "linea 1", 1, "Diego", "revisado",
+		 * "Piedra",null,null,null)); lista.add(new Ficha("027-FISI-2012",
+		 * "F002", "titulo 2", "resumen ficha 2", "linea 2", 1, "Diego",
+		 * "revisado", "Piedra",null,null,null)); lista.add(new
+		 * Ficha("028-FISI-2012", "F003", "titulo 3", "resumen ficha 3",
+		 * "linea 3", 1, "Karina", "revisado", "Mauricio",null,null,null));
+		 * lista.add(new Ficha("029-FISI-2012", "F004", "titulo 4",
+		 * "resumen ficha 4", "linea 4", 1, "Johnny", "rechazada",
+		 * "Luza",null,null,null));
+		 */
 		return fichasMapper.cargarListaFichasInscritas();
 
 	}
@@ -90,27 +97,27 @@ public class RegistroProyectoTesisService implements Serializable {
 		return lista;
 
 	}
-	
-	public void insertarFichaProyectoTesis(Ficha ficha){
+
+	public void insertarFichaProyectoTesis(Ficha ficha) {
 		try {
 			fichasMapper.insertarFichaProyectoTesis(ficha);
-			
-			//TesisUtil.generarReporte("fichaTesis",null);
-			
+
+			//TesisUtil.generarReporte("fichaTesis", null);
+
 		} catch (Exception e) {
 			TesisUtil.escribir("ERROR AL INSERTAR!");
 			e.printStackTrace();
 		}
-		
+
 	}
-	
 	
 	public void insertarInformeProyectoTesis(InformeProyectoTesis ipt){
 		try {
-			
 			informeProyectoTesisMapper.ingresarInformeProyectoTesis(ipt);
 			
-					
+			TesisUtil.escribir("Se llamo al IPT Mapper");
+			//TesisUtil.generarReporte("fichaTesis",null);
+			
 		} catch (Exception e) {
 			TesisUtil.escribir("ERROR AL INSERTAR INFORME DE PROYECTO DE TESIS!");
 			e.printStackTrace();
@@ -169,7 +176,11 @@ public class RegistroProyectoTesisService implements Serializable {
 	}
 
 	public void generarDocumentoFichaProyectoTesis(Ficha ficha) {
-		
+
+	}
+
+	public void generarDocumentoInformeProyectoTesis(Ficha ficha) {
+
 	}
 
 }

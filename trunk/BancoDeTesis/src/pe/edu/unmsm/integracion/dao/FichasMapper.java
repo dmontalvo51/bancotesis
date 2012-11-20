@@ -17,4 +17,6 @@ public interface FichasMapper {
 	@Options(statementType = StatementType.CALLABLE)
 	@Update("{CALL sp_crearFichaTesis(#{codigoBachiller, mode=IN},#{codigoAsesor, mode=IN},#{codigoLineaInvestigacion, mode=IN},#{titulo, mode=IN},#{resumen, mode=IN},#{ruta, mode=OUT,javaType=String,jdbcType=VARCHAR},#{nroExpediente, mode=OUT,javaType=String, jdbcType=VARCHAR},#{codigo, mode=OUT,javaType=String, jdbcType=VARCHAR})}")
 	public void insertarFichaProyectoTesis(Ficha ficha);
+	
+	public void informeProyectoTesis(Ficha ficha);
 }

@@ -58,6 +58,9 @@ public class SeguridadService {
 			opcionesMenu.add(new OpcionMenu("/pages/ListarBorradorTesis.jsf",
 					"Revisar Borrador de Tesis", ""));
 			
+			opcionesMenu.add(new OpcionMenu("/pages/LevantarObservaciones.jsf",
+					"Levantar Observaciones", ""));
+			
 			usu.setOpcionesMenu(opcionesMenu);
 
 			return usu;

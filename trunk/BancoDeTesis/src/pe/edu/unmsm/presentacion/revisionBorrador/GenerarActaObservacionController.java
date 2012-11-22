@@ -13,6 +13,7 @@ import javax.faces.bean.ViewScoped;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import pe.edu.unmsm.negocio.modelo.Ficha;
+import pe.edu.unmsm.negocio.modelo.BorradorTesis;
 import pe.edu.unmsm.negocio.modelo.Tesis;
 import pe.edu.unmsm.negocio.modelo.InformeProyectoTesis;
 import pe.edu.unmsm.negocio.modelo.ProyectoTesis;
@@ -30,7 +31,8 @@ public class GenerarActaObservacionController implements Serializable {
 	private String ipt_sugerencias;
 	private int ipt_opinion;
 	private int observacion;
-	private Tesis tesis;
+	private BorradorTesis borrador;
+	private String bor;
 	
 	private DetalleActaObservacion dao;
 	private List<DetalleActaObservacion> listDAO = new ArrayList<DetalleActaObservacion>();
@@ -46,7 +48,7 @@ public class GenerarActaObservacionController implements Serializable {
 	
 	@PostConstruct
 	public void cargarDatos(){
-		tesis=(Tesis)TesisUtil.obtenerDeSesion("tesis");
+		borrador=(BorradorTesis)TesisUtil.obtenerDeSesion("borrador");
 		DetalleActaObservacion dao=new DetalleActaObservacion();
 	
 	}
@@ -68,6 +70,8 @@ public class GenerarActaObservacionController implements Serializable {
 	public void agregarObrservacion(){
 		linea=linea+1;
 		dao.setLinea(linea);
+		listDAO.add(dao);
+		System.out.println("hola");
 	}
 	
 	public RegistroProyectoTesisService getRegistroProyectoTesisService() {
@@ -81,12 +85,12 @@ public class GenerarActaObservacionController implements Serializable {
 
 	
 
-	public Tesis getTesis() {
-		return tesis;
+	public BorradorTesis getBorrador() {
+		return borrador;
 	}
 
-	public void setTesis(Tesis tesis) {
-		this.tesis = tesis;
+	public void setBorrador(BorradorTesis borrador) {
+		this.borrador = borrador;
 	}
 	
 	public int getIpt_opinion() {
@@ -121,7 +125,31 @@ public class GenerarActaObservacionController implements Serializable {
 		this.dao = dao;
 	}
 
+	public List<DetalleActaObservacion> getListDAO() {
+		return listDAO;
+	}
 
+	public void setListDAO(List<DetalleActaObservacion> listDAO) {
+		this.listDAO = listDAO;
+	}
+
+	public int getLinea() {
+		return linea;
+	}
+
+	public void setLinea(int linea) {
+		this.linea = linea;
+	}
+
+	public String getBor() {
+		return bor;
+	}
+
+	public void setBor(String bor) {
+		this.bor = bor;
+	}
+
+	
 
 	
 

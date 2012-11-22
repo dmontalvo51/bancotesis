@@ -16,44 +16,44 @@
 					<h:form id="form">
 
 
-						<p:dataTable id="ltesiss" var="ltesis"
-							value="#{listarTesis.listTesis}" rowKey="#{ltesis.codigoExp}"
-							selection="#{listarTesis.selectedTesis}"
+						<p:dataTable id="lbtesiss" var="lbtesis"
+							value="#{listarBorradorTesis.listBorradorTesis}" rowKey="#{lbtesis.codigoTes}"
+							selection="#{listarBorradorTesis.selectedBorradorTesis}"
 							selectionMode="single" paginator="true">
 
 							<f:facet name="header">
 								
 							</f:facet>
 
-							<p:column headerText="Nro de Expediente">
-								<h:outputText value="#{ltesis.codigoExp}" />
+							<p:column headerText="Codigo de Tesis">
+								<h:outputText value="#{lbtesis.codigoTes}" />
 							</p:column>
 							
 							<p:column headerText="Codigo">
-								<h:outputText value="#{ltesis.codigo}" />
+								<h:outputText value="#{lbtesis.codigo}" />
 							</p:column>
 							
 							<p:column headerText="Titulo">
-								<h:outputText value="#{ltesis.titulo}" />
+								<h:outputText value="#{lbtesis.titulo}" />
 							</p:column>
 
 							<p:column headerText="Linea de Investigacion">
-								<h:outputText value="#{ltesis.lineaInvestigacion}" />
+								<h:outputText value="#{lbtesis.lineaInvestigacion}" />
 							</p:column>
 
 							<p:column headerText="Bachiller">
-								<h:outputText value="#{ltesis.nomBachiller}" />
+								<h:outputText value="#{lbtesis.nomBachiller}" />
 							</p:column>
 
 							<p:column headerText="Estado">
-								<h:outputText value="#{ltesis.estado}" />
+								<h:outputText value="#{lbtesis.estado}" />
 							</p:column>
 
 							<f:facet name="footer">
 
 
 								<p:commandButton id="btnRevisar"
-									action="#{listarTesis.generarActaObservacion}" ajax="false"
+									action="#{listarBorradorTesis.generarActaObservacion}" ajax="false"
 									value="Revisar" icon="ui-icon-search" />
 							</f:facet>
 						</p:dataTable>

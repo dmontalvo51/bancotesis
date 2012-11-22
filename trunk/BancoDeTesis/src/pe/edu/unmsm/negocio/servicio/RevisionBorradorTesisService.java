@@ -12,14 +12,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import pe.edu.unmsm.integracion.dao.TesisMapper;
+import pe.edu.unmsm.integracion.dao.BorradorTesisMapper;
 import pe.edu.unmsm.negocio.modelo.Ficha;
 import pe.edu.unmsm.negocio.modelo.Tesis;
+import pe.edu.unmsm.negocio.modelo.BorradorTesis;
 
 @Service(value="revisionBorradorTesisService")
 public class RevisionBorradorTesisService {
 	private static final long serialVersionUID = 12L;
 	@Autowired
 	private TesisMapper tesisMapper;
+	@Autowired
+	private BorradorTesisMapper borradorMapper;
 
 	public List<Tesis> cargarListaTesisInscritas() {
 
@@ -36,7 +40,7 @@ public class RevisionBorradorTesisService {
 		
 	}
 	
-	public List<Tesis> cargarListaBorradorTesis() {
+	public List<BorradorTesis> cargarListaBorradorTesis() {
 
 		//List<Ficha> lista = new ArrayList<Ficha>();
 
@@ -54,7 +58,7 @@ public class RevisionBorradorTesisService {
 		 * "resumen ficha 4", "linea 4", 1, "Johnny", "rechazada",
 		 * "Luza",null,null,null));
 		 */
-		return tesisMapper.cargarListaBorradorTesis();
+		return borradorMapper.cargarListaBorradorTesis();
 
 	}
 	

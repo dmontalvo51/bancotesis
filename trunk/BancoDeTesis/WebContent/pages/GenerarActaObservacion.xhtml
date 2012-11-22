@@ -18,68 +18,62 @@
 						<h:outputLabel for="NTramite" value="Nro Expediente:" />
 						<h:panelGroup>
 							<h:outputText id="tramite"
-								value="#{generarActaObservacion.tesis.codigoExp}"
+								value="#{generarActaObservacion.borrador.codigoTes}"
 								label="tramite" />
 						</h:panelGroup>
-
-						<h:outputLabel for="bor" value="Borrador:" />
-						<h:panelGroup>
-							<p:inputTextarea id="borrador" required="true"
-								requiredMessage="#{msg.errorTituloRequerido}" value=""
-								style="width:590px" />
-						</h:panelGroup>
 					</h:panelGrid>
-				</p:panel>
+					<h:panelGrid columns="1">
+						<p:media value="#{generarActaObservacion.borrador.ruta}"
+							width="800px" height="600px">  
+    						Your browser can't display pdf, 
+    						<h:outputLink value="#{generarActaObservacion.borrador.ruta}">click</h:outputLink> to download pdf instead.  
+						</p:media>
+					</h:panelGrid>
 
-				<p:panel id="panelGenerarAO" header="Lista de Observaciones"
-					style="width:90%">
-					<p:inplace id="obs" label="Hay observaciones" effect="slide">
-						<h:panelGrid columns="2" style="height:100px">
-							<f:facet name="header">
-							</f:facet>
+					<p:accordionPanel dynamic="true" cache="false" style="width:800px">
+						<p:tab title="Hay observaciones">
+							<h:panelGrid columns="2" style="height:100px">
+								<f:facet name="header">
+								</f:facet>
 
-							<h:outputLabel for="nroPagina" value="Nro Pagina :" />
-							<h:panelGroup>
-								<p:inputText id="nroPagina"
-									value="#{generarActaObservacion.dao.nroPagina}" />
-							</h:panelGroup>
+								<h:outputLabel for="nroPagina" value="Nro Pagina :" />
+								<h:panelGroup>
+									<p:inputText id="nroPagina"
+										value="#{generarActaObservacion.bor}" />
+								</h:panelGroup>
 
-							<h:outputLabel for="obs" value="Observaciones :" />
-							<h:panelGroup>
-								<p:inputTextarea id="obser" required="true"
-									value="#{generarActaObservacion.dao.observaciones}"
-									style="width:590px" />
-							</h:panelGroup>
+								<h:outputLabel for="obs" value="Observaciones :" />
+								<h:panelGroup>
+									<p:inputTextarea id="obser" required="true"
+										value="#{generarActaObservacion.bor}"
+										style="width:590px" />
+								</h:panelGroup>
 
-							<f:facet name="footer">
-								<div align="center">
-									<p:commandButton type="button" value="Agregar"
-										icon="ui-icon-disk" style="margin:0"
-										action="#{generarActaObservacion.agregarObservacion}"
-										update=":display" />
-								</div>
-							</f:facet>
-						</h:panelGrid>
+								<f:facet name="footer">
+									<div align="center">
+										<p:commandButton type="button" value="Agregar"
+											icon="ui-icon-disk" style="margin:0"
+											action="#{generarActaObservacion.agregarObservacion}"
+											update="display"
+											ajax="false" />
+									</div>
+								</f:facet>
+							</h:panelGrid>
 
-						<h:form id="display" style="height:100px">
-							<p:dataTable var="acta" value="#{generarActaObservacion.dao}">
-								<p:column headerText="Linea">
-									<h:outputText value="#{acta.linea}" />
-								</p:column>
+						</p:tab>
 
-								<p:column headerText="Pagina">
-									<h:outputText value="#{acta.nroPagina}" />
-								</p:column>
-
-								<p:column headerText="Observaciones">
-									<h:outputText value="#{acta.observaciones}" />
-								</p:column>
-							</p:dataTable>
-						</h:form>
-
-					</p:inplace>
+					</p:accordionPanel>
 
 				</p:panel>
+
+				<h:panelGrid columns="2" id="display">
+					<h:outputLabel for="nroPagina" value="Nro Pagina :" />
+					<h:panelGroup>
+						<h:outputText id="nroPagina2"
+							value="#{generarActaObservacion.bor}" />
+					</h:panelGroup>
+				</h:panelGrid>
+
 				<h:panelGrid columns="2"
 					columnClasses="formColumnaIzquierda,formColumnaDerecha"
 					width="100%">
@@ -87,7 +81,7 @@
 						<div align="center">
 							<p:commandButton action="#{generarActaObservacion.generarActa}"
 								value="#{msg.botonRegistrar}" icon="ui-icon-check"
-								style="margin-top:10px" update="panelGenerarAO" />
+								style="margin-top:10px" update="" />
 							<p:commandButton value="#{msg.btnLimpiar}" ajax="true"
 								icon="ui-icon-cancel">
 							</p:commandButton>

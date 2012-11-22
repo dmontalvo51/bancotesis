@@ -10,27 +10,27 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
-import pe.edu.unmsm.negocio.modelo.Tesis;
+import pe.edu.unmsm.negocio.modelo.BorradorTesis;
 import pe.edu.unmsm.negocio.servicio.RevisionBorradorTesisService;
 import pe.edu.unmsm.util.TesisUtil;
 
 @ViewScoped
-@ManagedBean(name = "listarTesis")
-public class ListarTesisController implements Serializable {
+@ManagedBean(name = "listarBorradorTesis")
+public class ListarBorradorTesisController implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 9054693765543258216L;
-	private List<Tesis> listTesis = new ArrayList<Tesis>();
-	private Tesis selectedTesis;
+	private List<BorradorTesis> listBorradorTesis = new ArrayList<BorradorTesis>();
+	private BorradorTesis selectedBorradorTesis;
 	
 	
 	@ManagedProperty("#{revisionBorradorTesisService}")
 	private RevisionBorradorTesisService revisionBorradorTesisService;
 	
 	
-	public ListarTesisController() {
+	public ListarBorradorTesisController() {
 		TesisUtil.escribir("Constructor");
 		
 	}
@@ -45,57 +45,31 @@ public class ListarTesisController implements Serializable {
 		TesisUtil.escribir(origen);	
 		
 		if(origen.equals("ListarFichasProyectoDeTesis"))
-			setListTesis(llenarTabla());
+			setListBorradorTesis(listarBorradorTesis());
 		else if (origen.equals("ListarProyectosTesis"))
-			setListTesis(llenarTabla());
+			setListBorradorTesis(listarBorradorTesis());
 		else if(origen.equals("ListarBorradorTesis"))
-			setListTesis(llenarTabla());
+			setListBorradorTesis(listarBorradorTesis());
 	}
 	
 	
 	public String nextPage(){
-	    TesisUtil.flashScope("tesis", selectedTesis);
+	    TesisUtil.flashScope("tesis", selectedBorradorTesis);
 		return "CargarBorrador?faces-redirect=true";
 	}
 	
 	public String generarActaObservacion(){
-	    TesisUtil.subirASesion("tesis", selectedTesis);
+	    TesisUtil.subirASesion("borrador", selectedBorradorTesis);
 		return "GenerarActaObservacion?faces-redirect=true";
 	}
 	
-	public String oficiarJE(){
-	    TesisUtil.flashScope("tesis", selectedTesis);
-		return "OficiarJuradoEvaluador?faces-redirect=true";
+	
+	private List<BorradorTesis> listarBorradorTesis() {
+		return revisionBorradorTesisService.cargarListaBorradorTesis();
 	}
-	
-	
-	public String cancelarJE(){
-		return "ListarProyectoTesisRegistrado?faces-redirect=true";
-	}
-	
-	private List<Tesis> llenarTabla() {
-			return revisionBorradorTesisService.cargarListaTesisInscritas();
-	}
-	
 	
 	public String cargarBorrador(){
 		return "CargarBorrador";
-	}
-
-	public List<Tesis> getListTesis() {
-		return listTesis;
-	}
-
-	public void setListTesis(List<Tesis> listTesis) {
-		this.listTesis = listTesis;
-	}
-
-	public Tesis getSelectedTesis() {
-		return selectedTesis;
-	}
-
-	public void setSelectedTesis(Tesis selectedTesis) {
-		this.selectedTesis = selectedTesis;
 	}
 
 	public RevisionBorradorTesisService getRevisionBorradorTesisService() {
@@ -107,4 +81,22 @@ public class ListarTesisController implements Serializable {
 		this.revisionBorradorTesisService = revisionBorradorTesisService;
 	}
 
+	public List<BorradorTesis> getListBorradorTesis() {
+		return listBorradorTesis;
+	}
+
+	public void setListBorradorTesis(List<BorradorTesis> listBorradorTesis) {
+		this.listBorradorTesis = listBorradorTesis;
+	}
+
+	public BorradorTesis getSelectedBorradorTesis() {
+		return selectedBorradorTesis;
+	}
+
+	public void setSelectedBorradorTesis(BorradorTesis selectedBorradorTesis) {
+		this.selectedBorradorTesis = selectedBorradorTesis;
+	}
+
+	
+	
 }

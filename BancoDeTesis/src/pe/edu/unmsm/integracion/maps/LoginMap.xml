@@ -1,21 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="pe.edu.unmsm.integracion.dao.LoginMapper">
 
+<mapper namespace="pe.edu.unmsm.integracion.dao.LoginMapper">
+	
+	
 	<resultMap type="pe.edu.unmsm.negocio.modelo.Usuario" id="Usuario">
 		<result property="cuenta" column="USU_CODIGO" />
 		<result property="correo" column="USU_CORREO" />
 		<result property="nombres" column="USU_NOMBRES" />
 		<result property="apellidos" column="USU_APELLIDOS" />
-	
 	</resultMap>
-
+	
 
 	<select id="iniciarSesion" resultMap="Usuario" parameterType="java.util.Map">
-		select usu.USU_CODIGO, usu.USU_NOMBRES, usu.USU_APELLIDOS, usu.USU_DIRECCION, usu.USU_CORREO
+		select usu.USU_CODIGO, usu.USU_NOMBRES, usu.USU_APELLIDOS,
+		usu.USU_DIRECCION, usu.USU_CORREO
 		from TESIS.USUARIO usu
-		WHERE usu.USU_CODIGO=#{cuenta} and usu.USU_PASSWORD=#{pass}
+		WHERE
+		usu.USU_CODIGO=#{cuenta} and usu.USU_PASSWORD=#{pass}
+	</select>
+
+	<select id="cargarOpcionesMenu" parameterType="java.lang.String" resultType="pe.edu.unmsm.negocio.modelo.OpcionMenu">
+		SELECT om.OPMENU_DESCRIPCION as descripcion,om.OPMENU_RUTA as url FROM tesis.opcion_menu om
+		INNER JOIN tesis.puede_accceder_a paa ON paa.OPMENU_ID=om.OPMENU_ID
+		WHERE paa.PER_ID IN (select ppu.PER_ID from tesis.perfiles_por_usuario ppu
+		WHERE ppu.USU_CODIGO=#{codigoUsuario})
 	</select>
 
 </mapper>

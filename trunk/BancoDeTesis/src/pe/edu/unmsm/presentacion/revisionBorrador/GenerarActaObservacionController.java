@@ -37,6 +37,8 @@ public class GenerarActaObservacionController implements Serializable {
 	private DetalleActaObservacion dao;
 	private List<DetalleActaObservacion> listDAO = new ArrayList<DetalleActaObservacion>();
 	private int linea=0;
+	private String observaciones;
+	private int nroPagina;
 	
 	public GenerarActaObservacionController() {
 		super();
@@ -49,7 +51,9 @@ public class GenerarActaObservacionController implements Serializable {
 	@PostConstruct
 	public void cargarDatos(){
 		borrador=(BorradorTesis)TesisUtil.obtenerDeSesion("borrador");
-		DetalleActaObservacion dao=new DetalleActaObservacion();
+		dao=new DetalleActaObservacion();
+		//dao.setLinea(1);
+		//dao.
 	
 	}
 	
@@ -67,11 +71,15 @@ public class GenerarActaObservacionController implements Serializable {
 		
 	}
 	
-	public void agregarObrservacion(){
+	public void agregarObservacion(){
 		linea=linea+1;
-		dao.setLinea(linea);
+		dao.setLinea(getLinea());
+		//dao.setObservaciones(getObservaciones());
+		//dao.setNroPagina(getNroPagina());
 		listDAO.add(dao);
-		System.out.println("hola");
+		//bor=String.valueOf(linea);
+		//System.out.println("hola");
+		//return listDAO;
 	}
 	
 	public RegistroProyectoTesisService getRegistroProyectoTesisService() {
@@ -147,6 +155,22 @@ public class GenerarActaObservacionController implements Serializable {
 
 	public void setBor(String bor) {
 		this.bor = bor;
+	}
+
+	public String getObservaciones() {
+		return observaciones;
+	}
+
+	public void setObservaciones(String observaciones) {
+		this.observaciones = observaciones;
+	}
+
+	public int getNroPagina() {
+		return nroPagina;
+	}
+
+	public void setNroPagina(int nroPagina) {
+		this.nroPagina = nroPagina;
 	}
 
 	

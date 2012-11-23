@@ -15,12 +15,12 @@
 
 					<h:panelGrid columns="2">
 						<!-- aca va el elcuepo-->
-						<h:outputLabel for="NTramite" value="Nro Expediente:" />
-						<h:panelGroup>
-							<h:outputText id="tramite"
-								value="#{generarActaObservacion.borrador.codigoTes}"
-								label="tramite" />
-						</h:panelGroup>
+						<h:outputLabel for="tramite" value="Nro Expediente:" />
+
+						<h:outputText id="tramite"
+							value="#{generarActaObservacion.borrador.codigoTes}"
+							label="tramite" />
+
 					</h:panelGrid>
 					<h:panelGrid columns="1">
 						<p:media value="#{generarActaObservacion.borrador.ruta}"
@@ -37,28 +37,44 @@
 								</f:facet>
 
 								<h:outputLabel for="nroPagina" value="Nro Pagina :" />
-								<h:panelGroup>
-									<p:inputText id="nroPagina"
-										value="#{generarActaObservacion.bor}" />
-								</h:panelGroup>
+
+								<p:inputText id="nroPagina" required="true"
+									value="#{generarActaObservacion.dao.nroPagina}" />
+
 
 								<h:outputLabel for="obs" value="Observaciones :" />
-								<h:panelGroup>
-									<p:inputTextarea id="obser" required="true"
-										value="#{generarActaObservacion.bor}"
-										style="width:590px" />
-								</h:panelGroup>
+
+								<p:inputTextarea id="obs" required="true"
+									value="#{generarActaObservacion.dao.observaciones}"
+									style="width:590px" />
+
 
 								<f:facet name="footer">
 									<div align="center">
-										<p:commandButton type="button" value="Agregar"
-											icon="ui-icon-disk" style="margin:0"
-											action="#{generarActaObservacion.agregarObservacion}"
-											update="display"
-											ajax="false" />
+										<p:commandButton value="Agregar" icon="ui-icon-disk"
+											style="margin:0"
+											actionListener="#{generarActaObservacion.agregarObservacion}"
+											update="display" ajax="false" />
 									</div>
 								</f:facet>
 							</h:panelGrid>
+
+							<h:form id="display" style="height:100px" prependId="false">
+								<p:dataTable var="acta" dynamic="true" lazy="true"
+									value="#{generarActaObservacion.listDAO}" rendered="true">
+									<p:column headerText="Linea">
+										<h:outputText value="#{acta.linea}" />
+									</p:column>
+
+									<p:column headerText="Pagina">
+										<h:outputText value="#{acta.nroPagina}" />
+									</p:column>
+
+									<p:column headerText="Observaciones">
+										<h:outputText value="#{acta.observaciones}" />
+									</p:column>
+								</p:dataTable>
+							</h:form>
 
 						</p:tab>
 
@@ -66,13 +82,8 @@
 
 				</p:panel>
 
-				<h:panelGrid columns="2" id="display">
-					<h:outputLabel for="nroPagina" value="Nro Pagina :" />
-					<h:panelGroup>
-						<h:outputText id="nroPagina2"
-							value="#{generarActaObservacion.bor}" />
-					</h:panelGroup>
-				</h:panelGrid>
+
+
 
 				<h:panelGrid columns="2"
 					columnClasses="formColumnaIzquierda,formColumnaDerecha"

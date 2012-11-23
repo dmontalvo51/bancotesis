@@ -8,6 +8,7 @@ public class OpcionMenu implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private int idOpcionMenu;
 	private String url;
 	private String descripcion;
 	private String icono;
@@ -45,7 +46,14 @@ public class OpcionMenu implements Serializable{
 		this.icono = icono;
 	}
 	
-	
+	public int getIdOpcionMenu() {
+		return idOpcionMenu;
+	}
+
+	public void setIdOpcionMenu(int idOpcionMenu) {
+		this.idOpcionMenu = idOpcionMenu;
+	}
+
 	
 	
 }

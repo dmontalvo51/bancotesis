@@ -10,32 +10,49 @@
 		<div class="cuerpo" align="center">
 			<!-- Empezar a programar desde aqui -->
 
-			<p:panel header="#{msg.lblListaFichaProyecto}" style="width:90%">
-
-				<h:panelGrid columns="2"
-					columnClasses="formColumnaIzquierda,formColumnaDerecha"
-					width="100%">
-
+			<p:panel header="Levantar Observaciones" style="width:80%">
 					<h:form id="form">
 
-						<f:facet name="footer">
+				<!-- aca va el elcuepo-->
+				<h:panelGrid columns="2" styleClass="formularioRegistro">
 
-							<p:commandButton id="btnRevisar"
-								action="#{listarFichasTesis.informeProyectoTesis}" ajax="false"
-								value="Revisar" icon="ui-icon-search" />
-						</f:facet>
+					<h:outputLabel for="Titulo" value="Titulo: " />
+					<p:inputText id="Titulo" value="jorge" label="Titulo"  />
+					<h:outputLabel for="Bachiller" value="Bachiller: " />
+					<p:inputText id="Bachiller" value="" label="Bachiller" />
+					<h:outputLabel for="Linea de Investigacion"
+						value="Linea de Investigacion: " />
+					<p:inputText id="LineadeInvestigacion" value=""
+						label="Linea de Investigacion" />
+					<h:outputLabel for="Asesor" value="Asesor: " />
+					<p:inputText id="Asesor" value="" label="Asesor" />
+					
+				</h:panelGrid>
+				
+				
+				<h:panelGrid columns="1"
+					columnClasses="formColumnaIzquierda,formColumnaDerecha"
+					width="90%">
+
 
 						<h:form enctype="multipart/form-data">
 
 							<p:fileUpload
 								fileUploadListener="#{levantarObservaciones.handleFileUpload}"
-								mode="advanced" update="messages" auto="true" sizeLimit="100000" />
+								mode="advanced" update="messages" auto="true" sizeLimit="1000" />
 
 							<p:growl id="messages" showDetail="true" />
-
 						</h:form>
-					</h:form>
+
+				
+					
 				</h:panelGrid>
+				
+				
+								<p:commandButton id="btnRevisar"
+									action="#{listarFichasTesis.informeProyectoTesis}" ajax="false"
+									value="Revisar" icon="ui-icon-search" />
+						</h:form>
 			</p:panel>
 			<!-- Terminar de programar desde aqui -->
 

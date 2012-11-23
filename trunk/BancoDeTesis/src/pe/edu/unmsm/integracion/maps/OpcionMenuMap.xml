@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="pe.edu.unmsm.integracion.dao.OpcionMenuMapper">
+	
+	
+	<select id="cargarOpcionesMenu" parameterType="java.lang.String" resultType="pe.edu.unmsm.negocio.modelo.OpcionMenu">
+		SELECT om.OPMENU_DESCRIPCION as descripcion,om.OPMENU_RUTA as url FROM tesis.opcion_menu om
+		INNER JOIN tesis.puede_acceder_a paa ON paa.OPMENU_ID=om.OPMENU_ID
+		WHERE paa.PER_ID IN (select ppu.PER_ID from tesis.perfiles_por_usuario ppu
+		WHERE ppu.USU_CODIGO=#{codigoUsuario})
+	</select>
+	
+	<insert id="ingresarOpcionMenu" parameterType="pe.edu.unmsm.negocio.modelo.OpcionMenu"
+			useGeneratedKeys="true" keyColumn="OPMENU_ID" keyProperty="idOpcionMenu">
+		INSERT INTO tesis.opcion_menu(OPMENU_DESCRIPCION,OPMENU_RUTA) VALUES(#{descripcion},#{url})
+	</insert>
+	
+	<insert id="ingresarPermisoPorPerfil" parameterType="java.util.Map">
+		INSERT INTO tesis.puede_acceder_a VALUES(#{perfil},#{opcionMenu})
+	</insert>
+	
+	
+
+</mapper>

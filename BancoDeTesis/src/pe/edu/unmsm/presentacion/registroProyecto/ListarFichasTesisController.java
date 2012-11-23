@@ -35,8 +35,8 @@ public class ListarFichasTesisController implements Serializable {
 	
 	
 	public ListarFichasTesisController() {
-		TesisUtil.escribir("Constructor");
-		
+
+		TesisUtil.escribir("Constructor");	
 	}
 	//llama a este metodo despues del constructo
 	

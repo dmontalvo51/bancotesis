@@ -42,15 +42,15 @@ public class SeguridadService {
 					"Registrar Acta de sustentación", ""));
 			opcionesMenu.add(new OpcionMenu("/pages/RegistrarRDInscripcion.jsf",
 					"Registrar RD Inscripcion", ""));
-
 			opcionesMenu.add(new OpcionMenu("/pages/ListarFichasProyectoDeTesis.jsf",
-					"Revisar ficha de Tesis", ""));
-			
+					"Revisar ficha de Tesis", ""));			
 			opcionesMenu.add(new OpcionMenu("/pages/ListarProyectosTesis.jsf",
 					"Solicitud de registro de proyecto de tesis", ""));
 			
 			opcionesMenu.add(new OpcionMenu("/pages/ListarTesis.jsf",
 					"Listar Tesis", ""));
+			opcionesMenu.add(new OpcionMenu("/pages/ListarProyectosPorAprobar.jsf",
+					"Registrar Proyecto de Tesis", ""));
 			
 			opcionesMenu.add(new OpcionMenu("/pages/ListarProyectoTesisRegistrado.jsf",
 					"Asignar Jurado Evaluar", ""));

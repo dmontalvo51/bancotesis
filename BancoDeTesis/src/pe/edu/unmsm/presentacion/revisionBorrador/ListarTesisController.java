@@ -48,10 +48,13 @@ public class ListarTesisController implements Serializable {
 			setListTesis(llenarTabla());
 		else if (origen.equals("ListarProyectosTesis"))
 			setListTesis(llenarTabla());
-		else if(origen.equals("ListarBorradorTesis"))
+		else if(origen.equals("ListarTesis"))
 			setListTesis(llenarTabla());
 	}
 	
+	private List<Tesis> llenarTabla() {
+		return revisionBorradorTesisService.cargarListaTesis();
+	}	
 	
 	public String nextPage(){
 	    TesisUtil.flashScope("tesis", selectedTesis);
@@ -71,10 +74,6 @@ public class ListarTesisController implements Serializable {
 	
 	public String cancelarJE(){
 		return "ListarProyectoTesisRegistrado?faces-redirect=true";
-	}
-	
-	private List<Tesis> llenarTabla() {
-			return revisionBorradorTesisService.cargarListaTesisInscritas();
 	}
 	
 	

@@ -10,25 +10,33 @@
 			<!-- Empezar a programar desde aqui -->
 
 
-			<h:form>
-				
-				<p:growl id="growl" showDetail="true" life="3000" sticky="false" redisplay="false"/>
-				
+			<h:form id="form">
+
+				<p:growl id="growl" showDetail="true" life="3000" sticky="false"
+					redisplay="false" />
+
 				<h:panelGrid columns="2">
 
 					<h:outputLabel value="#" />
+
 					<p:commandButton value="#{msg.botonIniciarExpediente}" ajax="false"
 						action="#{inicio.crearExpediente}" update="growl" />
 					<p:commandButton value="#" ajax="true"
 						action="#{comun.enviarCorreo}" />
 
+
 					<p:commandButton value="PDF Ficha Tesis" update="descargarPDF"
 						ajax="true" action="#{inicio.imprimirFichaTesis}" />
-
 					<p:commandButton id="descargarPDF" value="Descargar"
 						icon="ui-icon-arrowthichk-s" ajax="false">
 						<p:fileDownload value="#{inicio.archivo}" />
 					</p:commandButton>
+
+					<p:commandButton value="#{msg.botonIngresarOpcionMenu}"
+						actionListener="#{inicio.ingresarOpcionMenu}" ajax="true"
+						update=":dialog:dialogIngresarOpcionMenu"
+						oncomplete="dialogOpcionMenu.show()" />
+
 
 
 
@@ -39,7 +47,47 @@
 			<!-- Terminar de programar desde aqui -->
 		</div>
 
-		
+
 		<!-- Poner aqui Dialogs -->
+
+		<h:form id="dialog">
+			<p:dialog id="dialogIngresarOpcionMenu" widgetVar="dialogOpcionMenu">
+				<h:panelGrid columns="2">
+
+					<h:outputText value="#{msg.lblDescripcion} :" />
+					<p:inputText value="#{inicio.om.descripcion}" />
+
+					<h:outputText value="#{msg.lblRuta} :" />
+					<p:inputText value="#{inicio.om.url}" />
+
+					<h:outputText value="#{msg.lblPerfiles} : " />
+					<p:selectManyCheckbox value="#{inicio.listaPerfilesSeleccionados}"
+						layout="pageDirection">
+						<f:selectItems value="#{inicio.listaPerfiles}" var="perfil"
+							itemLabel="#{perfil.descripcion}" itemValue="#{perfil.codigo}" />
+					</p:selectManyCheckbox>
+
+					<f:facet name="footer">
+						<p:commandButton value="#{msg.botonAceptar}" update=":form:growl"
+							actionListener="#{inicio.guardarOpcionMenu}"
+							onsuccess="dialogOpcionMenu.hide()" ajax="true" />
+						<p:commandButton value="#{msg.botonCancelar}"
+							onsuccess="dialogOpcionMenu.hide()" />
+					</f:facet>
+				</h:panelGrid>
+			</p:dialog>
+		</h:form>
+
+		<p:ajaxStatus
+			style="width:60px;height:60px;position:fixed;right:5px;bottom:5px">
+			<f:facet name="start">
+				<p:graphicImage name="loading.gif" library="img" value="loading.gif" />
+			</f:facet>
+
+			<f:facet name="complete">
+				<h:outputText value="" />
+			</f:facet>
+		</p:ajaxStatus>
+
 	</ui:define>
 </ui:composition>

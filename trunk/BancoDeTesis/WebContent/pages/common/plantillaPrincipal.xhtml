@@ -17,9 +17,11 @@
 	-->
 </h:head>
 <body>
-
 	<div class="cabecera ui-widget-header" style="text-align: center">
-		<p>#{msg.tituloSistema}</p>
+
+		<h:outputLink value="Inicio.jsf">
+			<p>#{msg.tituloSistema}</p>
+		</h:outputLink>
 	</div>
 
 	<ui:insert name="menu">
@@ -27,12 +29,19 @@
 			<ui:include src="/pages/common/menu.xhtml" />
 		</div>
 	</ui:insert>
+	<h:form>
+		<ui:insert name="cerrarSesion">
+			<div align="right">
+				<p:commandLink action="#{login.cerrarSesion}" ajax="false"
+					value="#{msg.lblCerrarSesion}" />
+			</div>
+		</ui:insert>
+	</h:form>
 
 	<ui:insert name="cuerpo" />
 
 	<div class="pie ui-widget-header" style="text-align: center">
-		<p> #{msg.piePagina} | #{msg.copyright}</p>
+		<p>#{msg.piePagina} | #{msg.copyright}</p>
 	</div>
-
 </body>
 </html>

@@ -173,6 +173,7 @@ public class GenerarActaObservacionController implements Serializable {
 		this.nroPagina = nroPagina;
 	}
 
+
 	
 
 	

@@ -18,11 +18,45 @@
 
 
 	<select id="cargarListaFichasInscritas" resultMap="Ficha">
-		select f.exp_codigo,f.ft_codigo,f.ft_titulo,l.linea_descripcion,concat(u.usu_apellidos,',
+		select
+		f.exp_codigo,f.ft_codigo,f.ft_titulo,l.linea_descripcion,concat(u.usu_apellidos,',
 		',u.usu_nombres) as nombre_completo,e.estf_estado,f.ft_resumen
-		from tesis.ficha_tesis f,tesis.linea_investigacion l,tesis.usuario u,tesis.estado_ficha e
-		where (f.linea_id=l.linea_id) and (f.bac_codigo=u.usu_codigo) and (f.estf_id=e.estf_id)
+		from
+		tesis.ficha_tesis f,tesis.linea_investigacion l,tesis.usuario
+		u,tesis.estado_ficha e
+		where (f.linea_id=l.linea_id) and
+		(f.bac_codigo=u.usu_codigo) and (f.estf_id=e.estf_id)
+		ORDER BY
+		F.EXP_CODIGO
+	</select>
+
+	<select id="cargarListaFichasAprobadas" resultMap="Ficha">
+		select
+		f.exp_codigo,f.ft_codigo,f.ft_titulo,l.linea_descripcion,concat(u.usu_apellidos,',
+		',u.usu_nombres) as nombre_completo,e.estf_estado,f.ft_resumen
+		from
+		tesis.ficha_tesis f,tesis.linea_investigacion l,tesis.usuario
+		u,tesis.estado_ficha e
+		where (f.linea_id=l.linea_id) and
+		(f.bac_codigo=u.usu_codigo) and (f.estf_id=e.estf_id)
+		AND f.estf_id=3
 		ORDER BY F.EXP_CODIGO
 	</select>
+
+	<select id="cargarListaFichasPorRegistrar" resultMap="Ficha">
+		select
+		f.exp_codigo,f.ft_codigo,f.ft_titulo,l.linea_descripcion,concat(u.usu_apellidos,',
+		',u.usu_nombres) as nombre_completo,e.estf_estado,f.ft_resumen
+		from
+		tesis.ficha_tesis f,tesis.linea_investigacion l,tesis.usuario
+		u,tesis.estado_ficha e
+		where (f.linea_id=l.linea_id) and
+		(f.bac_codigo=u.usu_codigo) and (f.estf_id=e.estf_id)
+		AND f.estf_id=6
+		ORDER BY F.EXP_CODIGO
+	</select>
+
+
+	
 
 </mapper>

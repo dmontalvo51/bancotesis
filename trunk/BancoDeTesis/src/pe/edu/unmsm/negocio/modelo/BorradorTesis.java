@@ -1,8 +1,14 @@
 package pe.edu.unmsm.negocio.modelo;
 
+import java.io.Serializable;
 
-public class BorradorTesis {
+
+public class BorradorTesis implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String codigoTes;
 	private String codigo;
 	private String titulo;

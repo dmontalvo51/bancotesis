@@ -24,7 +24,8 @@ public class Ficha implements Serializable{
 	private String ruta;
 	private String fecha;
 	private String hora;
-	
+	private String codigoRDinscripcion;
+	private String rutaRDinscripcion;
 	
 	public Ficha() {
 		super();
@@ -148,6 +149,26 @@ public class Ficha implements Serializable{
 
 	public void setHora(String hora) {
 		this.hora = hora;
+	}
+
+
+	public String getCodigoRDinscripcion() {
+		return codigoRDinscripcion;
+	}
+
+
+	public void setCodigoRDinscripcion(String codigoRDinscripcion) {
+		this.codigoRDinscripcion = codigoRDinscripcion;
+	}
+
+
+	public String getRutaRDinscripcion() {
+		return rutaRDinscripcion;
+	}
+
+
+	public void setRutaRDinscripcion(String rutaRDinscripcion) {
+		this.rutaRDinscripcion = rutaRDinscripcion;
 	}
 
 	

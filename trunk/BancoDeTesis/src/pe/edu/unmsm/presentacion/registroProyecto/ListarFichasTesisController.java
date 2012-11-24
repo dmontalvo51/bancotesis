@@ -28,49 +28,67 @@ public class ListarFichasTesisController implements Serializable {
 	private static final long serialVersionUID = 9054693765543258216L;
 	private List<Ficha> listFicha = new ArrayList<Ficha>();
 	private Ficha selectedFicha;
-	
-	
+
 	@ManagedProperty("#{registroProyectoTesisService}")
 	private RegistroProyectoTesisService registroProyectoTesisService;
-	
-	
+
 	public ListarFichasTesisController() {
 
-		TesisUtil.escribir("Constructor");	
+		TesisUtil.escribir("Constructor");
 	}
-	//llama a este metodo despues del constructo
-	
+
+	// llama a este metodo despues del constructo
+
 	@PostConstruct
-	public void cargarDatos(){
-		String origen=FacesContext.getCurrentInstance().getExternalContext().getRequestServletPath();
-		origen=origen.substring(7,origen.length()-4);
-		TesisUtil.escribir(origen);	
-		if(origen.equals("ListarFichasProyectoDeTesis"))
+	public void cargarDatos() {
+		String origen = FacesContext.getCurrentInstance().getExternalContext()
+				.getRequestServletPath();
+		origen = origen.substring(7, origen.length() - 4);
+		TesisUtil.escribir(origen);
+		if (origen.equals("ListarFichasProyectoDeTesis"))
 			setListFicha(llenarTabla());
 		else if (origen.equals("ListarProyectosTesis"))
 			setListFicha(llenarTabla());
-		else if(origen.equals("ListarProyectosPorAprobar"))
-			setListFicha(llenarTabla());
-		
-		
-		FacesContext.getCurrentInstance().getExternalContext().getFlash().clear();
+		else if (origen.equals("ListarFichasTesisAprobadas"))
+			setListFicha(llenarTablaFichasAprobadas());
+		else if (origen.equals("ListarFichasTesisPorRegistrar"))
+			setListFicha(llenarTablaFichasPorRegistrar());
+
+		FacesContext.getCurrentInstance().getExternalContext().getFlash()
+				.clear();
 	}
-	
-	
+
 	private List<Ficha> llenarTabla() {
-			return registroProyectoTesisService.cargarListaFichasInscritas();
+		return registroProyectoTesisService.cargarListaFichasInscritas();
 	}
-	
-	public String revisarProyectoTesis(){
+
+	private List<Ficha> llenarTablaFichasAprobadas() {
+		return registroProyectoTesisService.cargarListaFichasAprobadas();
+	}
+
+	private List<Ficha> llenarTablaFichasPorRegistrar() {
+		return registroProyectoTesisService.cargarListaFichasPorRegistrar();
+	}
+
+	public String revisarProyectoTesis() {
 		return "InformeProyectoTesis";
 	}
-	
-	public String cancelarRD(){
-		return "ListarProyectosTesis?faces-redirect=true";
+
+	public String solicitarRegistroProyectoTesis() {
+		TesisUtil.subirASesion("ficha", selectedFicha);
+		return "GenerarRDInscripcion?faces-redirect=true";
 	}
 	
-	
-	public String cancelarInformePT(){
+	public String registrarProyectoTesis(){
+		TesisUtil.subirASesion("ficha", selectedFicha);
+		return "RegistrarProyectoTesis?faces-redirect=true";
+	}
+
+	public String cancelarRD() {
+		return "ListarProyectosTesis?faces-redirect=true";
+	}
+
+	public String cancelarInformePT() {
 		return "ListarFichasProyectoDeTesis?faces-redirect=true";
 	}
 
@@ -99,15 +117,9 @@ public class ListarFichasTesisController implements Serializable {
 		this.selectedFicha = selectedFicha;
 	}
 
-	public String informeProyectoTesis(){
-	    TesisUtil.subirASesion("ficha", selectedFicha);
+	public String informeProyectoTesis() {
+		TesisUtil.subirASesion("ficha", selectedFicha);
 		return "InformeProyectoTesis?faces-redirect=true";
-	}
-	
-
-	public String nextpaginaGenerarRDInscripcion(){
-	    TesisUtil.flashScope("ficha", selectedFicha);
-		return "GenerarRDInscripcion?faces-redirect=true";
 	}
 
 }

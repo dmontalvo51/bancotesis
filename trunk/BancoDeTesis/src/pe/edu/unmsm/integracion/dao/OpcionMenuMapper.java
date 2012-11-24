@@ -13,4 +13,6 @@ public interface OpcionMenuMapper {
 	
 	public void ingresarPermisoPorPerfil(Map<String,Integer> permiso_perfil_menu);
 
+	public int existeOpcion(String descripcion);
+
 }

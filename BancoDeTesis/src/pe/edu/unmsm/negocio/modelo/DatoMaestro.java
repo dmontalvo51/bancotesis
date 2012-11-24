@@ -1,6 +1,10 @@
 package pe.edu.unmsm.negocio.modelo;
 
-public class DatoMaestro {
+import java.io.Serializable;
+
+public class DatoMaestro implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	
 	private int codigo;
 	private String descripcion;

@@ -81,7 +81,7 @@ public class InformeProyectoTesisController implements Serializable {
 				} else {
 					FacesContext.getCurrentInstance().addMessage(
 							null,
-							new FacesMessage(escribir("msg","msgInformeCreado"),escribir("msg","msgInformeCreadoDetalle")
+							new FacesMessage(escribir("msg","msgInformeCreado"),escribir("msg","msgInformeNoCreadoDetalle")
 							+" "+ipt.getCodigoInformeProyecto()));
 					return "ListarFichasProyectoDeTesis.xhtml?faces-redirect=true";
 				}

@@ -32,7 +32,7 @@ public class InicioController implements Serializable {
 	StreamedContent archivo;
 	private OpcionMenu om;
 	private List<DatoMaestro> listaPerfiles;
-	private List<DatoMaestro> listaPerfilesSeleccionados;
+	private List<Integer> listaPerfilesSeleccionados;
 	
 	@ManagedProperty("#{seguridadService}")
 	private SeguridadService seguridadService;
@@ -68,12 +68,23 @@ public class InicioController implements Serializable {
 	}
 	
 	public void ingresarOpcionMenu(){
+
 		listaPerfiles=seguridadService.cargarPerfiles();
 	}
 	
 	public void guardarOpcionMenu(){
+		Respuesta r=new Respuesta();
 		
+		r=seguridadService.ingresarOpcionMenu(om,listaPerfilesSeleccionados);
 		
+		if(r.getEstado()==Respuesta.OK)
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Opcion de menu","Se ingresó correctamente la opcion de menu "+om.getDescripcion())); 
+		else
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Opcion de menu","Ocurrio un problema al ingresar la opcion de menu")); 
+		
+		listaPerfilesSeleccionados=new ArrayList<Integer>();
+		om=new OpcionMenu();
+	
 	}
 
 	public StreamedContent getArchivo() {
@@ -101,14 +112,6 @@ public class InicioController implements Serializable {
 		this.listaPerfiles = listaPerfiles;
 	}
 
-	public List<DatoMaestro> getListaPerfilesSeleccionados() {
-		return listaPerfilesSeleccionados;
-	}
-
-	public void setListaPerfilesSeleccionados(
-			List<DatoMaestro> listaPerfilesSeleccionados) {
-		this.listaPerfilesSeleccionados = listaPerfilesSeleccionados;
-	}
 
 	public SeguridadService getSeguridadService() {
 		return seguridadService;
@@ -116,6 +119,15 @@ public class InicioController implements Serializable {
 
 	public void setSeguridadService(SeguridadService seguridadService) {
 		this.seguridadService = seguridadService;
+	}
+
+	public List<Integer> getListaPerfilesSeleccionados() {
+		return listaPerfilesSeleccionados;
+	}
+
+	public void setListaPerfilesSeleccionados(
+			List<Integer> listaPerfilesSeleccionados) {
+		this.listaPerfilesSeleccionados = listaPerfilesSeleccionados;
 	}
 
 

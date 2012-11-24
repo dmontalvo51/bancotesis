@@ -18,47 +18,55 @@
 						width="100%">
 
 						<!-- aca va el elcuepo-->
-						<h:outputLabel for="tramite" value="#{msg.lblNroExpediente}:" />
+						<h:outputLabel for="NTramite" value="#{msg.lblNroExpediente}:" />
 						<h:outputText id="tramite" value="#{registroFichaTesis.ficha.nroExpediente}"
 								label="tramite" />
 					
-						<h:outputLabel for="titulo" value="#{msg.lblTitulo}:" />
+						<h:outputLabel for="Titulo" value="#{msg.lblTitulo}:" />
 						<h:outputText id="titulo" value="#{registroFichaTesis.ficha.titulo}"
 								label="titulo" />
 				
-						<h:outputLabel for="bachiller" value="#{msg.lblBachiller}:" />
-						<h:outputText id="bachiller" value="#{registroFichaTesis.ficha.nomBachiller}"
+						<h:outputLabel for="Bachiller:" value="#{msg.lblBachiller}:" />
+						<h:panelGroup>
+
+							<h:outputText id="bachiller" value="#{registroFichaTesis.ficha.nomBachiller}"
 								label="bachiller" />
-						
+						</h:panelGroup>
 						<h:outputLabel for="Linea de Investigacion"
 							value="#{msg.lblLineaInvestigacion}:" />
-						<h:outputText id="lineainvestigacion"
+
+						<h:panelGroup>
+
+							<h:outputText id="lineainvestigacion"
 								value="#{registroFichaTesis.ficha.lineaInvestigacion}"
 								label="lineainvestigacion" />
-			
-			
+						</h:panelGroup>
+
 						<h:outputLabel for="asesor" value="#{msg.lblAsesor}:" />
-						<h:outputText id="asesor" value="#{registroFichaTesis.ficha.nombreAsesor}"
+						<h:panelGroup>
+
+							<h:outputText id="asesor" value="#{registroFichaTesis.ficha.nombreAsesor}"
 								label="asesor" />
-			
-						<h:outputLabel for="resumen" value="#{msg.lblResumen}" />
-						<p:commandLink id="resumen" update=":formDialog:confirmDialog"
+						</h:panelGroup>
+
+						<p:commandLink id="ajax" update=":formDialog:confirmDialog"
 							oncomplete="confirmation.show()" style="margin-left:90px;"
 							type="button">
 							<h:outputText value="Ver Resumen de tesis" />
-					
-						<h:outputLabel for="actaSustentacion" value="#{msg.lblActaEvaluacion}" />
-						<p:commandLink id="actaSustentacion" update=":formDialog:confirmDialog"
+						</p:commandLink>
+						<h:outputLabel for="" value="" />
+
+						<p:commandLink id="ajax1" update=":formDialog:confirmDialog"
 							oncomplete="confirmation.show()" style="margin-left:90px;"
 							type="button">
 							<h:outputText value="Ver Acta de Evaluacion" />
 						</p:commandLink>
-					
+						<h:outputLabel for="" value="" />
 
 						<f:facet name="footer">
 							<div align="center">
 
-								<p:commandButton id="generar"  type="button" value="Generar RD" action="#{registroFichaTesis.generarRDInscripcion}"
+								<p:commandButton id="generar"  type="button" value="Generar RD" action="#{registroFichaTesis.registrarTesis}"
 									icon="ui-icon-check" style="margin-top:10px" ajax="false"
 									update="growl" />
 

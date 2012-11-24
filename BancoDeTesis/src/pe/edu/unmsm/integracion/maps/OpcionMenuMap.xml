@@ -21,6 +21,9 @@
 		INSERT INTO tesis.puede_acceder_a VALUES(#{perfil},#{opcionMenu})
 	</insert>
 	
+	<select id="existeOpcion" parameterType="java.lang.String" resultType="int">
+		SELECT count(*) FROM tesis.opcion_menu om WHERE om.opmenu_descripcion=#{descripcion}
+	</select>
 	
 
 </mapper>

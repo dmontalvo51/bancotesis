@@ -62,7 +62,7 @@ public class ListarTesisController implements Serializable {
 	    TesisUtil.subirASesion("tesis", selectedTesis);
 		return "GenerarActaObservacion?faces-redirect=true";
 	}
-	
+		
 	public String oficiarJE(){
 	    TesisUtil.flashScope("tesis", selectedTesis);
 		return "OficiarJuradoEvaluador?faces-redirect=true";

@@ -21,6 +21,7 @@ import pe.edu.unmsm.negocio.modelo.Docente;
 import pe.edu.unmsm.negocio.modelo.Ficha;
 import pe.edu.unmsm.negocio.modelo.InformeProyectoTesis;
 import pe.edu.unmsm.negocio.modelo.LineaInvestigacion;
+import pe.edu.unmsm.negocio.modelo.Respuesta;
 import pe.edu.unmsm.negocio.modelo.Tesis;
 import pe.edu.unmsm.util.TesisUtil;
 
@@ -61,6 +62,9 @@ public class RegistroProyectoTesisService implements Serializable {
 		return lineaInvestigacionMapper.cargarSubLineasInvestigacion(idLinea);
 
 	}
+	
+		
+	
 
 	public List<Docente> cargarListaDocentesPorLinea(int id) {
 		return docenteMapper.cargarListaDocentesPorLinea(id);
@@ -87,6 +91,18 @@ public class RegistroProyectoTesisService implements Serializable {
 		return fichasMapper.cargarListaFichasInscritas();
 
 	}
+	
+
+	public  List<Ficha> cargarListaFichasAprobadas() {
+
+		return fichasMapper.cargarListaFichasAprobadas();
+
+	}
+	
+	public List<Ficha> cargarListaFichasPorRegistrar() {
+		return fichasMapper.cargarListaFichasPorRegistrar();
+	}
+
 
 	public List<InformeProyectoTesis> cargarInformeProyetoTesis() {
 
@@ -98,16 +114,20 @@ public class RegistroProyectoTesisService implements Serializable {
 
 	}
 
-	public void insertarFichaProyectoTesis(Ficha ficha) {
+	public Respuesta insertarFichaProyectoTesis(Ficha ficha) {
+		Respuesta r=new Respuesta();
+		
 		try {
 			fichasMapper.insertarFichaProyectoTesis(ficha);
-
-			//TesisUtil.generarReporte("fichaTesis", null);
+			r.setEstado(Respuesta.OK);
 
 		} catch (Exception e) {
 			TesisUtil.escribir("ERROR AL INSERTAR!");
 			e.printStackTrace();
+			r.setEstado(Respuesta.ERROR);
 		}
+		
+		return r;
 
 	}
 	
@@ -122,6 +142,19 @@ public class RegistroProyectoTesisService implements Serializable {
 			TesisUtil.escribir("ERROR AL INSERTAR INFORME DE PROYECTO DE TESIS!");
 			e.printStackTrace();
 		}
+	}
+	
+	public void generarDocumentoFichaProyectoTesis(Ficha ficha) {
+
+	}
+
+	public void generarDocumentoInformeProyectoTesis(Ficha ficha) {
+
+	}
+
+	public void generarRDInscripcion(Ficha ficha) {
+		
+		
 	}
 
 	// Metodos de encapsulamiento
@@ -175,12 +208,7 @@ public class RegistroProyectoTesisService implements Serializable {
 		this.docenteMapper = docenteMapper;
 	}
 
-	public void generarDocumentoFichaProyectoTesis(Ficha ficha) {
+	
 
-	}
-
-	public void generarDocumentoInformeProyectoTesis(Ficha ficha) {
-
-	}
 
 }

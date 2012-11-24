@@ -37,8 +37,7 @@
 	</listener>
 	<listener>
 		<listener-class>
-			org.springframework.web.context.request.RequestContextListener
-		</listener-class>
+			org.springframework.web.context.request.RequestContextListener</listener-class>
 	</listener>
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
@@ -49,8 +48,6 @@
 
 
 	<!-- Configuracion Prime Faces -->
-
-
 
 	<session-config>
 		<session-timeout>10</session-timeout>

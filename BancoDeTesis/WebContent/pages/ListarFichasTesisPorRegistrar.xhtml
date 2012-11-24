@@ -4,12 +4,12 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	template="/pages/common/plantillaPrincipal.xhtml">
-	<ui:define name="title">#{msg.tituloSistema} .::. Listar proyectos de tesis pendientes</ui:define>
+	<ui:define name="title">#{msg.tituloSistema} .::. Listar proyectos de tesis aprobadas</ui:define>
 	<ui:define name="cuerpo">
 		<div class="cuerpo" align="center">
 			<!-- Empezar a programar desde aqui -->
 
-			<p:panel header="#{msg.lblListaProyectoPendiente}" style="width:90%">
+			<p:panel header="#{msg.lblListaFichasAprobadas}" style="width:90%">
 
 				<h:panelGrid columns="2"
 					columnClasses="formColumnaIzquierda,formColumnaDerecha"
@@ -54,7 +54,7 @@
 
 
 								<p:commandButton id="btnAbrir"
-									action="#{listarFichasTesis.nextpaginaGenerarRDInscripcion}"
+									action="#{listarFichasTesis.solicitarRegistroProyectoTesis}"
 									ajax="false" value="Revisar" icon="ui-icon-search" />
 							</f:facet>
 						</p:dataTable>

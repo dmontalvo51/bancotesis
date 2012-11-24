@@ -19,13 +19,16 @@ import pe.edu.unmsm.negocio.modelo.BorradorTesis;
 
 @Service(value="revisionBorradorTesisService")
 public class RevisionBorradorTesisService {
+	
 	private static final long serialVersionUID = 12L;
+	
 	@Autowired
 	private TesisMapper tesisMapper;
+	
 	@Autowired
 	private BorradorTesisMapper borradorMapper;
 
-	public List<Tesis> cargarListaTesisInscritas() {
+	public List<Tesis> cargarListaTesis() {
 
 		List<Tesis> lista = new ArrayList<Tesis>();
 		
@@ -36,8 +39,7 @@ public class RevisionBorradorTesisService {
 		//lista.add(new Tesis("1236","Revisado","Luis Alarcón","Mauricio","Karina","Aranguren","11/11/2012","resumen3","linea3"));
 		//lista.add(new Tesis("1237","Sin Revisar","Luis Alarcón","Luza","Johnny","Apolinario","11/11/2012","resumen4","linea4"));
 		
-		return lista;
-		
+		return tesisMapper.cargarListaTesis();
 	}
 	
 	public List<BorradorTesis> cargarListaBorradorTesis() {

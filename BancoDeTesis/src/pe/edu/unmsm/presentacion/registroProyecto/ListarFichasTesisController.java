@@ -47,8 +47,6 @@ public class ListarFichasTesisController implements Serializable {
 		TesisUtil.escribir(origen);
 		if (origen.equals("ListarFichasProyectoDeTesis"))
 			setListFicha(llenarTabla());
-		else if (origen.equals("ListarProyectosTesis"))
-			setListFicha(llenarTabla());
 		else if (origen.equals("ListarFichasTesisAprobadas"))
 			setListFicha(llenarTablaFichasAprobadas());
 		else if (origen.equals("ListarFichasTesisPorRegistrar"))

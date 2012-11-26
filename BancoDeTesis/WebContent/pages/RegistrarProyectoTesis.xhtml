@@ -10,70 +10,83 @@
 		<div class="cuerpo" align="center">
 			<!-- Empezar a programar desde aqui -->
 			<h:form id="formGenerarRD">
-				<p:panel id="panelGenerarRD" header="#{msg.lblGenerarRDInscripcion}"
-					style="width:90%">
+
+				<p:growl id="growl" showDetail="true" life="3000" sticky="true"
+					redisplay="false" />
+
+				<p:panel id="panelRegistrarProyecto"
+					header="#{msg.lblGenerarRDInscripcion}" style="width:90%">
 
 					<h:panelGrid columns="2"
 						columnClasses="formColumnaIzquierda,formColumnaDerecha"
 						width="100%">
 
 						<!-- aca va el elcuepo-->
-						<h:outputLabel for="NTramite" value="#{msg.lblNroExpediente}:" />
-						<h:outputText id="tramite" value="#{registroFichaTesis.ficha.nroExpediente}"
-								label="tramite" />
-					
-						<h:outputLabel for="Titulo" value="#{msg.lblTitulo}:" />
-						<h:outputText id="titulo" value="#{registroFichaTesis.ficha.titulo}"
-								label="titulo" />
-				
-						<h:outputLabel for="Bachiller:" value="#{msg.lblBachiller}:" />
-						<h:panelGroup>
+						<h:outputLabel for="tramite" value="#{msg.lblNroExpediente}:" />
+						<h:outputText id="tramite"
+							value="#{registroFichaTesis.ficha.nroExpediente}" label="tramite" />
 
-							<h:outputText id="bachiller" value="#{registroFichaTesis.ficha.nomBachiller}"
-								label="bachiller" />
-						</h:panelGroup>
-						<h:outputLabel for="Linea de Investigacion"
+						<h:outputLabel for="titulo" value="#{msg.lblTitulo}:" />
+						<h:outputText id="titulo"
+							value="#{registroFichaTesis.ficha.titulo}" label="titulo" />
+
+						<h:outputLabel for="bachiller" value="#{msg.lblBachiller}:" />
+						<h:outputText id="bachiller"
+							value="#{registroFichaTesis.ficha.nomBachiller}"
+							label="bachiller" />
+
+						<h:outputLabel for="lineainvestigacion"
 							value="#{msg.lblLineaInvestigacion}:" />
+						<h:outputText id="lineainvestigacion"
+							value="#{registroFichaTesis.ficha.lineaInvestigacion}"
+							label="lineainvestigacion" />
 
-						<h:panelGroup>
-
-							<h:outputText id="lineainvestigacion"
-								value="#{registroFichaTesis.ficha.lineaInvestigacion}"
-								label="lineainvestigacion" />
-						</h:panelGroup>
 
 						<h:outputLabel for="asesor" value="#{msg.lblAsesor}:" />
-						<h:panelGroup>
+						<h:outputText id="asesor"
+							value="#{registroFichaTesis.ficha.nombreAsesor}" label="asesor" />
 
-							<h:outputText id="asesor" value="#{registroFichaTesis.ficha.nombreAsesor}"
-								label="asesor" />
-						</h:panelGroup>
-
-						<p:commandLink id="ajax" update=":formDialog:confirmDialog"
+						<h:outputLabel for="resumen" value="#{msg.lblResumen} :" />
+						<p:commandLink id="resumen" update=":formDialog:dialogResumen"
 							oncomplete="confirmation.show()" style="margin-left:90px;"
 							type="button">
 							<h:outputText value="Ver Resumen de tesis" />
 						</p:commandLink>
-						<h:outputLabel for="" value="" />
 
-						<p:commandLink id="ajax1" update=":formDialog:confirmDialog"
+
+						<h:outputLabel for="actaEvaluacion"
+							value="#{msg.lblActaEvaluacion}" />
+						<p:commandLink id="actaEvaluacion"
+							update=":formDialog:dialogResumen"
 							oncomplete="confirmation.show()" style="margin-left:90px;"
 							type="button">
 							<h:outputText value="Ver Acta de Evaluacion" />
 						</p:commandLink>
-						<h:outputLabel for="" value="" />
 
+						<h:outputText value=" " />
+						<p:selectOneButton
+							value="#{registroFichaTesis.ficha.resolucionDirectoralAprobada}">
+							<f:selectItem itemLabel="#{msg.lblAprobar}" itemValue="1" />
+							<f:selectItem itemLabel="#{msg.lblNoAprobar}" itemValue="0" />
+						</p:selectOneButton>
+
+
+						<h:outputLabel for="RDInscripcion" value="#{msg.lblRDInscripcion}" />
+						<h:outputText id="RDInscripcion"
+							value="#{registroFichaTesis.ficha.codigoRDinscripcion}"/>
+						
+						
 						<f:facet name="footer">
 							<div align="center">
+								<p:commandButton id="btnInscribir" value="Guardar"
+									action="#{registroFichaTesis.registrarProyectoTesis}"
+									icon="ui-icon-check" style="margin-top:10px"
+									update="panelRegistrarProyecto,growl" />
 
-								<p:commandButton id="generar"  type="button" value="Generar RD" action="#{registroFichaTesis.registrarTesis}"
-									icon="ui-icon-check" style="margin-top:10px" ajax="false"
-									update="growl" />
-
-								<p:commandButton id="btnGenerarRD"
-									action="#" value="Cancelar"
-									icon="ui-icon-close" style="margin-top:10px" ajax="true"
-									update="panelGenerarRD" />
+								<p:commandButton id="btbCancelar" value="Cancelar"
+									action="#{registroFichaTesis.cancelarRegistro}"
+									icon="ui-icon-close" style="margin-top:10px"
+									update="panelRegistrarProyecto" />
 							</div>
 						</f:facet>
 
@@ -88,16 +101,13 @@
 
 		<h:form id="formDialog">
 
-			<p:confirmDialog id="confirmDialog" message="Resumen de la tesis"
+			<p:dialog id="dialogResumen" message="Resumen de la tesis"
 				header="Resumen" severity="alert" widgetVar="confirmation"
 				style="margin-center:20px">
-				
-				<h:outputText value="#{registroFichaTesis.ficha.resumen}"></h:outputText>
-					
-				<p:commandButton id="decline" value="Resumen"
-					onclick="confirmation.hide()" type="button" />
 
-			</p:confirmDialog>
+				<h:outputText value="#{registroFichaTesis.ficha.resumen}"></h:outputText>
+
+			</p:dialog>
 		</h:form>
 	</ui:define>
 </ui:composition>

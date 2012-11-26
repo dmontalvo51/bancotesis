@@ -8,14 +8,17 @@
 	<ui:define name="cuerpo">
 		<div class="cuerpo" align="center">
 			<!-- Empezar a programar desde aqui -->
+			<h:form id="form">
 
-			<p:panel header="#{msg.lblListaFichasAprobadas}" style="width:90%">
+				<p:growl id="growl" showDetail="true" life="3000" sticky="false"
+					redisplay="false" />
 
-				<h:panelGrid columns="2"
-					columnClasses="formColumnaIzquierda,formColumnaDerecha"
-					width="100%">
+				<p:panel header="#{msg.lblListaFichasAprobadas}" style="width:90%">
 
-					<h:form id="form">
+					<h:panelGrid columns="2"
+						columnClasses="formColumnaIzquierda,formColumnaDerecha"
+						width="100%">
+
 
 						<p:dataTable id="lptesiss" var="lptesis"
 							value="#{listarFichasTesis.listFicha}" rowKey="#{lptesis.codigo}"
@@ -59,10 +62,12 @@
 							</f:facet>
 						</p:dataTable>
 
-					</h:form>
 
-				</h:panelGrid>
-			</p:panel>
+
+					</h:panelGrid>
+				</p:panel>
+
+			</h:form>
 			<!-- Terminar de programar desde aqui -->
 
 		</div>

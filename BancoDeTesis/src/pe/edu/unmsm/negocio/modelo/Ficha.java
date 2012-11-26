@@ -26,10 +26,12 @@ public class Ficha implements Serializable{
 	private String hora;
 	private String codigoRDinscripcion;
 	private String rutaRDinscripcion;
+	private int resolucionDirectoralAprobada;
+	private String codigoTesis;
 	
 	public Ficha() {
 		super();
-		// TODO Auto-generated constructor stub
+	
 	}
 	
 	
@@ -171,9 +173,25 @@ public class Ficha implements Serializable{
 		this.rutaRDinscripcion = rutaRDinscripcion;
 	}
 
-	
+
+	public int getResolucionDirectoralAprobada() {
+		return resolucionDirectoralAprobada;
+	}
 
 
-	
+	public void setResolucionDirectoralAprobada(int resolucionDirectoralAprobada) {
+		this.resolucionDirectoralAprobada = resolucionDirectoralAprobada;
+	}
+
+
+	public String getCodigoTesis() {
+		return codigoTesis;
+	}
+
+
+	public void setCodigoTesis(String codigoTesis) {
+		this.codigoTesis = codigoTesis;
+	}
+
 }
 	

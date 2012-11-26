@@ -16,9 +16,9 @@
 					<h:form id="form">
 
 						<p:dataTable id="ltesiss" var="ltesis"
-							value="#{listarTesis.listTesis}" rowKey="#{ltesis.codigoExp}"
+							value="#{listarTesis.listTesis}" rowKey="#{ltesis.codigo}"
 							selection="#{listarTesis.selectedTesis}"
-							selectionMode="single" pagination="true">
+							selectionMode="single" paginator="true">
 
 							<f:facet name="header">
 								

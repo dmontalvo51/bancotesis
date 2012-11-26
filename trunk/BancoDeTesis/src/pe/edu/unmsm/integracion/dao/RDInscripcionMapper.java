@@ -9,7 +9,11 @@ import pe.edu.unmsm.negocio.modelo.Ficha;
 public interface RDInscripcionMapper {
 	
 	@Options(statementType = StatementType.CALLABLE)
-	@Update("{CALL sp_crearFichaTesis(#{codigo, mode=IN},#{codigoRDinscripcion, mode=OUT,javaType=String,jdbcType=VARCHAR},#{rutaRDinscripcion, mode=OUT,javaType=String, jdbcType=VARCHAR})}")
-	public void generarRDInscripcion(Ficha ficha);
+	@Update("{CALL sp_generarRDInscripcion(#{codigo, mode=IN},#{codigoRDinscripcion, mode=OUT,javaType=String,jdbcType=VARCHAR},#{rutaRDinscripcion, mode=OUT,javaType=String, jdbcType=VARCHAR})}")
+	public void generarRDInscripcion(Ficha ficha) throws Exception;
+	
+	@Options(statementType = StatementType.CALLABLE)
+	@Update("{CALL sp_registroProyectoTesis(#{codigoRDinscripcion,mode=IN},#{resolucionDirectoralAprobada,mode=IN},#{codigoTesis, mode=OUT,javaType=String,jdbcType=VARCHAR})}")
+	public void  inscribirProyectoDeTesis(Ficha ficha) throws Exception;
 
 }

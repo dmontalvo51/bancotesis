@@ -16,6 +16,7 @@ import pe.edu.unmsm.integracion.dao.FichasMapper;
 import pe.edu.unmsm.integracion.dao.InformeProyectoTesisMapper;
 import pe.edu.unmsm.integracion.dao.LineaInvestigacionMapper;
 import pe.edu.unmsm.integracion.dao.ProyectoTesisMapper;
+import pe.edu.unmsm.integracion.dao.RDInscripcionMapper;
 import pe.edu.unmsm.negocio.modelo.Docente;
 
 import pe.edu.unmsm.negocio.modelo.Ficha;
@@ -48,6 +49,9 @@ public class RegistroProyectoTesisService implements Serializable {
 
 	@Autowired
 	private DocenteMapper docenteMapper;
+	
+	@Autowired
+	private RDInscripcionMapper rdInscripcionMapper;
 
 	// Servicios
 
@@ -72,22 +76,6 @@ public class RegistroProyectoTesisService implements Serializable {
 
 	public List<Ficha> cargarListaFichasInscritas() {
 
-		//List<Ficha> lista = new ArrayList<Ficha>();
-
-		// lista=fichasMapper.cargarListaFichasInscritas();
-
-		/*
-		 * lista.add(new Ficha("026-FISI-2012", "F001", "titulo 1",
-		 * "resumen ficha 1", "linea 1", 1, "Diego", "revisado",
-		 * "Piedra",null,null,null)); lista.add(new Ficha("027-FISI-2012",
-		 * "F002", "titulo 2", "resumen ficha 2", "linea 2", 1, "Diego",
-		 * "revisado", "Piedra",null,null,null)); lista.add(new
-		 * Ficha("028-FISI-2012", "F003", "titulo 3", "resumen ficha 3",
-		 * "linea 3", 1, "Karina", "revisado", "Mauricio",null,null,null));
-		 * lista.add(new Ficha("029-FISI-2012", "F004", "titulo 4",
-		 * "resumen ficha 4", "linea 4", 1, "Johnny", "rechazada",
-		 * "Luza",null,null,null));
-		 */
 		return fichasMapper.cargarListaFichasInscritas();
 
 	}
@@ -132,6 +120,8 @@ public class RegistroProyectoTesisService implements Serializable {
 	}
 	
 	public void insertarInformeProyectoTesis(InformeProyectoTesis ipt){
+		Respuesta r=new Respuesta();
+		
 		try {
 			informeProyectoTesisMapper.ingresarInformeProyectoTesis(ipt);
 			
@@ -144,6 +134,22 @@ public class RegistroProyectoTesisService implements Serializable {
 		}
 	}
 	
+	public Respuesta inscribirProyectoDeTesis(Ficha ficha){
+		Respuesta r=new Respuesta();
+		
+		try {
+			rdInscripcionMapper.inscribirProyectoDeTesis(ficha);
+			r.setEstado(Respuesta.OK);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			r.setEstado(Respuesta.ERROR);
+		}
+		
+		return r;
+		
+	}
+	
 	public void generarDocumentoFichaProyectoTesis(Ficha ficha) {
 
 	}
@@ -152,9 +158,20 @@ public class RegistroProyectoTesisService implements Serializable {
 
 	}
 
-	public void generarRDInscripcion(Ficha ficha) {
+	public Respuesta generarRDInscripcion(Ficha ficha) {
+		Respuesta r=new Respuesta();
 		
+		try {
+			rdInscripcionMapper.generarRDInscripcion(ficha);
+			r.setEstado(Respuesta.OK);
+		} catch (Exception e) {
+			TesisUtil.escribir("ERROR AL CREAR LA RD DE INSCRIPCIÓN!");
+			e.printStackTrace();
+			r.setEstado(Respuesta.ERROR);
+		}
 		
+		return r;
+			
 	}
 
 	// Metodos de encapsulamiento
@@ -206,6 +223,14 @@ public class RegistroProyectoTesisService implements Serializable {
 
 	public void setDocenteMapper(DocenteMapper docenteMapper) {
 		this.docenteMapper = docenteMapper;
+	}
+
+	public RDInscripcionMapper getRdInscripcionMapper() {
+		return rdInscripcionMapper;
+	}
+
+	public void setRdInscripcionMapper(RDInscripcionMapper rdInscripcionMapper) {
+		this.rdInscripcionMapper = rdInscripcionMapper;
 	}
 
 	

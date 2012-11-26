@@ -9,13 +9,17 @@
 		<div class="cuerpo" align="center">
 			<!-- Empezar a programar desde aqui -->
 
-			<p:panel header="#{msg.lblListaFichasAprobadas}" style="width:90%">
+			<p:panel header="#{msg.lblListaProyectosPorRegistrar}"
+				style="width:90%">
 
 				<h:panelGrid columns="2"
 					columnClasses="formColumnaIzquierda,formColumnaDerecha"
 					width="100%">
 
 					<h:form id="form">
+
+						<p:growl id="growl" showDetail="true" life="3000" sticky="true"
+							redisplay="false" />
 
 						<p:dataTable id="lptesiss" var="lptesis"
 							value="#{listarFichasTesis.listFicha}" rowKey="#{lptesis.codigo}"
@@ -51,10 +55,8 @@
 							</p:column>
 
 							<f:facet name="footer">
-
-
 								<p:commandButton id="btnAbrir"
-									action="#{listarFichasTesis.solicitarRegistroProyectoTesis}"
+									action="#{listarFichasTesis.registrarProyectoTesis}"
 									ajax="false" value="Revisar" icon="ui-icon-search" />
 							</f:facet>
 						</p:dataTable>

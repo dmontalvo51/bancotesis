@@ -6,10 +6,10 @@
 	template="/pages/common/plantillaPrincipal.xhtml">
 	<ui:define name="title">#{msg.tituloSistema} .::. #{msg.lblRegistroProyectoTesis}</ui:define>
 	<ui:define name="cuerpo">
-		
-		
+
+
 		<div class="cuerpo" align="center">
-	
+
 			<!-- Empezar a programar desde aqui -->
 
 			<!-- nuevo Panel grid para los combobox-->
@@ -102,25 +102,29 @@
 								<p:commandButton action="#{llenarFicha.registrarFicha}"
 									value="#{msg.botonRegistrar}" icon="ui-icon-check"
 									style="margin-top:10px" update="panelFicha,growl" />
-								<p:commandButton value="#{msg.btnLimpiar}" ajax="true"
-									update="panelFicha" process="@this" icon="ui-icon-cancel">
+								<p:commandButton value="#{msg.botonLimpiar}" ajax="true"
+									update="panelFicha" process="@this">
 									<p:resetInput target="panelFicha" />
-								</p:commandButton>
+								</p:commandButton>	
+								<p:commandButton action="#{llenarFicha.cancelarFicha}" process="@this"
+										value="#{msg.botonCancelar}" icon="ui-icon-cancel"
+										style="margin-top:10px" update="growl" />
+						
 							</div>
 						</f:facet>
 					</h:panelGrid>
 
 				</p:panel>
-				
-				<p:growl id="growl" showDetail="true" sticky="true" life="2500" />
-			
+
+				<p:growl id="growl" showDetail="true" sticky="true" life="3000" />
+
 			</h:form>
 
 			<!-- Terminar de programar desde aqui -->
 		</div>
-		
-		
-		
+
+
+
 		<p:ajaxStatus
 			style="width:60px;height:60px;position:fixed;right:5px;bottom:5px">
 			<f:facet name="start">

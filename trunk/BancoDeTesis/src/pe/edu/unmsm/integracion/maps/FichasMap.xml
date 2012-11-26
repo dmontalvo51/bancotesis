@@ -12,6 +12,7 @@
 		<result property="nomBachiller" column="NOMBRE_COMPLETO" />
 		<result property="estado" column="ESTF_ESTADO" />
 		<result property="resumen" column="FT_RESUMEN" />
+		<result property="codigoRDinscripcion" column="RDR_CODIGO" />
 	</resultMap>
 
 	<parameterMap type="pe.edu.unmsm.negocio.modelo.Ficha" id="FichaTesis" />
@@ -26,14 +27,14 @@
 		u,tesis.estado_ficha e
 		where (f.linea_id=l.linea_id) and
 		(f.bac_codigo=u.usu_codigo) and (f.estf_id=e.estf_id)
+		AND f.estf_id IN (1,5)
 		ORDER BY
 		F.EXP_CODIGO
 	</select>
 
 	<select id="cargarListaFichasAprobadas" resultMap="Ficha">
 		select
-		f.exp_codigo,f.ft_codigo,f.ft_titulo,l.linea_descripcion,concat(u.usu_apellidos,',
-		',u.usu_nombres) as nombre_completo,e.estf_estado,f.ft_resumen
+		f.exp_codigo,f.ft_codigo,f.ft_titulo,l.linea_descripcion,concat(u.usu_apellidos,' ',u.usu_nombres) as nombre_completo,e.estf_estado,f.ft_resumen
 		from
 		tesis.ficha_tesis f,tesis.linea_investigacion l,tesis.usuario
 		u,tesis.estado_ficha e
@@ -46,7 +47,7 @@
 	<select id="cargarListaFichasPorRegistrar" resultMap="Ficha">
 		select
 		f.exp_codigo,f.ft_codigo,f.ft_titulo,l.linea_descripcion,concat(u.usu_apellidos,',
-		',u.usu_nombres) as nombre_completo,e.estf_estado,f.ft_resumen
+		',u.usu_nombres) as nombre_completo,e.estf_estado,f.ft_resumen,f.rdr_codigo
 		from
 		tesis.ficha_tesis f,tesis.linea_investigacion l,tesis.usuario
 		u,tesis.estado_ficha e

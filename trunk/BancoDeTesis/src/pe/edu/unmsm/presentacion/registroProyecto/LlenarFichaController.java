@@ -123,6 +123,11 @@ public class LlenarFichaController implements Serializable {
 				.generarDocumentoInformeProyectoTesis(ficha);
 
 	}
+	
+	public String cancelarFicha(){
+		return "Inicio.xhtml?faces-redirect=true";
+		
+	}
 
 	public List<LineaInvestigacion> getListaLineasInvestigacion() {
 		return listaLineasInvestigacion;

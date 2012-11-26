@@ -68,12 +68,7 @@ public class InformeProyectoTesis {
 	public void setActaGenerada(boolean actaGenerada) {
 		this.actaGenerada = actaGenerada;
 	}
-	public String getNroActaEvaluacion() {
-		return nroActaEvaluacion;
-	}
-	public void setNroActaEvaluacion(String nroActaEvaluacion) {
-		this.nroActaEvaluacion = nroActaEvaluacion;
-	}
+
 	public String getFecha() {
 		return fecha;
 	}
@@ -109,6 +104,12 @@ public class InformeProyectoTesis {
 	}
 	public void setNroExpediente(String nroExpediente) {
 		this.nroExpediente = nroExpediente;
+	}
+	public String getNroActaEvaluacion() {
+		return nroActaEvaluacion;
+	}
+	public void setNroActaEvaluacion(String nroActaEvaluacion) {
+		this.nroActaEvaluacion = nroActaEvaluacion;
 	}
 	
 	

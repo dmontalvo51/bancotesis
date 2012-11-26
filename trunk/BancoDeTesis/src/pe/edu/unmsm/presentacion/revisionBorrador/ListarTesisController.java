@@ -18,10 +18,9 @@ import pe.edu.unmsm.util.TesisUtil;
 @ManagedBean(name = "listarTesis")
 public class ListarTesisController implements Serializable {
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 9054693765543258216L;
+
 	private List<Tesis> listTesis = new ArrayList<Tesis>();
 	private Tesis selectedTesis;
 	
@@ -44,12 +43,11 @@ public class ListarTesisController implements Serializable {
 		origen=origen.substring(7,origen.length()-4);
 		TesisUtil.escribir(origen);	
 		
-		if(origen.equals("ListarFichasProyectoDeTesis"))
+		if(origen.equals("ListarTesis"))
 			setListTesis(llenarTabla());
 		else if (origen.equals("ListarProyectosTesis"))
 			setListTesis(llenarTabla());
-		else if(origen.equals("ListarTesis"))
-			setListTesis(llenarTabla());
+
 	}
 	
 	private List<Tesis> llenarTabla() {

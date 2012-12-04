@@ -11,33 +11,30 @@
 
 			<p:panel header="#{msg.lblListaProyectoTesis}" style="width:90%">
 
-				<h:panelGrid columns="2"
-					columnClasses="formColumnaIzquierda,formColumnaDerecha"
-					width="100%">
+				<h:panelGrid columns="2" width="100%">
 					<h:form id="form">
-
-						<p:dataTable id="ltesiss" var="ltesis"
-							value="#{listarTesis.listTesis}" rowKey="#{ltesis.codigoExp}"
-							selection="#{listarTesis.selectedTesis}" selectionMode="single">
+						<p:dataTable id="ltesiss" var="ltesis" paginator="true"
+							value="#{listarProyectoTesisRegistrado.listaTesisRegistrados}" rowKey="#{ltesis.codigo}"
+							selection="#{listarProyectoTesisRegistrado.selectedTesis}" selectionMode="single">
 
 							<f:facet name="header">
+								<h:outputText value="Lista Tesis"/>
 							</f:facet>
-
-
+							
 							<p:column headerText="Nro de Expediente">
-								<h:outputText value="#{ltesis.codigoExp}" />
+								<h:outputText value="#{ltesis.codigo}" />
 							</p:column>
 
 							<p:column headerText="Titulo">
-								<h:outputText value="" />
+								<h:outputText value="#{ltesis.titulo}" />
 							</p:column>
 
 							<p:column headerText="Linea de Investigacion">
-								<h:outputText value="#{ltesis.linea}" />
+								<h:outputText value="#{ltesis.lineaInvestigacion}" />
 							</p:column>
 
 							<p:column headerText="Bachiller">
-								<h:outputText value="#{ltesis.bachiller}" />
+								<h:outputText value="#{ltesis.nomBachiller}" />
 							</p:column>
 
 							<p:column headerText="Estado">
@@ -45,9 +42,8 @@
 							</p:column>
 
 							<f:facet name="footer">
-
-								<p:commandButton id="btnRevisar"
-									action="#{listarTesis.oficiarJE}" ajax="false" value="Revisar"
+							<p:commandButton id="btnRevisar"
+									action="#{listarProyectoTesisRegistrado.oficiarJE}" ajax="false" value="Revisar"
 									icon="ui-icon-search" />
 							</f:facet>
 						</p:dataTable>

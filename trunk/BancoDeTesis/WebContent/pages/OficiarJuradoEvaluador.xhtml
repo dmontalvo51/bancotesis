@@ -12,39 +12,29 @@
 			<h:form id="formOficiarJE">
 				<p:panel  id="panelOficiarJE" header="#{msg.lblInformeProyectoTesis}" style="width:90%">
 
-					<h:panelGrid columns="2"
-						columnClasses="formColumnaIzquierda,formColumnaDerecha"
-						width="100%">
+					<h:panelGrid columns="2" width="100%">
 
 						<!-- aca va el elcuepo-->
-						<h:outputLabel for="NTramite" value="#{msg.lblNroExpediente}:" />
-						<h:panelGroup style="margin-right:600px">
+						
+						<h:panelGrid columns="2">
+							<h:outputLabel for="tramite" value="#{msg.lblNroExpediente}:" />
+							<h:outputText id="tramite" value="#{oficiarJuradoEvaluador.tesis.codigo}" />
+							
+							<h:outputLabel for="Titulo" value="#{msg.lblTitulo}:" />
+							<h:outputText id="titulo" value="#{oficiarJuradoEvaluador.tesis.titulo}"/>
+							
+							<h:outputLabel for="Linea de Investigacion"	value="#{msg.lblLineaInvestigacion}:" />
+							<h:outputText id="lineainvestigacion" value="#{oficiarJuradoEvaluador.tesis.lineaInvestigacion}" />
+							
+							<h:panelGrid columns="1">
+								<p:commandLink id="cml" update=":formDialog:confirmDialog"	oncomplete="confirmation.show()">
+									<h:outputText value="Ver Resumen de tesis" />
+								</p:commandLink>
+							</h:panelGrid>
+							
+						</h:panelGrid>
 
-							<h:outputText id="tramite" value="#{flash.tesis.codigoExp}"
-								label="tramite" />
-						</h:panelGroup>
-
-						<h:outputLabel for="Titulo" value="#{msg.lblTitulo}:" />
-						<h:panelGroup>
-
-							<h:outputText id="titulo" value="#{flash.ficha.titulo}"
-								label="titulo" />
-						</h:panelGroup>
-
-						<h:outputLabel for="Linea de Investigacion"
-							value="#{msg.lblLineaInvestigacion}:" />
-						<h:panelGroup>
-
-							<h:outputText id="lineainvestigacion"
-								value="#{flash.tesis.linea}" label="lineainvestigacion" />
-						</h:panelGroup>
-
-
-						<p:commandLink id="ajax" update=":formDialog:confirmDialog"
-							oncomplete="confirmation.show()" style="margin-left:90px;"
-							type="button">
-							<h:outputText value="Ver Resumen de tesis" />
-						</p:commandLink>
+						
 
 						<h:outputLabel for="Se observa" value="" />
 
@@ -58,7 +48,7 @@
 									update="panelOficiarJE"/>
 
 								<p:commandButton id="cancelarRevision"
-									action="#{listarTesis.cancelarJE}" 
+									action="#{oficiarJuradoEvaluador.cancelarJE}" 
 									value="Cancelar" icon="ui-icon-close" style="margin-top:10px" ajax="true"
 									update="panelOficiarJE" />
 							</div>

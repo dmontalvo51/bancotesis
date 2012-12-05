@@ -31,7 +31,7 @@ public class Ficha implements Serializable{
 	
 	public Ficha() {
 		super();
-	
+		// TODO Auto-generated constructor stub
 	}
 	
 	
@@ -193,5 +193,6 @@ public class Ficha implements Serializable{
 		this.codigoTesis = codigoTesis;
 	}
 
+	
 }
 	

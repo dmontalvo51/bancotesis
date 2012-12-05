@@ -24,4 +24,6 @@ public interface FichasMapper {
 
 	public List<Ficha> cargarListaFichasPorRegistrar();
 	
+	
+	
 }

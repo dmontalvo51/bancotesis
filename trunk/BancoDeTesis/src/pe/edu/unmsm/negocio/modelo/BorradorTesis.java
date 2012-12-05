@@ -22,6 +22,7 @@ public class BorradorTesis implements Serializable {
 	private String ruta;
 	private String fecha;
 	private String hora;
+	private int version;
 	
 	
 	public BorradorTesis() {
@@ -29,12 +30,11 @@ public class BorradorTesis implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-
 	public BorradorTesis(String codigoTes, String codigo, String titulo,
 			String lineaInvestigacion, int codigoLineaInvestigacion,
 			String nomBachiller, String codigoBachiller, String estado,
 			String nombreAsesor, String codigoAsesor, String ruta,
-			String fecha, String hora) {
+			String fecha, String hora, int version) {
 		super();
 		this.codigoTes = codigoTes;
 		this.codigo = codigo;
@@ -49,8 +49,16 @@ public class BorradorTesis implements Serializable {
 		this.ruta = ruta;
 		this.fecha = fecha;
 		this.hora = hora;
+		this.version = version;
 	}
 
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
 
 	public String getCodigoTes() {
 		return codigoTes;

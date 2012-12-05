@@ -51,7 +51,8 @@ public class InformeProyectoTesisController implements Serializable {
 
 	public String guardarInformeProyecto() {
 
-		
+		TesisUtil.escribir("EN EL METODO GUARDAR");
+
 		ipt.setCodigoFicha(ficha.getCodigo());
 		ipt.setCodigoDocente(((Usuario) TesisUtil.obtenerDeSesion("usuario"))
 				.getCuenta());
@@ -131,9 +132,6 @@ public class InformeProyectoTesisController implements Serializable {
 	public void setFicha(Ficha ficha) {
 		this.ficha = ficha;
 	}
-
-
-
 	public String getIpt_observaciones() {
 		return ipt_observaciones;
 	}

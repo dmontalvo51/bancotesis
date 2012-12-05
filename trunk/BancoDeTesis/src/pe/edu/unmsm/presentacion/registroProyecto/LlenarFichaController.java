@@ -117,7 +117,7 @@ public class LlenarFichaController implements Serializable {
 		ficha.setCodigoLineaInvestigacion(codigoSubLinea);
 		ficha.setCodigoBachiller(usuario.getCuenta());
 
-		// registroProyectoTesisService.insertarInformeProyectoTesis(ficha);
+		//registroProyectoTesisService.insertarInformeProyectoTesis(ficha);
 
 		registroProyectoTesisService
 				.generarDocumentoInformeProyectoTesis(ficha);

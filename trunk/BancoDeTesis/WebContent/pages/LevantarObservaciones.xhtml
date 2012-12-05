@@ -11,45 +11,43 @@
 			<!-- Empezar a programar desde aqui -->
 
 			<p:panel header="Levantar Observaciones" style="width:80%">
-				<h:form id="form">
+				<h:panelGrid columns="2"
+					columnClasses="formColumnaIzquierda,formColumnaDerecha"
+					width="100%">
+					<h:form id="form">
 
-					<!-- aca va el elcuepo-->
-					<h:panelGrid columns="2" styleClass="formularioRegistro">
+						<!-- aca va el elcuepo-->
+						<h:panelGrid columns="2"
+							columnClasses="formColumnaIzquierda,formColumnaDerecha"
+							width="90%">
 
-						<h:outputLabel for="Titulo" value="Titulo: " />
-						<p:inputText id="Titulo" value="jorge" label="Titulo" />
-						<h:outputLabel for="Bachiller" value="Bachiller: " />
-						<p:inputText id="Bachiller" value="" label="Bachiller" />
-						<h:outputLabel for="Linea de Investigacion"
-							value="Linea de Investigacion: " />
-						<p:inputText id="LineadeInvestigacion" value=""
-							label="Linea de Investigacion" />
-						<h:outputLabel for="Asesor" value="Asesor: " />
-						<p:inputText id="Asesor" value="" label="Asesor" />
+							<h:outputText id="titulo" value="Titulo:" />
+							<h:outputText id="Titulo" value="#{levantarObservaciones.borrador.titulo}" />
+							
+							<h:outputText id="li" value="Linea investigacion:" />
+							<h:outputText id="lii" value="#{levantarObservaciones.borrador.lineaInvestigacion}" />
+							
+							<h:outputText id="nomb" value="Bachiller:" />
+							<h:outputText id="nb" value="#{levantarObservaciones.borrador.nomBachiller}" />
 
-					</h:panelGrid>
-
-
-					<h:panelGrid columns="1"
-						columnClasses="formColumnaIzquierda,formColumnaDerecha"
-						width="90%">
+						</h:panelGrid>
 
 
-						<h:form enctype="multipart/form-data">
+						<h:panelGrid columns="1"
+							columnClasses="formColumnaIzquierda,formColumnaDerecha"
+							width="90%">
+							<h:form enctype="multipart/form-data">
 
-							<p:fileUpload
-								fileUploadListener="#{levantarObservaciones.handleFileUpload}"
-								mode="advanced" update="messages" auto="true" sizeLimit="1000" />
+								<p:fileUpload
+									fileUploadListener="#{levantarObservaciones.handleFileUpload}"
+									mode="advanced" update="messages" auto="true" sizeLimit="1000" />
 
-							<p:growl id="messages" showDetail="true" />
-						</h:form>
-					</h:panelGrid>
+								<p:growl id="messages" showDetail="true" />
+							</h:form>
+						</h:panelGrid>
 
-
-					<p:commandButton id="btnRevisar"
-						action="#{listarFichasTesis.informeProyectoTesis}" ajax="false"
-						value="Revisar" icon="ui-icon-search" />
-				</h:form>
+					</h:form>
+				</h:panelGrid>
 			</p:panel>
 			<!-- Terminar de programar desde aqui -->
 

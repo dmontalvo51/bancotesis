@@ -20,7 +20,6 @@ public class ListarTesisController implements Serializable {
 
 
 	private static final long serialVersionUID = 9054693765543258216L;
-
 	private List<Tesis> listTesis = new ArrayList<Tesis>();
 	private Tesis selectedTesis;
 	
@@ -43,6 +42,12 @@ public class ListarTesisController implements Serializable {
 		origen=origen.substring(7,origen.length()-4);
 		TesisUtil.escribir(origen);	
 		
+		//if(origen.equals("ListarFichasProyectoDeTesis"))
+			//setListTesis(llenarTabla());
+		//else if (origen.equals("ListarProyectosTesis"))
+			//setListTesis(llenarTabla());
+		//else if(origen.equals("ListarTesis"))
+			//setListTesis(llenarTabla());
 		if(origen.equals("ListarTesis"))
 			setListTesis(llenarTabla());
 		else if (origen.equals("ListarProyectosTesis"))
@@ -52,7 +57,7 @@ public class ListarTesisController implements Serializable {
 	
 	private List<Tesis> llenarTabla() {
 		return revisionBorradorTesisService.cargarListaTesis();
-	}	
+	}
 	
 	public String nextPage(){
 	    TesisUtil.flashScope("tesis", selectedTesis);
@@ -63,7 +68,7 @@ public class ListarTesisController implements Serializable {
 	    TesisUtil.subirASesion("tesis", selectedTesis);
 		return "GenerarActaObservacion?faces-redirect=true";
 	}
-		
+	
 	public String oficiarJE(){
 	    TesisUtil.flashScope("tesis", selectedTesis);
 		return "OficiarJuradoEvaluador?faces-redirect=true";
@@ -73,6 +78,10 @@ public class ListarTesisController implements Serializable {
 	public String cancelarJE(){
 		return "ListarProyectoTesisRegistrado?faces-redirect=true";
 	}
+	
+	//private List<Tesis> llenarTabla() {
+			//return revisionBorradorTesisService.cargarListaTesisInscritas();
+	//}
 	
 	
 	public String cargarBorrador(){

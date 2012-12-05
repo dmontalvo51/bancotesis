@@ -15,13 +15,14 @@
 
 					<h:panelGrid columns="2">
 						<!-- aca va el elcuepo-->
-						<h:outputLabel for="tramite" value="Nro Expediente:" />
+						<h:outputLabel for="codTes" value="Codigo de Tesis:" />
 
-						<h:outputText id="tramite"
+						<h:outputText id="codTes"
 							value="#{generarActaObservacion.borrador.codigoTes}"
 							label="tramite" />
 
 					</h:panelGrid>
+
 					<h:panelGrid columns="1">
 						<p:media value="#{generarActaObservacion.borrador.ruta}"
 							width="800px" height="600px">  
@@ -30,73 +31,76 @@
 						</p:media>
 					</h:panelGrid>
 
-					<p:accordionPanel dynamic="true" cache="false" style="width:800px">
-						<p:tab title="Hay observaciones">
-							<h:panelGrid columns="2" style="height:100px">
-								<f:facet name="header">
-								</f:facet>
+					<p:separator id="separador1r" />
+					<p:selectOneRadio id="obs" value="#{generarActaObservacion.estado}"
+						layout="">
+						<f:selectItem itemLabel="hay observaciones" itemValue="1" />
 
-								<h:outputLabel for="nroPagina" value="Nro Pagina :" />
+						<f:selectItem itemLabel="No hay observaciones" itemValue="0" />
+					</p:selectOneRadio>
+					<p:separator id="separador2" />
+					
+					<p:panel id="panelObs" header="#{msg.lblDetalleObs}"
+						style="width:90%">
+						<h:panelGrid columns="2" style="height:100px" id="panel1">
+							<f:facet name="header">
+							</f:facet>
 
-								<p:inputText id="nroPagina" required="true"
-									value="#{generarActaObservacion.dao.nroPagina}" />
+							<h:outputLabel for="nroPagina" value="Nro Pagina :" />
+							<p:inputText id="nroPagina" required="true"
+								value="#{generarActaObservacion.dao.nroPagina}" />
 
 
-								<h:outputLabel for="obs" value="Observaciones :" />
+							<h:outputLabel for="obsv" value="Observaciones :" />
+							<p:inputTextarea id="obsv" required="true"
+								value="#{generarActaObservacion.dao.observaciones}"
+								style="width:590px" />
 
-								<p:inputTextarea id="obs" required="true"
-									value="#{generarActaObservacion.dao.observaciones}"
-									style="width:590px" />
+							<f:facet name="footer">
+								<div align="center">
+									<p:commandButton value="Agregar" icon="ui-icon-disk"
+										style="margin:0"
+										actionListener="#{generarActaObservacion.agregarObservacion}"
+										update="panelObs" ajax="true" />
+								</div>
+							</f:facet>
+						</h:panelGrid>
 
+						<p:dataTable var="acta" dynamic="true" lazy="true"
+							value="#{generarActaObservacion.listDAO}" rendered="true">
+							<p:column headerText="Linea">
+								<h:outputText value="#{acta.linea}" />
+							</p:column>
 
-								<f:facet name="footer">
-									<div align="center">
-										<p:commandButton value="Agregar" icon="ui-icon-disk"
-											style="margin:0"
-											actionListener="#{generarActaObservacion.agregarObservacion}"
-											update=":formGenerarAO" ajax="true" />
-									</div>
-								</f:facet>
-							</h:panelGrid>
+							<p:column headerText="Pagina">
+								<h:outputText value="#{acta.nroPagina}" />
+							</p:column>
 
-							<p:dataTable var="acta" dynamic="true" lazy="true"
-								value="#{generarActaObservacion.listDAO}" rendered="true">
-								<p:column headerText="Linea">
-									<h:outputText value="#{acta.linea}" />
-								</p:column>
+							<p:column headerText="Observaciones">
+								<h:outputText value="#{acta.observaciones}" />
+							</p:column>
+						</p:dataTable>
+					</p:panel>
 
-								<p:column headerText="Pagina">
-									<h:outputText value="#{acta.nroPagina}" />
-								</p:column>
-
-								<p:column headerText="Observaciones">
-									<h:outputText value="#{acta.observaciones}" />
-								</p:column>
-							</p:dataTable>
-						</p:tab>
-
-					</p:accordionPanel>
-
+					<h:panelGrid columns="2"
+						columnClasses="formColumnaIzquierda,formColumnaDerecha"
+						width="100%">
+						<f:facet name="footer">
+							<div align="center">
+								<p:commandButton
+									action="#{generarActaObservacion.generarActaObservacion}"
+									value="#{msg.botonRegistrar}" icon="ui-icon-check"
+									style="margin-top:10px" update="formGenerarAO" ajax="true" />
+								<p:commandButton
+									action="#{generarActaObservacion.cancelarObservacion}"
+									process="@this" value="#{msg.botonCancelar}"
+									icon="ui-icon-cancel" style="margin-top:10px" update="growl" />
+							</div>
+						</f:facet>
+					</h:panelGrid>
 				</p:panel>
 
-
-
-				<h:panelGrid columns="2"
-					columnClasses="formColumnaIzquierda,formColumnaDerecha"
-					width="100%">
-					<f:facet name="footer">
-						<div align="center">
-							<p:commandButton action="#{generarActaObservacion.generarActa}"
-								value="#{msg.botonRegistrar}" icon="ui-icon-check"
-								style="margin-top:10px" update="" />
-							<p:commandButton value="#{msg.btnLimpiar}" ajax="true"
-								icon="ui-icon-cancel">
-							</p:commandButton>
-						</div>
-					</f:facet>
-				</h:panelGrid>
-
-
+				<p:growl id="growl" showDetail="true" sticky="true" life="3000" />
 
 			</h:form>
 

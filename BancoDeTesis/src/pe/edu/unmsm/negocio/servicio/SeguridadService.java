@@ -42,8 +42,9 @@ public class SeguridadService  implements Serializable{
 			
 			usu.setOpcionesMenu(opcionMenuMapper.cargarOpcionesMenu(usu.getCuenta()));
 			
-			/*
-			List<OpcionMenu> opcionesMenu = new ArrayList<OpcionMenu>();
+			
+			/*List<OpcionMenu> opcionesMenu = new ArrayList<OpcionMenu>();
+			
 			opcionesMenu.add(new OpcionMenu("/pages/DatosBachiller.jsf",
 					"Mis datos", ""));
 			opcionesMenu.add(new OpcionMenu("/pages/InformeProyectoTesis.jsf",
@@ -71,7 +72,7 @@ public class SeguridadService  implements Serializable{
 			opcionesMenu.add(new OpcionMenu("/pages/ListarBorradorTesis.jsf",
 					"Revisar Borrador de Tesis", ""));
 			opcionesMenu.add(new OpcionMenu("/pages/LevantarObservaciones.jsf",
-					"Levantar Observaciones", ""));
+				"Levantar Observaciones", ""));
 						
 			usu.setOpcionesMenu(opcionesMenu);
 			

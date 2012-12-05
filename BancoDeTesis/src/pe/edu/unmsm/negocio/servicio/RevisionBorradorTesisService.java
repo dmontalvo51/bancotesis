@@ -13,56 +13,82 @@ import org.springframework.stereotype.Service;
 
 import pe.edu.unmsm.integracion.dao.TesisMapper;
 import pe.edu.unmsm.integracion.dao.BorradorTesisMapper;
+import pe.edu.unmsm.integracion.dao.LevantarObservacionesMapper;
+import pe.edu.unmsm.negocio.modelo.ActaObservacion;
+import pe.edu.unmsm.negocio.modelo.DetalleActaObservacion;
 import pe.edu.unmsm.negocio.modelo.Ficha;
+import pe.edu.unmsm.negocio.modelo.Respuesta;
 import pe.edu.unmsm.negocio.modelo.Tesis;
 import pe.edu.unmsm.negocio.modelo.BorradorTesis;
+import pe.edu.unmsm.util.TesisUtil;
 
-@Service(value="revisionBorradorTesisService")
+@Service(value = "revisionBorradorTesisService")
 public class RevisionBorradorTesisService {
-	
 	private static final long serialVersionUID = 12L;
-	
 	@Autowired
 	private TesisMapper tesisMapper;
-	
 	@Autowired
 	private BorradorTesisMapper borradorMapper;
+	@Autowired
+	private LevantarObservacionesMapper loMapper;
 
 	public List<Tesis> cargarListaTesis() {
 
 		List<Tesis> lista = new ArrayList<Tesis>();
-		
-		//lista=TesisMapper.cargarListaTesisInscritas();
-		
-		//lista.add(new Tesis("1234","Sin Revisar","Luis Alarcón","Bustamante","Jorge","Caceres","11/11/2012","resumen1","linea1"));
-		//lista.add(new Tesis("1235","Sin Revisar","Luis Alarcón","Piedra","Diego","Montalvo","11/11/2012","resumen2","linea2"));
-		//lista.add(new Tesis("1236","Revisado","Luis Alarcón","Mauricio","Karina","Aranguren","11/11/2012","resumen3","linea3"));
-		//lista.add(new Tesis("1237","Sin Revisar","Luis Alarcón","Luza","Johnny","Apolinario","11/11/2012","resumen4","linea4"));
-		
-		return tesisMapper.cargarListaTesis();
+
+		// lista=TesisMapper.cargarListaTesisInscritas();
+
+		// lista.add(new
+		// Tesis("1234","Sin Revisar","Luis Alarcón","Bustamante","Jorge","Caceres","11/11/2012","resumen1","linea1"));
+		// lista.add(new
+		// Tesis("1235","Sin Revisar","Luis Alarcón","Piedra","Diego","Montalvo","11/11/2012","resumen2","linea2"));
+		// lista.add(new
+		// Tesis("1236","Revisado","Luis Alarcón","Mauricio","Karina","Aranguren","11/11/2012","resumen3","linea3"));
+		// lista.add(new
+		// Tesis("1237","Sin Revisar","Luis Alarcón","Luza","Johnny","Apolinario","11/11/2012","resumen4","linea4"));
+		return lista;
+		// return tesisMapper.cargarListaTesis();
 	}
-	
+
 	public List<BorradorTesis> cargarListaBorradorTesis() {
-
-		//List<Ficha> lista = new ArrayList<Ficha>();
-
-		// lista=fichasMapper.cargarListaFichasInscritas();
-
-		/*
-		 * lista.add(new Ficha("026-FISI-2012", "F001", "titulo 1",
-		 * "resumen ficha 1", "linea 1", 1, "Diego", "revisado",
-		 * "Piedra",null,null,null)); lista.add(new Ficha("027-FISI-2012",
-		 * "F002", "titulo 2", "resumen ficha 2", "linea 2", 1, "Diego",
-		 * "revisado", "Piedra",null,null,null)); lista.add(new
-		 * Ficha("028-FISI-2012", "F003", "titulo 3", "resumen ficha 3",
-		 * "linea 3", 1, "Karina", "revisado", "Mauricio",null,null,null));
-		 * lista.add(new Ficha("029-FISI-2012", "F004", "titulo 4",
-		 * "resumen ficha 4", "linea 4", 1, "Johnny", "rechazada",
-		 * "Luza",null,null,null));
-		 */
 		return borradorMapper.cargarListaBorradorTesis();
 
 	}
-	
-	
+
+	public BorradorTesis cargarBorrador(String cuenta) {
+
+		return loMapper.cargarBorrador(cuenta);
+	}
+
+	public void insertarObservacion(DetalleActaObservacion dao) {
+
+		borradorMapper.ingresarDetalleObservacion(dao);
+
+	}
+
+	public void generarNroAO(ActaObservacion ao) {
+
+		try{
+		borradorMapper.generarNroAO(ao);
+		}catch (Exception e) {
+			TesisUtil.escribir("ERROR AL GENERAR NRO DE AO!");
+			e.printStackTrace();
+		}
+	}
+
+	public void insertarActaObservacion(ActaObservacion ao) {
+		// Respuesta r=new Respuesta();
+
+		try {
+			borradorMapper.insertarActaObservacion(ao);
+
+			TesisUtil.escribir("Se llamo al AO Mapper");
+			// TesisUtil.generarReporte("fichaTesis",null);
+
+		} catch (Exception e) {
+			TesisUtil.escribir("ERROR AL INSERTAR ACTA DE OBSERVACION!");
+			e.printStackTrace();
+		}
+
+	}
 }

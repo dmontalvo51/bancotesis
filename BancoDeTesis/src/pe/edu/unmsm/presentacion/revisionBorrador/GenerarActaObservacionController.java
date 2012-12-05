@@ -5,87 +5,192 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
+import javax.faces.component.UIViewRoot;
+import javax.faces.component.html.HtmlInputText;
+import javax.faces.context.FacesContext;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
-import pe.edu.unmsm.negocio.modelo.Ficha;
+import pe.edu.unmsm.negocio.modelo.ActaObservacion;
 import pe.edu.unmsm.negocio.modelo.BorradorTesis;
-import pe.edu.unmsm.negocio.modelo.Tesis;
-import pe.edu.unmsm.negocio.modelo.InformeProyectoTesis;
-import pe.edu.unmsm.negocio.modelo.ProyectoTesis;
-import pe.edu.unmsm.negocio.modelo.Usuario;
 import pe.edu.unmsm.negocio.modelo.DetalleActaObservacion;
+import pe.edu.unmsm.negocio.modelo.Respuesta;
+import pe.edu.unmsm.negocio.modelo.Usuario;
 import pe.edu.unmsm.negocio.servicio.RegistroProyectoTesisService;
+import pe.edu.unmsm.negocio.servicio.RevisionBorradorTesisService;
 import pe.edu.unmsm.util.TesisUtil;
 
 @ViewScoped
 @ManagedBean(name = "generarActaObservacion")
 public class GenerarActaObservacionController implements Serializable {
-	
+
 	private static final long serialVersionUID = 9054693765543258216L;
-	private String ipt_observaciones;
-	private String ipt_sugerencias;
-	private int ipt_opinion;
 	private int observacion;
 	private BorradorTesis borrador;
-	private String bor;
-	
+
 	private DetalleActaObservacion dao;
 	private List<DetalleActaObservacion> listDAO = new ArrayList<DetalleActaObservacion>();
-	private int linea=0;
+	private ActaObservacion ao;
+	private int linea = 0;
 	private String observaciones;
 	private int nroPagina;
-	
+	private String estado;
+
 	public GenerarActaObservacionController() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	@ManagedProperty("#{registroProyectoTesisService}")
-	private RegistroProyectoTesisService registroProyectoTesisService;
-	
+	@ManagedProperty("#{revisionBorradorTesisService}")
+	private RevisionBorradorTesisService revisionBorradorTesisService;
+
 	@PostConstruct
-	public void cargarDatos(){
-		borrador=(BorradorTesis)TesisUtil.obtenerDeSesion("borrador");
-		dao=new DetalleActaObservacion();
-		
+	public void cargarDatos() {
+		borrador = (BorradorTesis) TesisUtil.obtenerDeSesion("borrador");
+		dao = new DetalleActaObservacion();
+		ao=new ActaObservacion();
+		ao.setCodigoBorrador(borrador.getCodigo());
+		//ao.setVersion(borrador.getVersion());
+		try{
+		revisionBorradorTesisService.generarNroAO(ao);
+		}catch(Exception e){
+			TesisUtil.escribir("ERROR no se genero ao!");
+			e.printStackTrace();
+			
+		}
+		//estado="1";
+		// dao.setLinea(1);
+		// dao.
+		// InputText nropag=(InputText)nroPagina;
 	}
-	
-	public String atrasPage(){
-		//TesisUtil.flashScope("ficha", selectedFicha);
+
+	public String atrasPage() {
+		// TesisUtil.flashScope("ficha", selectedFicha);
 		return "ListarFichasProyectoDeTesis";
 	}
 
-	
-	public String cancelarInformePT(){
+	public String cancelarInformePT() {
 		return "ListarFichasProyectoDeTesis?faces-redirect=true";
 	}
 
-	public void generarActa(){
-		
+	public void insertarObservacion() {
+
+		for (int i = 0; i < listDAO.size(); i++) {
+			revisionBorradorTesisService.insertarObservacion(listDAO.get(i));
+		}
+
 	}
-	
-	public void agregarObservacion(){
-		linea=linea+1;
+
+	public void limpiar() {
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+		UIViewRoot uiViewRoot = facesContext.getViewRoot();
+		HtmlInputText txtpagina = null;
+		txtpagina = (HtmlInputText) uiViewRoot
+				.findComponent("formAO:nroPagina");
+		txtpagina.setValue(null);
+
+		/*
+		 * inputText = (HtmlInputText)
+		 * uiViewRoot.findComponent("formUsuario:inputAccount");
+		 * inputText.setValue(null); inputText.setSubmittedValue(null);
+		 * inputText.setLocalValueSet(false); inputText = (HtmlInputText)
+		 * uiViewRoot.findComponent("formUsuario:inputNewPassword");
+		 * inputText.setValue(null); inputText.setSubmittedValue(null);
+		 * inputText.setLocalValueSet(false); inputText = (HtmlInputText)
+		 * uiViewRoot.findComponent("formUsuario:inputConfirmPassword");
+		 * inputText.setValue(null); inputText.setSubmittedValue(null);
+		 * inputText.setLocalValueSet(false); inputText = (HtmlInputText)
+		 * uiViewRoot.findComponent("formUsuario:inputConfirmPassword");
+		 * inputText.setValue(null); inputText.setSubmittedValue(null);
+		 * inputText.setLocalValueSet(false);
+		 */
+		// UISelectOne inputSelectOne = null;
+		// inputSelectOne = (UISelectOne)
+		// uiViewRoot.findComponent("formUsuario:inputSelectEmpresa");
+
+	}
+
+	public void agregarObservacion() {
+		linea = linea + 1;
 		dao.setLinea(getLinea());
+		dao.setAo_codigo(ao.getCodigo());
+		// dao.setObservaciones(getObservaciones());
+		// dao.setNroPagina(getNroPagina());
 		listDAO.add(dao);
-		dao=new DetalleActaObservacion();
-	}
-	
-	public RegistroProyectoTesisService getRegistroProyectoTesisService() {
-		return registroProyectoTesisService;
+		dao = new DetalleActaObservacion();
+		// limpiar();
 	}
 
-	public void setRegistroProyectoTesisService(
-			RegistroProyectoTesisService registroProyectoTesisService) {
-		this.registroProyectoTesisService = registroProyectoTesisService;
+	public String generarActaObservacion() {
+		TesisUtil.escribir("EN EL METODO GUARDAR");
+
+		try{
+		ao.setCodigoBorrador(borrador.getCodigo());
+		ao.setCodigoDocente(((Usuario) TesisUtil.obtenerDeSesion("usuario"))
+				.getCuenta());
+		ao.setEstado(Integer.valueOf(estado));
+		//ao.setVersion(borrador.getVersion());
+
+		revisionBorradorTesisService.insertarActaObservacion(ao);
+		insertarObservacion();
+		}catch(Exception e){
+			TesisUtil.escribir("ERROR no se genero NRO DE ACTA OBSERVACION!");
+			e.printStackTrace();
+		}
+		FacesContext.getCurrentInstance().getExternalContext().getFlash()
+				.setKeepMessages(true);
+
+		if (ao != null) {
+			if (ao.isActaCreada()) {
+				if (ao.isActaAprobada()) {
+					FacesContext.getCurrentInstance().addMessage(
+							null,
+							new FacesMessage("Acta de observacion aprobada",
+									"Se creo el acta de observacion nro." + " "
+											+ ao.getCodigo()));
+
+					return "ListarBorradorTesis.xhtml?faces-redirect=true";
+				} else {
+					FacesContext.getCurrentInstance().addMessage(
+							null,
+							new FacesMessage("Acta de observacion creado con observaciones",
+									"Se creo el acta de observacion nro."
+											+ ao.getCodigo()));
+					return "ListarBorradorTesis.xhtml?faces-redirect=true";
+				}
+			} else {
+				FacesContext.getCurrentInstance().addMessage(
+						null,
+						new FacesMessage("msgActaObservacionNoCreado",
+								"msgActaObservacionNoCreadoDetalleMax2"));
+
+				return "ListarBorradorTesis.xhtml?faces-redirect=true";
+			}
+		} else {
+			FacesContext.getCurrentInstance().addMessage(
+					null,
+					new FacesMessage("msgActaObservacionNoCreado",
+							"msgActaObservacionNoCreadoDetalleError"));
+
+			return "ListarBorradorTesis.xhtml?faces-redirect=true";
+		}
 	}
 
-	
+	public String cancelarObservacion() {
+		return "Inicio.xhtml?faces-redirect=true";
+
+	}
+
+	public RevisionBorradorTesisService getRevisionBorradorTesisService() {
+		return revisionBorradorTesisService;
+	}
+
+	public void setRevisionBorradorTesisService(
+			RevisionBorradorTesisService revisionBorradorTesisService) {
+		this.revisionBorradorTesisService = revisionBorradorTesisService;
+	}
 
 	public BorradorTesis getBorrador() {
 		return borrador;
@@ -93,30 +198,6 @@ public class GenerarActaObservacionController implements Serializable {
 
 	public void setBorrador(BorradorTesis borrador) {
 		this.borrador = borrador;
-	}
-	
-	public int getIpt_opinion() {
-		return ipt_opinion;
-	}
-
-	public void setIpt_opinion(int ipt_opinion) {
-		this.ipt_opinion = ipt_opinion;
-	}
-
-	public String getIpt_observaciones() {
-		return ipt_observaciones;
-	}
-
-	public void setIpt_observaciones(String ipt_observaciones) {
-		this.ipt_observaciones = ipt_observaciones;
-	}
-
-	public String getIpt_sugerencias() {
-		return ipt_sugerencias;
-	}
-
-	public void setIpt_sugerencias(String ipt_sugerencias) {
-		this.ipt_sugerencias = ipt_sugerencias;
 	}
 
 	public DetalleActaObservacion getDao() {
@@ -143,12 +224,21 @@ public class GenerarActaObservacionController implements Serializable {
 		this.linea = linea;
 	}
 
-	public String getBor() {
-		return bor;
+
+	public ActaObservacion getAo() {
+		return ao;
 	}
 
-	public void setBor(String bor) {
-		this.bor = bor;
+	public void setAo(ActaObservacion ao) {
+		this.ao = ao;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 
 	public String getObservaciones() {
@@ -175,10 +265,4 @@ public class GenerarActaObservacionController implements Serializable {
 		this.observacion = observacion;
 	}
 
-
-	
-
-	
-
-	
 }

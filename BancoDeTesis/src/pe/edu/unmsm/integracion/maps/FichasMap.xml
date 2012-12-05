@@ -13,14 +13,14 @@
 		<result property="estado" column="ESTF_ESTADO" />
 		<result property="resumen" column="FT_RESUMEN" />
 		<result property="codigoRDinscripcion" column="RDR_CODIGO" />
+	
 	</resultMap>
 
 	<parameterMap type="pe.edu.unmsm.negocio.modelo.Ficha" id="FichaTesis" />
 
 
 	<select id="cargarListaFichasInscritas" resultMap="Ficha">
-		select
-		f.exp_codigo,f.ft_codigo,f.ft_titulo,l.linea_descripcion,concat(u.usu_apellidos,',
+		select f.exp_codigo,f.ft_codigo,f.ft_titulo,l.linea_descripcion,concat(u.usu_apellidos,',
 		',u.usu_nombres) as nombre_completo,e.estf_estado,f.ft_resumen
 		from
 		tesis.ficha_tesis f,tesis.linea_investigacion l,tesis.usuario
@@ -31,10 +31,11 @@
 		ORDER BY
 		F.EXP_CODIGO
 	</select>
-
-	<select id="cargarListaFichasAprobadas" resultMap="Ficha">
+	
+ <select id="cargarListaFichasAprobadas" resultMap="Ficha">
 		select
-		f.exp_codigo,f.ft_codigo,f.ft_titulo,l.linea_descripcion,concat(u.usu_apellidos,' ',u.usu_nombres) as nombre_completo,e.estf_estado,f.ft_resumen
+		f.exp_codigo,f.ft_codigo,f.ft_titulo,l.linea_descripcion,concat(u.usu_apellidos,',
+		',u.usu_nombres) as nombre_completo,e.estf_estado,f.ft_resumen
 		from
 		tesis.ficha_tesis f,tesis.linea_investigacion l,tesis.usuario
 		u,tesis.estado_ficha e
@@ -56,8 +57,5 @@
 		AND f.estf_id=6
 		ORDER BY F.EXP_CODIGO
 	</select>
-
-
-	
 
 </mapper>

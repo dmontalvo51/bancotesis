@@ -66,9 +66,6 @@ public class RegistroProyectoTesisService implements Serializable {
 		return lineaInvestigacionMapper.cargarSubLineasInvestigacion(idLinea);
 
 	}
-	
-		
-	
 
 	public List<Docente> cargarListaDocentesPorLinea(int id) {
 		return docenteMapper.cargarListaDocentesPorLinea(id);
@@ -84,7 +81,6 @@ public class RegistroProyectoTesisService implements Serializable {
 	public  List<Ficha> cargarListaFichasAprobadas() {
 
 		return fichasMapper.cargarListaFichasAprobadas();
-
 	}
 	
 	public List<Ficha> cargarListaFichasPorRegistrar() {
@@ -109,6 +105,8 @@ public class RegistroProyectoTesisService implements Serializable {
 			fichasMapper.insertarFichaProyectoTesis(ficha);
 			r.setEstado(Respuesta.OK);
 
+			//TesisUtil.generarReporte("fichaTesis", null);
+
 		} catch (Exception e) {
 			TesisUtil.escribir("ERROR AL INSERTAR!");
 			e.printStackTrace();
@@ -126,19 +124,20 @@ public class RegistroProyectoTesisService implements Serializable {
 			informeProyectoTesisMapper.ingresarInformeProyectoTesis(ipt);
 			
 			TesisUtil.escribir("Se llamo al IPT Mapper");
-			//TesisUtil.generarReporte("fichaTesis",null);
+			TesisUtil.generarReporte("fichaTesis",null);
 			
 		} catch (Exception e) {
 			TesisUtil.escribir("ERROR AL INSERTAR INFORME DE PROYECTO DE TESIS!");
 			e.printStackTrace();
 		}
 	}
+
 	
 	public Respuesta inscribirProyectoDeTesis(Ficha ficha){
 		Respuesta r=new Respuesta();
 		
 		try {
-			rdInscripcionMapper.inscribirProyectoDeTesis(ficha);
+			//rdInscripcionMapper.inscribirProyectoDeTesis(ficha);
 			r.setEstado(Respuesta.OK);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -150,13 +149,8 @@ public class RegistroProyectoTesisService implements Serializable {
 		
 	}
 	
-	public void generarDocumentoFichaProyectoTesis(Ficha ficha) {
 
-	}
 
-	public void generarDocumentoInformeProyectoTesis(Ficha ficha) {
-
-	}
 
 	public Respuesta generarRDInscripcion(Ficha ficha) {
 		Respuesta r=new Respuesta();
@@ -233,7 +227,12 @@ public class RegistroProyectoTesisService implements Serializable {
 		this.rdInscripcionMapper = rdInscripcionMapper;
 	}
 
-	
+	public void generarDocumentoFichaProyectoTesis(Ficha ficha) {
 
+	}
+
+	public void generarDocumentoInformeProyectoTesis(Ficha ficha) {
+
+	}
 
 }

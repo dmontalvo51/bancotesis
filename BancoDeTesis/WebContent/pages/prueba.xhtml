@@ -1,0 +1,99 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="/pages/common/plantillaPrincipal.xhtml">
+	<ui:define name="title">#{msg.tituloSistema}</ui:define>
+	<ui:define name="cuerpo">
+
+		<div class="cuerpo" align="center">
+			<!-- Empezar a programar desde aqui -->
+			<h:form id="formAO">
+
+				<script type="text/javascript">
+					function limpiar() {
+						document.getElementById("formGenerarAO").reset();
+					}
+				</script>
+				<p:panel id="panel11" header="#{msg.lblGenerarActa}"
+					style="width:90%">
+
+
+
+					<h:panelGrid columns="2" style="height:100px" id="panel1">
+						<f:facet name="header">
+						</f:facet>
+
+						<h:outputLabel for="nroPagina" value="Nro Pagina :" />
+
+						<p:inputText id="nroPagina" required="true"
+							value="#{generarActaObservacion.dao.nroPagina}" />
+
+
+						<h:outputLabel for="obs" value="Observaciones :" />
+
+						<p:inputTextarea id="obs" required="true"
+							value="#{generarActaObservacion.dao.observaciones}"
+							style="width:590px" />
+
+
+						<f:facet name="footer">
+							<div align="center">
+								<p:commandButton value="Agregar" icon="ui-icon-disk"
+									style="margin:0" ajax=""
+									actionListener="#{generarActaObservacion.agregarObservacion}"
+									update="display" process="@this">
+									
+								</p:commandButton>
+							</div>
+						</f:facet>
+					</h:panelGrid>
+
+					<h:form id="display" style="height:100px" prependId="false">
+						<p:dataTable var="acta" value="#{generarActaObservacion.listDAO}"
+							rendered="true">
+							<p:column headerText="Linea">
+								<h:outputText value="#{acta.linea}" />
+							</p:column>
+
+							<p:column headerText="Pagina">
+								<h:outputText value="#{acta.nroPagina}" />
+							</p:column>
+
+							<p:column headerText="Observaciones">
+								<h:outputText value="#{acta.observaciones}" />
+							</p:column>
+						</p:dataTable>
+					</h:form>
+
+
+				</p:panel>
+
+
+
+
+				<h:panelGrid columns="2"
+					columnClasses="formColumnaIzquierda,formColumnaDerecha"
+					width="100%">
+					<f:facet name="footer">
+						<div align="center">
+							<p:commandButton action="#{generarActaObservacion.generarActa}"
+								value="#{msg.botonRegistrar}" icon="ui-icon-check"
+								style="margin-top:10px" update="" />
+							<p:commandButton value="#{msg.btnLimpiar}" ajax="true"
+								icon="ui-icon-cancel">
+							</p:commandButton>
+						</div>
+					</f:facet>
+				</h:panelGrid>
+
+
+
+			</h:form>
+
+			<!-- Terminar de programar desde aqui -->
+		</div>
+
+	</ui:define>
+</ui:composition>

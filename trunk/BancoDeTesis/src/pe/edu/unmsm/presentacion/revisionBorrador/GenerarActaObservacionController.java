@@ -50,17 +50,17 @@ public class GenerarActaObservacionController implements Serializable {
 	public void cargarDatos() {
 		borrador = (BorradorTesis) TesisUtil.obtenerDeSesion("borrador");
 		dao = new DetalleActaObservacion();
-		ao=new ActaObservacion();
+		ao = new ActaObservacion();
 		ao.setCodigoBorrador(borrador.getCodigo());
-		//ao.setVersion(borrador.getVersion());
-		try{
-		revisionBorradorTesisService.generarNroAO(ao);
-		}catch(Exception e){
+		// ao.setVersion(borrador.getVersion());
+		try {
+			revisionBorradorTesisService.generarNroAO(ao);
+		} catch (Exception e) {
 			TesisUtil.escribir("ERROR no se genero ao!");
 			e.printStackTrace();
-			
+
 		}
-		//estado="1";
+		// estado="1";
 		// dao.setLinea(1);
 		// dao.
 		// InputText nropag=(InputText)nroPagina;
@@ -126,56 +126,49 @@ public class GenerarActaObservacionController implements Serializable {
 	public String generarActaObservacion() {
 		TesisUtil.escribir("EN EL METODO GUARDAR");
 
-		try{
-		ao.setCodigoBorrador(borrador.getCodigo());
-		ao.setCodigoDocente(((Usuario) TesisUtil.obtenerDeSesion("usuario"))
-				.getCuenta());
-		ao.setEstado(Integer.valueOf(estado));
-		//ao.setVersion(borrador.getVersion());
+		try {
+			ao.setCodigoBorrador(borrador.getCodigo());
+			ao.setCodigoDocente(((Usuario) TesisUtil.obtenerDeSesion("usuario"))
+					.getCuenta());
+			if (estado == "") {
+				FacesContext.getCurrentInstance().addMessage(
+						null,
+						new FacesMessage("No se creo Acta de Observacion",
+								"Elija si hay o no Observaciones"));
+				return "";
+			} else {
+				ao.setEstado(Integer.valueOf(estado));
+				revisionBorradorTesisService.insertarActaObservacion(ao);
+				insertarObservacion();
+			}
 
-		revisionBorradorTesisService.insertarActaObservacion(ao);
-		insertarObservacion();
-		}catch(Exception e){
+		} catch (Exception e) {
 			TesisUtil.escribir("ERROR no se genero NRO DE ACTA OBSERVACION!");
 			e.printStackTrace();
 		}
-		FacesContext.getCurrentInstance().getExternalContext().getFlash()
-				.setKeepMessages(true);
+		
+		FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 
 		if (ao != null) {
 			if (ao.isActaCreada()) {
-				if (ao.isActaAprobada()) {
-					FacesContext.getCurrentInstance().addMessage(
-							null,
-							new FacesMessage("Acta de observacion aprobada",
-									"Se creo el acta de observacion nro." + " "
-											+ ao.getCodigo()));
-
-					return "ListarBorradorTesis.xhtml?faces-redirect=true";
-				} else {
-					FacesContext.getCurrentInstance().addMessage(
-							null,
-							new FacesMessage("Acta de observacion creado con observaciones",
-									"Se creo el acta de observacion nro."
-											+ ao.getCodigo()));
-					return "ListarBorradorTesis.xhtml?faces-redirect=true";
-				}
-			} else {
+				TesisUtil.escribir("Acta creada");
 				FacesContext.getCurrentInstance().addMessage(
-						null,
-						new FacesMessage("msgActaObservacionNoCreado",
-								"msgActaObservacionNoCreadoDetalleMax2"));
+						"Acta Creada",new FacesMessage("Se creo el acta de observacion nro."+ ao.getCodigo()));
 
-				return "ListarBorradorTesis.xhtml?faces-redirect=true";
+			} else {
+				FacesContext.getCurrentInstance().addMessage(null,
+						new FacesMessage("Acta no creada", "Acta de Observacion no se creo"));
+
 			}
 		} else {
 			FacesContext.getCurrentInstance().addMessage(
 					null,
-					new FacesMessage("msgActaObservacionNoCreado",
-							"msgActaObservacionNoCreadoDetalleError"));
+					new FacesMessage("No se creo Acta de Observacion",
+							"No se creo el Acta de observacion. Por favor, contacte con el administrador"));
 
-			return "ListarBorradorTesis.xhtml?faces-redirect=true";
 		}
+
+		return "ListarBorradorTesis.xhtml?faces-redirect=true";
 	}
 
 	public String cancelarObservacion() {
@@ -223,7 +216,6 @@ public class GenerarActaObservacionController implements Serializable {
 	public void setLinea(int linea) {
 		this.linea = linea;
 	}
-
 
 	public ActaObservacion getAo() {
 		return ao;

@@ -86,7 +86,7 @@ public class RevisionBorradorTesisService {
 			// TesisUtil.generarReporte("fichaTesis",null);
 
 		} catch (Exception e) {
-			TesisUtil.escribir("ERROR AL INSERTAR ACTA DE OBSERVACION!");
+			TesisUtil.escribir("ERROR AL INSERTAR ACTA DE OBSERVACIONN!");
 			e.printStackTrace();
 		}
 

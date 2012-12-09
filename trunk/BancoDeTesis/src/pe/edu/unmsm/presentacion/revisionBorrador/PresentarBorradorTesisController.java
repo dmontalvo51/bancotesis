@@ -43,7 +43,7 @@ public class PresentarBorradorTesisController implements Serializable {
 		tesis = (Tesis) TesisUtil.obtenerDeSesion("tesis");
 		Usuario usuario = (Usuario) TesisUtil.obtenerDeSesion("usuario");
 		try{
-		tesis.setNombreAsesor(cargarAsesor(usuario.getCuenta()));
+		tesis.setNombreAsesor(usuario.getNombres()+" "+usuario.getApellidos());
 		}catch(Exception e){
 			System.out.println("Error no encontro al asesor");
 		}

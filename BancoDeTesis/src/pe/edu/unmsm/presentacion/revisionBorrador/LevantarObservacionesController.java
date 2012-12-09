@@ -1,26 +1,19 @@
 package pe.edu.unmsm.presentacion.revisionBorrador;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import org.primefaces.event.FileUploadEvent;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import pe.edu.unmsm.negocio.modelo.BorradorTesis;
-
 import pe.edu.unmsm.negocio.modelo.Ficha;
-import pe.edu.unmsm.negocio.modelo.ProyectoTesis;
 import pe.edu.unmsm.negocio.modelo.Usuario;
-import pe.edu.unmsm.negocio.modelo.DetalleActaObservacion;
 import pe.edu.unmsm.negocio.servicio.RevisionBorradorTesisService;
 import pe.edu.unmsm.util.TesisUtil;
 
@@ -31,6 +24,7 @@ public class LevantarObservacionesController implements Serializable {
 	private static final long serialVersionUID = 9054693765543258216L;
 
 	private BorradorTesis borrador;
+	private Ficha db;
 
 	// private List<BorradorTesis> listBT = new ArrayList<BorradorTesis>();
 
@@ -44,25 +38,40 @@ public class LevantarObservacionesController implements Serializable {
 
 	@PostConstruct
 	public void cargarDatos() {
-		
+
 		String origen = FacesContext.getCurrentInstance().getExternalContext()
 				.getRequestServletPath();
 		origen = origen.substring(7, origen.length() - 4);
 		TesisUtil.escribir(origen);
-		
-		if(origen.equals("LevantarObservaciones"))
-			//System.out.println("entro");
-			setBorrador(llenarTabla());
+
+		Usuario usuario = (Usuario) TesisUtil.obtenerDeSesion("usuario");
+		borrador = new BorradorTesis();
+		//Usuario usuario = (Usuario) TesisUtil.obtenerDeSesion("usuario");
+		//borrador.setCodigoBachiller("08200075");
+
+		if (origen.equals("ListarProyectosPorAprobar"))
+			// System.out.println("entro");
+			setDb(llenarTabla());
 		else if (origen.equals("ListarProyectosTesis"))
-			setBorrador(llenarTabla());
-		else if(origen.equals("ListarProyectosPorAprobar"))
-			setBorrador(llenarTabla());
-		
+			setDb(llenarTabla());
+		else if (origen.equals("LevantarObservaciones"))
+			try {
+				setDb(revisionborradorTesisService
+						.cargarBorrador(usuario.getCuenta()));
+			} catch (Exception e) {
+				System.out.println("No inserta elemento");
+			}
+
 	}
 
-	private BorradorTesis llenarTabla() {
-		//Usuario usuario = (Usuario) TesisUtil.obtenerDeSesion("usuario");
-		return revisionborradorTesisService.cargarBorrador("08200172");
+	public Ficha llenarTabla() {
+		Usuario usuario = (Usuario) TesisUtil.obtenerDeSesion("usuario");
+		//borrador.setCodigoBachiller("08200075");
+		// borrador.setTitulo("SE");
+		// borrador.setLineaInvestigacion("lineaInvestigacion1");
+		// borrador.setNomBachiller("Apolinario Ballico Johnny");
+		return revisionborradorTesisService.cargarBorrador(usuario.getCuenta());
+		// return borrador;
 	}
 
 	public String atrasPage() {
@@ -92,5 +101,15 @@ public class LevantarObservacionesController implements Serializable {
 			RevisionBorradorTesisService revisionborradorTesisService) {
 		this.revisionborradorTesisService = revisionborradorTesisService;
 	}
+
+	public Ficha getDb() {
+		return db;
+	}
+
+	public void setDb(Ficha db) {
+		this.db = db;
+	}
+	
+	
 
 }

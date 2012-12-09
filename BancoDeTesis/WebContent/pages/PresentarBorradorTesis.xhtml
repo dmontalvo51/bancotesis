@@ -1,0 +1,68 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="/pages/common/plantillaPrincipal.xhtml">
+	<ui:define name="title">#{msg.tituloSistema} .::. Presentar Borrador de Tesis</ui:define>
+	<ui:define name="cuerpo">
+		<div class="cuerpo" align="center">
+
+			<h:form id="form">
+
+				<p:panel header="#{msg.lblPresentarBorradorTesis}" style="width:90%">
+					<!-- Empezar a programar desde aqui -->
+					<h:panelGrid columns="2"
+						columnClasses="formColumnaIzquierda,formColumnaDerecha"
+						width="100%">
+
+						<h:outputLabel value="Titulo de tesis: " />
+						<h:outputText id="titulo"
+							value="#{presentarBorradorTesis.tesis.titulo}" label="titulo" />
+
+						<h:outputLabel value="Bachiller: " />
+						<h:outputText id="nombre"
+							value="#{presentarBorradorTesis.tesis.nomBachiller}"
+							label="nombre" />
+
+						<h:outputLabel value="Linea de Investigacion: " />
+						<h:outputText id="linea"
+							value="#{presentarBorradorTesis.tesis.lineaInvestigacion}"
+							label="linea" />
+
+						<h:outputLabel value="Asesor: " />
+						<h:outputText id="nomAsesor"
+							value="#{presentarBorradorTesis.tesis.nombreAsesor}"
+							label="linea" />
+
+						<f:facet name="footer">
+
+							<p:messages showDetail="true" />
+							<p:fileUpload value="#{fileUploadController.file}"
+								mode="advanced" auto="true"  />
+							
+
+						</f:facet>
+
+						<f:facet name="footer">
+							<div align="center">
+								<p:commandButton value="#{msg.botonEnviar}" ajax="false"
+									style="margin-top:10px" icon="ui-icon-check"
+									actionListener="#{fileUploadController.upload}" update="" />
+
+								<p:commandButton
+									action="#{presentarBorradorTesis.cancelarPresentarBorrador}"
+									process="@this" value="#{msg.botonCancelar}"
+									icon="ui-icon-cancel" style="margin-top:10px" update="" />
+							</div>
+						</f:facet>
+
+					</h:panelGrid>
+
+				</p:panel>
+				<!-- Terminar de programar desde aqui -->
+			</h:form>
+
+		</div>
+	</ui:define>
+</ui:composition>

@@ -12,26 +12,41 @@
 		<result property="nomBachiller" column="NOMBRE_COMPLETO" />
 		<result property="estado" column="ESTT_ESTADO" />
 		<result property="ruta" column="BORRADOR_RUTA" />
+		<result property="codigoAsesor" column="DOCEN_CODIGO" />
 	</resultMap>
 
 	<parameterMap type="pe.edu.unmsm.negocio.modelo.Tesis" id="Tesis" />
 
-	
+
 	<select id="cargarListaTesis" resultMap="Tesis">
-SELECT T.TES_CODIGO,F.FT_TITULO,L.LINEA_DESCRIPCION,  CONCAT(U.USU_APELLIDOS,', ',U.USU_NOMBRES)
-    AS NOMBRE_COMPLETO, ET.ESTT_ESTADO
-		FROM TESIS T,FICHA_TESIS F,LINEA_INVESTIGACION L,USUARIO U, ESTADO_TESIS ET    
-		WHERE T.TES_CODIGO=F.TES_CODIGO AND F.LINEA_ID=L.LINEA_ID
-          AND F.BAC_CODIGO=U.USU_CODIGO
-		      AND T.ESTT_ID=8 AND T.ESTT_ID = ET.ESTT_ID
+		SELECT
+		T.TES_CODIGO,F.FT_TITULO,L.LINEA_DESCRIPCION,
+		CONCAT(U.USU_APELLIDOS,', ',U.USU_NOMBRES) AS NOMBRE_COMPLETO,
+		ET.ESTT_ESTADO,F.DOCEN_CODIGO
+		FROM TESIS T,FICHA_TESIS
+		F,LINEA_INVESTIGACION L,USUARIO U, ESTADO_TESIS ET
+		WHERE
+		(T.TES_CODIGO=F.TES_CODIGO) AND (F.LINEA_ID=L.LINEA_ID) AND
+		(F.BAC_CODIGO=U.USU_CODIGO) AND (T.ESTT_ID=8) AND (T.ESTT_ID =
+		ET.ESTT_ID)
 	</select>
 
 	<select id="cargarListaBorradorTesis" resultMap="Tesis">
-		select t.exp_codigo,t.tes_codigo,f.ft_titulo,l.linea_descripcion,concat(u.usu_apellidos,',
+		select
+		t.exp_codigo,t.tes_codigo,f.ft_titulo,l.linea_descripcion,concat(u.usu_apellidos,',
 		',u.usu_nombres) as nombre_completo,e.estb_estado,b.borrador_ruta
-		from tesis t,ficha_tesis f,linea_investigacion l,borrador_tesis b,estado_borrador e,usuario u
-		where (t.tes_codigo=f.tes_codigo) and (f.linea_id=l.linea_id) and(t.tes_codigo=b.tes_codigo) and (f.bac_codigo=u.usu_codigo)
+		from
+		tesis t,ficha_tesis f,linea_investigacion l,borrador_tesis
+		b,estado_borrador e,usuario u
+		where (t.tes_codigo=f.tes_codigo) and
+		(f.linea_id=l.linea_id) and(t.tes_codigo=b.tes_codigo) and
+		(f.bac_codigo=u.usu_codigo)
 		and (b.estb_id=e.estb_id)
 	</select>
 
+	<select id="cargarAsesor" parameterType="java.lang.String">
+		select CONCAT(U.USU_APELLIDOS,', ',U.USU_NOMBRES) AS NOMBRE_COMPLETO,
+		from usuario u
+		where u.usu_codigo='08200075'
+	</select>
 </mapper>

@@ -17,22 +17,20 @@
 
 
 						<p:dataTable id="lbtesiss" var="lbtesis"
-							value="#{listarBorradorTesis.listBorradorTesis}" rowKey="#{lbtesis.codigoTes}"
+							value="#{listarBorradorTesis.listBorradorTesis}"
+							rowKey="#{lbtesis.codigoTes}"
 							selection="#{listarBorradorTesis.selectedBorradorTesis}"
-							selectionMode="single" paginator="true" emptyMessage="No hay Borrador de Tesis">
+							selectionMode="single" paginator="true"
+							emptyMessage="No hay Borrador de Tesis">
 
 							<f:facet name="header">
-								
+
 							</f:facet>
 
 							<p:column headerText="Codigo de Tesis">
 								<h:outputText value="#{lbtesis.codigoTes}" />
 							</p:column>
-							
-							<p:column headerText="Codigo">
-								<h:outputText value="#{lbtesis.codigo}" />
-							</p:column>
-							
+
 							<p:column headerText="Titulo">
 								<h:outputText value="#{lbtesis.titulo}" />
 							</p:column>
@@ -53,8 +51,8 @@
 
 
 								<p:commandButton id="btnRevisar"
-									action="#{listarBorradorTesis.generarActaObservacion}" ajax="false"
-									value="Revisar" icon="ui-icon-search" />
+									action="#{listarBorradorTesis.generarActaObservacion}"
+									ajax="false" value="Revisar" icon="ui-icon-search" />
 							</f:facet>
 						</p:dataTable>
 					</h:form>

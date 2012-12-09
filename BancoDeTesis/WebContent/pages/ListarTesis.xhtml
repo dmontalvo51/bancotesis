@@ -8,7 +8,7 @@
 	<ui:define name="cuerpo">
 		<div class="cuerpo" align="center">
 			<!-- Empezar a programar desde aqui -->
-			<p:panel header="#{msg.lblListarBorradorTesis}" style="width:90%">
+			<p:panel header="#{msg.lblListarTesis}" style="width:90%">
 
 				<h:panelGrid columns="2"
 					columnClasses="formColumnaIzquierda,formColumnaDerecha"
@@ -17,15 +17,15 @@
 
 						<p:dataTable id="ltesiss" var="ltesis"
 							value="#{listarTesis.listTesis}" rowKey="#{ltesis.codigo}"
-							selection="#{listarTesis.selectedTesis}"
-							selectionMode="single" paginator="true">
+							selection="#{listarTesis.selectedTesis}" selectionMode="single"
+							paginator="true">
 
 							<f:facet name="header">
-								
+
 							</f:facet>
 
-							<p:column headerText="Nro de Expediente">
-								<h:outputText value="#{ltesis.codigoExp}" />
+							<p:column headerText="Codigo">
+								<h:outputText value="#{ltesis.codigo}" />
 							</p:column>
 
 							<p:column headerText="Titulo">
@@ -45,10 +45,8 @@
 							</p:column>
 
 							<f:facet name="footer">
-
-
 								<p:commandButton id="btnRevisar"
-									action="#{listarTesis.nextPage}" ajax="false"
+									action="#{listarTesis.presentarBorradorTesis}" ajax="false"
 									value="Revisar" icon="ui-icon-search" />
 							</f:facet>
 						</p:dataTable>

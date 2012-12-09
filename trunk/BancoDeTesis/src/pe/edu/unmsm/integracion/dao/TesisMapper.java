@@ -14,5 +14,7 @@ public List<Tesis> RegistrarTesis();
 public List<Tesis> cargarListaTesis();
 
 public List<Tesis> cargarListaBorradorTesis();
+
+public String cargarAsesor(String nombre);
 	
 }

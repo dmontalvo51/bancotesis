@@ -1,10 +1,9 @@
 package pe.edu.unmsm.integracion.dao;
 
-import java.util.List;
 
-import pe.edu.unmsm.negocio.modelo.BorradorTesis;
+import pe.edu.unmsm.negocio.modelo.Ficha;
 public interface LevantarObservacionesMapper {
 
-public BorradorTesis cargarBorrador(String cuenta);
+public Ficha cargarBorrador(String codigoBachiller);
 	
 }

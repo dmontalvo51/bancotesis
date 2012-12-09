@@ -64,9 +64,9 @@ public class ListarTesisController implements Serializable {
 		return "CargarBorrador?faces-redirect=true";
 	}
 	
-	public String generarActaObservacion(){
+	public String presentarBorradorTesis(){
 	    TesisUtil.subirASesion("tesis", selectedTesis);
-		return "GenerarActaObservacion?faces-redirect=true";
+		return "PresentarBorradorTesis?faces-redirect=true";
 	}
 	
 	public String oficiarJE(){

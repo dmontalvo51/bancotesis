@@ -1,11 +1,7 @@
 package pe.edu.unmsm.integracion.dao;
 
-import java.util.List;
+
 import java.util.Map;
-
-import org.springframework.stereotype.Repository;
-
-import pe.edu.unmsm.negocio.modelo.OpcionMenu;
 import pe.edu.unmsm.negocio.modelo.Usuario;
 
 

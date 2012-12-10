@@ -25,7 +25,7 @@
 
 					<h:panelGrid columns="1">
 						<p:media value="#{generarActaObservacion.borrador.ruta}"
-							width="800px" height="600px">  
+							width="900px" height="300px">  
     						Your browser can't display pdf, 
     						<h:outputLink value="#{generarActaObservacion.borrador.ruta}">click</h:outputLink> to download pdf instead.  
 						</p:media>
@@ -52,8 +52,7 @@
 
 
 							<h:outputLabel for="obsv" value="Observaciones :" />
-							<p:inputTextarea id="obsv"
-								value="#{generarActaObservacion.dao.observaciones}"
+							<p:inputTextarea id="obsv" value="#{generarActaObservacion.dao.observaciones}"
 								style="width:590px" />
 
 							<f:facet name="footer">

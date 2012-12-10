@@ -15,5 +15,14 @@ public List<Tesis> cargarListaTesis();
 
 public List<Tesis> cargarListaBorradorTesis();
 
+public String cargarAsesor(String nombre);
+
+public List<Tesis> cargarListaTesisPorAprobar();
+
+public List<Tesis> cargarListaTesisAprobadas();
+
+@Options(statementType = StatementType.CALLABLE)
+@Update("")
+public void aprobarTesis();
 	
 }

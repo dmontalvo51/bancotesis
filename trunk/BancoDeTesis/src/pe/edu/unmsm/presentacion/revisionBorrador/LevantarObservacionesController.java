@@ -55,18 +55,19 @@ public class LevantarObservacionesController implements Serializable {
 		else if (origen.equals("ListarProyectosTesis"))
 			setDb(llenarTabla());
 		else if (origen.equals("LevantarObservaciones"))
-			try {
-				setDb(revisionborradorTesisService
-						.cargarBorrador(usuario.getCuenta()));
-			} catch (Exception e) {
-				System.out.println("No inserta elemento");
+			//Usuario usuario = (Usuario) TesisUtil.obtenerDeSesion("usuario");
+			try{
+			borrador.setNombreAsesor(usuario.getNombres()+" "+usuario.getApellidos());
+		
+			}catch(Exception e){
+			System.out.println("Error no encontro al asesor");
 			}
 
 	}
 
 	public Ficha llenarTabla() {
 		Usuario usuario = (Usuario) TesisUtil.obtenerDeSesion("usuario");
-		//borrador.setCodigoBachiller("08200075");
+		// borrador.setCodigoBachiller("08200075");
 		// borrador.setTitulo("SE");
 		// borrador.setLineaInvestigacion("lineaInvestigacion1");
 		// borrador.setNomBachiller("Apolinario Ballico Johnny");
@@ -109,7 +110,5 @@ public class LevantarObservacionesController implements Serializable {
 	public void setDb(Ficha db) {
 		this.db = db;
 	}
-	
-	
 
 }

@@ -44,9 +44,4 @@
 		and (b.estb_id=e.estb_id)
 	</select>
 
-	<select id="cargarAsesor" parameterType="java.lang.String">
-		select CONCAT(U.USU_APELLIDOS,', ',U.USU_NOMBRES) AS NOMBRE_COMPLETO,
-		from usuario u
-		where u.usu_codigo='08200075'
-	</select>
 </mapper>

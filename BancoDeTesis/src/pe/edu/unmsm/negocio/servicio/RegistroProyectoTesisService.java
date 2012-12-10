@@ -137,7 +137,7 @@ public class RegistroProyectoTesisService implements Serializable {
 		Respuesta r=new Respuesta();
 		
 		try {
-			//rdInscripcionMapper.inscribirProyectoDeTesis(ficha);
+			rdInscripcionMapper.inscribirProyectoDeTesis(ficha);
 			r.setEstado(Respuesta.OK);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

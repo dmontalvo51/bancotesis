@@ -67,14 +67,12 @@
 
 		<h:form id="formDialog">
 
-			<p:confirmDialog id="confirmDialog" message="Resumen de la tesis"
-				header="Resumen" severity="alert" widgetVar="confirmation"
-				style="margin-center:20px">
+			<p:dialog id="confirmDialog" header="Resumen" severity="alert"
+				widgetVar="confirmation" style="margin-center:20px">
 
-				<p:commandButton id="decline" value="Resumen"
-					onclick="confirmation.hide()" type="button" />
+				<h:outputText value="#{oficiarJuradoEvaluador.tesis.resumen}"/>
 
-			</p:confirmDialog>
+			</p:dialog>
 		</h:form>
 	</ui:define>
 </ui:composition>

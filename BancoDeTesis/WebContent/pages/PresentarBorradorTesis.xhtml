@@ -8,7 +8,7 @@
 	<ui:define name="cuerpo">
 		<div class="cuerpo" align="center">
 
-			<h:form id="form">
+			<h:form id="formPB">
 
 				<p:panel header="#{msg.lblPresentarBorradorTesis}" style="width:90%">
 					<!-- Empezar a programar desde aqui -->
@@ -36,19 +36,16 @@
 							label="linea" />
 
 						<f:facet name="footer">
-
 							<p:messages showDetail="true" />
 							<p:fileUpload value="#{fileUploadController.file}"
-								mode="simple" auto="true"  />
-							
-
+								mode="simple"/>
 						</f:facet>
 
 						<f:facet name="footer">
 							<div align="center">
 								<p:commandButton value="#{msg.botonEnviar}" ajax="false"
 									style="margin-top:10px" icon="ui-icon-check"
-									actionListener="#{fileUploadController.upload}" update="" />
+									actionListener="#{fileUploadController.upload}"  />
 
 								<p:commandButton
 									action="#{presentarBorradorTesis.cancelarPresentarBorrador}"

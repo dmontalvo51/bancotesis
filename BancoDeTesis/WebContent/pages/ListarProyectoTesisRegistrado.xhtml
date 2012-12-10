@@ -16,10 +16,6 @@
 						<p:dataTable id="ltesiss" var="ltesis" paginator="true"
 							value="#{listarProyectoTesisRegistrado.listaTesisRegistrados}" rowKey="#{ltesis.codigo}"
 							selection="#{listarProyectoTesisRegistrado.selectedTesis}" selectionMode="single">
-
-							<f:facet name="header">
-								<h:outputText value="Lista Tesis"/>
-							</f:facet>
 							
 							<p:column headerText="Nro de Expediente">
 								<h:outputText value="#{ltesis.codigo}" />

@@ -20,6 +20,7 @@ public class Tesis implements Serializable {
 	private String ruta;
 	private String fecha;
 	private String hora;
+	private String resumen;
 	
 	
 	public Tesis() {
@@ -177,6 +178,16 @@ public class Tesis implements Serializable {
 
 	public void setHora(String hora) {
 		this.hora = hora;
+	}
+
+
+	public String getResumen() {
+		return resumen;
+	}
+
+
+	public void setResumen(String resumen) {
+		this.resumen = resumen;
 	}
 
 

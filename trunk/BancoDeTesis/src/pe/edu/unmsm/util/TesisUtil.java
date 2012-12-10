@@ -86,11 +86,11 @@ public class TesisUtil {
 			JREmptyDataSource jrEmptyDataSource=new JREmptyDataSource();
 			JasperPrint jasperPrint = JasperFillManager.fillReport(path+nombre+".jasper",parametros,jrEmptyDataSource);
 			
-			JasperExportManager.exportReportToPdfFile(jasperPrint,"D:\\Reporte.pdf");
+			JasperExportManager.exportReportToPdfFile(jasperPrint,"/documentos/Reporte.pdf");
 			
 			File pdfGenerado;
 			
-			InputStream inputStream=new FileInputStream(new File("D:\\Reporte.pdf"));
+			InputStream inputStream=new FileInputStream(new File("/documentos/Reporte.pdf"));
 			//		FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream("E:\\Reporte.pdf");		
 			
 			StreamedContent streamedContent=new DefaultStreamedContent(inputStream,"application/pdf","Ficha.pdf");
@@ -109,8 +109,8 @@ public class TesisUtil {
 			JRBeanCollectionDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(listaDocentes);
 			JasperReport report = JasperCompileManager.compileReport(path+nombre+".jrxml");
 			JasperPrint print = JasperFillManager.fillReport(report,parametros,beanCollectionDataSource);
-			JasperExportManager.exportReportToHtmlFile(print,"D:\\Prueba.html");
-			JasperExportManager.exportReportToPdfFile(print, "D:\\Prueba.pdf");
+			JasperExportManager.exportReportToHtmlFile(print,"/documentos/Prueba.html");
+			JasperExportManager.exportReportToPdfFile(print, "/documentos/Prueba.pdf");
 			
 			/**/
 			

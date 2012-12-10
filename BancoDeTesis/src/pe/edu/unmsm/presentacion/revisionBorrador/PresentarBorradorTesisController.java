@@ -49,9 +49,7 @@ public class PresentarBorradorTesisController implements Serializable {
 		}
 	}
 
-	public String cargarAsesor(String nombre){
-		return revisionBorradorTesisService.cargarAsesor(nombre);
-	}
+	
 	public String cancelarPresentarBorrador() {
 		return "Inicio.xhtml?faces-redirect=true";
 

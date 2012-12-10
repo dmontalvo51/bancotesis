@@ -73,8 +73,5 @@ public class RevisionBorradorTesisService {
 
 	}
 	
-	public String cargarAsesor(String nombre){
-		
-		return tesisMapper.cargarAsesor(nombre);
-	}
+
 }

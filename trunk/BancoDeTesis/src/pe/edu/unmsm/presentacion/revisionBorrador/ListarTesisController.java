@@ -36,18 +36,9 @@ public class ListarTesisController implements Serializable {
 	
 	@PostConstruct
 	public void cargarDatos(){
-		//TesisUtil.escribir("Cargar Datos");
-		//setListTesis(llenarTabla());
 		String origen=FacesContext.getCurrentInstance().getExternalContext().getRequestServletPath();
 		origen=origen.substring(7,origen.length()-4);
 		TesisUtil.escribir(origen);	
-		
-		//if(origen.equals("ListarFichasProyectoDeTesis"))
-			//setListTesis(llenarTabla());
-		//else if (origen.equals("ListarProyectosTesis"))
-			//setListTesis(llenarTabla());
-		//else if(origen.equals("ListarTesis"))
-			//setListTesis(llenarTabla());
 		if(origen.equals("ListarTesis"))
 			setListTesis(llenarTabla());
 		else if (origen.equals("ListarProyectosTesis"))
@@ -59,29 +50,10 @@ public class ListarTesisController implements Serializable {
 		return revisionBorradorTesisService.cargarListaTesis();
 	}
 	
-	public String nextPage(){
-	    TesisUtil.flashScope("tesis", selectedTesis);
-		return "CargarBorrador?faces-redirect=true";
-	}
-	
 	public String presentarBorradorTesis(){
 	    TesisUtil.subirASesion("tesis", selectedTesis);
 		return "PresentarBorradorTesis?faces-redirect=true";
 	}
-	
-	public String oficiarJE(){
-	    TesisUtil.flashScope("tesis", selectedTesis);
-		return "OficiarJuradoEvaluador?faces-redirect=true";
-	}
-	
-	
-	public String cancelarJE(){
-		return "ListarProyectoTesisRegistrado?faces-redirect=true";
-	}
-	
-	//private List<Tesis> llenarTabla() {
-			//return revisionBorradorTesisService.cargarListaTesisInscritas();
-	//}
 	
 	
 	public String cargarBorrador(){

@@ -20,11 +20,13 @@ public class FileUploadController {
     }  
   
     public void upload() {  
-    	System.out.println("menso 1");
+    	System.out.println("1");
         if(file != null) { 
-        	System.out.println("menso 2");
+        	System.out.println("2");
             FacesMessage msg = new FacesMessage("Succesful", file.getFileName() + " is uploaded.");  
             FacesContext.getCurrentInstance().addMessage(null, msg);  
-        }  
+        } 
+
+        //return  "ListarTesis?faces-redirect=true";
     }  
 } 

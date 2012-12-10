@@ -156,16 +156,17 @@ public class GenerarActaObservacionController implements Serializable {
 						"Acta Creada",new FacesMessage("Se creo el acta de observacion nro."+ ao.getCodigo()));
 
 			} else {
+				TesisUtil.escribir("Ya existe dos Actas");
 				FacesContext.getCurrentInstance().addMessage(null,
-						new FacesMessage("Acta no creada", "Acta de Observacion no se creo"));
-
+						new FacesMessage("Acta no creada", "Ya existe dos Actas"));
+				return "";
 			}
 		} else {
 			FacesContext.getCurrentInstance().addMessage(
 					null,
 					new FacesMessage("No se creo Acta de Observacion",
 							"No se creo el Acta de observacion. Por favor, contacte con el administrador"));
-
+			return "";
 		}
 
 		return "ListarBorradorTesis.xhtml?faces-redirect=true";

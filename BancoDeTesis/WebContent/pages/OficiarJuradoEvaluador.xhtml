@@ -10,54 +10,87 @@
 		<div class="cuerpo" align="center">
 			<!-- Empezar a programar desde aqui -->
 			<h:form id="formOficiarJE">
-				<p:panel  id="panelOficiarJE" header="#{msg.lblInformeProyectoTesis}" style="width:90%">
+				<p:panel id="panelOficiarJE" header="#{msg.lblInformeProyectoTesis}"
+					style="width:90%">
+					<!-- aca va el elcuepo-->
 
-					<h:panelGrid columns="2" width="100%">
+					<h:panelGrid columns="2">
+						<h:outputLabel for="tramite" value="#{msg.lblNroExpediente}:" />
+						<h:outputText id="tramite"
+							value="#{oficiarJuradoEvaluador.tesis.codigo}" label="tramite" />
 
-						<!-- aca va el elcuepo-->
-						
-						<h:panelGrid columns="2">
-							<h:outputLabel for="tramite" value="#{msg.lblNroExpediente}:" />
-							<h:outputText id="tramite" value="#{oficiarJuradoEvaluador.tesis.codigo}" />
-							
-							<h:outputLabel for="Titulo" value="#{msg.lblTitulo}:" />
-							<h:outputText id="titulo" value="#{oficiarJuradoEvaluador.tesis.titulo}"/>
-							
-							<h:outputLabel for="Linea de Investigacion"	value="#{msg.lblLineaInvestigacion}:" />
-							<h:outputText id="lineainvestigacion" value="#{oficiarJuradoEvaluador.tesis.lineaInvestigacion}" />
-							
-							<h:panelGrid columns="1">
-								<p:commandLink id="cml" update=":formDialog:confirmDialog"	oncomplete="confirmation.show()">
-									<h:outputText value="Ver Resumen de tesis" />
-								</p:commandLink>
-							</h:panelGrid>
-							
-						</h:panelGrid>
+						<h:outputLabel for="titulo" value="#{msg.lblTitulo}:" />
+						<h:outputText id="titulo"
+							value="#{oficiarJuradoEvaluador.tesis.titulo}" label="titulo" />
 
-						
+						<h:outputLabel for="lineainvestigacion"
+							value="#{msg.lblLineaInvestigacion}:" />
+						<h:outputText id="lineainvestigacion"
+							value="#{oficiarJuradoEvaluador.tesis.lineaInvestigacion}"
+							label="lineainvestigacion" />
 
-						<h:outputLabel for="Se observa" value="" />
-
-						<!-- aca va el radiobuton-->
-
-
-						<f:facet name="footer">
-							<div align="center">
-								<p:commandButton id="revisar" type="button" value="Revisar"
-									icon="ui-icon-check" style="margin-top:10px" ajax="true"
-									update="panelOficiarJE"/>
-
-								<p:commandButton id="cancelarRevision"
-									action="#{oficiarJuradoEvaluador.cancelarJE}" 
-									value="Cancelar" icon="ui-icon-close" style="margin-top:10px" ajax="true"
-									update="panelOficiarJE" />
-							</div>
-						</f:facet>
-
+						<h:outputLabel for="nombreasesor" value="#{msg.lblAsesor}:" />
+						<h:outputText id="nombreasesor"
+							value="#{oficiarJuradoEvaluador.tesis.nombreAsesor}"
+							label="nombreasesor" />
 					</h:panelGrid>
 
+					<p:separator id="separador" />
+
+					<p:panel id="panelJE" header="Jurado Evaluador" style="width:90%">
+						<h:panelGrid columns="3">
+							<h:outputLabel for="Jurado" value="#{msg.lblJurado} :" />
+
+							<h:panelGroup>
+								<p:selectOneMenu id="Jurado"
+									requiredMessage="#{msg.errorAsesorRequerido}"
+									value="#{oficiarJuradoEvaluador.codigoAsesor}" required="true">
+									<f:selectItem itemLabel="#{msg.lblSeleccioneAsesor}"
+										itemValue="" />
+									<f:selectItems value="#{oficiarJuradoEvaluador.listaAsesores}"
+										var="docente" itemValue="#{docente.codigo}"
+										itemLabel="#{docente.nombre}" />
+								</p:selectOneMenu>
+								<p:message for="Jurado" />
+
+							</h:panelGroup>
+
+							<p:commandButton id="agregar" value="Agregar" icon="ui-icon-disk"
+								style="margin-top:0" ajax="true" update="panelJE,growl"
+								actionListener="#{oficiarJuradoEvaluador.agregarJurado}" />
+						</h:panelGrid>
+
+
+						<p:dataTable var="jurado" dynamic="true" lazy="true"
+							value="#{oficiarJuradoEvaluador.listaJurados}" rendered="true">
+							<p:column headerText="Codigo">
+								<h:outputText value="#{jurado.codigo}" />
+							</p:column>
+
+							<p:column headerText="Nombre">
+								<h:outputText value="#{jurado.nombre}" />
+							</p:column>
+
+						</p:dataTable>
+
+					</p:panel>
+
+					<f:facet name="footer">
+						<div align="center">
+							<p:commandButton id="revisar" type="button" value="Revisar"
+								icon="ui-icon-check" style="margin-top:10px" ajax="true"
+								update="panelOficiarJE" />
+
+							<p:commandButton id="cancelarRevision"
+								action="#{oficiarJuradoEvaluador.cancelarJE}" value="Cancelar"
+								icon="ui-icon-close" style="margin-top:10px" ajax="true"
+								update="panelOficiarJE" />
+						</div>
+					</f:facet>
 
 				</p:panel>
+
+				<p:growl id="growl" showDetail="true" sticky="true" life="3000" />
 
 			</h:form>
 
@@ -70,7 +103,7 @@
 			<p:dialog id="confirmDialog" header="Resumen" severity="alert"
 				widgetVar="confirmation" style="margin-center:20px">
 
-				<h:outputText value="#{oficiarJuradoEvaluador.tesis.resumen}"/>
+				<h:outputText value="#{oficiarJuradoEvaluador.tesis.resumen}" />
 
 			</p:dialog>
 		</h:form>

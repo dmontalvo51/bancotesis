@@ -16,6 +16,11 @@
 		d.docen_codigo=u.usu_codigo
 		WHERE 1=1
 	</select>
-
+	
+	<select id="cargarDatoJurado" resultType="String">
+		select concat(u.usu_apellidos,',',u.usu_nombres) as nombre_completo 
+		from tesis.usuario u
+		WHERE u.usu_codigo=#{codigoAsesor}
+	</select>
 
 </mapper>

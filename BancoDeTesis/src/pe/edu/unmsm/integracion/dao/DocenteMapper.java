@@ -7,5 +7,7 @@ import pe.edu.unmsm.negocio.modelo.Docente;
 public interface DocenteMapper {
 	
 	public List<Docente> cargarListaDocentesPorLinea(int lineaId);
+	
+	public String cargarDatoJurado(String codigoAsesor);
 
 }

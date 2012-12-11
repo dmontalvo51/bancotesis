@@ -70,6 +70,11 @@ public class RegistroProyectoTesisService implements Serializable {
 	public List<Docente> cargarListaDocentesPorLinea(int id) {
 		return docenteMapper.cargarListaDocentesPorLinea(id);
 	}
+	
+	
+	public String cargarDatoJurado(String codigoAsesor) {
+		return docenteMapper.cargarDatoJurado(codigoAsesor);
+	}
 
 	public List<Ficha> cargarListaFichasInscritas() {
 

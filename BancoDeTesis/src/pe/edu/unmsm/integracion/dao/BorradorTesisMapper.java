@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Update;
 import org.apache.ibatis.mapping.StatementType;
 
+import pe.edu.unmsm.negocio.modelo.ActaConformidad;
 import pe.edu.unmsm.negocio.modelo.ActaObservacion;
 import pe.edu.unmsm.negocio.modelo.BorradorTesis;
 import pe.edu.unmsm.negocio.modelo.DetalleActaObservacion;
@@ -24,5 +25,10 @@ public void insertarActaObservacion(ActaObservacion ao) throws Exception;
 @Options(statementType = StatementType.CALLABLE)
 @Update("{CALL sp_generarNroAO(#{codigoBorrador, mode=IN},#{codigo, mode=OUT,javaType=String,jdbcType=VARCHAR})}")
 public void generarNroAO(ActaObservacion ao) throws Exception;
-	
+
+
+@Options(statementType = StatementType.CALLABLE)
+@Update("{CALL sp_generarActaConformidad(#{codigoTesis, mode=IN},#{codigoAsesor, mode=IN},#{observaciones, mode=IN},#{codigo, mode=OUT,javaType=String,jdbcType=VARCHAR},#{ruta, mode=OUT,javaType=String,jdbcType=VARCHAR},#{codigoBorrador, mode=OUT,javaType=String,jdbcType=VARCHAR},#{rutaBorrador, mode=OUT,javaType=String,jdbcType=VARCHAR})}")
+public void insertarActaConformidad(ActaConformidad ac) throws Exception;
+
 }

@@ -1,0 +1,113 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="/pages/common/plantillaPrincipal.xhtml">
+	<ui:define name="title">#{msg.tituloSistema} .::. Ingresar Ficha de Tesis</ui:define>
+	<ui:define name="cuerpo">
+
+		<div class="cuerpo" align="center">
+			<!-- Empezar a programar desde aqui -->
+			<h:form id="formGenerarRD">
+
+				<p:growl id="growl" showDetail="true" life="3000" sticky="true"
+					redisplay="false" />
+
+				<p:panel id="panelRegistrarProyecto"
+					header="#{msg.lblGenerarRDInscripcion}" style="width:90%">
+
+					<h:panelGrid columns="2"
+						columnClasses="formColumnaIzquierda,formColumnaDerecha"
+						width="100%">
+
+						<!-- aca va el elcuepo-->
+						<h:outputLabel for="tramite" value="#{msg.lblNroExpediente}:" />
+						<h:outputText id="tramite"
+							value="#{registroFichaTesis.ficha.nroExpediente}" label="tramite" />
+
+						<h:outputLabel for="titulo" value="#{msg.lblTitulo}:" />
+						<h:outputText id="titulo"
+							value="#{registroFichaTesis.ficha.titulo}" label="titulo" />
+
+						<h:outputLabel for="bachiller" value="#{msg.lblBachiller}:" />
+						<h:outputText id="bachiller"
+							value="#{registroFichaTesis.ficha.nomBachiller}"
+							label="bachiller" />
+
+						<h:outputLabel for="lineainvestigacion"
+							value="#{msg.lblLineaInvestigacion}:" />
+						<h:outputText id="lineainvestigacion"
+							value="#{registroFichaTesis.ficha.lineaInvestigacion}"
+							label="lineainvestigacion" />
+
+
+						<h:outputLabel for="asesor" value="#{msg.lblAsesor}:" />
+						<h:outputText id="asesor"
+							value="#{registroFichaTesis.ficha.nombreAsesor}" label="asesor" />
+
+						<h:outputLabel for="resumen" value="#{msg.lblResumen} :" />
+						<p:commandLink id="resumen" update=":formDialog:dialogResumen"
+							oncomplete="confirmation.show()" style="margin-left:90px;"
+							type="button">
+							<h:outputText value="Ver Resumen de tesis" />
+						</p:commandLink>
+
+
+						<h:outputLabel for="actaEvaluacion"
+							value="#{msg.lblActaEvaluacion}" />
+						<p:commandLink id="actaEvaluacion"
+							update=":formDialog:dialogResumen"
+							oncomplete="confirmation.show()" style="margin-left:90px;"
+							type="button">
+							<h:outputText value="Ver Acta de Evaluacion" />
+						</p:commandLink>
+
+						<h:outputText value=" " />
+						<p:selectOneButton
+							value="#{registroFichaTesis.ficha.resolucionDirectoralAprobada}">
+							<f:selectItem itemLabel="#{msg.lblAprobar}" itemValue="1" />
+							<f:selectItem itemLabel="#{msg.lblNoAprobar}" itemValue="0" />
+						</p:selectOneButton>
+
+
+						<h:outputLabel for="RDInscripcion" value="#{msg.lblRDInscripcion}" />
+						<h:outputText id="RDInscripcion"
+							value="#{registroFichaTesis.ficha.codigoRDinscripcion}"/>
+						
+						
+						<f:facet name="footer">
+							<div align="center">
+								<p:commandButton id="btnInscribir" value="Guardar"
+									action="#{registroFichaTesis.registrarProyectoTesis}"
+									icon="ui-icon-check" style="margin-top:10px"
+									update="panelRegistrarProyecto,growl" />
+
+								<p:commandButton id="btbCancelar" value="Cancelar"
+									action="#{registroFichaTesis.cancelarRegistro}"
+									icon="ui-icon-close" style="margin-top:10px"
+									update="panelRegistrarProyecto" />
+							</div>
+						</f:facet>
+
+					</h:panelGrid>
+
+				</p:panel>
+
+			</h:form>
+
+			<!-- Terminar de programar desde aqui -->
+		</div>
+
+		<h:form id="formDialog">
+
+			<p:dialog id="dialogResumen" message="Resumen de la tesis"
+				header="Resumen" severity="alert" widgetVar="confirmation"
+				style="margin-center:20px">
+
+				<h:outputText value="#{registroFichaTesis.ficha.resumen}"></h:outputText>
+
+			</p:dialog>
+		</h:form>
+	</ui:define>
+</ui:composition>

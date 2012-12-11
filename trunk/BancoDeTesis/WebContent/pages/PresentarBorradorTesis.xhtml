@@ -35,17 +35,16 @@
 							value="#{presentarBorradorTesis.tesis.nombreAsesor}"
 							label="linea" />
 
-						<f:facet name="footer">
-							<p:messages showDetail="true" />
-							<p:fileUpload value="#{fileUploadController.file}"
-								mode="simple"/>
-						</f:facet>
+						<p:messages showDetail="true" />
+						<p:fileUpload value="#{presentarBorradorTesis.file}" mode="simple" />
+
 
 						<f:facet name="footer">
 							<div align="center">
-								<p:commandButton value="#{msg.botonEnviar}" ajax="false"
+								<p:commandButton value="#{msg.botonEnviar}"
 									style="margin-top:10px" icon="ui-icon-check"
-									actionListener="#{fileUploadController.upload}"  />
+									action="#{presentarBorradorTesis.generarActaConformidad}"
+									update="formPB,growl" ajax="true" />
 
 								<p:commandButton
 									action="#{presentarBorradorTesis.cancelarPresentarBorrador}"
@@ -57,6 +56,8 @@
 					</h:panelGrid>
 
 				</p:panel>
+				
+				<p:growl id="growl" showDetail="true" sticky="true" life="3000" />
 				<!-- Terminar de programar desde aqui -->
 			</h:form>
 

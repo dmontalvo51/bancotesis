@@ -19,7 +19,7 @@
 
 						<h:outputText id="codTes"
 							value="#{generarActaObservacion.borrador.codigoTes}"
-							label="tramite" />
+							label="codTes" />
 
 					</h:panelGrid>
 
@@ -89,7 +89,7 @@
 								<p:commandButton
 									action="#{generarActaObservacion.generarActaObservacion}"
 									value="#{msg.botonRegistrar}" icon="ui-icon-check"
-									style="margin-top:10px" update="formGenerarAO" ajax="true" />
+									style="margin-top:10px" update="formGenerarAO,growl" ajax="true" />
 								<p:commandButton
 									action="#{generarActaObservacion.cancelarObservacion}"
 									process="@this" value="#{msg.botonCancelar}"

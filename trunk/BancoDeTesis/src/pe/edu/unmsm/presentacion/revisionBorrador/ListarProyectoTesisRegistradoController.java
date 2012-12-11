@@ -44,7 +44,7 @@ public class ListarProyectoTesisRegistradoController implements Serializable {
 	@PostConstruct
 	public void init(){
 		try {
-			listaTesisRegistrados = revisionBorradorTesisService.cargarListaTesis();
+			listaTesisRegistrados = revisionBorradorTesisService.cargarListaTesisRegistrados();
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("ERROR : " + e);

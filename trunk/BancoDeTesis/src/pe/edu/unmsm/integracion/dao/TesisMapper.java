@@ -8,11 +8,14 @@ import org.apache.ibatis.mapping.StatementType;
 
 import pe.edu.unmsm.negocio.modelo.Programacion;
 import pe.edu.unmsm.negocio.modelo.Tesis;
+
 public interface TesisMapper {
 	
 public List<Tesis> RegistrarTesis();
 
 public List<Tesis> cargarListaTesis();
+
+public List<Tesis> cargarListaTesisRegistrados();
 
 public List<Tesis> cargarListaBorradorTesis();
 

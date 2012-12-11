@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import pe.edu.unmsm.integracion.dao.SustentacionMapper;
 import pe.edu.unmsm.integracion.dao.TesisMapper;
 import pe.edu.unmsm.integracion.dao.BorradorTesisMapper;
 import pe.edu.unmsm.integracion.dao.LevantarObservacionesMapper;
@@ -12,6 +13,7 @@ import pe.edu.unmsm.negocio.modelo.ActaConformidad;
 import pe.edu.unmsm.negocio.modelo.ActaObservacion;
 import pe.edu.unmsm.negocio.modelo.DetalleActaObservacion;
 import pe.edu.unmsm.negocio.modelo.Ficha;
+import pe.edu.unmsm.negocio.modelo.Sustentacion;
 import pe.edu.unmsm.negocio.modelo.Tesis;
 import pe.edu.unmsm.negocio.modelo.BorradorTesis;
 import pe.edu.unmsm.util.TesisUtil;
@@ -25,7 +27,8 @@ public class RevisionBorradorTesisService {
 	private BorradorTesisMapper borradorMapper;
 	@Autowired
 	private LevantarObservacionesMapper loMapper;
-	
+	@Autowired
+	private SustentacionMapper sustentacionMapper;
 
 	public List<Tesis> cargarListaTesis() {
 
@@ -95,5 +98,19 @@ public class RevisionBorradorTesisService {
 
 	}
 	
+	public void asignarJuradoEvaluador(Sustentacion su) {
+		// Respuesta r=new Respuesta();
 
+		try {
+			sustentacionMapper.asignarJuradoEvaluador(su);
+
+			TesisUtil.escribir("Se llamo al AJE Mapper");
+			// TesisUtil.generarReporte("fichaTesis",null);
+
+		} catch (Exception e) {
+			TesisUtil.escribir("ERROR AL INSERTAR ACTA DE CONFORMIDAD!");
+			e.printStackTrace();
+		}
+
+	}
 }

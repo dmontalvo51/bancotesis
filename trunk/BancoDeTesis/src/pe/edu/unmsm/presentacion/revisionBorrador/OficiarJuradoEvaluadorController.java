@@ -14,8 +14,12 @@ import javax.faces.context.Flash;
 
 import pe.edu.unmsm.negocio.modelo.DetalleActaObservacion;
 import pe.edu.unmsm.negocio.modelo.Docente;
+import pe.edu.unmsm.negocio.modelo.Sustentacion;
 import pe.edu.unmsm.negocio.modelo.Tesis;
+import pe.edu.unmsm.negocio.modelo.Usuario;
 import pe.edu.unmsm.negocio.servicio.RegistroProyectoTesisService;
+import pe.edu.unmsm.negocio.servicio.RevisionBorradorTesisService;
+import pe.edu.unmsm.util.TesisUtil;
 
 
 @ManagedBean(name = "oficiarJuradoEvaluador")
@@ -37,14 +41,20 @@ public class OficiarJuradoEvaluadorController implements Serializable{
 	private Docente jurado;
 	private String codigoAsesor;
 	private int num=0;
+	private Sustentacion sustentacion;
+	private boolean asignado=true;
 	// Services
 	@ManagedProperty("#{registroProyectoTesisService}")
 	RegistroProyectoTesisService registroProyectoTesisService;
+	
+	@ManagedProperty("#{revisionBorradorTesisService}")
+	RevisionBorradorTesisService revisionBorradorTesisService;
 	
 	/********************** INICIALIZACIÓN ***************************/
 
 	public OficiarJuradoEvaluadorController(){
 		jurado=new Docente();
+		sustentacion=new Sustentacion();
 
 	}
 	
@@ -73,10 +83,18 @@ public class OficiarJuradoEvaluadorController implements Serializable{
 			num++;
 		}else{
 			if(num==1){
-			jurado.setCodigo(getCodigoAsesor());
-			jurado.setNombre(registroProyectoTesisService.cargarDatoJurado(codigoAsesor));
-			listaJurados.add(jurado);
-			num++;
+				if(listaJurados.get(0).getCodigo().equals(getCodigoAsesor())){
+					FacesContext.getCurrentInstance().addMessage(
+							null,
+							new FacesMessage("Ya existe Jurado",
+									"Seleccione otro Jurador Evaluador"));
+
+				}else{
+					jurado.setCodigo(getCodigoAsesor());
+					jurado.setNombre(registroProyectoTesisService.cargarDatoJurado(codigoAsesor));
+					listaJurados.add(jurado);
+					num++;
+				}
 			}else{
 				FacesContext.getCurrentInstance().addMessage(
 						null,
@@ -92,7 +110,56 @@ public class OficiarJuradoEvaluadorController implements Serializable{
 		jurado=new Docente();
 	}
 	
-	
+	public String asignarJuradoEvaluador() {
+		TesisUtil.escribir("EN EL METODO GUARDAR");
+
+		try {
+			sustentacion.setCodigoTesis(tesis.getCodigo());
+			if(num==2){
+				TesisUtil.escribir("codigo 1:"+listaJurados.get(0).getCodigo());
+				TesisUtil.escribir("codigo 2:"+listaJurados.get(1).getCodigo());
+				sustentacion.setCodigoJurado1(listaJurados.get(0).getCodigo());
+				sustentacion.setCodigoJurado2(listaJurados.get(1).getCodigo());
+				revisionBorradorTesisService.asignarJuradoEvaluador(sustentacion);
+			}else{
+				
+				FacesContext.getCurrentInstance().addMessage(
+						null,
+						new FacesMessage("Asigne Jurado Evaluador",
+								"No ha seleccionado al Jurado Evaluador"));
+				
+				return "";
+			}
+		} catch (Exception e) {
+			TesisUtil.escribir("ERROR no se genero NRO DE ACTA OBSERVACION!");
+			e.printStackTrace();
+		}
+		
+		FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+
+		if (sustentacion != null) {
+			if (sustentacion.isAsignado() && isAsignado()) {
+				TesisUtil.escribir("Se asigo jurado evaluador");
+				FacesContext.getCurrentInstance().addMessage(
+						null,new FacesMessage("Se asigo a los miembros del jurado evaluador"));
+				asignado=false;
+			} else {
+				TesisUtil.escribir("Ya se le asignaron jurados");
+				FacesContext.getCurrentInstance().addMessage(null,
+						new FacesMessage("Ya existen los jurados para esta tesis"));
+				return "";
+			}
+		} else {
+			FacesContext.getCurrentInstance().addMessage(
+					null,
+					new FacesMessage("No se creo Acta de Observacion",
+							"No se creo el Acta de observacion. Por favor, contacte con el administrador"));
+			return "";
+		}
+
+		return "ListarProyectoTesisRegistrado.xhtml?faces-redirect=true";
+	}
+
 	/********************** FLASH MARITA ***********************/
 	private FacesContext getFacesContext() {
         return FacesContext.getCurrentInstance();
@@ -160,6 +227,31 @@ public class OficiarJuradoEvaluadorController implements Serializable{
 
 	public void setJurado(Docente jurado) {
 		this.jurado = jurado;
+	}
+
+	public Sustentacion getSustentacion() {
+		return sustentacion;
+	}
+
+	public void setSustentacion(Sustentacion sustentacion) {
+		this.sustentacion = sustentacion;
+	}
+
+	public boolean isAsignado() {
+		return asignado;
+	}
+
+	public void setAsignado(boolean asignado) {
+		this.asignado = asignado;
+	}
+
+	public RevisionBorradorTesisService getRevisionBorradorTesisService() {
+		return revisionBorradorTesisService;
+	}
+
+	public void setRevisionBorradorTesisService(
+			RevisionBorradorTesisService revisionBorradorTesisService) {
+		this.revisionBorradorTesisService = revisionBorradorTesisService;
 	}
 	
 	

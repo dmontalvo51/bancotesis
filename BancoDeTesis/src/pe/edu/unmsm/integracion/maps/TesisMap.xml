@@ -12,7 +12,8 @@
 		<result property="nomBachiller" column="NOMBRE_COMPLETO" />
 		<result property="estado" column="ESTT_ESTADO" />
 		<result property="ruta" column="BORRADOR_RUTA" />
-		<result property="resumen" column="FT_RESUMEN" />
+		<result property="codigoAsesor" column="DOCEN_CODIGO" />
+		<result property="nombreAsesor" column="NOMBRE_DOCENTE" />
 	</resultMap>
 
 	<parameterMap type="pe.edu.unmsm.negocio.modelo.Tesis" id="Tesis" />
@@ -22,7 +23,7 @@
 		SELECT
 		T.TES_CODIGO,F.FT_TITULO,L.LINEA_DESCRIPCION,
 		CONCAT(U.USU_APELLIDOS,', ',U.USU_NOMBRES) AS NOMBRE_COMPLETO,
-		ET.ESTT_ESTADO,F.FT_RESUMEN
+		ET.ESTT_ESTADO,F.DOCEN_CODIGO
 		FROM TESIS T,FICHA_TESIS
 		F,LINEA_INVESTIGACION L,USUARIO U, ESTADO_TESIS ET
 		WHERE
@@ -43,5 +44,45 @@
 		(f.bac_codigo=u.usu_codigo)
 		and (b.estb_id=e.estb_id)
 	</select>
+
+	<select id="cargarAsesor" parameterType="java.lang.String">
+		select
+		CONCAT(U.USU_APELLIDOS,', ',U.USU_NOMBRES) AS NOMBRE_COMPLETO,
+		from
+		usuario u
+		where u.usu_codigo='08200075'
+	</select>
+
+
+	<select id="cargarListaTesisPorAprobar" resultMap="Tesis">
+		SELECT EX.EXP_CODIGO, T.TES_CODIGO,F.FT_TITULO,L.LINEA_DESCRIPCION,
+		CONCAT(U.USU_APELLIDOS,', ',U.USU_NOMBRES)
+		AS NOMBRE_COMPLETO,
+		ET.ESTT_ESTADO,
+	    CONCAT(U2.USU_APELLIDOS,', ',U2.USU_NOMBRES) AS NOMBRE_DOCENTE
+		FROM TESIS T,FICHA_TESIS F,LINEA_INVESTIGACION L,USUARIO U, ESTADO_TESIS ET,EXPEDIENTE EX, USUARIO U2
+		WHERE T.TES_CODIGO=F.TES_CODIGO
+		AND EX.TES_CODIGO=T.TES_CODIGO
+		AND F.LINEA_ID=L.LINEA_ID
+		AND	F.BAC_CODIGO=U.USU_CODIGO
+		AND F.DOCEN_CODIGO=U2.USU_CODIGO
+		AND T.ESTT_ID=8 AND T.ESTT_ID = ET.ESTT_ID
+	</select>
+
+	<select id="cargarListaTesisAprobadas" resultMap="Tesis">
+		SELECT EX.EXP_CODIGO, T.TES_CODIGO,F.FT_TITULO,L.LINEA_DESCRIPCION,
+		CONCAT(U.USU_APELLIDOS,', ',U.USU_NOMBRES)
+		AS NOMBRE_COMPLETO,
+		ET.ESTT_ESTADO,
+	    CONCAT(U2.USU_APELLIDOS,', ',U2.USU_NOMBRES) AS NOMBRE_DOCENTE
+		FROM TESIS T,FICHA_TESIS F,LINEA_INVESTIGACION L,USUARIO U, ESTADO_TESIS ET,EXPEDIENTE EX, USUARIO U2
+		WHERE T.TES_CODIGO=F.TES_CODIGO
+		AND EX.TES_CODIGO=T.TES_CODIGO
+		AND F.LINEA_ID=L.LINEA_ID
+		AND	F.BAC_CODIGO=U.USU_CODIGO
+		AND F.DOCEN_CODIGO=U2.USU_CODIGO
+		AND T.ESTT_ID=8 AND T.ESTT_ID = ET.ESTT_ID
+	</select>
+	
 
 </mapper>

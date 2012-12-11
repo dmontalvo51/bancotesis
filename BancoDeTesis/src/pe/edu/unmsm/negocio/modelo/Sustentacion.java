@@ -14,6 +14,7 @@ public class Sustentacion implements Serializable {
 	
 	private String codigoJurado1;
 	private String codigoJurado2;
+	private boolean asignado;
 	
 	public String getCodigoTesis() {
 		return codigoTesis;
@@ -56,6 +57,12 @@ public class Sustentacion implements Serializable {
 	}
 	public void setCodigoJurado2(String codigoJurado2) {
 		this.codigoJurado2 = codigoJurado2;
+	}
+	public boolean isAsignado() {
+		return asignado;
+	}
+	public void setAsignado(boolean asignado) {
+		this.asignado = asignado;
 	}
 	
 	

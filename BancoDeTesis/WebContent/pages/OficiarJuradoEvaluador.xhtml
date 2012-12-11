@@ -44,7 +44,7 @@
 							<h:panelGroup>
 								<p:selectOneMenu id="Jurado"
 									requiredMessage="#{msg.errorAsesorRequerido}"
-									value="#{oficiarJuradoEvaluador.codigoAsesor}" required="true">
+									value="#{oficiarJuradoEvaluador.codigoAsesor}">
 									<f:selectItem itemLabel="#{msg.lblSeleccioneAsesor}"
 										itemValue="" />
 									<f:selectItems value="#{oficiarJuradoEvaluador.listaAsesores}"
@@ -77,9 +77,10 @@
 
 					<f:facet name="footer">
 						<div align="center">
-							<p:commandButton id="revisar" type="button" value="Revisar"
-								icon="ui-icon-check" style="margin-top:10px" ajax="true"
-								update="panelOficiarJE" />
+							<p:commandButton id="revisar" value="Revisar"
+								icon="ui-icon-check" style="margin-top:10px" ajax="false"
+								update="panelOficiarJE"
+								action="#{oficiarJuradoEvaluador.asignarJuradoEvaluador}" />
 
 							<p:commandButton id="cancelarRevision"
 								action="#{oficiarJuradoEvaluador.cancelarJE}" value="Cancelar"

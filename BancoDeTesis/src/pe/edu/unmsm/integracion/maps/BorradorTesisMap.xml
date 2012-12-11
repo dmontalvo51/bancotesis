@@ -22,9 +22,9 @@
 	<select id="cargarListaBorradorTesis" resultMap="BorradorTesis">
 		select b.tes_codigo,b.borrador_codigo,f.ft_titulo,l.linea_descripcion,concat(u.usu_apellidos,',
 		',u.usu_nombres) as nombre_completo,e.estb_estado,b.borrador_ruta,b.borrador_version
-		from ficha_tesis f,linea_investigacion l,borrador_tesis b,estado_borrador e,usuario u
+		from ficha_tesis f,linea_investigacion l,borrador_tesis b,estado_borrador e,usuario u,tesis t
 		where (b.tes_codigo=f.tes_codigo) and (f.linea_id=l.linea_id) and (f.bac_codigo=u.usu_codigo)
-		and (b.estb_id=e.estb_id)
+		and (b.estb_id=e.estb_id) and (t.estt_id=17) and (t.tes_codigo=b.tes_codigo)
 	</select>
 	
 

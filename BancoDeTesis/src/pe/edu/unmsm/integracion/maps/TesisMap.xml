@@ -14,6 +14,7 @@
 		<result property="ruta" column="BORRADOR_RUTA" />
 		<result property="codigoAsesor" column="DOCEN_CODIGO" />
 		<result property="nombreAsesor" column="NOMBRE_DOCENTE" />
+		<result property="resumen" column="FT_RESUMEN" />
 	</resultMap>
 
 	<parameterMap type="pe.edu.unmsm.negocio.modelo.Tesis" id="Tesis" />
@@ -23,7 +24,8 @@
 		SELECT
 		T.TES_CODIGO,F.FT_TITULO,L.LINEA_DESCRIPCION,
 		CONCAT(U.USU_APELLIDOS,', ',U.USU_NOMBRES) AS NOMBRE_COMPLETO,
-		ET.ESTT_ESTADO,F.DOCEN_CODIGO
+		ET.ESTT_ESTADO,F.DOCEN_CODIGO,
+		F.FT_RESUMEN
 		FROM TESIS T,FICHA_TESIS
 		F,LINEA_INVESTIGACION L,USUARIO U, ESTADO_TESIS ET
 		WHERE
@@ -35,7 +37,8 @@
 	<select id="cargarListaBorradorTesis" resultMap="Tesis">
 		select
 		t.exp_codigo,t.tes_codigo,f.ft_titulo,l.linea_descripcion,concat(u.usu_apellidos,',
-		',u.usu_nombres) as nombre_completo,e.estb_estado,b.borrador_ruta
+		',u.usu_nombres) as nombre_completo,e.estb_estado,b.borrador_ruta,
+		F.FT_RESUMEN
 		from
 		tesis t,ficha_tesis f,linea_investigacion l,borrador_tesis
 		b,estado_borrador e,usuario u
@@ -59,14 +62,15 @@
 		CONCAT(U.USU_APELLIDOS,', ',U.USU_NOMBRES)
 		AS NOMBRE_COMPLETO,
 		ET.ESTT_ESTADO,
-	    CONCAT(U2.USU_APELLIDOS,', ',U2.USU_NOMBRES) AS NOMBRE_DOCENTE
+	    CONCAT(U2.USU_APELLIDOS,', ',U2.USU_NOMBRES) AS NOMBRE_DOCENTE,
+	    F.FT_RESUMEN
 		FROM TESIS T,FICHA_TESIS F,LINEA_INVESTIGACION L,USUARIO U, ESTADO_TESIS ET,EXPEDIENTE EX, USUARIO U2
 		WHERE T.TES_CODIGO=F.TES_CODIGO
 		AND EX.TES_CODIGO=T.TES_CODIGO
 		AND F.LINEA_ID=L.LINEA_ID
 		AND	F.BAC_CODIGO=U.USU_CODIGO
 		AND F.DOCEN_CODIGO=U2.USU_CODIGO
-		AND T.ESTT_ID=8 AND T.ESTT_ID = ET.ESTT_ID
+		AND T.ESTT_ID=9 AND T.ESTT_ID = ET.ESTT_ID
 	</select>
 
 	<select id="cargarListaTesisAprobadas" resultMap="Tesis">
@@ -74,7 +78,8 @@
 		CONCAT(U.USU_APELLIDOS,', ',U.USU_NOMBRES)
 		AS NOMBRE_COMPLETO,
 		ET.ESTT_ESTADO,
-	    CONCAT(U2.USU_APELLIDOS,', ',U2.USU_NOMBRES) AS NOMBRE_DOCENTE
+	    CONCAT(U2.USU_APELLIDOS,', ',U2.USU_NOMBRES) AS NOMBRE_DOCENTE,
+	    F.FT_RESUMEN
 		FROM TESIS T,FICHA_TESIS F,LINEA_INVESTIGACION L,USUARIO U, ESTADO_TESIS ET,EXPEDIENTE EX, USUARIO U2
 		WHERE T.TES_CODIGO=F.TES_CODIGO
 		AND EX.TES_CODIGO=T.TES_CODIGO
